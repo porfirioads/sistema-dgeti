@@ -22,3 +22,7 @@ Route::get('/dashboard', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/definitivo', function () {
+    return view('docente_definitivo');
+});
