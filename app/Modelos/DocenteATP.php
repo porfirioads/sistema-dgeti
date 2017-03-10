@@ -14,6 +14,6 @@ class DocenteATP extends Model
         'diagnostico',
         'plan_trabajo',
         'capacitacion',
-        'evalcion'
+        'evaluacion'
     );
 }
