@@ -62,7 +62,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('RESULTADOS', function(Blueprint $table) {
+        Schema::create('RESULTADO', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -126,13 +126,13 @@ class CreateTables extends Migration
                 ->references('id')->on('TIPO_NOMBRAMIENTO');
 
             $table->foreign('id_resultados')
-                ->references('id')->on('RESULTADOS');
+                ->references('id')->on('RESULTADO');
 
             $table->timestamps();
 
         });
 
-        Schema::create('ACTIVIDADES_ADMINISTRATIVAS', function(Blueprint $table) {
+        Schema::create('ACTIVIDAD_ADMINISTRATIVA', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -142,7 +142,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('DOCENTES_DEFINITIVO', function(Blueprint $table) {
+        Schema::create('DOCENTE_DEFINITIVO', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -156,7 +156,7 @@ class CreateTables extends Migration
                 ->references('id')->on('DOCENTE');
 
             $table->foreign('id_actividades_administrativas')
-                ->references('id')->on('ACTIVIDADES_ADMINISTRATIVAS');
+                ->references('id')->on('ACTIVIDAD_ADMINISTRATIVA');
 
             $table->timestamps();
 
@@ -172,7 +172,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('DOCENTES_IDONEOS', function(Blueprint $table) {
+        Schema::create('DOCENTE_IDONEO', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -208,7 +208,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('DOCENTES_TUTORES', function(Blueprint $table) {
+        Schema::create('DOCENTE_TUTOR', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -228,16 +228,16 @@ class CreateTables extends Migration
                 ->references('id')->on('FUNCION');
 
             $table->foreign('id_docente_tutorado_idoneo')
-                ->references('id')->on('DOCENTES_IDONEOS');
+                ->references('id')->on('DOCENTE_IDONEO');
 
             $table->foreign('id_docente_definitivo')
-                ->references('id')->on('DOCENTES_DEFINITIVO');
+                ->references('id')->on('DOCENTE_DEFINITIVO');
 
             $table->timestamps();
 
         });
 
-        Schema::create('DOCENTES_ATP', function(Blueprint $table) {
+        Schema::create('DOCENTE_ATP', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -252,7 +252,7 @@ class CreateTables extends Migration
             $table->index('id_concurso','fk_DOCENTES_ATP_CONCURSO1_idx');
 
             $table->foreign('id_docente_definitivo')
-                ->references('id')->on('DOCENTES_DEFINITIVO');
+                ->references('id')->on('DOCENTE_DEFINITIVO');
 
             $table->foreign('id_concurso')
                 ->references('id')->on('CONCURSO');
@@ -261,7 +261,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('DOCENTES_EVALUADORES', function(Blueprint $table) {
+        Schema::create('DOCENTE_EVALUADOR', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -273,7 +273,7 @@ class CreateTables extends Migration
             $table->index('DOCENTES_DEFINITIVO_id','fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1_idx');
 
             $table->foreign('DOCENTES_DEFINITIVO_id')
-                ->references('id')->on('DOCENTES_DEFINITIVO');
+                ->references('id')->on('DOCENTE_DEFINITIVO');
 
             $table->timestamps();
 
@@ -299,7 +299,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('Historial_Evaluacion', function(Blueprint $table) {
+        Schema::create('HISTORIAL_EVALUACION', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
@@ -320,7 +320,7 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('PLAZA_has_DOCENTE', function(Blueprint $table) {
+        Schema::create('PLAZA_DOCENTE', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->integer('id_plaza')->unsigned()->comment('');
@@ -356,20 +356,20 @@ class CreateTables extends Migration
         Schema::drop('DISCIPLINA');
         Schema::drop('TIPO_PLAZA');
         Schema::drop('TIPO_NOMBRAMIENTO');
-        Schema::drop('RESULTADOS');
+        Schema::drop('RESULTADO');
         Schema::drop('DOCENTE');
-        Schema::drop('ACTIVIDADES_ADMINISTRATIVAS');
-        Schema::drop('DOCENTES_DEFINITIVO');
+        Schema::drop('ACTIVIDAD_ADMINISTRATIVA');
+        Schema::drop('DOCENTE_DEFINITIVO');
         Schema::drop('CONCURSO');
-        Schema::drop('DOCENTES_IDONEOS');
+        Schema::drop('DOCENTE_IDONEO');
         Schema::drop('FUNCION');
-        Schema::drop('DOCENTES_TUTORES');
-        Schema::drop('DOCENTES_ATP');
-        Schema::drop('DOCENTES_EVALUADORES');
+        Schema::drop('DOCENTE_TUTOR');
+        Schema::drop('DOCENTE_ATP');
+        Schema::drop('DOCENTE_EVALUADOR');
         Schema::drop('PLAZA');
         Schema::drop('TIPO_EVALUACION');
-        Schema::drop('Historial_Evaluacion');
-        Schema::drop('PLAZA_has_DOCENTE');
+        Schema::drop('HISTORIAL_EVALUACION');
+        Schema::drop('PLAZA_DOCENTE');
 
     }
 }
