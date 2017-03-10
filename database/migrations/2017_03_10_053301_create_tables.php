@@ -172,32 +172,6 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('DOCENTE_IDONEO', function(Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->increments('id')->comment('');
-            $table->integer('id_docente')->unsigned()->comment('');
-            $table->integer('folio_federal')->nullable()->comment('');
-            $table->string('curp_tutor', 18)->nullable()->comment('');
-            $table->string('observacion', 80)->nullable()->comment('');
-            $table->integer('id_concurso')->unsigned()->comment('');
-
-            $table->unique('folio_federal','folio_general_UNIQUE');
-            $table->unique('curp_tutor','curp_tutor_UNIQUE');
-
-            $table->index('id_docente','fk_DOCENTES_IDONEOS_DOCENTE1_idx');
-            $table->index('id_concurso','fk_DOCENTES_IDONEOS_CONCURSO1_idx');
-
-            $table->foreign('id_docente')
-                ->references('id')->on('DOCENTE');
-
-            $table->foreign('id_concurso')
-                ->references('id')->on('CONCURSO');
-
-            $table->timestamps();
-
-        });
-
         Schema::create('FUNCION', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
@@ -217,21 +191,47 @@ class CreateTables extends Migration
             $table->integer('total_hora')->nullable()->comment('');
             $table->string('observacion', 250)->nullable()->comment('');
             $table->integer('id_funcion')->unsigned()->comment('');
-            $table->integer('id_docente_tutorado_idoneo')->unsigned()->comment('');
             $table->integer('id_docente_definitivo')->unsigned()->comment('');
 
             $table->index('id_funcion','fk_DOCENTES_TUTORES_FUNCION1_idx');
-            $table->index('id_docente_tutorado_idoneo','fk_DOCENTES_TUTORES_DOCENTES_IDONEOS1_idx');
             $table->index('id_docente_definitivo','fk_DOCENTES_TUTORES_DOCENTES_DEFINITIVO1_idx');
 
             $table->foreign('id_funcion')
                 ->references('id')->on('FUNCION');
 
-            $table->foreign('id_docente_tutorado_idoneo')
-                ->references('id')->on('DOCENTE_IDONEO');
-
             $table->foreign('id_docente_definitivo')
                 ->references('id')->on('DOCENTE_DEFINITIVO');
+
+            $table->timestamps();
+
+        });
+
+        Schema::create('DOCENTE_IDONEO', function(Blueprint $table) {
+            $table->engine = 'InnoDB';
+
+            $table->increments('id')->comment('');
+            $table->integer('id_docente')->unsigned()->comment('');
+            $table->integer('folio_federal')->nullable()->comment('');
+            $table->string('curp_tutor', 18)->nullable()->comment('');
+            $table->string('observacion', 80)->nullable()->comment('');
+            $table->integer('id_concurso')->unsigned()->comment('');
+            $table->integer('id_docente_tutor')->unsigned()->comment('');
+
+            $table->unique('folio_federal','folio_general_UNIQUE');
+            $table->unique('curp_tutor','curp_tutor_UNIQUE');
+
+            $table->index('id_docente','fk_DOCENTES_IDONEOS_DOCENTE1_idx');
+            $table->index('id_concurso','fk_DOCENTES_IDONEOS_CONCURSO1_idx');
+            $table->index('id_docente_tutor','fk_DOCENTE_IDONEO_DOCENTE_TUTOR1_idx');
+
+            $table->foreign('id_docente')
+                ->references('id')->on('DOCENTE');
+
+            $table->foreign('id_concurso')
+                ->references('id')->on('CONCURSO');
+
+            $table->foreign('id_docente_tutor')
+                ->references('id')->on('DOCENTE_TUTOR');
 
             $table->timestamps();
 
@@ -361,9 +361,9 @@ class CreateTables extends Migration
         Schema::drop('ACTIVIDAD_ADMINISTRATIVA');
         Schema::drop('DOCENTE_DEFINITIVO');
         Schema::drop('CONCURSO');
-        Schema::drop('DOCENTE_IDONEO');
         Schema::drop('FUNCION');
         Schema::drop('DOCENTE_TUTOR');
+        Schema::drop('DOCENTE_IDONEO');
         Schema::drop('DOCENTE_ATP');
         Schema::drop('DOCENTE_EVALUADOR');
         Schema::drop('PLAZA');
