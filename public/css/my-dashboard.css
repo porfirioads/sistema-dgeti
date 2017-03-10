@@ -1,0 +1,10 @@
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+
+body {
+    padding-bottom: 50px;
+}

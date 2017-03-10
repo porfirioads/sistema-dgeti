@@ -15,14 +15,22 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/v_dashboard', function () {
     return view('dashboard_master');
 });
 
-Route::get('/login', function () {
+Route::get('/v_login', function () {
     return view('login');
 });
 
-Route::get('/definitivo', function () {
-    return view('docente_definitivo');
+Route::get('/v_definitivos', function () {
+    return view('docente_definitivo.lista');
+});
+
+Route::get('/v_definitivo', function () {
+    return view('docente_definitivo.editar');
+});
+
+Route::get('/v_building', function () {
+    return view('building_page');
 });
