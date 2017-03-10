@@ -26,7 +26,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
-            $table->string('discimplina', 45)->nullable()->comment('');
+            $table->string('disciplina', 45)->comment('');
 
             $table->timestamps();
 
@@ -147,15 +147,15 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->integer('id_docente')->unsigned()->comment('');
-            $table->integer('id_actividades_administrativas')->unsigned()->comment('');
+            $table->integer('id_actividad_administrativa')->unsigned()->comment('');
 
             $table->index('id_docente','fk_DOCENTES_DEFINITIVO_DOCENTE_idx');
-            $table->index('id_actividades_administrativas','fk_DOCENTES_DEFINITIVO_ACTIVIDADES_ADMINISTRATIVAS1_idx');
+            $table->index('id_actividad_administrativa','fk_DOCENTES_DEFINITIVO_ACTIVIDADES_ADMINISTRATIVAS1_idx');
 
             $table->foreign('id_docente')
                 ->references('id')->on('DOCENTE');
 
-            $table->foreign('id_actividades_administrativas')
+            $table->foreign('id_actividad_administrativa')
                 ->references('id')->on('ACTIVIDAD_ADMINISTRATIVA');
 
             $table->timestamps();
@@ -179,7 +179,7 @@ class CreateTables extends Migration
             $table->integer('id_docente')->unsigned()->comment('');
             $table->integer('folio_federal')->nullable()->comment('');
             $table->string('curp_tutor', 18)->nullable()->comment('');
-            $table->string('observaciones', 80)->nullable()->comment('');
+            $table->string('observacion', 80)->nullable()->comment('');
             $table->integer('id_concurso')->unsigned()->comment('');
 
             $table->unique('folio_federal','folio_general_UNIQUE');
@@ -246,7 +246,7 @@ class CreateTables extends Migration
             $table->string('diagnostico', 1)->nullable()->comment('');
             $table->string('plan_trabajo', 1)->nullable()->comment('');
             $table->string('capacitacion', 1)->nullable()->comment('');
-            $table->string('evalcion', 1)->nullable()->comment('');
+            $table->string('evaluacion', 1)->nullable()->comment('');
 
             $table->index('id_docente_definitivo','fk_DOCENTES_ATP_DOCENTES_DEFINITIVO1_idx');
             $table->index('id_concurso','fk_DOCENTES_ATP_CONCURSO1_idx');
@@ -265,14 +265,14 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
-            $table->integer('DOCENTES_DEFINITIVO_id')->unsigned()->comment('');
+            $table->integer('id_docente_definitivo')->unsigned()->comment('');
             $table->string('funcion', 45)->nullable()->comment('');
             $table->string('status', 1)->nullable()->comment('');
             $table->date('vigencia')->nullable()->comment('');
 
-            $table->index('DOCENTES_DEFINITIVO_id','fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1_idx');
+            $table->index('id_docente_definitivo','fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1_idx');
 
-            $table->foreign('DOCENTES_DEFINITIVO_id')
+            $table->foreign('id_docente_definitivo')
                 ->references('id')->on('DOCENTE_DEFINITIVO');
 
             $table->timestamps();
