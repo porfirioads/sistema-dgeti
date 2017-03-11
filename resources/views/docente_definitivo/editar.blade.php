@@ -228,13 +228,6 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
-                                        Horas
-                                    </label>
-                                    <input type="number" class="form-control"
-                                           id="exampleInputPassword1">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="exampleInputPassword1">
                                         Horas frente a grupo
                                     </label>
                                     <input type="number" class="form-control"
@@ -242,7 +235,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
-                                        Descarga académica
+                                        Horas descarga académica
                                     </label>
                                     <input type="number" class="form-control"
                                            id="exampleInputPassword1">
@@ -254,30 +247,29 @@
                                     <input type="number" class="form-control"
                                            id="exampleInputPassword1">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label>Fecha</label>
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text"
-                                               class="form-control"
-                                               id="dateFecha">
-                                    </div>
-                                    <!-- /.input group -->
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label>Vigencia</label>
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text"
-                                               class="form-control"
-                                               id="dateVigencia">
-                                    </div>
-                                    <!-- /.input group -->
-                                </div>
+                                {{--<div class="form-group col-md-4">--}}
+                                {{--<label>Fecha</label>--}}
+                                {{--<div class="input-group date">--}}
+                                {{--<div class="input-group-addon">--}}
+                                {{--<i class="fa fa-calendar"></i>--}}
+                                {{--</div>--}}
+                                {{--<input type="text"--}}
+                                {{--class="form-control"--}}
+                                {{--id="dateFecha">--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-4">--}}
+                                {{--<label>Vigencia</label>--}}
+                                {{--<div class="input-group date">--}}
+                                {{--<div class="input-group-addon">--}}
+                                {{--<i class="fa fa-calendar"></i>--}}
+                                {{--</div>--}}
+                                {{--<input type="text"--}}
+                                {{--class="form-control"--}}
+                                {{--id="dateVigencia">--}}
+                                {{--</div>--}}
+                                {{--<!-- /.input group -->--}}
+                                {{--</div>--}}
                             </div>
                         </div>
                         <div class="panel panel-primary">
@@ -443,7 +435,6 @@
     $('#dateVigencia').datepicker({
         autoclose: true
     });
-
 
     //Initialize Select2 Elements
     $(".select2").select2();
