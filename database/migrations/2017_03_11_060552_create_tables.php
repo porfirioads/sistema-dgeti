@@ -209,16 +209,6 @@ class CreateTables extends Migration
 
         });
 
-        Schema::create('TIPO_PLAZA', function(Blueprint $table) {
-            $table->engine = 'InnoDB';
-
-            $table->increments('id')->comment('');
-            $table->integer('plaza')->comment('');
-
-            $table->timestamps();
-
-        });
-
         Schema::create('TIPO_EVALUACION', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
@@ -305,22 +295,19 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->integer('docente_id')->unsigned()->comment('');
-            $table->integer('tipo_plaza_id')->unsigned()->comment('');
+            $table->integer('tipo_plaza_id')->comment('');
             $table->integer('tipo_nombramiento_id')->unsigned()->comment('');
             $table->string('plaza', 45)->comment('');
             $table->integer('id')->comment('');
+            $table->integer('tipo_plaza_horas')->comment('');
 
             $table->primary('id');
 
-            $table->index('tipo_plaza_id','fk_DOCENTE_has_TIPO_PLAZA_TIPO_PLAZA1_idx');
             $table->index('docente_id','fk_DOCENTE_has_TIPO_PLAZA_DOCENTE1_idx');
             $table->index('tipo_nombramiento_id','fk_TIPO_PLAZA_DOCENTE_TIPO_NOMBRAMIENTO1_idx');
 
             $table->foreign('docente_id')
                 ->references('id')->on('DOCENTE');
-
-            $table->foreign('tipo_plaza_id')
-                ->references('id')->on('TIPO_PLAZA');
 
             $table->foreign('tipo_nombramiento_id')
                 ->references('id')->on('TIPO_NOMBRAMIENTO');
@@ -435,7 +422,6 @@ class CreateTables extends Migration
         Schema::drop('COMPONENTE_FORMACION');
         Schema::drop('CAMPO_DISCIPLINAR');
         Schema::drop('DISCIPLINA');
-        Schema::drop('TIPO_PLAZA');
         Schema::drop('TIPO_EVALUACION');
         Schema::drop('FUNCION');
         Schema::drop('RESULTADO_EVALUACION');
