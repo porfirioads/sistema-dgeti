@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('landingpage');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard_master');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/definitivo', function () {
+    return view('docente_definitivo');
+});
