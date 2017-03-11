@@ -36,3 +36,13 @@ Route::get('/v_building', function () {
 });
 
 Route::post('/login', 'LoginController@login');
+
+Route::get('/logout', 'LoginController@logout');
+
+Route::get('/landing_directores', function () {
+    if (Session::get('haySesion'))
+        return view('landingpage_directores');
+    else {
+        return view('login');
+    }
+});
