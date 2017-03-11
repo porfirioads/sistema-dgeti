@@ -41,7 +41,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-2">
-            <a class=" btn btn-block btn-primary" href="/v_building">
+            <a class=" btn btn-block btn-primary" href="/spd">
                 <i class="fa fa-pencil-square-o fa-5x"></i>
                 <br/>
                 <span>SPD</span>

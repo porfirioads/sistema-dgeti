@@ -20,11 +20,7 @@ Route::get('/v_dashboard', function () {
 });
 
 Route::get('/v_login', function () {
-    return view('login');
-});
-
-Route::get('/v_definitivos', function () {
-    return view('docente_definitivo.lista');
+    return view('login')->with(['destino' => '/']);;
 });
 
 Route::get('/v_definitivo', function () {
@@ -43,6 +39,14 @@ Route::get('/landing_directores', function () {
     if (Session::get('haySesion'))
         return view('landingpage_directores');
     else {
-        return view('login');
+        return view('login')->with(['destino' => '/landing_directores']);
+    }
+});
+
+Route::get('/spd', function () {
+    if (Session::get('haySesion'))
+        return view('docente_definitivo.lista');
+    else {
+        return view('login')->with(['destino' => '/spd']);
     }
 });

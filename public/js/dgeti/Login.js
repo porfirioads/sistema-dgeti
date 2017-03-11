@@ -33,7 +33,7 @@ $(document).ready(function () {
                 if (!result.loginCorrecto) {
                     showErrorNotification('Datos incorrectos');
                 } else {
-                    window.location = 'landing_directores';
+                    window.location = destino;
                 }
             },
             error: function (error) {

@@ -56,7 +56,8 @@
 <!-- /.login-box -->
 
 <script>
-    var destino = {{ $destino }};
+    var destino = {!! json_encode($destino) !!};
+    destino == destino ? destino : '/';
 </script>
 
 <!-- jQuery 2.2.3 -->
