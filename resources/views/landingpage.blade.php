@@ -16,9 +16,10 @@
           type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
           rel="stylesheet" type="text/css">
+    <link href="css/my-dashboard.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="minimal-background-gray">
 
 <!-- Header -->
 <header id="top" class="header">
@@ -48,7 +49,7 @@
             </a>
         </div>
         <div class="col-md-2">
-            <a class=" btn btn-block btn-primary" href="/v_definitivos">
+            <a class=" btn btn-block btn-primary" href="/landing_directores">
                 <i class="fa fa-users fa-5x"></i>
                 <br/>
                 <span>Directores</span>

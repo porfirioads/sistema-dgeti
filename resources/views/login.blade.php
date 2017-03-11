@@ -14,8 +14,9 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/AdminLTE.css">
     <link rel="stylesheet" href="css/blue.css">
+    <link href="css/my-dashboard.css" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page minimal-background-gray">
 <div class="login-box">
     <div class="login-logo">
         <strong>Iniciar Sesión</strong>
@@ -53,6 +54,10 @@
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<script>
+    var destino = {{ $destino }};
+</script>
 
 <!-- jQuery 2.2.3 -->
 <script src="js/jquery.js"></script>

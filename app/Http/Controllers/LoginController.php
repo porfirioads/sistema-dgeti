@@ -18,15 +18,19 @@ class LoginController extends Controller
         $contrasena = $request['contrasena'];
         $loginCorrecto = $usuario === '32DCT0353B'
             && $contrasena === "32DCT0353B";
-
         if ($loginCorrecto) {
             $request->session()->put('haySesion', true);
             $request->session()->put('usuario', $usuario);
             $request->session()->put('contrasena', $contrasena);
         }
-
         return response()->json(array('usuario' => $usuario, 'contrasena' =>
             $contrasena, 'loginCorrecto' => $loginCorrecto));
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/');
     }
 
     /**
@@ -99,14 +103,4 @@ class LoginController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function logout()
-    {
-        //
-    }
 }

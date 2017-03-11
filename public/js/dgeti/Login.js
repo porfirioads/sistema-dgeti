@@ -33,21 +33,13 @@ $(document).ready(function () {
                 if (!result.loginCorrecto) {
                     showErrorNotification('Datos incorrectos');
                 } else {
-                    window.location = 'v_definitivos';
+                    window.location = 'landing_directores';
                 }
             },
             error: function (error) {
                 showErrorNotification('No se puede conectar al servidor');
             }
         });
-    }
-
-    /**
-     * Manda una petición al servidor para determinar si hay una sesión de
-     * usuario iniciada.
-     */
-    function haySesionIniciada() {
-
     }
 });
 
