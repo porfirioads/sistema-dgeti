@@ -9,9 +9,9 @@
           name="viewport">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/AdminLTE.css">
     <link rel="stylesheet" href="css/skin-blue.css">
     <link rel="stylesheet" href="css/dataTables.bootstrap.css">
@@ -106,8 +106,7 @@
         <section class="content">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Docentes definitivos</h3>
-{{--                    <h3>{{ Session::get('email') }}</h3>--}}
+                    <strong class="box-title">Docentes definitivos</strong>
                 </div>
                 {{-- /.box-header --}}
                 <div class="box-body">

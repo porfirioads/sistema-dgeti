@@ -37,6 +37,24 @@ Route::get('/v_building', function () {
 
 Route::post('/login', 'LoginController@login');
 
+Route::get('/logout', 'LoginController@logout');
+
+Route::get('/landing_directores', function () {
+    if (Session::get('haySesion'))
+        return view('landingpage_directores');
+    else {
+        return view('login')->with(['destino' => '/landing_directores']);
+    }
+});
+
+Route::get('/spd', function () {
+    if (Session::get('haySesion'))
+        return view('docente_definitivo.lista');
+    else {
+        return view('login')->with(['destino' => '/spd']);
+    }
+});
+
 
 
 //////////////////////////////////////////////////////
