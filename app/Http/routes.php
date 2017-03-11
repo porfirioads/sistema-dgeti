@@ -34,3 +34,5 @@ Route::get('/v_definitivo', function () {
 Route::get('/v_building', function () {
     return view('building_page');
 });
+
+Route::post('/login', 'LoginController@login');

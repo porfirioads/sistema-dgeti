@@ -12,6 +12,23 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
+    public function login(Request $request)
+    {
+        $email = $request['email'];
+        $contrasena = $request['contrasena'];
+        $loginCorrecto = $email === 'porfirioads@gmail.com'
+            && $contrasena === "porfirio";
+        
+        return response()->json(array('email' => $email, 'contrasena'=>
+            $contrasena, 'loginCorrecto' => $loginCorrecto));
+//        return response()->json(array('loginCorrecto' => $loginCorrecto));
+//        $respuesta = array('loginCorrecto')
+//        $respuesta = array('loginCorrecto' =>
+//            Auth::attempt(['email' => $request['email'],
+//                'password' => $request['contrasena']]));
+//        return response()->json($respuesta);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,15 +52,15 @@ class LoginController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(LoginRequest $request)
     {
-        if (Auth::attempt(['email'=> $request['email'], 'password'=>$request['password']])){
+        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
             return Redirect::to('dashboard');
         }
-        Session::flash('message-error','Datos son incorrectos');
+        Session::flash('message-error', 'Datos son incorrectos');
         return Redirect::to('/login');
 
     }
@@ -51,7 +68,7 @@ class LoginController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +79,7 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -73,8 +90,8 @@ class LoginController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,7 +102,7 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function logout()

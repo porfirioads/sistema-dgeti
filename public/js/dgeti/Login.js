@@ -4,7 +4,7 @@
  */
 
 $(document).ready(function () {
-    var txtUsuario = $('#txtUsuario');
+    var txtEmail = $('#txtEmail');
     var txtContrasena = $('#txtContrasena');
     var btnIngresar = $('#btnIngresar');
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -20,20 +20,20 @@ $(document).ready(function () {
      */
     function iniciarSesion() {
         jQuery.ajax({
-            url: '/user/signin',
+            url: '/login',
             type: 'POST',
             dataType: 'JSON',
             data: {
                 _token: CSRF_TOKEN,
-                username: txtUsuario.val(),
-                password: txtContrasena.val()
+                email: txtEmail.val(),
+                contrasena: txtContrasena.val()
             },
             success: function (result) {
-                if (!result.loginCorrect) {
+                console.log(result);
+                if (!result.loginCorrecto) {
                     showErrorNotification('Datos incorrectos');
                 } else {
-                    var id = 2;
-                    // window.location = '/centros_de_gestion/' + id;
+                    window.location = 'v_definitivos';
                 }
             },
             error: function (error) {

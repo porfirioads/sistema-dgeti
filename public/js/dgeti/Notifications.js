@@ -8,3 +8,14 @@ function showErrorNotification(message) {
         type: 'danger'
     });
 }
+
+function showInfoNotification(message) {
+    $.notify({
+        // options
+        message: message,
+        icon: 'fa fa-check'
+    }, {
+        // settings
+        type: 'info'
+    });
+}
