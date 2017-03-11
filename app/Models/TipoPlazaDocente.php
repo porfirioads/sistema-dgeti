@@ -21,7 +21,6 @@ class TipoPlazaDocente extends Model
         'docente_id',
         'tipo_plaza_id',
         'tipo_nombramiento_id',
-        'total_horas_plaza',
         'plaza'
     );
 }
