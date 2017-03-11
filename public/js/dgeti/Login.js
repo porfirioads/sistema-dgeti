@@ -4,7 +4,7 @@
  */
 
 $(document).ready(function () {
-    var txtEmail = $('#txtEmail');
+    var txtUsuario = $('#txtUsuario');
     var txtContrasena = $('#txtContrasena');
     var btnIngresar = $('#btnIngresar');
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -25,7 +25,7 @@ $(document).ready(function () {
             dataType: 'JSON',
             data: {
                 _token: CSRF_TOKEN,
-                email: txtEmail.val(),
+                usuario: txtUsuario.val(),
                 contrasena: txtContrasena.val()
             },
             success: function (result) {

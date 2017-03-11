@@ -25,8 +25,8 @@
         <p class="login-box-msg">Ingresa tus datos para iniciar sesión</p>
         {{--<form action="../../index2.html" method="post">--}}
         <div class="form-group has-feedback">
-            <input id="txtEmail" type="text" class="form-control"
-                   placeholder="Email">
+            <input id="txtUsuario" type="text" class="form-control"
+                   placeholder="Usuario">
             <span class="fa fa-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">

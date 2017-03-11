@@ -14,18 +14,18 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $email = $request['email'];
+        $usuario = $request['usuario'];
         $contrasena = $request['contrasena'];
-        $loginCorrecto = $email === 'porfirioads@gmail.com'
-            && $contrasena === "porfirio";
+        $loginCorrecto = $usuario === '32DCT0353B'
+            && $contrasena === "32DCT0353B";
 
         if ($loginCorrecto) {
             $request->session()->put('haySesion', true);
-            $request->session()->put('email', $email);
-            $request->session()->put('contrasena', $email);
+            $request->session()->put('usuario', $usuario);
+            $request->session()->put('contrasena', $contrasena);
         }
 
-        return response()->json(array('email' => $email, 'contrasena' =>
+        return response()->json(array('usuario' => $usuario, 'contrasena' =>
             $contrasena, 'loginCorrecto' => $loginCorrecto));
     }
 
