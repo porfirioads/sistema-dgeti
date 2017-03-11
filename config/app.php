@@ -149,6 +149,8 @@ return [
          * Forms
          */
         Collective\Html\HtmlServiceProvider::class,
+
+        Reliese\Coders\CodersServiceProvider::class
     ],
 
     /*
