@@ -19,7 +19,7 @@ Route::get('/dashboard', function () {
     return view('dashboard_master');
 });
 
-Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@index']);
+
 
 
 Route::get('/definitivo', function () {
@@ -27,4 +27,10 @@ Route::get('/definitivo', function () {
 });
 
 
-Route::resource('login', 'LoginController');
+
+//Login
+Route::get('login', ['as' => 'login', 'uses' => 'LoginController@index']);
+Route::resource('log', 'LoginController');
+
+
+Route::get('logout', ['as' => 'auth.logout', 'uses' => 'LoginController@logout']);

@@ -150,7 +150,6 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
 
-        Reliese\Coders\CodersServiceProvider::class
     ],
 
     /*

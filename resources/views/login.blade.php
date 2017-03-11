@@ -36,15 +36,15 @@
     <div class="login-box-body">
         <p class="login-box-msg">Ingresa tus datos para iniciar sesión</p>
 
-        {!! Form::open([ 'class' => '', 'name'=>'', "method"=>'POST']) !!}
+        {!! Form::open(['route' => 'log.store', 'class' => '', 'name'=>'', "method"=>'POST']) !!}
         <div class="form-group has-feedback">
-            {!! Form::text('correo', $value = null,['class' => 'form-control', 'placeholder' => 'Ingresa su correo','required'])!!}
+            {!! Form::text('email', $value = null,['class' => 'form-control', 'placeholder' => 'Ingresa su correo','required'])!!}
             <span class="fa fa-user form-control-feedback"></span>
         </div>
 
 
         <div class="form-group has-feedback">
-            {!! Form::text('password', $value = null,['class' => 'form-control', 'placeholder' => 'Contraseña','required'])!!}
+            {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Contraseña','required'])!!}
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
 
@@ -59,6 +59,8 @@
                 <a href="#">Olvidé mi contraseña</a><br>
             </div>
         </div>
+        @include('alerts.errors')
+        @include('alerts.request')
         {!! Form::close()  !!}
 
 

@@ -38,9 +38,14 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        return $request->email;
+        if (Auth::attempt(['email'=> $request['email'], 'password'=>$request['password']])){
+            return Redirect::to('dashboard');
+        }
+        Session::flash('message-error','Datos son incorrectos');
+        return Redirect::to('/login');
+
     }
 
     /**
@@ -83,7 +88,7 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function logout()
     {
         //
     }
