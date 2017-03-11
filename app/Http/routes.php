@@ -36,3 +36,19 @@ Route::get('/v_building', function () {
 });
 
 Route::post('/login', 'LoginController@login');
+
+
+
+//////////////////////////////////////////////////////
+Route::resource('docente', 'DocenteController',
+    ['names' =>
+        [
+            'lista'     => 'docente.index',
+            'mostrar'   => 'docente.show',
+            'crear'     => 'docente.store',
+            'actualizar'=> 'docente.update',
+            'modificar' => 'docente.edit',
+            'eliminar'  => 'docente.destroy'
+        ]
+    ]
+);
