@@ -20,7 +20,11 @@ Route::get('/v_dashboard', function () {
 });
 
 Route::get('/v_login', function () {
-    return view('login')->with(['destino' => '/']);;
+    return view('login');
+});
+
+Route::get('/v_definitivos', function () {
+    return view('docente_definitivo.lista');
 });
 
 Route::get('/v_definitivo', function () {
@@ -33,20 +37,18 @@ Route::get('/v_building', function () {
 
 Route::post('/login', 'LoginController@login');
 
-Route::get('/logout', 'LoginController@logout');
 
-Route::get('/landing_directores', function () {
-    if (Session::get('haySesion'))
-        return view('landingpage_directores');
-    else {
-        return view('login')->with(['destino' => '/landing_directores']);
-    }
-});
 
-Route::get('/spd', function () {
-    if (Session::get('haySesion'))
-        return view('docente_definitivo.lista');
-    else {
-        return view('login')->with(['destino' => '/spd']);
-    }
-});
+//////////////////////////////////////////////////////
+Route::resource('docente', 'DocenteController',
+    ['names' =>
+        [
+            'lista'     => 'docente.index',
+            'mostrar'   => 'docente.show',
+            'crear'     => 'docente.store',
+            'actualizar'=> 'docente.update',
+            'modificar' => 'docente.edit',
+            'eliminar'  => 'docente.destroy'
+        ]
+    ]
+);
