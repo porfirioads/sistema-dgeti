@@ -4,33 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Docente definitivo</title>
-    {{-- Tell the browser to be responsive to screen width --}}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
           name="viewport">
-    {{-- Bootstrap 3.3.6 --}}
     <link rel="stylesheet" href="css/bootstrap.css">
-    {{-- Font Awesome --}}
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    {{-- Ionicons --}}
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    {{-- Theme style --}}
     <link rel="stylesheet" href="css/select2.min.css">
     <link rel="stylesheet" href="css/AdminLTE.css">
-    {{-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. --}}
     <link rel="stylesheet" href="css/skin-blue.css">
-    {{-- DataTables --}}
     <link rel="stylesheet" href="css/dataTables.bootstrap.css">
     <link rel="stylesheet" href="css/datepicker3.css">
     <link rel="stylesheet" href="css/my-dashboard.css">
-    {{-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --}}
-    {{-- WARNING: Respond.js doesn't work if you view the page via file:// --}}
-    {{--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]--}}
 </head>
 {{-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT --}}
 {{-- the fixed layout is not compatible with sidebar-mini --}}
@@ -151,11 +137,11 @@
         <section class="content">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Nuevo Docente Definitivo</h3>
+                    <strong class="box-title">Nuevo Docente Definitivo</strong>
                 </div>
                 <form role="form">
                     <div class="box-body">
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading clearfix">
                                 <i class="icon-calendar"></i>
                                 <h3 class="panel-title">Datos personales</h3>
@@ -226,7 +212,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading clearfix">
                                 <i class="icon-calendar"></i>
                                 <h3 class="panel-title">Datos laborales</h3>
@@ -294,7 +280,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading clearfix">
                                 <i class="icon-calendar"></i>
                                 <h3 class="panel-title">Datos académicos</h3>
