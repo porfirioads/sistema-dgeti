@@ -18,7 +18,7 @@ class HistorialEvaluacionDocente extends Model
     protected $primaryKey = 'id';
     protected $table = 'HISTORIAL_EVALUACION_DOCENTE';
     protected $fillable = array(
-        'historial_evaluacion_id',
+        'evaluacion_id',
         'docente_id'
     );
 }
