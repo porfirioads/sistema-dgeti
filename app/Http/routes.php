@@ -19,10 +19,12 @@ Route::get('/dashboard', function () {
     return view('dashboard_master');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('login', [ 'as' => 'login', 'uses' => 'LoginController@index']);
+
 
 Route::get('/definitivo', function () {
     return view('docente_definitivo');
 });
+
+
+Route::resource('login', 'LoginController');
