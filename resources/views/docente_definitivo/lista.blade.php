@@ -107,6 +107,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Docentes definitivos</h3>
+{{--                    <h3>{{ Session::get('email') }}</h3>--}}
                 </div>
                 {{-- /.box-header --}}
                 <div class="box-body">

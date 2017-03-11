@@ -18,15 +18,15 @@ class LoginController extends Controller
         $contrasena = $request['contrasena'];
         $loginCorrecto = $email === 'porfirioads@gmail.com'
             && $contrasena === "porfirio";
-        
-        return response()->json(array('email' => $email, 'contrasena'=>
+
+        if ($loginCorrecto) {
+            $request->session()->put('haySesion', true);
+            $request->session()->put('email', $email);
+            $request->session()->put('contrasena', $email);
+        }
+
+        return response()->json(array('email' => $email, 'contrasena' =>
             $contrasena, 'loginCorrecto' => $loginCorrecto));
-//        return response()->json(array('loginCorrecto' => $loginCorrecto));
-//        $respuesta = array('loginCorrecto')
-//        $respuesta = array('loginCorrecto' =>
-//            Auth::attempt(['email' => $request['email'],
-//                'password' => $request['contrasena']]));
-//        return response()->json($respuesta);
     }
 
     /**
