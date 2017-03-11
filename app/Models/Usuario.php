@@ -1,13 +1,10 @@
 <?php
 
 /**
- * Created by Reliese Model.
- * Date: Sat, 11 Mar 2017 06:41:47 +0000.
+ * Created by Santiago García Cabral.
+ * Date: Sat, 11 Mar 2017
  */
-
 namespace App\Models;
-
-use Reliese\Database\Eloquent\Model as Eloquent;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +17,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 /**
  * Class User
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -31,9 +28,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  *
  * @package App\Models
  */
-class Usuario extends Model implements AuthenticatableContract,
-    AuthorizableContract,
-    CanResetPasswordContract
+class Usuario extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
 
@@ -41,22 +36,15 @@ class Usuario extends Model implements AuthenticatableContract,
 
     protected $table = 'USUARIO';
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['name', 'email', 'password'];
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
+
     protected $hidden = ['password', 'remember_token'];
+
     protected $dates = ['deleted_at'];
-    public function setPasswordAttribute($valor){
-        if(!empty($valor)){
+
+    public function setPasswordAttribute($valor)
+    {
+        if (!empty($valor)) {
             $this->attributes['password'] = \Hash::make($valor);
         }
     }

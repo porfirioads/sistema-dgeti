@@ -213,7 +213,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id')->comment('');
-            $table->string('plaza', 45)->comment('');
+            $table->integer('plaza')->comment('');
 
             $table->timestamps();
 
@@ -307,7 +307,6 @@ class CreateTables extends Migration
             $table->integer('docente_id')->unsigned()->comment('');
             $table->integer('tipo_plaza_id')->unsigned()->comment('');
             $table->integer('tipo_nombramiento_id')->unsigned()->comment('');
-            $table->integer('total_horas_plaza')->comment('');
             $table->string('plaza', 45)->comment('');
             $table->integer('id')->comment('');
 
