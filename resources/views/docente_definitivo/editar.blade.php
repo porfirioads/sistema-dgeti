@@ -139,7 +139,7 @@
                 <div class="box-header">
                     <strong class="box-title">Nuevo Docente Definitivo</strong>
                 </div>
-                <form role="form">
+                {!! Form::open(['route' => 'docente.store', 'class' => '', 'name'=>'form_docente_definitivo']) !!}
                     <div class="box-body">
                         <div class="panel panel-primary">
                             <div class="panel-heading clearfix">
@@ -150,65 +150,55 @@
                             <div class="panel-body">
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputEmail1">CCT</label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputEmail1">
+                                    {!! Form::text('cct', $value = null,['class' => 'form-control', 'placeholder' => 'CCT','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputEmail1">CURP</label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputEmail1">
+                                    {!! Form::text('curp', $value = null,['class' => 'form-control', 'placeholder' => 'Curp','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputEmail1">RFC</label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputEmail1">
+                                    {!! Form::text('rfc', $value = null,['class' => 'form-control', 'placeholder' => 'RFC','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputEmail1">Nombre</label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputEmail1">
+                                    {!! Form::text('nombre', $value = null,['class' => 'form-control', 'placeholder' => 'Nombre','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Primer Apellido
                                     </label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('primer_apellido', $value = null,['class' => 'form-control', 'placeholder' => 'Primer Apellido','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Segundo Apellido
                                     </label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('segundo_apellido', $value = null,['class' => 'form-control', 'placeholder' => 'Segundo Apellido','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Correo electrónico
                                     </label>
-                                    <input type="email" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('correo', $value = null,['class' => 'form-control', 'placeholder' => 'Correo electrónico','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Teléfono celular
                                     </label>
-                                    <input type="tel" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('telefono_celular', $value = null,['class' => 'form-control', 'placeholder' => 'Teléfono celular','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Teléfono fijo
                                     </label>
-                                    <input type="tel" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => 'Teléfono fijo','required'])!!}
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="exampleInputPassword1">
                                         Domicilio
                                     </label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('domicilio', $value = null,['class' => 'form-control', 'placeholder' => 'Domicilio','required'])!!}
                                 </div>
                             </div>
                         </div>
@@ -223,53 +213,26 @@
                                     <label for="exampleInputPassword1">
                                         Perfil Profesional
                                     </label>
-                                    <input type="text" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Horas frente a grupo
                                     </label>
-                                    <input type="number" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Horas descarga académica
                                     </label>
-                                    <input type="number" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Horas administrativas
                                     </label>
-                                    <input type="number" class="form-control"
-                                           id="exampleInputPassword1">
+                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
                                 </div>
-                                {{--<div class="form-group col-md-4">--}}
-                                {{--<label>Fecha</label>--}}
-                                {{--<div class="input-group date">--}}
-                                {{--<div class="input-group-addon">--}}
-                                {{--<i class="fa fa-calendar"></i>--}}
-                                {{--</div>--}}
-                                {{--<input type="text"--}}
-                                {{--class="form-control"--}}
-                                {{--id="dateFecha">--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group col-md-4">--}}
-                                {{--<label>Vigencia</label>--}}
-                                {{--<div class="input-group date">--}}
-                                {{--<div class="input-group-addon">--}}
-                                {{--<i class="fa fa-calendar"></i>--}}
-                                {{--</div>--}}
-                                {{--<input type="text"--}}
-                                {{--class="form-control"--}}
-                                {{--id="dateVigencia">--}}
-                                {{--</div>--}}
-                                {{--<!-- /.input group -->--}}
-                                {{--</div>--}}
                             </div>
                         </div>
                         <div class="panel panel-primary">
@@ -281,6 +244,7 @@
                                 <div class="form-group col-md-12">
                                     <label>Componente formación</label>
                                     <select id="selComponentes"
+                                            name="componente_formacion"
                                             class="form-control select2"
                                             multiple="multiple">
                                     </select>
@@ -372,12 +336,10 @@
                     <div class="box-footer">
                         {{--<button type="submit" class="btn btn-primary">Submit--}}
                         {{--</button>--}}
-                        <a class="btn btn-block btn-lg btn-primary">
-                            <i class="fa fa-save"></i>
-                            Guardar
-                        </a>
+
+                        {!! Form::submit('Guardar', ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
                     </div>
-                </form>
+                {!! Form::close()  !!}
             </div>
         </section>
         {{-- /.content --}}

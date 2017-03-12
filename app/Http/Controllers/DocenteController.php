@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Factories\DocenteFactory;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,10 @@ class DocenteController extends Controller
      */
     public function store(Request $request)
     {
-        return "store";
+        $docente_factory = new DocenteFactory();
+        $docente = $docente_factory->crearDocente($request);
+
+        return $docente;
     }
 
     /**
