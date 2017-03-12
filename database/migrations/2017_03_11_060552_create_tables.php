@@ -264,14 +264,14 @@ class CreateTables extends Migration
         Schema::create('HISTORIAL_EVALUACION_DOCENTE', function(Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->integer('historial_evaluacion_id')->unsigned()->comment('');
+            $table->integer('evaluacion_id')->unsigned()->comment('');
             $table->integer('docente_id')->unsigned()->comment('');
             $table->increments('id')->comment('');
 
             $table->index('docente_id','fk_HISTORIAL_EVALUACION_has_DOCENTE_DOCENTE1_idx');
-            $table->index('historial_evaluacion_id','fk_HISTORIAL_EVALUACION_has_DOCENTE_HISTORIAL_EVALUACION1_idx');
+            $table->index('evaluacion_id','fk_HISTORIAL_EVALUACION_has_DOCENTE_HISTORIAL_EVALUACION1_idx');
 
-            $table->foreign('historial_evaluacion_id')
+            $table->foreign('evaluacion_id')
                 ->references('id')->on('EVALUACION');
 
             $table->foreign('docente_id')
@@ -295,7 +295,6 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->integer('docente_id')->unsigned()->comment('');
-            $table->integer('tipo_plaza_id')->comment('');
             $table->integer('tipo_nombramiento_id')->unsigned()->comment('');
             $table->string('plaza', 45)->comment('');
             $table->integer('id')->comment('');

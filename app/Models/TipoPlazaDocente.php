@@ -19,7 +19,6 @@ class TipoPlazaDocente extends Model
     protected $table = 'TIPO_PLAZA_DOCENTE';
     protected $fillable = array(
         'docente_id',
-        'tipo_plaza_id',
         'tipo_nombramiento_id',
         'tipo_plaza_horas',
         'plaza'

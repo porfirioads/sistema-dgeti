@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
-class IipoNombramientoTableSeeder extends Seeder
+class TipoNombramientoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,16 @@ class IipoNombramientoTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $faker = Faker::create();
+
+        DB::table('TIPO_NOMBRAMIENTO')->insert([
+            'id'=>'1',
+            'tipo_nombramiento' => 'Definitivo'
+        ]);
+
+        DB::table('TIPO_NOMBRAMIENTO')->insert([
+            'id'=>'2',
+            'tipo_nombramiento' => 'Temporal'
+        ]);
     }
 }
