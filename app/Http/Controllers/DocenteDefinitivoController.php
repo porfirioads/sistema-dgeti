@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\DocenteDefinitivoFactory;
 use App\Models\CampoDisciplinar;
 use App\Models\ComponenteFormacion;
+use App\Models\DocenteDefinitivo;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
 
@@ -17,7 +19,10 @@ class DocenteDefinitivoController extends Controller
      */
     public function index()
     {
-        return view('docente_definitivo.lista');
+//        $docentes_definitivos = DocenteDefinitivo::all();
+        $docentes_definitivos =
+            DocenteDefinitivoFactory::AllDocenteDefinitivoBasic();
+        return view('docente_definitivo.lista')->with(['docentes' => $docentes_definitivos]);
     }
 
     /**
@@ -27,11 +32,11 @@ class DocenteDefinitivoController extends Controller
      */
     public function create()
     {
-        $valores=[];
-        foreach (ComponenteFormacion::all() as $componente){
-            $temporal=[
-                'componente_formacion'=>$componente,
-                'campos_disciplinares'=>CampoDisciplinar::where('componente_formacion_id',$componente->id)->get()
+        $valores = [];
+        foreach (ComponenteFormacion::all() as $componente) {
+            $temporal = [
+                'componente_formacion' => $componente,
+                'campos_disciplinares' => CampoDisciplinar::where('componente_formacion_id', $componente->id)->get()
             ];
 
             array_push($valores, $temporal);
@@ -39,15 +44,14 @@ class DocenteDefinitivoController extends Controller
 
 
         #return $valores;
-        return view('docente_definitivo.editar',  ['rico'=>'rico','data'=>$valores]);
+        return view('docente_definitivo.editar', ['data' => $valores]);
     }
-
 
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,7 +67,7 @@ class DocenteDefinitivoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -74,7 +78,7 @@ class DocenteDefinitivoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -85,8 +89,8 @@ class DocenteDefinitivoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -97,7 +101,7 @@ class DocenteDefinitivoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

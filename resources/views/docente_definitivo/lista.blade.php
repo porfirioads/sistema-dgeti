@@ -112,6 +112,11 @@
 
     {{-- Content Wrapper. Contains page content --}}
     <div class="content-wrapper">
+
+        @foreach($docentes as $docente)
+            {{--{{print_r(array_keys($docente->attributes))}}--}}
+            {{$docente->docente}}
+        @endforeach
         {{-- Main content --}}
         <section class="content">
             <div class="box">

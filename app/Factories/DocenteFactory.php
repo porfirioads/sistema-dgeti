@@ -14,7 +14,6 @@ class DocenteFactory
 {
 
     public function crearDocente (Request $request){
-
         $docente = new Docente([
             'cct' => $request['cct'],
             'curp' => $request['curp'],
@@ -31,14 +30,10 @@ class DocenteFactory
             'telefono_domicilio' => $request['telefono_domicilio'],
             'domicilio' => $request['domicilio']
         ]);
-
         return $docente;
     }
 
     public function obtenerDocente($rfc){
         return  Docente::where('rfc', '=', $rfc)->first();
     }
-
-
-
 }

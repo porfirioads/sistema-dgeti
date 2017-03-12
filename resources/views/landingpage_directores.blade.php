@@ -51,7 +51,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-2">
-            <a class=" btn btn-block btn-primary" href="/spd">
+            <a class=" btn btn-block btn-primary" href="/docente_definitivo">
                 <i class="fa fa-pencil-square-o fa-5x"></i>
                 <br/>
                 <span>SPD</span>
