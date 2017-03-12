@@ -280,32 +280,15 @@
                             <div class="panel-body">
                                 <div class="form-group col-md-12">
                                     <label>Componente formación</label>
-                                    <select class="form-control select2"
+                                    <select id="selComponentes"
+                                            class="form-control select2"
                                             multiple="multiple">
-                                        <option>
-                                            Básico
-                                        </option>
-                                        <option>
-                                            Propedéutico
-                                        </option>
-                                        <option>
-                                            Profesional
-                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label>Campo disciplinar</label>
                                     <select class="form-control select2"
                                             multiple="multiple">
-                                        <option>
-                                            Básico
-                                        </option>
-                                        <option>
-                                            Propedéutico
-                                        </option>
-                                        <option>
-                                            Profesional
-                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
@@ -425,6 +408,7 @@
 {{-- AdminLTE for demo purposes --}}
 <script src="js/demo.js"></script>
 
+<script src="js/dgeti/CargaDisciplinas.js"></script>
 <script>
     //Date picker
     $('#dateFecha').datepicker({
@@ -436,8 +420,7 @@
         autoclose: true
     });
 
-    //Initialize Select2 Elements
-    $(".select2").select2();
+
 </script>
 </body>
 </html>
