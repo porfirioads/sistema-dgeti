@@ -23,5 +23,17 @@ class TutoriaTableSeeder extends Seeder
                 Es constante con sus trabajo, y ha tratado muy bien a los muchachos.'),
             'total_horas_semana'=>'10'
         ]);
+
+        DB::table('TUTORIA')->insert([
+            'id'=>'2',
+            'docente_idoneo_id'=>'2',
+            'docente_tutor_id'=>'1',
+            'fecha_inicio_semestre'=>Carbon::parse('2015-06-03'),
+            'fecha_final_semestre'=>Carbon::parse('2016-01-03'),
+            'observacion'=>utf8_encode('Un muchachito muy responsable, siempre fue puntual.
+                Solo le falta un poco de modales, nunca se despidió de mi, pero creo
+                que es inteligente y si le sabe a la materias que imparte'),
+            'total_horas_semana'=>'5'
+        ]);
     }
 }

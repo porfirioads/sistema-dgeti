@@ -17,5 +17,12 @@ class DocenteIdoneoTableSeeder extends Seeder
             'folio_federal'=>'975864132',
             'concurso_id'=>'2'
         ]);
+
+        DB::table('DOCENTE_IDONEO')->insert([
+            'id'=>'2',
+            'docente_id'=>'5',
+            'folio_federal'=>'781645132',
+            'concurso_id'=>'3'
+        ]);
     }
 }
