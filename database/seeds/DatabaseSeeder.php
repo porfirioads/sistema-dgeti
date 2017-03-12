@@ -14,15 +14,17 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        #$this->call(ResultadoEvaluacionTableSeeder::class);
-        #$this->call(TipoEvaluacionTableSeeder::class);
-        #$this->call(TipoNombramientoTableSeeder::class);
-        #$this->call(StatusTableSeeder::class);
-        #$this->call(ActividadAdminTableSeeder::class);
-        #$this->call(FuncionDocenteTutorTableSeeder::class);
-        #$this->call(ComponenteFormacionTableSeeder::class);
-        #$this->call(CampoDisciplinarTableSeeder::class);
-        #$this->call(DisciplinaTableSeeder::class);
+        $this->call(ResultadoEvaluacionTableSeeder::class);
+        $this->call(TipoEvaluacionTableSeeder::class);
+        $this->call(TipoNombramientoTableSeeder::class);
+        $this->call(StatusTableSeeder::class);
+        $this->call(ActividadAdminTableSeeder::class);
+        $this->call(FuncionDocenteTutorTableSeeder::class);
+        $this->call(ComponenteFormacionTableSeeder::class);
+        $this->call(CampoDisciplinarTableSeeder::class);
+        $this->call(DisciplinaTableSeeder::class);
+        $this->call(EvaluacionTableSeeder::class);
+        $this->call(DocenteTableSeeder::class);
 
         Model::reguard();
     }

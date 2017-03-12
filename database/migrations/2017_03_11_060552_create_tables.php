@@ -27,7 +27,7 @@ class CreateTables extends Migration
             $table->integer('horas_descarga_academica')->comment('');
             $table->integer('horas_administrativas')->comment('');
             $table->string('correo', 45)->comment('');
-            $table->string('telefono_celuar', 20)->comment('');
+            $table->string('telefono_celular', 20)->comment('');
             $table->string('telefono_domicilio', 20)->nullable()->comment('');
             $table->string('domicilio', 50)->comment('');
 
