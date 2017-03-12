@@ -20,4 +20,8 @@ class ResultadoEvaluacion extends Model
     protected $fillable = array(
         'tipo_resultado'
     );
+
+    public function evaluacion(){
+        $this ->belongsTo('App\Models\Evaluacion');
+    }
 }

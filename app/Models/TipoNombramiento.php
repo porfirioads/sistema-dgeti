@@ -20,4 +20,8 @@ class TipoNombramiento extends Model
     protected $fillable = array(
         'tipo_nombramiento'
     );
+
+    public function tipo_plaza_docente(){
+        $this -> belongsTo('App\Models\TipoPlazaDocente');
+    }
 }

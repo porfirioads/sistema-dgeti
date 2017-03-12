@@ -18,4 +18,8 @@ class ActividadAdmin extends Model
     protected $primaryKey = 'id';
     protected $table = 'ACTIVIDAD_ADMIN';
     protected $fillable = array('actividad');
+
+    public function actividad_admin_docente_definitivo(){
+        $this->belongsTo('App\Models\ActividadAdminDocenteDefinitivo');
+    }
 }

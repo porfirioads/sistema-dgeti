@@ -23,4 +23,12 @@ class TipoPlazaDocente extends Model
         'tipo_plaza_horas',
         'plaza'
     );
+
+    public function tipo_nombramiento(){
+        $this -> hasMany('App\Models\TipoNombramiento');
+    }
+
+    public function docente(){
+        $this -> hasMany('App\Models\Docente');
+    }
 }

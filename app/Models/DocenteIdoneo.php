@@ -20,4 +20,16 @@ class DocenteIdoneo extends Model
         'folio_federal',
         'concurso_id'
     );
+
+    public function concurso(){
+        $this->hasOne('App\Models\Concurso');
+    }
+
+    public function docente(){
+        $this->hasOne('App\Models\Docente');
+    }
+
+    public function tutoria(){
+        $this->belongsTo('App\Models\Tutoria');
+    }
 }

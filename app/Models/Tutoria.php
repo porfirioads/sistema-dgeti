@@ -25,4 +25,12 @@ class Tutoria extends Model
         'observacion',
         'total_horas_semana'
     );
+
+    public function docente_tutor(){
+        $this->hasMany('App\Models\DocenteTutor');
+    }
+
+    public function docente_idoneo(){
+        $this->hasMany('App\Models\DocenteIdoneo');
+    }
 }

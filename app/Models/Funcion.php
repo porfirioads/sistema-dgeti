@@ -20,4 +20,8 @@ class Funcion extends Model
     protected $fillable = array(
         'funcion'
     );
+
+    public function funcion_docente_tutor(){
+        $this->belongsTo('App\Models\FuncionDocenteTutor');
+    }
 }

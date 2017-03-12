@@ -20,4 +20,12 @@ class Disciplina extends Model
         'disciplina',
         'campo_disciplinar_id'
     );
+
+    public function campo_disciplinar(){
+        $this->hasOne('App\Models\CampoDisciplinar');
+    }
+
+    public function disciplina_docente(){
+        $this->belongsTo('App\Models\DisciplinaDocente');
+    }
 }

@@ -24,4 +24,12 @@ class DocenteATP extends Model
         'evaluacion_realizado',
         'funcion'
     );
+
+    public function docente_definitivo(){
+        $this->hasOne('App\Models\DocenteDefinitivo');
+    }
+
+    public function concurso(){
+        $this->hasOne('App\Models\Concurso');
+    }
 }

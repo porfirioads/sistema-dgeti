@@ -20,4 +20,8 @@ class Status extends Model
     protected $fillable = array(
         'status'
     );
+
+    public function docente_evaluador(){
+        $this->belongsTo('Apps\Models\DocenteEvaluador');
+    }
 }

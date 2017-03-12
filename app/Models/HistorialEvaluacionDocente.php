@@ -21,4 +21,12 @@ class HistorialEvaluacionDocente extends Model
         'evaluacion_id',
         'docente_id'
     );
+
+    public function evaluacion(){
+        $this -> hasMany('App\Models\Evaluacion');
+    }
+
+    public function docente(){
+        $this -> hasMany('App\Models\Docente');
+    }
 }

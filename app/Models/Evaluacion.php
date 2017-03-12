@@ -23,4 +23,16 @@ class Evaluacion extends Model
         'tipo_evaluacion_id',
         'resultado_evaluacion_id'
     );
+
+    public function resultado_evaluacion(){
+        return $this->hasOne('App\Models\ResultadoEvaluacion');
+    }
+
+    public function tipo_evaluacion(){
+        return $this->hasOne('App\Models\TipoEvaluacion');
+    }
+
+    public function historial_evaluacion_docente(){
+        return $this->belongsTo('App\Models\HistorialEvaluacionDocente');
+    }
 }

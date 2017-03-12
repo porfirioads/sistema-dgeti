@@ -21,4 +21,12 @@ class DocenteEvaluador extends Model
         'funcion',
         'status_id'
     );
+
+    public function status(){
+        $this->hasOne('App\Models\Status');
+    }
+
+    public function docente_evaluador(){
+        $this->hasOne('App\Models\DocenteDefinitivo');
+    }
 }

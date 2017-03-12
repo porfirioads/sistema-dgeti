@@ -21,4 +21,12 @@ class FuncionDocenteTutor extends Model
         'funcion_id',
         'docente_tutor_id'
     );
+
+    public function docente_tutor(){
+        $this->hasMany('App\Models\DocenteTutor');
+    }
+
+    public function funcion(){
+        $this->hasMany('App\Models\Funcion');
+    }
 }

@@ -18,4 +18,16 @@ class DocenteTutor extends Model
     protected $fillable = array(
         'docente_definitivo_id'
     );
+
+    public function docente_definitivo(){
+        $this->hasOne('App\Models\DocenteDefinitivo');
+    }
+
+    public function funcion_docente_tutor(){
+        $this->belongsTo('App\Models\FuncionDocenteTutor');
+    }
+
+    public function tutoria(){
+        $this->belongsTo('App\Models\Tutoria');
+    }
 }
