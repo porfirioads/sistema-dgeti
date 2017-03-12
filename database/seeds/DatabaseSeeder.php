@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         #$this->call(FuncionDocenteTutorTableSeeder::class);
         #$this->call(ComponenteFormacionTableSeeder::class);
         #$this->call(CampoDisciplinarTableSeeder::class);
+        #$this->call(DisciplinaTableSeeder::class);
 
         Model::reguard();
     }

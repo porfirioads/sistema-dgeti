@@ -14,7 +14,14 @@ class TipoNombramientoTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        DB::table('TIPO_NOMBRAMIENTO')->insert(['id'=>'1','tipo_nombramiento' => 'Definitivo']);
-        DB::table('TIPO_NOMBRAMIENTO')->insert(['id'=>'2','tipo_nombramiento' => 'Temporal']);
+        DB::table('TIPO_NOMBRAMIENTO')->insert([
+            'id'=>'1',
+            'tipo_nombramiento' => 'Definitivo'
+        ]);
+
+        DB::table('TIPO_NOMBRAMIENTO')->insert([
+            'id'=>'2',
+            'tipo_nombramiento' => 'Temporal'
+        ]);
     }
 }
