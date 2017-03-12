@@ -186,7 +186,7 @@
                                     <label for="exampleInputPassword1">
                                         Teléfono celular
                                     </label>
-                                    {!! Form::text('telefono_celular', $value = null,['class' => 'form-control', 'placeholder' => 'Teléfono celular','required'])!!}
+                                    {!! Form::text('telefono_celuar', $value = null,['class' => 'form-control', 'placeholder' => 'Teléfono celular','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
@@ -213,25 +213,25 @@
                                     <label for="exampleInputPassword1">
                                         Perfil Profesional
                                     </label>
-                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
+                                    {!! Form::text('perfil_profesional', $value = null,['class' => 'form-control', 'placeholder' => 'Perfil Profesional'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Horas frente a grupo
                                     </label>
-                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
+                                    {!! Form::text('horas_frente_grupo', $value = null,['class' => 'form-control', 'placeholder' => 'Horas frente a grupo'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Horas descarga académica
                                     </label>
-                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
+                                    {!! Form::text('horas_descarga_academica', $value = null,['class' => 'form-control', 'placeholder' => 'Horas descarga académica'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">
                                         Horas administrativas
                                     </label>
-                                    {!! Form::text('telefono_domicilio', $value = null,['class' => 'form-control', 'placeholder' => ''])!!}
+                                    {!! Form::text('horas_administrativas', $value = null,['class' => 'form-control', 'placeholder' => 'Horas administrativas'])!!}
                                 </div>
                             </div>
                         </div>
