@@ -3,12 +3,12 @@
  */
 
 $(document).ready(function () {
-    var componentesFormacion = obtenerComponentesFormacion();
+    // var componentesFormacion = obtenerComponentesFormacion();
     var selComponentes = $('#selComponentes');
+    var selCampos = $('#selCampos');
+    var selDisciplinas = $('#selDisciplinas');
 
-    $(".select2").select2({
-
-    });
+    $(".select2").select2({});
 
     selComponentes.on('select2:select', function (evt) {
         console.log("select");
@@ -17,15 +17,30 @@ $(document).ready(function () {
     llenarSelects();
 
     function llenarSelects() {
-        for(var i = 0; i < componentesFormacion.length; i++) {
-            selComponentes.append('<option>'
-                + componentesFormacion[i].componente_formacion +'</option>');
-            for(var j = 0; j < componentesFormacion[i].length; j++) {
-                for(var k = 0; k < componentesFormacion[i][j].length; k++) {
-
+        console.log(componentesFormacion);
+        if(componentesFormacion != undefined) {
+            for (var i = 0; i < componentesFormacion.length; i++) {
+                var componente = componentesFormacion[i];
+                selComponentes
+                    .append(createOption(componente.componente_formacion));
+                if(componente.campos_disciplinares != undefined) {
+                    for (var j = 0; j < componente.campos_disciplinares.length; j++) {
+                        var campo = componente.campos_disciplinares[j];
+                        selCampos.append(createOption(campo.campo_disciplinar));
+                        if(campo.disciplinas != undefined) {
+                            for (var k = 0; k < campo.disciplinas.length; k++) {
+                                var disciplina = campo.disciplinas[k];
+                                selDisciplinas.append(createOption(disciplina.disciplina));
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+
+    function createOption(text) {
+        return '<option>' + text + '</option>';
     }
 
     function obtenerComponentesFormacion() {

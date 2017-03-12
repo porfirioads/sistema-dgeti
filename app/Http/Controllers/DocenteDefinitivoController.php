@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Factories\DocenteDefinitivoFactory;
 use App\Models\CampoDisciplinar;
 use App\Models\ComponenteFormacion;
+use App\Models\Disciplina;
+use App\Models\Docente;
 use App\Models\DocenteDefinitivo;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
@@ -20,9 +22,9 @@ class DocenteDefinitivoController extends Controller
     public function index()
     {
 //        $docentes_definitivos = DocenteDefinitivo::all();
-        $docentes_definitivos =
-            DocenteDefinitivoFactory::AllDocenteDefinitivoBasic();
-        return view('docente_definitivo.lista')->with(['docentes' => $docentes_definitivos]);
+        $docentes_definitivos = Docente::all();
+        return view('docente_definitivo.lista')->with('docentes',
+            $docentes_definitivos);
     }
 
     /**
@@ -32,19 +34,42 @@ class DocenteDefinitivoController extends Controller
      */
     public function create()
     {
+        $componentes_formacion = [];
         $valores = [];
-        foreach (ComponenteFormacion::all() as $componente) {
-            $temporal = [
-                'componente_formacion' => $componente,
-                'campos_disciplinares' => CampoDisciplinar::where('componente_formacion_id', $componente->id)->get()
-            ];
-
-            array_push($valores, $temporal);
+        foreach (ComponenteFormacion::all() as $componente_bd) {
+            echo '<br>';
+            $componente_attrs = $componente_bd['attributes'];
+            $componente_ok['id'] = $componente_attrs['id'];
+            $componente_ok['componente_formacion']
+                = $componente_attrs['componente_formacion'];
+            $componente_ok['campos_disciplinares'] = [];
+//            print_r($componente_attrs);
+//            echo '<br>';
+            foreach (CampoDisciplinar::where('componente_formacion_id',
+                $componente_attrs['id'])->get() as $campo_bd) {
+                $campo_attrs = $campo_bd['attributes'];
+                $campo_ok['id'] = $campo_attrs['id'];
+                $campo_ok['campo_disciplinar'] = $campo_attrs['campo_disciplinar'];
+                array_push($componente_ok['campos_disciplinares'], $campo_ok);
+//                print_r($campo_attrs);
+//                echo '<br>';
+                $campo_ok['disciplinas'] = [];
+                foreach (Disciplina::where('campo_disciplinar_id',
+                    $campo_attrs['id'])->get() as $disciplina_bd) {
+                    $disciplina_attrs = $disciplina_bd['attributes'];
+                    $disciplina_ok['id'] = $disciplina_attrs['id'];
+                    $disciplina_ok['disciplina'] = $disciplina_attrs['disciplina'];
+                    array_push($campo_ok['disciplinas'], $disciplina_ok);
+//                    print_r($disciplina_attrs);
+//                    echo '<br>';
+                }
+            }
+            array_push($componentes_formacion, $componente_ok);
         }
-
-
+        return view('docente_definitivo.editar')->with('componentesFormacion',
+            $componentes_formacion);
         #return $valores;
-        return view('docente_definitivo.editar', ['data' => $valores]);
+//        return view('docente_definitivo.editar', ['data' => $valores]);
     }
 
 
@@ -106,6 +131,6 @@ class DocenteDefinitivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "DESTROY";
     }
 }

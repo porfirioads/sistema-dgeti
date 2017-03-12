@@ -59,6 +59,34 @@
                                  class="user-image" alt="User Image">
                             <span class="hidden-xs">CETis 114</span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="/img/user.jpg" class="img-circle"
+                                     alt="User Image">
+                                <p>
+                                    <strong>CETis 114</strong>
+                                    <span>Jerez de García Salinas</span>
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="col-md-6">
+                                    <a href="#" class="btn btn-block
+                                    btn-success">
+                                        <i class="fa fa-user"></i>
+                                        Perfil
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="/logout"
+                                       class="btn btn-block btn-danger">
+                                        <i class="fa fa-sign-out"></i>
+                                        Salir
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -112,11 +140,6 @@
 
     {{-- Content Wrapper. Contains page content --}}
     <div class="content-wrapper">
-
-        @foreach($docentes as $docente)
-            {{--{{print_r(array_keys($docente->attributes))}}--}}
-            {{$docente->docente}}
-        @endforeach
         {{-- Main content --}}
         <section class="content">
             <div class="box">
@@ -125,7 +148,8 @@
                 </div>
                 {{-- /.box-header --}}
                 <div class="box-body">
-                    <a class="btn btn-block btn-warning">
+                    <a class="btn btn-block btn-warning"
+                       href="/docente_definitivo/create">
                         <i class="fa fa-plus"></i>
                     </a>
                     <br/>
@@ -141,52 +165,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>DISP960720</td>
-                            <td>Porfirio Ángel</td>
-                            <td>Díaz</td>
-                            <td>Sánchez</td>
-                            <td class="row">
-                                <div class="col-md-4">
-                                    <a class="btn btn-block btn-success">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a class="btn btn-block btn-primary">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a class="btn btn-block btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>DISC911026</td>
-                            <td>Claudio Alejandro</td>
-                            <td>Díaz</td>
-                            <td>Sánchez</td>
-                            <td class="row">
-                                <div class="col-md-4">
-                                    <a class="btn btn-block btn-success">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a class="btn btn-block btn-primary">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a class="btn btn-block btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($docentes as $docente)
+                            <tr>
+                                <td>{{$docente->rfc}}</td>
+                                <td>{{$docente->nombre}}</td>
+                                <td>{{$docente->primer_apellido}}</td>
+                                <td>{{$docente->segundo_apellido}}</td>
+                                <td class="row">
+                                    <div class="col-md-4">
+                                        <a class="btn btn-block btn-success">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="btn btn-block btn-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="btn btn-block btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
