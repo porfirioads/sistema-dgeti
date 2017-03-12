@@ -186,7 +186,7 @@
                                     <label for="exampleInputPassword1">
                                         Teléfono celular
                                     </label>
-                                    {!! Form::text('telefono_celuar', $value = null,['class' => 'form-control', 'placeholder' => 'Teléfono celular','required'])!!}
+                                    {!! Form::text('telefono_celular', $value = null,['class' => 'form-control', 'placeholder' => 'Teléfono celular','required'])!!}
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputPassword1">

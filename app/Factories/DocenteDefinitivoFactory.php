@@ -10,7 +10,7 @@ use App\Http\Requests;
 use App\Factories\DocenteFactory;
 
 
-class DocenteFactory
+class DocenteDefinitivoFactory
 {
 
     public function crearDocenteDefinitivo(Request $request)

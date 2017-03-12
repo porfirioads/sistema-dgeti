@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CampoDisciplinar;
+use App\Models\ComponenteFormacion;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
 
@@ -17,7 +19,16 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        return "INDEX";
+        $valores=[];
+        foreach (ComponenteFormacion::all() as $componente){
+            $temporal=[
+                'componente_formacion'=>$componente,
+                'campos_disciplinares'=>CampoDisciplinar::where('componente_formacion_id',$componente->id)->get()];
+
+            array_push($valores, $temporal);
+        }
+        return $valores;
+
     }
 
 
@@ -33,6 +44,8 @@ class DocenteController extends Controller
         $docente_factory = new DocenteFactory();
         $docente = $docente_factory->crearDocente($request);
 
+        $docente->save();
+        //ya contiene id que rico
         return $docente;
     }
 

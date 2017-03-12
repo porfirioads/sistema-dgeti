@@ -27,7 +27,7 @@ class DocenteFactory
             'horas_descarga_academica' => $request['horas_descarga_academica'],
             'horas_administrativas' => $request['horas_administrativas'],
             'correo' => $request['correo'],
-            'telefono_celuar' => $request['telefono_celuar'],
+            'telefono_celular' => $request['telefono_celular'],
             'telefono_domicilio' => $request['telefono_domicilio'],
             'domicilio' => $request['domicilio']
         ]);
@@ -38,6 +38,7 @@ class DocenteFactory
     public function obtenerDocente($rfc){
         return  Docente::where('rfc', '=', $rfc)->first();
     }
+
 
 
 }

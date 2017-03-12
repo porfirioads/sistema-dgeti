@@ -28,7 +28,7 @@ class Docente extends Model
         'horas_descarga_academica',
         'horas_administrativas',
         'correo',
-        'telefono_celuar',
+        'telefono_celular',
         'telefono_domicilio',
         'domicilio'
     );
