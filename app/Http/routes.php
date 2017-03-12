@@ -11,33 +11,34 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('landingpage');
 });
 
-Route::get('/v_dashboard', function () {
-    return view('dashboard_master');
-});
-
-Route::get('/v_login', function () {
+Route::get('/login', function () {
     return view('login');
-});
-
-Route::get('/v_definitivos', function () {
-    return view('docente_definitivo.lista');
-});
-
-Route::get('/v_definitivo', function () {
-    return view('docente_definitivo.editar');
-});
-
-Route::get('/v_building', function () {
-    return view('building_page');
 });
 
 Route::post('/login', 'LoginController@login');
 
 Route::get('/logout', 'LoginController@logout');
+//
+//Route::get('/v_login', function () {
+//    return view('login');
+//});
+//
+//Route::get('/v_definitivos', function () {
+//    return view('docente_definitivo.lista');
+//});
+//
+//Route::get('/v_definitivo', function () {
+//    return view('docente_definitivo.editar');
+//});
+//
+//Route::get('/v_building', function () {
+//    return view('building_page');
+//});
 
 Route::get('/landing_directores', function () {
     if (Session::get('haySesion'))
@@ -55,8 +56,6 @@ Route::get('/spd', function () {
     }
 });
 
-
-
 /*
 |--------------------------------------------------------------------------
 |                       Docente Definitivo
@@ -65,13 +64,13 @@ Route::get('/spd', function () {
 Route::resource('docente_definitivo', 'DocenteDefinitivoController',
     ['names' =>
         [
-            'lista'         => 'docente_definitivo.index',
-            'mostrar'       => 'docente_definitivo.show',
-            'nuevo'         => 'docente_definitivo.create',
-            'guardar'       => 'docente_definitivo.store',
-            'actualizar'    => 'docente_definitivo.update',
-            'modificar'     => 'docente_definitivo.edit',
-            'eliminar'      => 'docente_definitivo.destroy'
+            'lista' => 'docente_definitivo.index',
+            'mostrar' => 'docente_definitivo.show',
+            'nuevo' => 'docente_definitivo.create',
+            'guardar' => 'docente_definitivo.store',
+            'actualizar' => 'docente_definitivo.update',
+            'modificar' => 'docente_definitivo.edit',
+            'eliminar' => 'docente_definitivo.destroy'
         ]
     ]
 );

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+        function removeTrailingSlashUrl() {
+            var fullUrl = window.location.href;
+            if (fullUrl.substr(-1) === '/') {
+                fullUrl = fullUrl.substr(0, fullUrl.length - 1);
+                window.location = fullUrl;
+            }
+        }
+        removeTrailingSlashUrl();
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Docentes definitivos</title>
