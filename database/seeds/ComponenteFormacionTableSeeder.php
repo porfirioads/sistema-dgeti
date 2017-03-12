@@ -13,14 +13,17 @@ class ComponenteFormacionTableSeeder extends Seeder
     {
         DB::table('COMPONENTE_FORMACION')->insert([
             'id'=>'1',
-            'componente_formacion' => utf8_encode('Componente de Formación Básico')]);
+            'componente_formacion' => utf8_encode('Componente de Formación Básico')
+        ]);
 
         DB::table('COMPONENTE_FORMACION')->insert([
             'id'=>'2',
-            'componente_formacion' => utf8_encode('Componente de Formación Propedéutico')]);
+            'componente_formacion' => utf8_encode('Componente de Formación Propedéutico')
+        ]);
 
         DB::table('COMPONENTE_FORMACION')->insert([
             'id'=>'3',
-            'componente_formacion' => utf8_encode('Componente de Formación Profesional')]);
+            'componente_formacion' => utf8_encode('Componente de Formación Profesional')
+        ]);
     }
 }

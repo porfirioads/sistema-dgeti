@@ -11,19 +11,16 @@ class FuncionDocenteTutorTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('FUNCION')->insert([
+        DB::table('FUNCION_DOCENTE_TUTOR')->insert([
             'id'=>'1',
-            'funcion' => 'Docente'
+            'docente_tutor_id'=>'1',
+            'funcion_id'=>'1',
         ]);
 
-        DB::table('FUNCION')->insert([
+        DB::table('FUNCION_DOCENTE_TUTOR')->insert([
             'id'=>'2',
-            'funcion' => utf8_encode('Subdirector Académico')
-        ]);
-
-        DB::table('FUNCION')->insert([
-            'id'=>'3',
-            'funcion' => 'Jefe de Docentes'
+            'docente_tutor_id'=>'1',
+            'funcion_id'=>'3',
         ]);
     }
 }
