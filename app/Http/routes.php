@@ -57,17 +57,21 @@ Route::get('/spd', function () {
 
 
 
-//////////////////////////////////////////////////////
-Route::resource('docente', 'DocenteController',
+/*
+|--------------------------------------------------------------------------
+|                       Docente Definitivo
+|--------------------------------------------------------------------------
+*/
+Route::resource('docente_definitivo', 'DocenteDefinitivoController',
     ['names' =>
         [
-            'lista'     => 'docente.index',
-            'mostrar'   => 'docente.show',
-            'nuevo'     => 'docente.create',
-            'crear'     => 'docente.store',
-            'actualizar'=> 'docente.update',
-            'modificar' => 'docente.edit',
-            'eliminar'  => 'docente.destroy'
+            'lista'         => 'docente_definitivo.index',
+            'mostrar'       => 'docente_definitivo.show',
+            'nuevo'         => 'docente_definitivo.create',
+            'guardar'       => 'docente_definitivo.store',
+            'actualizar'    => 'docente_definitivo.update',
+            'modificar'     => 'docente_definitivo.edit',
+            'eliminar'      => 'docente_definitivo.destroy'
         ]
     ]
 );

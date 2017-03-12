@@ -139,8 +139,11 @@
                 <div class="box-header">
                     <strong class="box-title">Nuevo Docente Definitivo</strong>
                 </div>
-                
-                {!! Form::open(['route' => 'docente.store', 'class' => '', 'name'=>'form_docente_definitivo']) !!}
+
+                {!! Form::open(['route' => 'docente_definitivo.store', 'class' => '', 'name'=>'form_docente_definitivo']) !!}
+                @foreach ($data as $user)
+                    <p>This is user {{ $user }}</p>
+                @endforeach
                     <div class="box-body">
                         <div class="panel panel-primary">
                             <div class="panel-heading clearfix">
@@ -260,6 +263,8 @@
                                     <label>Disciplina</label>
                                     <select class="form-control select2"
                                             multiple="multiple">
+
+
                                         <option>
                                             Básico
                                         </option>

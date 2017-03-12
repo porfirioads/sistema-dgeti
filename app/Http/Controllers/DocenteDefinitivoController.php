@@ -7,10 +7,8 @@ use App\Models\ComponenteFormacion;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-class DocenteController extends Controller
+class DocenteDefinitivoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,7 @@ class DocenteController extends Controller
      */
     public function index()
     {
-
-
+        return view('docente_definitivo.lista');
     }
 
     /**
@@ -34,12 +31,15 @@ class DocenteController extends Controller
         foreach (ComponenteFormacion::all() as $componente){
             $temporal=[
                 'componente_formacion'=>$componente,
-                'campos_disciplinares'=>CampoDisciplinar::where('componente_formacion_id',$componente->id)->get()];
+                'campos_disciplinares'=>CampoDisciplinar::where('componente_formacion_id',$componente->id)->get()
+            ];
 
             array_push($valores, $temporal);
         }
 
-        return view('docente_definitivo.editar',['data'=>$valores]);
+
+        #return $valores;
+        return view('docente_definitivo.editar',  ['rico'=>'rico','data'=>$valores]);
     }
 
 
