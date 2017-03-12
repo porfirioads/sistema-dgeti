@@ -139,6 +139,7 @@
                 <div class="box-header">
                     <strong class="box-title">Nuevo Docente Definitivo</strong>
                 </div>
+                
                 {!! Form::open(['route' => 'docente.store', 'class' => '', 'name'=>'form_docente_definitivo']) !!}
                     <div class="box-body">
                         <div class="panel panel-primary">

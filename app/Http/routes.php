@@ -63,6 +63,7 @@ Route::resource('docente', 'DocenteController',
         [
             'lista'     => 'docente.index',
             'mostrar'   => 'docente.show',
+            'nuevo'     => 'docente.create',
             'crear'     => 'docente.store',
             'actualizar'=> 'docente.update',
             'modificar' => 'docente.edit',

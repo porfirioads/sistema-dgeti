@@ -19,6 +19,17 @@ class DocenteController extends Controller
      */
     public function index()
     {
+
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         $valores=[];
         foreach (ComponenteFormacion::all() as $componente){
             $temporal=[
@@ -27,8 +38,8 @@ class DocenteController extends Controller
 
             array_push($valores, $temporal);
         }
-        return $valores;
 
+        return view('docente_definitivo.editar',['data'=>$valores]);
     }
 
 
