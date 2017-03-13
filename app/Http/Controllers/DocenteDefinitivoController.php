@@ -118,58 +118,18 @@ class DocenteDefinitivoController extends Controller
     public function show($id)
     {
 
-
-
-        $data = Docente::with(array('disciplina_docente.disciplina.campo_disciplinar.componente_formacion',
+        $data = Docente::with(array(
+            'disciplina_docente.disciplina.campo_disciplinar.componente_formacion',
             'tipo_plaza_docente.tipo_nombramiento',
             'historial_evaluacion_docente.evaluacion.resultado_evaluacion',
             'historial_evaluacion_docente.evaluacion.tipo_evaluacion',
-            'docente_definitivo'))
+            'docente_definitivo.actividad_admin_docente_definitivo.actividadadmin'))
             ->where('id',$id)
             ->get();
 
+
         $data[0]['accion']='ver';
         return view('docente_definitivo.editar_v1')->with('data',$data[0]);
-
-        return $data;
-
-    }
-
-    private function getDiccionarios(){
-        $componentes_formacion = [];
-        $valores = [];
-        foreach (ComponenteFormacion::all() as $componente_bd) {
-            echo '<br>';
-            $componente_attrs = $componente_bd['attributes'];
-            $componente_ok['id'] = $componente_attrs['id'];
-            $componente_ok['componente_formacion']
-                = $componente_attrs['componente_formacion'];
-            $componente_ok['campos_disciplinares'] = [];
-//            print_r($componente_attrs);
-//            echo '<br>';
-            foreach (CampoDisciplinar::where('componente_formacion_id',
-                $componente_attrs['id'])->get() as $campo_bd) {
-                $campo_attrs = $campo_bd['attributes'];
-                $campo_ok['id'] = $campo_attrs['id'];
-                $campo_ok['campo_disciplinar'] = $campo_attrs['campo_disciplinar'];
-                array_push($componente_ok['campos_disciplinares'], $campo_ok);
-//                print_r($campo_attrs);
-//                echo '<br>';
-                $campo_ok['disciplinas'] = [];
-                foreach (Disciplina::where('campo_disciplinar_id',
-                    $campo_attrs['id'])->get() as $disciplina_bd) {
-                    $disciplina_attrs = $disciplina_bd['attributes'];
-                    $disciplina_ok['id'] = $disciplina_attrs['id'];
-                    $disciplina_ok['disciplina'] = $disciplina_attrs['disciplina'];
-                    array_push($campo_ok['disciplinas'], $disciplina_ok);
-//                    print_r($disciplina_attrs);
-//                    echo '<br>';
-                }
-            }
-            array_push($componentes_formacion, $componente_ok);
-        }
-        return $componentes_formacion;
-
     }
 
     /**

@@ -20,11 +20,11 @@ class DocenteDefinitivo extends Model
     );
 
     public function docente(){
-        return $this->hasOne('App\Models\Docente');
+        return $this->hasOne('App\Models\Docente','id','docente_id');
     }
 
     public function actividad_admin_docente_definitivo(){
-        return $this->belongsTo('App\Models\ActividadAdminDocenteDefinitivo');
+        return $this->belongsTo('App\Models\ActividadAdminDocenteDefinitivo','id','docente_definitivo_id');
     }
 
     public function docente_evaluador(){

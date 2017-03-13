@@ -27,6 +27,6 @@ class ActividadAdminDocenteDefinitivo extends Model
     }
 
     public function actividadadmin(){
-        return $this->hasMany('App\Models\ActividadAdmin');
+        return $this->hasMany('App\Models\ActividadAdmin','id','actividad_admin_id');
     }
 }
