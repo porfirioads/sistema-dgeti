@@ -3,14 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocenteDefinitivoFactory;
-use App\Models\CampoDisciplinar;
-use App\Models\ComponenteFormacion;
-use App\Models\Disciplina;
-use App\Models\Docente;
-use App\Models\DocenteDefinitivo;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
 
+use App\Models\ActividadAdmin;
+use App\Models\ActividadAdminDocenteDefinitivo;
+use App\Models\CampoDisciplinar;
+use App\Models\ComponenteFormacion;
+use App\Models\Concurso;
+use App\Models\Disciplina;
+use App\Models\DisciplinaDocente;
+use App\Models\Docente;
+use App\Models\DocenteATP;
+use App\Models\DocenteDefinitivo;
+use App\Models\DocenteEvaluador;
+use App\Models\DocenteIdoneo;
+use App\Models\DocenteTutor;
+use App\Models\Evaluacion;
+use App\Models\Funcion;
+use App\Models\FuncionDocenteTutor;
+use App\Models\HistorialEvaluacionDocente;
+use App\Models\ResultadoEvaluacion;
+use App\Models\Status;
+use App\Models\TipoEvaluacion;
+use App\Models\TipoNombramiento;
+use App\Models\TipoPlazaDocente;
+use App\Models\Tutoria;
 
 class DocenteDefinitivoController extends Controller
 {
@@ -21,11 +39,45 @@ class DocenteDefinitivoController extends Controller
      */
     public function index()
     {
-//        $docentes_definitivos = DocenteDefinitivo::all();
         $docentes_definitivos = Docente::all();
+
         return view('docente_definitivo.lista')->with('docentes',
             $docentes_definitivos);
     }
+
+    /**
+     * Display a listing of Docentes efinitivos.
+     *
+     */
+    public function getDocentesDefinitivos()
+    {
+
+        $evaluaciones = Evaluacion::with('tipo_evaluacion','resultado_evaluacion');
+
+        foreach (DocenteDefinitivo::all() as $docente_definitivo_bd) {
+            $docente = Docente::where('id',$docente_definitivo_bd['docente_id'])->get();
+
+            $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
+                ->where('docente_id',$docente['id'])
+                ->get();
+
+            $plazas = TipoPlazaDocente::with('tipo_nombramiento')
+                ->where('docente_id',$docente['id'])
+                ->get();
+
+            $historial_evaluacion = HistorialEvaluacionDocente::with($evaluaciones)
+                ->where('docente_id',$docente['id'])
+                ->get();
+
+            $actividades = ActividadAdminDocenteDefinitivo::with('actividadadmin')
+                ->where('docente_id',$docente['id'])
+                ->get();
+
+
+        }
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -85,6 +137,7 @@ class DocenteDefinitivoController extends Controller
         $docente = $docente_factory->crearDocente($request);
 
         $docente->save();
+
         //ya contiene id que rico
         return $docente;
     }

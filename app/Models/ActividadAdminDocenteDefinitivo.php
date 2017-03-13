@@ -22,11 +22,11 @@ class ActividadAdminDocenteDefinitivo extends Model
         'docente_definitivo_id'
     );
 
-    public function DocenteDefinitivo(){
+    public function docentedefinitivo(){
         $this->hasMany('App\Models\DocenteDefinitivo');
     }
 
-    public function ActividadAdmin(){
+    public function actividadadmin(){
         $this->hasMany('App\Models\ActividadAdmin');
     }
 }
