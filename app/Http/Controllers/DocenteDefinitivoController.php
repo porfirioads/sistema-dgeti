@@ -46,40 +46,6 @@ class DocenteDefinitivoController extends Controller
     }
 
     /**
-     * Display a listing of Docentes efinitivos.
-     *
-     */
-    public function getDocentesDefinitivos()
-    {
-
-        $evaluaciones = Evaluacion::with('tipo_evaluacion','resultado_evaluacion');
-
-        foreach (DocenteDefinitivo::all() as $docente_definitivo_bd) {
-            $docente = Docente::where('id',$docente_definitivo_bd['docente_id'])->get();
-
-            $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
-                ->where('docente_id',$docente['id'])
-                ->get();
-
-            $plazas = TipoPlazaDocente::with('tipo_nombramiento')
-                ->where('docente_id',$docente['id'])
-                ->get();
-
-            $historial_evaluacion = HistorialEvaluacionDocente::with($evaluaciones)
-                ->where('docente_id',$docente['id'])
-                ->get();
-
-            $actividades = ActividadAdminDocenteDefinitivo::with('actividadadmin')
-                ->where('docente_id',$docente['id'])
-                ->get();
-
-
-        }
-
-    }
-
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -154,7 +120,11 @@ class DocenteDefinitivoController extends Controller
 
         $docente = Docente::where('id', '=', $id)->get();
 
-        $disciplinas = Docente::with(array('disciplina_docente','tipo_plaza_docente','historial_evaluacion_docente','docente_definitivo'))
+        $disciplinas = Docente::with(array('disciplina_docente.disciplina.campo_disciplinar.componente_formacion',
+            'tipo_plaza_docente.tipo_nombramiento',
+            'historial_evaluacion_docente.evaluacion.resultado_evaluacion',
+            'historial_evaluacion_docente.evaluacion.tipo_evaluacion',
+            'docente_definitivo'))
             ->where('id',1)
             ->get();
 

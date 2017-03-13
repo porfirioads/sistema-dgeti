@@ -25,11 +25,11 @@ class Evaluacion extends Model
     );
 
     public function resultado_evaluacion(){
-        return $this->hasOne('App\Models\ResultadoEvaluacion');
+        return $this->hasOne('App\Models\ResultadoEvaluacion','id','resultado_evaluacion_id');
     }
 
     public function tipo_evaluacion(){
-        return $this->hasOne('App\Models\TipoEvaluacion');
+        return $this->hasOne('App\Models\TipoEvaluacion','id','tipo_evaluacion_id');
     }
 
     public function historial_evaluacion_docente(){

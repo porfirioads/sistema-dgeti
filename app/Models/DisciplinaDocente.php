@@ -21,7 +21,7 @@ class DisciplinaDocente extends Model
     );
 
     public function disciplina(){
-        return $this->hasMany('App\Models\Disciplina');
+        return $this->hasMany('App\Models\Disciplina','id','disciplina_id');
     }
 
     public function docente(){

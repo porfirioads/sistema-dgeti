@@ -25,7 +25,7 @@ class TipoPlazaDocente extends Model
     );
 
     public function tipo_nombramiento(){
-        return $this -> hasMany('App\Models\TipoNombramiento');
+        return $this -> hasMany('App\Models\TipoNombramiento','id','tipo_nombramiento_id');
     }
 
     public function docente(){

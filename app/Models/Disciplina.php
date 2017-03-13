@@ -22,7 +22,7 @@ class Disciplina extends Model
     );
 
     public function campo_disciplinar(){
-        return $this->hasOne('App\Models\CampoDisciplinar');
+        return $this->hasOne('App\Models\CampoDisciplinar','id','campo_disciplinar_id');
     }
 
     public function disciplina_docente(){

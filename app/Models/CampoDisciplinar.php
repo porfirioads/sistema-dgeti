@@ -23,7 +23,7 @@ class CampoDisciplinar extends Model
     );
 
     public function componente_formacion(){
-        return $this->hasOne('App\Models\ComponenteFormacion');
+        return $this->hasOne('App\Models\ComponenteFormacion','id','componente_formacion_id');
     }
 
     public function disciplina(){

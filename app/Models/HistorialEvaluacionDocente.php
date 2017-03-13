@@ -23,7 +23,7 @@ class HistorialEvaluacionDocente extends Model
     );
 
     public function evaluacion(){
-        return $this -> hasMany('App\Models\Evaluacion');
+        return $this -> hasMany('App\Models\Evaluacion','id','evaluacion_id');
     }
 
     public function docente(){
