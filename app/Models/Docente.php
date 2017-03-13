@@ -38,18 +38,18 @@ class Docente extends Model
     }
 
     public function tipo_plaza_docente(){
-        return $this->belongsTo('App\Models\TipoPlazaDocente');
+        return $this->belongsTo('App\Models\TipoPlazaDocente','id','docente_id');
     }
 
     public function historial_evaluacion_docente(){
-        return $this->belongsTo('App\Models\HistorialEvaluacionDocente');
+        return $this->belongsTo('App\Models\HistorialEvaluacionDocente','id','docente_id');
     }
 
     public function docente_definitivo(){
-        return $this->belongsTo('App\Models\DocenteDefinitivo');
+        return $this->belongsTo('App\Models\DocenteDefinitivo','id','docente_id');
     }
 
     public function docente_idoneo(){
-        return $this->belongsTo('App\Models\DocenteIdoneo');
+        return $this->belongsTo('App\Models\DocenteIdoneo','id','docente_id');
     }
 }

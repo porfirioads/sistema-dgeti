@@ -154,7 +154,7 @@ class DocenteDefinitivoController extends Controller
 
         $docente = Docente::where('id', '=', $id)->get();
 
-        $disciplinas = Docente::with(array('disciplina_docente'))
+        $disciplinas = Docente::with(array('disciplina_docente','tipo_plaza_docente','historial_evaluacion_docente','docente_definitivo'))
             ->where('id',1)
             ->get();
 
