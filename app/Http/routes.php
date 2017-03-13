@@ -23,6 +23,10 @@ Route::post('/login', 'LoginController@login');
 
 Route::get('/logout', 'LoginController@logout');
 
+Route::get('/v_building', function () {
+    return view('building_page');
+});
+
 Route::group(['middleware' => 'login'], function () {
     Route::resource('docente_definitivo', 'DocenteDefinitivoController');
     Route::get('/v_definitivo', function () {

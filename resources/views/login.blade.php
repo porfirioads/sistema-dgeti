@@ -17,14 +17,14 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
           name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="css/AdminLTE.css">
-    <link rel="stylesheet" href="css/blue.css">
-    <link href="css/my-dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/AdminLTE.css">
+    <link rel="stylesheet" href="/css/blue.css">
+    <link href="/css/my-dashboard.css" rel="stylesheet">
 </head>
 <body class="hold-transition login-page minimal-background-gray">
 <div class="login-box">
@@ -71,14 +71,14 @@
 </script>
 
 <!-- jQuery 2.2.3 -->
-<script src="js/jquery.js"></script>
+<script src="/js/jquery.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="js/bootstrap.js"></script>
+<script src="/js/bootstrap.js"></script>
 <!-- iCheck -->
-<script src="js/icheck.min.js"></script>
-<script src="js/bootstrap-notify.min.js"></script>
-<script src="js/dgeti/Notifications.js"></script>
-<script src="js/dgeti/Login.js"></script>
+<script src="/js/icheck.min.js"></script>
+<script src="/js/bootstrap-notify.min.js"></script>
+<script src="/js/dgeti/Notifications.js"></script>
+<script src="/js/dgeti/Login.js"></script>
 <script>
     $(function () {
         $('input').iCheck({

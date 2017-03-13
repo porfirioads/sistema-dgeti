@@ -10,13 +10,13 @@
 
     <title>DGETI</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/stylish-portfolio.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
           rel="stylesheet" type="text/css">
-    <link href="css/my-dashboard.css" rel="stylesheet">
+    <link href="/css/my-dashboard.css" rel="stylesheet">
 </head>
 
 <body class="minimal-background-gray">
@@ -293,10 +293,10 @@
 {{--</footer>--}}
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script>

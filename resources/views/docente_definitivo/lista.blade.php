@@ -17,14 +17,14 @@
     {{-- Tell the browser to be responsive to screen width --}}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
           name="viewport">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="css/AdminLTE.css">
-    <link rel="stylesheet" href="css/skin-blue.css">
-    <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="/css/AdminLTE.css">
+    <link rel="stylesheet" href="/css/skin-blue.css">
+    <link rel="stylesheet" href="/css/dataTables.bootstrap.css">
 </head>
 {{-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT --}}
 {{-- the fixed layout is not compatible with sidebar-mini --}}
@@ -207,20 +207,20 @@
 {{-- ./wrapper --}}
 
 {{-- jQuery 2.2.3 --}}
-<script src="js/jquery.js"></script>
+<script src="/js/jquery.js"></script>
 {{-- Bootstrap 3.3.6 --}}
-<script src="js/bootstrap.js"></script>
+<script src="/js/bootstrap.js"></script>
 {{-- DataTables --}}
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables.bootstrap.min.js"></script>
 {{-- SlimScroll --}}
-<script src="js/jquery.slimscroll.min.js"></script>
+<script src="/js/jquery.slimscroll.min.js"></script>
 {{-- FastClick --}}
-<script src="js/fastclick.min.js"></script>
+<script src="/js/fastclick.min.js"></script>
 {{-- AdminLTE App --}}
-<script src="js/app.js"></script>
+<script src="/js/app.js"></script>
 {{-- AdminLTE for demo purposes --}}
-<script src="js/demo.js"></script>
+<script src="/js/demo.js"></script>
 <script>
     $(function () {
         $("#example1").DataTable();
