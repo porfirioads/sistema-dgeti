@@ -34,7 +34,7 @@ class Docente extends Model
     );
 
     public function disciplina_docente(){
-        return $this->belongsTo('App\Models\DisciplinaDocente');
+        return $this->belongsTo('App\Models\DisciplinaDocente','id','docente_id');
     }
 
     public function tipo_plaza_docente(){
