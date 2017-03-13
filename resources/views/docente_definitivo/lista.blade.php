@@ -178,7 +178,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a class="btn btn-block btn-primary">
+                                        <a class="btn btn-block btn-primary" onclick="window.location='{{ url("docente_definitivo/$docente->id") }}'">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </div>
