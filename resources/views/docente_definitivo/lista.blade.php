@@ -173,12 +173,12 @@
                                 <td>{{$docente->segundo_apellido}}</td>
                                 <td class="row">
                                     <div class="col-md-4">
-                                        <a class="btn btn-block btn-success">
+                                        <a class="btn btn-block btn-success"onclick="window.location='{{ url("docente_definitivo/$docente->id") }}'">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a class="btn btn-block btn-primary" onclick="window.location='{{ url("docente_definitivo/$docente->id") }}'">
+                                        <a class="btn btn-block btn-primary">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </div>
