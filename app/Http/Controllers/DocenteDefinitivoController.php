@@ -154,36 +154,22 @@ class DocenteDefinitivoController extends Controller
 
         $data = [];
 
-        $data['docente'] =  Docente::where('id', '=', '1')->get();
+        $data['datos_personales'] =  Docente::where('id', '=', $id)->get();
 
-        $data['evalacion']= DisciplinaDocente::where('docente_id','=',1);
+        $data['componente_formacion']=
+            (DisciplinaDocente::where('docente_id','=',$id)->get());
+
+        $data['campo_disciplinar']= Docente::where('id', '=', $id)->get();
+        $data['campo_disciplina']= Docente::where('id', '=', $id)->get();
+        $data['tipo_plaza']= Docente::where('id', '=', $id)->get();
+        $data['tipo_nombramiento']= Docente::where('id', '=', $id)->get();
+        $data['resultados']= Docente::where('id', '=', $id)->get();
+        $data['actividad_administrativa']= Docente::where('id', '=', $id)->get();
         return $data;
 
 
-//        $evaluaciones = Evaluacion::with('tipo_evaluacion','resultado_evaluacion');
-//        return $evaluaciones;
-
- //       foreach (DocenteDefinitivo::all() as $docente_definitivo_bd) {
- //           $docente = Docente::where('id',$docente_definitivo_bd['docente_id'])->get();
-
-//            $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
-//                ->where('docente_id',$docente['id'])
-//                ->get();
-//
-//            $plazas = TipoPlazaDocente::with('tipo_nombramiento')
-//                ->where('docente_id',$docente['id'])
-//                ->get();
-//
-//            $historial_evaluacion = HistorialEvaluacionDocente::with($evaluaciones)
-//                ->where('docente_id',$docente['id'])
-//                ->get();
-//
-//            $actividades = ActividadAdminDocenteDefinitivo::with('actividadadmin')
-//                ->where('docente_id',$docente['id'])
-//                ->get();
 
 
-   //     }
     }
 
     /**
