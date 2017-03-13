@@ -265,8 +265,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Campo disciplinar</label>
-                                <select id="selCampos" class="form-control
-                                    select2"
+                                <select id="selCampos" class="form-control select2"
                                         {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
                                 </select>
@@ -350,10 +349,6 @@
                 ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
                 {!! Form::close()  !!}
                 <div class="box-footer">
-                    {{--<button type="submit" class="btn btn-primary">Submit--}}
-                    {{--</button>--}}
-
-
                 </div>
 
             </div>

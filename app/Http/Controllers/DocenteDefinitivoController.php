@@ -118,9 +118,7 @@ class DocenteDefinitivoController extends Controller
     public function show($id)
     {
 
-        $docenteDefinitivo = DocenteDefinitivo::where('id',$id)->get();
 
-        $docente_id = $docenteDefinitivo['docente_id'];
 
         $data = Docente::with(array(
             'disciplina_docente.disciplina.campo_disciplinar.componente_formacion',
@@ -128,7 +126,7 @@ class DocenteDefinitivoController extends Controller
             'historial_evaluacion_docente.evaluacion.resultado_evaluacion',
             'historial_evaluacion_docente.evaluacion.tipo_evaluacion',
             'docente_definitivo.actividad_admin_docente_definitivo.actividadadmin'))
-            ->where('id',$docente_id)
+            ->where('id',$id)
             ->get();
         return $data;
 
