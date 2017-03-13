@@ -20,7 +20,7 @@ class ComponenteFormacion extends Model
     protected $fillable = array('componente_formacion');
 
     public function campo_disciplinar(){
-        return $this->belongsTo('App\Models\CampoDisciplinar');
+        return $this->belongsTo('App\Models\CampoDisciplinar','id','componente_formacion_id');
     }
 
 }
