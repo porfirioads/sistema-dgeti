@@ -150,7 +150,32 @@ class DocenteDefinitivoController extends Controller
      */
     public function show($id)
     {
-        return "SHOW";
+        return Docente::where('id', '=', '1')->get();
+
+//        $evaluaciones = Evaluacion::with('tipo_evaluacion','resultado_evaluacion');
+//        return $evaluaciones;
+
+ //       foreach (DocenteDefinitivo::all() as $docente_definitivo_bd) {
+ //           $docente = Docente::where('id',$docente_definitivo_bd['docente_id'])->get();
+
+//            $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
+//                ->where('docente_id',$docente['id'])
+//                ->get();
+//
+//            $plazas = TipoPlazaDocente::with('tipo_nombramiento')
+//                ->where('docente_id',$docente['id'])
+//                ->get();
+//
+//            $historial_evaluacion = HistorialEvaluacionDocente::with($evaluaciones)
+//                ->where('docente_id',$docente['id'])
+//                ->get();
+//
+//            $actividades = ActividadAdminDocenteDefinitivo::with('actividadadmin')
+//                ->where('docente_id',$docente['id'])
+//                ->get();
+
+
+   //     }
     }
 
     /**

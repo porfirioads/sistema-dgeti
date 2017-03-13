@@ -28,7 +28,9 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('/v_definitivo', function () {
         return view('docente_definitivo.editar');
     });
+
     Route::get('/landing_directores', function () {
         return view('landingpage_directores');
     });
+
 });
