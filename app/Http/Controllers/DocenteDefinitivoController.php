@@ -150,7 +150,15 @@ class DocenteDefinitivoController extends Controller
      */
     public function show($id)
     {
-        return Docente::where('id', '=', '1')->get();
+
+
+        $data = [];
+
+        $data['docente'] =  Docente::where('id', '=', '1')->get();
+
+        $data['evalacion']= DisciplinaDocente::where('docente_id','=',1);
+        return $data;
+
 
 //        $evaluaciones = Evaluacion::with('tipo_evaluacion','resultado_evaluacion');
 //        return $evaluaciones;
