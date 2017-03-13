@@ -20,14 +20,14 @@ class DocenteTutor extends Model
     );
 
     public function docente_definitivo(){
-        $this->hasOne('App\Models\DocenteDefinitivo');
+        return $this->hasOne('App\Models\DocenteDefinitivo');
     }
 
     public function funcion_docente_tutor(){
-        $this->belongsTo('App\Models\FuncionDocenteTutor');
+        return $this->belongsTo('App\Models\FuncionDocenteTutor');
     }
 
     public function tutoria(){
-        $this->belongsTo('App\Models\Tutoria');
+        return $this->belongsTo('App\Models\Tutoria');
     }
 }

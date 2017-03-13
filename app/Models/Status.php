@@ -22,6 +22,6 @@ class Status extends Model
     );
 
     public function docente_evaluador(){
-        $this->belongsTo('Apps\Models\DocenteEvaluador');
+        return $this->belongsTo('Apps\Models\DocenteEvaluador');
     }
 }

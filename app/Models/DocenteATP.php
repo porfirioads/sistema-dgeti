@@ -26,10 +26,10 @@ class DocenteATP extends Model
     );
 
     public function docente_definitivo(){
-        $this->hasOne('App\Models\DocenteDefinitivo');
+        return $this->hasOne('App\Models\DocenteDefinitivo');
     }
 
     public function concurso(){
-        $this->hasOne('App\Models\Concurso');
+        return $this->hasOne('App\Models\Concurso');
     }
 }

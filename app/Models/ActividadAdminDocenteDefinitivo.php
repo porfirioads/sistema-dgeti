@@ -23,10 +23,10 @@ class ActividadAdminDocenteDefinitivo extends Model
     );
 
     public function docentedefinitivo(){
-        $this->hasMany('App\Models\DocenteDefinitivo');
+        return $this->hasMany('App\Models\DocenteDefinitivo');
     }
 
     public function actividadadmin(){
-        $this->hasMany('App\Models\ActividadAdmin');
+        return $this->hasMany('App\Models\ActividadAdmin');
     }
 }

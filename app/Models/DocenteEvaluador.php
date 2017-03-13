@@ -23,10 +23,10 @@ class DocenteEvaluador extends Model
     );
 
     public function status(){
-        $this->hasOne('App\Models\Status');
+        return $this->hasOne('App\Models\Status');
     }
 
     public function docente_evaluador(){
-        $this->hasOne('App\Models\DocenteDefinitivo');
+        return $this->hasOne('App\Models\DocenteDefinitivo');
     }
 }

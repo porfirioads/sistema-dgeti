@@ -152,30 +152,21 @@ class DocenteDefinitivoController extends Controller
     {
 
 
-        $data = [];
+        $docente = Docente::where('id', '=', $id)->get();
 
-        $data['datos_personales'] =  Docente::where('id', '=', $id)->get();
-
-        $data['componente_formacion']=
-            (DisciplinaDocente::where('docente_id','=',$id)->get());
-
-        $data['campo_disciplinar']= Docente::where('id', '=', $id)->get();
-        $data['campo_disciplina']= Docente::where('id', '=', $id)->get();
-        $data['tipo_plaza']= Docente::where('id', '=', $id)->get();
-        $data['tipo_nombramiento']= Docente::where('id', '=', $id)->get();
-        $data['resultados']= Docente::where('id', '=', $id)->get();
-        $data['actividad_administrativa']= Docente::where('id', '=', $id)->get();
-        return $data;
+        $disciplinas = Docente::with(array('disciplina_docente'))
+            ->where('id',1)
+            ->get();
 
 
-
+        return $disciplinas;
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int $id         $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

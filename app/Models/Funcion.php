@@ -22,6 +22,6 @@ class Funcion extends Model
     );
 
     public function funcion_docente_tutor(){
-        $this->belongsTo('App\Models\FuncionDocenteTutor');
+        return $this->belongsTo('App\Models\FuncionDocenteTutor');
     }
 }

@@ -34,22 +34,22 @@ class Docente extends Model
     );
 
     public function disciplina_docente(){
-        $this->belongsTo('App\Models\DisciplinaDocente');
+        return $this->belongsTo('App\Models\DisciplinaDocente');
     }
 
     public function tipo_plaza_docente(){
-        $this->belongsTo('App\Models\TipoPlazaDocente');
+        return $this->belongsTo('App\Models\TipoPlazaDocente');
     }
 
     public function historial_evaluacion_docente(){
-        $this->belongsTo('App\Models\HistorialEvaluacionDocente');
+        return $this->belongsTo('App\Models\HistorialEvaluacionDocente');
     }
 
     public function docente_definitivo(){
-        $this->belongsTo('App\Models\DocenteDefinitivo');
+        return $this->belongsTo('App\Models\DocenteDefinitivo');
     }
 
     public function docente_idoneo(){
-        $this->belongsTo('App\Models\DocenteIdoneo');
+        return $this->belongsTo('App\Models\DocenteIdoneo');
     }
 }

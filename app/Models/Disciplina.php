@@ -22,10 +22,10 @@ class Disciplina extends Model
     );
 
     public function campo_disciplinar(){
-        $this->hasOne('App\Models\CampoDisciplinar');
+        return $this->hasOne('App\Models\CampoDisciplinar');
     }
 
     public function disciplina_docente(){
-        $this->belongsTo('App\Models\DisciplinaDocente');
+        return $this->belongsTo('App\Models\DisciplinaDocente');
     }
 }

@@ -22,6 +22,6 @@ class TipoNombramiento extends Model
     );
 
     public function tipo_plaza_docente(){
-        $this -> belongsTo('App\Models\TipoPlazaDocente');
+        return $this -> belongsTo('App\Models\TipoPlazaDocente');
     }
 }

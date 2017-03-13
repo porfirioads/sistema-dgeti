@@ -20,6 +20,6 @@ class ActividadAdmin extends Model
     protected $fillable = array('actividad');
 
     public function actividad_admin_docente_definitivo(){
-        $this->belongsTo('App\Models\ActividadAdminDocenteDefinitivo');
+        return $this->belongsTo('App\Models\ActividadAdminDocenteDefinitivo');
     }
 }

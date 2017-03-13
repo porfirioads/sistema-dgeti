@@ -22,6 +22,6 @@ class ResultadoEvaluacion extends Model
     );
 
     public function evaluacion(){
-        $this ->belongsTo('App\Models\Evaluacion');
+        return $this ->belongsTo('App\Models\Evaluacion');
     }
 }

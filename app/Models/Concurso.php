@@ -19,10 +19,10 @@ class Concurso extends Model
     protected $fillable = array('concurso');
 
     public function docente_idoneo(){
-        $this->belongsTo('App\Models\DocenteIdoneo');
+        return $this->belongsTo('App\Models\DocenteIdoneo');
     }
 
     public function docente_atp(){
-        $this->belongsTo('App\Models\DocenteATP');
+        return $this->belongsTo('App\Models\DocenteATP');
     }
 }

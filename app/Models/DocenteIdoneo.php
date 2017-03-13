@@ -22,14 +22,14 @@ class DocenteIdoneo extends Model
     );
 
     public function concurso(){
-        $this->hasOne('App\Models\Concurso');
+        return $this->hasOne('App\Models\Concurso');
     }
 
     public function docente(){
-        $this->hasOne('App\Models\Docente');
+        return $this->hasOne('App\Models\Docente');
     }
 
     public function tutoria(){
-        $this->belongsTo('App\Models\Tutoria');
+        return $this->belongsTo('App\Models\Tutoria');
     }
 }

@@ -14,17 +14,17 @@ use Illuminate\Database\Eloquent\Model;
 class DisciplinaDocente extends Model
 {
     protected $primaryKey = 'id';
+    protected $foreignKeyDocente = 'docente_id';
+    protected $foreignKeyDisciplina = 'disciplina_id';
     protected $table = 'DISCIPLINA_DOCENTE';
     protected $fillable = array(
-        'docente_id',
-        'disciplina_id'
     );
 
     public function disciplina(){
-        $this->hasMany('App\Models\Disciplina');
+        return $this->hasMany('App\Models\Disciplina');
     }
 
     public function docente(){
-        $this->hasMany('App\Models\Docente');
+        return $this->hasMany('App\Models\Docente','$foreignKeyDocente');
     }
 }

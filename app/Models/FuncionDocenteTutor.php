@@ -23,10 +23,10 @@ class FuncionDocenteTutor extends Model
     );
 
     public function docente_tutor(){
-        $this->hasMany('App\Models\DocenteTutor');
+        return $this->hasMany('App\Models\DocenteTutor');
     }
 
     public function funcion(){
-        $this->hasMany('App\Models\Funcion');
+        return $this->hasMany('App\Models\Funcion');
     }
 }

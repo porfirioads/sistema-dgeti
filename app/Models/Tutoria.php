@@ -27,10 +27,10 @@ class Tutoria extends Model
     );
 
     public function docente_tutor(){
-        $this->hasMany('App\Models\DocenteTutor');
+        return $this->hasMany('App\Models\DocenteTutor');
     }
 
     public function docente_idoneo(){
-        $this->hasMany('App\Models\DocenteIdoneo');
+        return $this->hasMany('App\Models\DocenteIdoneo');
     }
 }
