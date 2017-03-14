@@ -105,31 +105,31 @@
             {{-- sidebar menu: : style can be found in sidebar.less --}}
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a href="../widgets.html">
+                    <a href="/v_building">
                         <i class="fa fa-circle-o"></i>
                         <span>Docentes Definitivos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../widgets.html">
+                    <a href="/v_building">
                         <i class="fa fa-circle-o"></i>
                         <span>Docentes Idóneos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../widgets.html">
+                    <a href="/v_building">
                         <i class="fa fa-circle-o"></i>
                         <span>Docentes Tutores</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../widgets.html">
+                    <a href="/v_building">
                         <i class="fa fa-circle-o"></i>
                         <span>Docentes ATP</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../widgets.html">
+                    <a href="/v_building">
                         <i class="fa fa-circle-o"></i>
                         <span>Docentes Evaluadores</span>
                     </a>
@@ -376,11 +376,17 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::submit(
-                $data ? "Guardar" : "Agregar",
-                ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
-                {!! Form::close()  !!}
+                {{--{!! Form::submit(--}}
+                {{--$data ? "Guardar" : "Agregar",--}}
+                {{--['class' => 'btn btn-block btn-lg btn-primary'] ) !!}--}}
+                {{--{!! Form::close()  !!}--}}
                 <div class="box-footer">
+                    {{--<button type="submit" class="btn btn-primary">Submit--}}
+                    {{--</button>--}}
+                    <a class="btn btn-block btn-lg btn-primary" href="/v_building">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </a>
                 </div>
 
             </div>
