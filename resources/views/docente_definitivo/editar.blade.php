@@ -250,6 +250,7 @@
                             <i class="icon-calendar"></i>
                             <h3 class="panel-title">Datos académicos</h3>
                         </div>
+                        {{$componentesFormacion}}
                         <div class="panel-body">
                             <div class="form-group col-md-12">
                                 <label>Componente formación</label>

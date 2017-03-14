@@ -128,12 +128,21 @@ class DocenteDefinitivoController extends Controller
             'docente_definitivo.actividad_admin_docente_definitivo.actividadadmin'))
             ->where('id',$id)
             ->get();
-        return $data;
+
 
         $data[0]['accion']='ver';
+        $data[0]['dic_componente_formacion']= ComponenteFormacion::all();
+        $data[0]['dic_campos_disciplinares']=CampoDisciplinar::all();
+        $data[0]['dic_disciplina']=Disciplina::all();
+        $data[0]['dic_tipo_nombramiento']=TipoNombramiento::all();
+        $data[0]['dic_resultados']=ResultadoEvaluacion::all();
+        $data[0]['dic_actividad_administrativas']=ActividadAdmin::all();
+
+        #return $data[0];
         return view('docente_definitivo.editar_v1')->with('data',$data[0]);
     }
 
+   
     /**
      * Show the form for editing the specified resource.
      *
