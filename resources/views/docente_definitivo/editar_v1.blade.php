@@ -260,20 +260,20 @@
                                 <select id="selComponentes"
                                         name="componente_formacion"
                                         class="form-control select2"
-                                        {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
+                                        {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
                                     @foreach($data->dic_componente_formacion as $componente_formacion)
 
                                         @foreach($data->disciplina_docente->disciplina as $disciplina)
 
-                                                @foreach($disciplina->campo_disciplinar as $item)
+                                            @foreach($disciplina->campo_disciplinar as $item)
 
-                                                    <option value="{{$componente_formacion->id}}"
-                                                            {{$item->id==$componente_formacion->id ? 'selected':''}}>
+                                                <option value="{{$componente_formacion->id}}"
+                                                        {{$item->id==$componente_formacion->id ? 'selected':''}}>
 
-                                                        {{$componente_formacion->componente_formacion}}
-                                                    </option>
-                                                @endforeach
+                                                    {{$componente_formacion->componente_formacion}}
+                                                </option>
+                                            @endforeach
 
                                         @endforeach
                                     @endforeach
@@ -285,7 +285,7 @@
                             <div class="form-group col-md-12">
                                 <label>Campo disciplinar</label>
                                 <select id="selCampos" class="form-control select2"
-                                        {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
+                                        {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
 
                                     @foreach($data->dic_campos_disciplinares as $campo_diciplinar)
@@ -306,12 +306,16 @@
                             <div class="form-group col-md-12">
                                 <label>Disciplina</label>
                                 <select id="selDisciplinas" class="form-control select2"
-                                        {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
+                                        {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
                                     @foreach($data->dic_disciplina as $disciplina)
-                                        <option value="{{$disciplina->id}}">
-                                            {{$disciplina->disciplina}}
-                                        </option>
+                                        @foreach($data->disciplina_docente->disciplina as $_disciplina)
+                                            <option
+                                                    value="{{$disciplina->id}}"
+                                                    {{$disciplina->id==$_disciplina->id?'selected':''}}>
+                                                {{$disciplina->disciplina}}
+                                            </option>
+                                        @endforeach
                                     @endforeach
 
 
@@ -324,39 +328,47 @@
                             <div class="form-group col-md-12">
                                 <label>Tipo de nombramiento</label>
                                 <select class="form-control select2"
-                                        {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
+                                        {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
                                     @foreach($data->dic_tipo_nombramiento as $tipo)
-                                        <option value="{{$tipo->id}}">
-                                            {{$tipo->tipo_nombramiento}}
-                                        </option>
+                                        @foreach($data->tipo_plaza_docente->tipo_nombramiento as $nombramiento)
+                                            <option value="{{$tipo->id}}"
+                                                    {{$tipo->id==$nombramiento->id?'selected':''}}>
+                                                {{$tipo->tipo_nombramiento}}
+                                            </option>
+                                        @endforeach
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Resultados</label>
                                 <select class="form-control select2"
-                                        {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
+                                        {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
                                     @foreach($data->dic_resultados as $resultado)
-                                        <option value="{{$resultado->id}}">
-                                            {{$resultado->tipo_resultado}}
-                                        </option>
+                                        @foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)
+                                            <option
+                                                    value="{{$resultado->id}}"
+                                                    {{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}>
+                                                {{$resultado->tipo_resultado}}
+                                            </option>
+                                        @endforeach
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Actividad administrativa</label>
                                 <select class="form-control select2"
-                                        {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
+                                        {{$data->accion=='ver' ? 'disabled':''}}
                                         multiple="multiple">
                                     @foreach($data->dic_actividad_administrativas as $actividad)
+                                        @foreach($data->docente_definitivo->actividad_admin_docente_definitivo->actividadadmin as $actividadadmin)
                                         <option
-
-
+                                                {{$actividadadmin->id == $actividad->id ? 'selected':''}}
                                                 value="{{$actividad->id}}">
                                             {{$actividad->actividad}}
                                         </option>
+                                    @endforeach
                                     @endforeach
 
                                 </select>
