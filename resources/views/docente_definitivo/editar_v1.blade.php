@@ -257,17 +257,25 @@
                         <div class="panel-body">
                             <div class="form-group col-md-12">
                                 <label>Componente formación</label>
-
-                                {{--{{$data->disciplina_docente->disciplina[0]->campo_disciplinar->componente_formacion_id}}--}}
                                 <select id="selComponentes"
                                         name="componente_formacion"
                                         class="form-control select2"
                                         {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
                                         multiple="multiple">
                                     @foreach($data->dic_componente_formacion as $componente_formacion)
-                                        <option value="{{$componente_formacion->id}}">
-                                            {{$componente_formacion->componente_formacion}}
-                                        </option>
+
+                                        @foreach($data->disciplina_docente->disciplina as $disciplina)
+
+                                                @foreach($disciplina->campo_disciplinar as $item)
+
+                                                    <option value="{{$componente_formacion->id}}"
+                                                            {{$item->id==$componente_formacion->id ? 'selected':''}}>
+
+                                                        {{$componente_formacion->componente_formacion}}
+                                                    </option>
+                                                @endforeach
+
+                                        @endforeach
                                     @endforeach
 
 
@@ -279,10 +287,18 @@
                                 <select id="selCampos" class="form-control select2"
                                         {{--{{$data->accion=='ver' ? 'disabled':''}}--}}
                                         multiple="multiple">
+
                                     @foreach($data->dic_campos_disciplinares as $campo_diciplinar)
-                                        <option value="{{$campo_diciplinar->id}}">
-                                            {{$campo_diciplinar->campo_disciplinar}}
-                                        </option>
+                                        @foreach($data->disciplina_docente->disciplina as $disciplina)
+                                            @foreach($disciplina->campo_disciplinar as $campo)
+                                                <option
+                                                        value="{{$campo_diciplinar->id}}"
+                                                        {{$campo_diciplinar->id==$campo->id?'selected':''}}>
+
+                                                    {{$campo_diciplinar->campo_disciplinar}}
+                                                </option>
+                                            @endforeach
+                                        @endforeach
                                     @endforeach
                                 </select>
 

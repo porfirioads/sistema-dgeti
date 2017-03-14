@@ -142,7 +142,7 @@ class DocenteDefinitivoController extends Controller
         return view('docente_definitivo.editar_v1')->with('data',$data[0]);
     }
 
-   
+
     /**
      * Show the form for editing the specified resource.
      *
