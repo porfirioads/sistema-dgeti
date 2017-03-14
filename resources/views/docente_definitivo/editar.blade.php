@@ -250,7 +250,6 @@
                             <i class="icon-calendar"></i>
                             <h3 class="panel-title">Datos académicos</h3>
                         </div>
-                        {{$componentesFormacion}}
                         <div class="panel-body">
                             <div class="form-group col-md-12">
                                 <label>Componente formación</label>
@@ -337,13 +336,13 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::submit('Guardar', ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
-                {!! Form::close()  !!}
                 <div class="box-footer">
                     {{--<button type="submit" class="btn btn-primary">Submit--}}
                     {{--</button>--}}
-
-
+                    <a class="btn btn-block btn-lg btn-primary" href="/v_building">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </a>
                 </div>
 
             </div>

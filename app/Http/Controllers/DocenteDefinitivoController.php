@@ -84,7 +84,6 @@ class DocenteDefinitivoController extends Controller
             }
             array_push($componentes_formacion, $componente_ok);
         }
-        return $componentes_formacion;
         return view('docente_definitivo.editar')->with('componentesFormacion',
             $componentes_formacion);
         #return $valores;
