@@ -6,7 +6,7 @@
 
 @section('botonesMenuLanding')
     <div class="col-md-2 col-xs-12 col-sm-12">
-        <a class=" btn btn-block btn-primary" href="/docente_definitivo">
+        <a class=" btn btn-block btn-primary" href="docente_definitivo">
             <i class="fa fa-pencil-square-o fa-5x"></i>
             <br/>
             <span>SPD</span>

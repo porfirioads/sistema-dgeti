@@ -40,9 +40,8 @@ class DocenteDefinitivoController extends Controller
     public function index()
     {
         $docentes_definitivos = Docente::all();
-
-        return view('docente_definitivo.lista')->with('docentes',
-            $docentes_definitivos);
+        return view('docente_definitivo.lista')
+            ->with('docentes', $docentes_definitivos);
     }
 
     /**
@@ -54,40 +53,40 @@ class DocenteDefinitivoController extends Controller
     {
         $data = Disciplina::with('campo_disciplinar.componente_formacion')->get();
         return $data;
-/*        $componentes_formacion = [];
-        $valores = [];
-        foreach (ComponenteFormacion::all() as $componente_bd) {
-            echo '<br>';
-            $componente_attrs = $componente_bd['attributes'];
-            $componente_ok['id'] = $componente_attrs['id'];
-            $componente_ok['componente_formacion']
-                = $componente_attrs['componente_formacion'];
-            $componente_ok['campos_disciplinares'] = [];
-//            print_r($componente_attrs);
-//            echo '<br>';
-            foreach (CampoDisciplinar::where('componente_formacion_id',
-                $componente_attrs['id'])->get() as $campo_bd) {
-                $campo_attrs = $campo_bd['attributes'];
-                $campo_ok['id'] = $campo_attrs['id'];
-                $campo_ok['campo_disciplinar'] = $campo_attrs['campo_disciplinar'];
-                array_push($componente_ok['campos_disciplinares'], $campo_ok);
-//                print_r($campo_attrs);
-//                echo '<br>';
-                $campo_ok['disciplinas'] = [];
-                foreach (Disciplina::where('campo_disciplinar_id',
-                    $campo_attrs['id'])->get() as $disciplina_bd) {
-                    $disciplina_attrs = $disciplina_bd['attributes'];
-                    $disciplina_ok['id'] = $disciplina_attrs['id'];
-                    $disciplina_ok['disciplina'] = $disciplina_attrs['disciplina'];
-                    array_push($campo_ok['disciplinas'], $disciplina_ok);
-//                    print_r($disciplina_attrs);
-//                    echo '<br>';
+        /*        $componentes_formacion = [];
+                $valores = [];
+                foreach (ComponenteFormacion::all() as $componente_bd) {
+                    echo '<br>';
+                    $componente_attrs = $componente_bd['attributes'];
+                    $componente_ok['id'] = $componente_attrs['id'];
+                    $componente_ok['componente_formacion']
+                        = $componente_attrs['componente_formacion'];
+                    $componente_ok['campos_disciplinares'] = [];
+        //            print_r($componente_attrs);
+        //            echo '<br>';
+                    foreach (CampoDisciplinar::where('componente_formacion_id',
+                        $componente_attrs['id'])->get() as $campo_bd) {
+                        $campo_attrs = $campo_bd['attributes'];
+                        $campo_ok['id'] = $campo_attrs['id'];
+                        $campo_ok['campo_disciplinar'] = $campo_attrs['campo_disciplinar'];
+                        array_push($componente_ok['campos_disciplinares'], $campo_ok);
+        //                print_r($campo_attrs);
+        //                echo '<br>';
+                        $campo_ok['disciplinas'] = [];
+                        foreach (Disciplina::where('campo_disciplinar_id',
+                            $campo_attrs['id'])->get() as $disciplina_bd) {
+                            $disciplina_attrs = $disciplina_bd['attributes'];
+                            $disciplina_ok['id'] = $disciplina_attrs['id'];
+                            $disciplina_ok['disciplina'] = $disciplina_attrs['disciplina'];
+                            array_push($campo_ok['disciplinas'], $disciplina_ok);
+        //                    print_r($disciplina_attrs);
+        //                    echo '<br>';
+                        }
+                    }
+                    array_push($componentes_formacion, $componente_ok);
                 }
-            }
-            array_push($componentes_formacion, $componente_ok);
-        }
-        return view('docente_definitivo.editar')->with('componentesFormacion',
-            $componentes_formacion);*/
+                return view('docente_definitivo.editar')->with('componentesFormacion',
+                    $componentes_formacion);*/
         #return $valores;
 //        return view('docente_definitivo.editar', ['data' => $valores]);
     }
@@ -103,10 +102,7 @@ class DocenteDefinitivoController extends Controller
     {
         $docente_factory = new DocenteFactory();
         $docente = $docente_factory->crearDocente($request);
-
         $docente->save();
-
-        //ya contiene id que rico
         return $docente;
     }
 
@@ -118,36 +114,29 @@ class DocenteDefinitivoController extends Controller
      */
     public function show($id)
     {
-
-
-
         $data = Docente::with(array(
             'disciplina_docente.disciplina.campo_disciplinar.componente_formacion',
             'tipo_plaza_docente.tipo_nombramiento',
             'historial_evaluacion_docente.evaluacion.resultado_evaluacion',
             'historial_evaluacion_docente.evaluacion.tipo_evaluacion',
             'docente_definitivo.actividad_admin_docente_definitivo.actividadadmin'))
-            ->where('id',$id)
+            ->where('id', $id)
             ->get();
-
-
-        $data[0]['accion']='ver';
-        $data[0]['dic_componente_formacion']= ComponenteFormacion::all();
-        $data[0]['dic_campos_disciplinares']=CampoDisciplinar::all();
-        $data[0]['dic_disciplina']=Disciplina::all();
-        $data[0]['dic_tipo_nombramiento']=TipoNombramiento::all();
-        $data[0]['dic_resultados']=ResultadoEvaluacion::all();
-        $data[0]['dic_actividad_administrativas']=ActividadAdmin::all();
-
-        #return $data[0];
-        return view('docente_definitivo.editar')->with('data',$data[0]);
+        $data[0]['accion'] = 'ver';
+        $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
+        $data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
+        $data[0]['dic_disciplina'] = Disciplina::all();
+        $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
+        $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
+        $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
+        return view('docente_definitivo.editar')->with('data', $data[0]);
     }
 
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id         $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
+     * @param  int $id $disciplinas = DisciplinaDocente::with('disciplina.campo_disciplinar.componente_formacion')
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
