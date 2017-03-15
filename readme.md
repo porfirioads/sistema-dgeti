@@ -14,14 +14,15 @@ Laravel is accessible, yet powerful, providing powerful tools needed for large, 
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
+## Instrucciones
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Correr el proyecto y que pueda ser accedido desde la red local
+```
+php artisan serve --host 0.0.0.0
+```
 
-## Security Vulnerabilities
+### Crear las migraciones y correr los seeders
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+```
+php artisan migrate:refresh --seed
+```
