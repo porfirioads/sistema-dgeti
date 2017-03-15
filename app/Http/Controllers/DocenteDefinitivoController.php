@@ -52,7 +52,9 @@ class DocenteDefinitivoController extends Controller
      */
     public function create()
     {
-        $componentes_formacion = [];
+        $data = Disciplina::with('campo_disciplinar.componente_formacion')->get();
+        return $data;
+/*        $componentes_formacion = [];
         $valores = [];
         foreach (ComponenteFormacion::all() as $componente_bd) {
             echo '<br>';
@@ -85,7 +87,7 @@ class DocenteDefinitivoController extends Controller
             array_push($componentes_formacion, $componente_ok);
         }
         return view('docente_definitivo.editar')->with('componentesFormacion',
-            $componentes_formacion);
+            $componentes_formacion);*/
         #return $valores;
 //        return view('docente_definitivo.editar', ['data' => $valores]);
     }
