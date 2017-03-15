@@ -16,6 +16,11 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 ## Instrucciones
 
+### Después de clonar el proyecto
+```
+composer install
+```
+
 ### Correr el proyecto y que pueda ser accedido desde la red local
 ```
 php artisan serve --host 0.0.0.0

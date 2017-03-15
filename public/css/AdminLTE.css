@@ -3872,16 +3872,6 @@ table.text-center th {
     color: #444;
 }
 
-.login-page,
-.register-page {
-    /*background: #d2d6de;*/
-    background: url(../img/bgg.jpg) no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
 .login-box,
 .register-box {
     width: 360px;

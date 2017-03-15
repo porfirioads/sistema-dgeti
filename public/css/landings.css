@@ -1,0 +1,30 @@
+/* Estilos del footer de siglas de instituciones */
+
+.instituciones-siglas {
+    font-size: 20pt;
+    font-weight: bold;
+    text-align: center;
+    color: #00296B;
+}
+
+/* Estilos para centrar horizontalmente los divs dentro de una row */
+
+.row-centered {
+    text-align: center !important;
+}
+
+.row-centered > div {
+    display: inline-block;
+    float: none;
+}
+
+/* Estilos del fondo del body de las landing pages */
+
+.minimal-background-gray {
+    /* fallback for old browsers */
+    background: #D2D6DE;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to left, #F2F3F5, #D2D6DE);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to left, #F2F3F5, #D2D6DE);
+}

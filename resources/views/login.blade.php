@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        function removeTrailingSlashUrl() {
-            var fullUrl = window.location.href;
-            if (fullUrl.substr(-1) === '/') {
-                fullUrl = fullUrl.substr(0, fullUrl.length - 1);
-                window.location = fullUrl;
-            }
-        }
-        removeTrailingSlashUrl();
-    </script>
+    <script src="{!! asset('js/dgeti/RemoveTrailingSlash.js') !!}"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ingresar</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
           name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="/css/AdminLTE.css">
-    <link rel="stylesheet" href="/css/blue.css">
-    <link href="/css/my-dashboard.css" rel="stylesheet">
+    <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}"
+          rel="stylesheet">
+    <link href="{!! asset('css/ionicons.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/AdminLTE.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/blue.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/landings.css') !!}" rel="stylesheet">
 </head>
 <body class="hold-transition login-page minimal-background-gray">
 <div class="login-box">
     <div class="login-logo">
         <strong>Iniciar Sesión</strong>
     </div>
-    <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Ingresa tus datos para iniciar sesión</p>
         {{--<form action="../../index2.html" method="post">--}}
@@ -61,24 +50,19 @@
         </div>
         {{--</form>--}}
     </div>
-    <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
-{{--{{ $destino = isset($destino) ? $destino : '/' }}--}}
 
 <script>
     var destino = {!! json_encode(isset($destino) ? $destino : '/') !!};
 </script>
 
-<!-- jQuery 2.2.3 -->
-<script src="/js/jquery.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="/js/bootstrap.js"></script>
-<!-- iCheck -->
-<script src="/js/icheck.min.js"></script>
-<script src="/js/bootstrap-notify.min.js"></script>
-<script src="/js/dgeti/Notifications.js"></script>
-<script src="/js/dgeti/Login.js"></script>
+<script src="{!! asset('js/jquery.js') !!}"></script>
+<script src="{!! asset('js/bootstrap.js') !!}"></script>
+<script src="{!! asset('js/icheck.min.js') !!}"></script>
+<script src="{!! asset('js/bootstrap-notify.min.js') !!}"></script>
+<script src="{!! asset('js/dgeti/Notifications.js') !!}"></script>
+<script src="{!! asset('js/dgeti/Login.js') !!}"></script>
+
 <script>
     $(function () {
         $('input').iCheck({
