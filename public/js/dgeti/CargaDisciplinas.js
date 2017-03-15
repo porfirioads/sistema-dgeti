@@ -14,30 +14,30 @@ $(document).ready(function () {
         console.log("select");
     });
 
-    llenarSelects();
-
-    function llenarSelects() {
-        console.log(componentesFormacion);
-        if(componentesFormacion != undefined) {
-            for (var i = 0; i < componentesFormacion.length; i++) {
-                var componente = componentesFormacion[i];
-                selComponentes
-                    .append(createOption(componente.componente_formacion));
-                if(componente.campos_disciplinares != undefined) {
-                    for (var j = 0; j < componente.campos_disciplinares.length; j++) {
-                        var campo = componente.campos_disciplinares[j];
-                        selCampos.append(createOption(campo.campo_disciplinar));
-                        if(campo.disciplinas != undefined) {
-                            for (var k = 0; k < campo.disciplinas.length; k++) {
-                                var disciplina = campo.disciplinas[k];
-                                selDisciplinas.append(createOption(disciplina.disciplina));
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // llenarSelects();
+    //
+    // function llenarSelects() {
+    //     console.log(componentesFormacion);
+    //     if(componentesFormacion != undefined) {
+    //         for (var i = 0; i < componentesFormacion.length; i++) {
+    //             var componente = componentesFormacion[i];
+    //             selComponentes
+    //                 .append(createOption(componente.componente_formacion));
+    //             if(componente.campos_disciplinares != undefined) {
+    //                 for (var j = 0; j < componente.campos_disciplinares.length; j++) {
+    //                     var campo = componente.campos_disciplinares[j];
+    //                     selCampos.append(createOption(campo.campo_disciplinar));
+    //                     if(campo.disciplinas != undefined) {
+    //                         for (var k = 0; k < campo.disciplinas.length; k++) {
+    //                             var disciplina = campo.disciplinas[k];
+    //                             selDisciplinas.append(createOption(disciplina.disciplina));
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     function createOption(text) {
         return '<option>' + text + '</option>';
