@@ -52,8 +52,17 @@ class DocenteDefinitivoController extends Controller
      */
     public function create()
     {
-        $data = Disciplina::with('campo_disciplinar.componente_formacion')->get();
+/*        $componente = ComponenteFormacion::all();
+        $componente->load(['campo_disciplina' => function ($query) {
+            $query->where('componente_formacion','1')->get();
+        }]);*/
+
+        $data = ComponenteFormacion::with(compact($componentes = array(['campo_disciplinar' => function ($query) {
+            $query->where('componente_formacion_id', '=', '1');
+        }])))->get();
+
         return $data;
+
 /*        $componentes_formacion = [];
         $valores = [];
         foreach (ComponenteFormacion::all() as $componente_bd) {

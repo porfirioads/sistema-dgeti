@@ -27,10 +27,10 @@ Route::get('landing_directores', function () {
     return view('landings.directores');
 });
 
-Route::group(['middleware' => 'login'], function () {
+//Route::group(['middleware' => 'login'], function () {
     Route::resource('docente_definitivo', 'DocenteDefinitivoController');
 
     Route::get('landing_directores', function () {
         return view('landings.directores');
-    });
+//    });
 });
