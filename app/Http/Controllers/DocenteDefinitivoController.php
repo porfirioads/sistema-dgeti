@@ -95,28 +95,40 @@ class DocenteDefinitivoController extends Controller
      */
     public function show($id)
     {
-
-
-
-        $data = Docente::with(array(
-            'disciplina_docente.disciplina.campo_disciplinar.componente_formacion',
-            'tipo_plaza_docente.tipo_nombramiento',
-            'historial_evaluacion_docente.evaluacion.resultado_evaluacion',
-            'historial_evaluacion_docente.evaluacion.tipo_evaluacion',
-            'docente_definitivo.actividad_admin_docente_definitivo.actividadadmin'))
-            ->where('id',$id)
+        $data = Docente::where('id',2)
             ->get();
 
-
         $data[0]['accion']='ver';
-        $data[0]['dic_componente_formacion']= ComponenteFormacion::all();
-        $data[0]['dic_campos_disciplinares']=CampoDisciplinar::all();
-        $data[0]['dic_disciplina']=Disciplina::all();
-        $data[0]['dic_tipo_nombramiento']=TipoNombramiento::all();
-        $data[0]['dic_resultados']=ResultadoEvaluacion::all();
-        $data[0]['dic_actividad_administrativas']=ActividadAdmin::all();
+        //Almacena las disciplinas del docente
+        $data[0]['dic_disciplina_docente_id']=DisciplinaDocente::select('disciplina_id')->where('docente_id','=',2)->get();
+        //Almacena los campos de las disciplinas del docente
+        foreach($data[0]['dic_disciplina_docente_id'] as $disciplinas => $dis)
+            $temporal_campo_disciplina[] = Disciplina::select('campo_disciplinar_id')->where('id','=',$dis['disciplina_id'])->get();
+        $data[0]['dic_campo_disciplina_docente_id'] = $temporal_campo_disciplina;
+        //Almacena los componentes formacion del docente
+        #foreach($pol as $campos_disciplinas => $camp_dis)
+        #$temporal[] = CampoDisciplinar::select('componente_formacion_id')->where('id','=',$camp_dis['campo_disciplinar_id'])->get();
+        #$data[0]['dic_componente_formacion_docente'] = $pol;
 
-        #return $data[0];
+        $data[0]['dic_tipo_plaza_docente_id'] = TipoPlazaDocente::select('id')->where('docente_id','=',2)->get();
+        $data[0]['dic_tipo_nombramiento_docente_id'] = TipoPlazaDocente::select('tipo_nombramiento_id')->where('docente_id','=',2)->get();
+
+        $data[0]['dic_historial_evaluacion_docente_id'] = HistorialEvaluacionDocente::select('id')->where('docente_id','=',2)->get();
+        $data[0]['dic_evaluacion_docente_id'] = HistorialEvaluacionDocente::select('evaluacion_id')->where('docente_id','=',2)->get();
+
+        foreach($data[0]['dic_evaluacion_docente_id'] as $evaluaciones => $eva)
+            $temporal_resultado_evaluacion[] = Evaluacion::select('resultado_evaluacion_id')->where('id','=',$eva['evaluacion_id'])->get();
+        $tipo_resultado_evaluacion[] = Evaluacion::select('tipo_evaluacion_id')->where('id','=',$eva['evaluacion_id'])->get();
+
+        $data[0]['dic_campo_tipo_evaluacion_docente_id'] = $tipo_resultado_evaluacion;
+        $data[0]['dic_resultado_evluacion_docente_id'] = $temporal_resultado_evaluacion;
+
+        #$data[0]['dic_componente_formacion']= ComponenteFormacion::all();
+        #$data[0]['dic_tipo_nombramiento']=TipoNombramiento::all();
+        #$data[0]['dic_resultados']=ResultadoEvaluacion::all();
+        #$data[0]['dic_actividad_administrativas']=ActividadAdmin::all();
+
+        return  $data[0];
         return view('docente_definitivo.editar')->with('data',$data[0]);
     }
 
