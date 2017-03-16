@@ -23,80 +23,80 @@
         <div class="panel-body">
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CCT</label>
-                {!! Form::text('cct', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
+                {!! Form::text('cct', $value = $data->accion=='modificar' ? $data->cct:null, ['class' =>
                 'form-control', 'placeholder' => 'CCT','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CURP</label>
-                {!! Form::text('curp', $value = $data->accion=='ver' ? $data->curp:null, ['class' =>
+                {!! Form::text('curp', $value = $data->accion=='modificar' ? $data->curp:null, ['class' =>
                 'form-control', 'placeholder' => 'Curp','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">RFC</label>
-                {!! Form::text('rfc', $value = $data->accion=='ver' ? $data->rfc:null, ['class' =>
+                {!! Form::text('rfc', $value = $data->accion=='modificar' ? $data->rfc:null, ['class' =>
                 'form-control', 'placeholder' => 'RFC','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">Nombre</label>
-                {!! Form::text('nombre', $value = $data->accion=='ver' ? $data->nombre:null, ['class' =>
+                {!! Form::text('nombre', $value = $data->accion=='modificar' ? $data->nombre:null, ['class' =>
                 'form-control', 'placeholder' => 'Nombre','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Primer Apellido
                 </label>
                 {!! Form::text('primer_apellido',
-                $value = $data->accion=='ver' ? $data->primer_apellido:null,
+                $value = $data->accion=='modificar' ? $data->primer_apellido:null,
                 ['class' => 'form-control',
                 'placeholder' => 'Primer Apellido','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Segundo Apellido
                 </label>
                 {!! Form::text('segundo_apellido',
-                $value = $data->accion=='ver' ? $data->segundo_apellido:null,['class' => 'form-control',
+                $value = $data->accion=='modificar' ? $data->segundo_apellido:null,['class' => 'form-control',
                 'placeholder' => 'Segundo Apellido','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Correo electrónico
                 </label>
-                {!! Form::text('correo', $value = $data->accion=='ver' ? $data->correo:null,['class' =>
+                {!! Form::text('correo', $value = $data->accion=='modificar' ? $data->correo:null,['class' =>
                 'form-control', 'placeholder' => 'Correo electrónico',
-                'required',$data->accion=='ver' ? 'disabled':'',])!!}
+                'required',$data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Teléfono celular
                 </label>
                 {!! Form::text('telefono_celular',
-                $value = $data->accion=='ver' ? $data->telefono_celular:null,['class' => 'form-control',
+                $value = $data->accion=='modificar' ? $data->telefono_celular:null,['class' => 'form-control',
                 'placeholder' => 'Teléfono celular','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Teléfono fijo
                 </label>
                 {!! Form::text('telefono_domicilio',
-                $value = $data->accion=='ver' ? $data->telefono_domicilio:null,['class' => 'form-control',
+                $value = $data->accion=='modificar' ? $data->telefono_domicilio:null,['class' => 'form-control',
                 'placeholder' => 'Teléfono fijo','required',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-12">
                 <label for="exampleInputPassword1">
                     Domicilio
                 </label>
-                {!! Form::text('domicilio', $value = $data->accion=='ver' ? $data->domicilio:null,
+                {!! Form::text('domicilio', $value = $data->accion=='modificar' ? $data->domicilio:null,
                 ['class' => 'form-control', 'placeholder' => 'Domicilio',
-                'required',$data->accion=='ver' ? 'disabled':'',])!!}
+                'required',$data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
         </div>
     </div>
@@ -112,38 +112,38 @@
                     Perfil Profesional
                 </label>
                 {!! Form::text('perfil_profesional',
-                $value = $data->accion=='ver' ? $data->perfil_profesional:null,['class' => 'form-control',
+                $value = $data->accion=='modificar' ? $data->perfil_profesional:null,['class' => 'form-control',
                 'placeholder' => 'Perfil Profesional',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Horas frente a grupo
                 </label>
                 {!! Form::text('horas_frente_grupo',
-                $value = $data->accion=='ver' ? $data->horas_frente_grupo:null,['class' => 'form-control',
+                $value = $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
                 'placeholder' => 'Horas frente a grupo',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Horas descarga académica
                 </label>
                 {!! Form::text('horas_descarga_academica',
-                $value = $data->accion=='ver' ? $data->horas_descarga_academica:null,
+                $value = $data->accion=='modificar' ? $data->horas_descarga_academica:null,
                 ['class' => 'form-control',
                 'placeholder' => 'Horas descarga académica',
-                $data->accion=='ver' ? 'disabled':'',])!!}
+                $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
                     Horas administrativas
                 </label>
                 {!! Form::text('horas_administrativas',
-                 $value = $data->accion=='ver' ? $data->horas_administrativas:null,
+                 $value = $data->accion=='modificar' ? $data->horas_administrativas:null,
                  ['class' => 'form-control',
                  'placeholder' => 'Horas administrativas',
-                 $data->accion=='ver' ? 'disabled':'',])!!}
+                 $data->accion=='modificar' ? 'disabled':'',])!!}
             </div>
         </div>
     </div>
@@ -193,7 +193,7 @@
             <div class="form-group col-md-12">
                 <label>Disciplina</label>
                 <select id="selDisciplinas" class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
+                        {{$data->accion=='modificar' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
                         @foreach($data->res_disciplina_docente_id as $dis)
@@ -208,8 +208,8 @@
             <div class="form-group col-md-12">
                 <label>Tipo de plaza</label>
                 {!! Form::text('tipo_plaza',
-                $value = $data->accion=='ver' ? $data->cct:null,
-                ['class' => 'form-control', 'placeholder' => 'Tipo Plaza',$data->accion=='ver' ? 'disabled':''])!!}
+                $value = $data->accion=='modificar' ? $data->cct:null,
+                ['class' => 'form-control', 'placeholder' => 'Tipo Plaza',$data->accion=='modificar' ? 'disabled':''])!!}
             </div>
             <div class="form-group col-md-12">
                 <label>Tipo de nombramiento</label>
@@ -228,48 +228,59 @@
             </div>
             <div class="form-group col-md-12">
                 <label>Resultados</label>
+
                 <select class="form-control select2"
 
                         multiple="multiple">
                     @foreach($data->dic_resultados as $resultado)
-                        @foreach($data->res_resultado_evluacion_docente_id as $resul)
-                            <option value="{{$resultado->id}}"
-                                    {{$resul->resultado_evaluacion_id==$resultado->id?'selected':''}}>
-                                {{$resultado->tipo_resultado}}
-                            </option>
+                        @foreach($data->res_resultado_evluacion_docente_id as $item)
+                            @foreach($item as $_item)
+                                <option value="{{$resultado->id}}"
+                                        {{$_item->resultado_evaluacion_id==$resultado->id?'selected':''}}>
+                                    {{$resultado->tipo_resultado}}
+                                </option>
+                            @endforeach
                         @endforeach
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-12">
                 <label>Actividad administrativa</label>
-                {{ Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'L') }}
+
                 <select class="form-control select2"
 
                         multiple="multiple">
                     @foreach($data->dic_actividad_administrativas as $actividad)
-                        <option
-                                value="{{$actividad->id}}">
-                            {{$actividad->actividad}}
-                        </option>
+                        @foreach($data->res_actividad_administrativas_docente_id as $_item)
+                            @foreach($_item as $item)
+                                <option
+                                        value="{{$actividad->id}}"
+                                        {{$item->actividad_admin_id==$actividad->id?'selected':''}}>
 
+                                        {{$actividad->actividad}}
+
+
+                                </option>
+                            @endforeach
+
+                        @endforeach
                     @endforeach
                 </select>
             </div>
         </div>
     </div>
-    {{--{!! Form::submit(--}}
-    {{--$data ? "Guardar" : "Agregar",--}}
-    {{--['class' => 'btn btn-block btn-lg btn-primary'] ) !!}--}}
+    {!! Form::submit(
+    $data ? "Guardar" : "Agregar",
+    ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
     {!! Form::close()  !!}
-    <div class="box-footer">
+    {{--<div class="box-footer">--}}
         {{--<button type="submit" class="btn btn-primary">Submit--}}
         {{--</button>--}}
-        <a class="btn btn-block btn-lg btn-primary" href="v_building">
-            <i class="fa fa-save"></i>
-            Guardar
-        </a>
-    </div>
+        {{--<a class="btn btn-block btn-lg btn-primary" href="v_building">--}}
+            {{--<i class="fa fa-save"></i>--}}
+            {{--Guardar--}}
+        {{--</a>--}}
+    {{--</div>--}}
 @endsection
 
 @section('particular_scripts')

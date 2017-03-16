@@ -65,7 +65,7 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_resultados']=ResultadoEvaluacion::all();
         $data[0]['dic_actividad_administrativas']=ActividadAdmin::all();
 
-        #return $data[0];
+        return $data[0];
         return view('docente_definitivo.editar')->with('data',$data[0]);
     }
 
@@ -135,7 +135,7 @@ class DocenteDefinitivoController extends Controller
         //Almacena actividades administrativas id del docente
         $data[0]['res_actividad_administrativas_docente_id'] = $temporal_actividades_admin;
 
-        $data[0]['accion']='ver';
+        $data[0]['accion']='modificar';
         $data[0]['dic_componente_formacion']= ComponenteFormacion::all();
         $data[0]['dic_campos_disciplinares']=CampoDisciplinar::all();
         $data[0]['dic_disciplina']=Disciplina::all();
