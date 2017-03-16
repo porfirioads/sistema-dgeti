@@ -158,7 +158,7 @@
                 <select id="selComponentes"
                         name="componente_formacion"
                         class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
+
                         multiple="multiple">
                     @foreach($data->dic_componente_formacion as $componente_formacion)
                         @foreach($data->res_componente_formacion_docente as $componente)
@@ -176,7 +176,7 @@
             <div class="form-group col-md-12">
                 <label>Campo disciplinar</label>
                 <select id="selCampos" class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
+
                         multiple="multiple">
                     @foreach($data->dic_campos_disciplinares as $campo_diciplinar)
                         @foreach($data->res_campo_disciplina_docente_id as $diciplina)
@@ -193,17 +193,15 @@
             <div class="form-group col-md-12">
                 <label>Disciplina</label>
                 <select id="selDisciplinas" class="form-control select2"
-
+                        {{$data->accion=='ver' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
-
-                        
-                                <option value="{{$disciplina->id}}"
-                                       >
-                                    {{$disciplina->disciplina}}
-                                </option>
-
-
+                        @foreach($data->res_disciplina_docente_id as $dis)
+                            <option value="{{$disciplina->id}}"
+                                    {{$dis->disciplina_id==$disciplina->id?'selected':''}}>
+                                {{$disciplina->disciplina}}
+                            </option>
+                        @endforeach
                     @endforeach
                 </select>
             </div>
@@ -216,31 +214,38 @@
             <div class="form-group col-md-12">
                 <label>Tipo de nombramiento</label>
                 <select class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
+
                         multiple="multiple">
                     @foreach($data->dic_tipo_nombramiento as $tipo)
-                        <option value="{{$tipo->id}}">
-                            {{$tipo->tipo_nombramiento}}
-                        </option>
+                        @foreach($data->res_tipo_nombramiento_docente_id as $nombramiento)
+                            <option value="{{$tipo->id}}"
+                                    {{$tipo->id==$nombramiento->tipo_nombramiento_id?'selected':''}}>
+                                {{$tipo->tipo_nombramiento}}
+                            </option>
+                        @endforeach
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-12">
                 <label>Resultados</label>
                 <select class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
+
                         multiple="multiple">
                     @foreach($data->dic_resultados as $resultado)
-                        <option value="{{$resultado->id}}">
-                            {{$resultado->tipo_resultado}}
-                        </option>
+                        @foreach($data->res_resultado_evluacion_docente_id as $resul)
+                            <option value="{{$resultado->id}}"
+                                    {{$resul->resultado_evaluacion_id==$resultado->id?'selected':''}}>
+                                {{$resultado->tipo_resultado}}
+                            </option>
+                        @endforeach
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-12">
                 <label>Actividad administrativa</label>
+                {{ Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'L') }}
                 <select class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
+
                         multiple="multiple">
                     @foreach($data->dic_actividad_administrativas as $actividad)
                         <option
