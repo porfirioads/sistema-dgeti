@@ -6,6 +6,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class DocenteDefinitivo
@@ -13,11 +14,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DocenteDefinitivo extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'DOCENTE_DEFINITIVO';
     protected $fillable = array(
         'docente_id',
     );
+
+    protected $dates = ['deleted_at'];
 
     public function docente(){
         return $this->hasOne('App\Models\Docente','id','docente_id');

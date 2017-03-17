@@ -6,6 +6,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class DocenteIdoneo
@@ -13,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DocenteIdoneo extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'DOCENTE_IDONEO';
     protected $fillable = array(
@@ -20,6 +23,8 @@ class DocenteIdoneo extends Model
         'folio_federal',
         'concurso_id'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function concurso(){
         return $this->hasOne('App\Models\Concurso');

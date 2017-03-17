@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class ActividadAdmin
@@ -15,9 +16,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ActividadAdmin extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'ACTIVIDAD_ADMIN';
     protected $fillable = array('actividad');
+
+    protected $dates = ['deleted_at'];
 
     public function actividad_admin_docente_definitivo(){
         return $this->belongsTo('App\Models\ActividadAdminDocenteDefinitivo');
