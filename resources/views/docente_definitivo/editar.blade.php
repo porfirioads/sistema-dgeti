@@ -160,16 +160,16 @@
                         class="form-control select2"
 
                         multiple="multiple">
-                    @foreach($data->dic_componente_formacion as $componente_formacion)
-                        @foreach($data->res_componente_formacion_docente as $componente)
-                            @foreach($componente as $_compoentente)
-                                <option value="{{$componente_formacion->id}}"
-                                        {{$_compoentente->componente_formacion_id==$componente_formacion->id ? 'selected':''}}>
-                                    {{$componente_formacion->componente_formacion}}
-                                </option>
-                            @endforeach
-                        @endforeach
-                    @endforeach
+                    {{--@foreach($data->dic_componente_formacion as $componente_formacion)--}}
+                        {{--@foreach($data->res_componente_formacion_docente as $componente)--}}
+                            {{--@foreach($componente as $_compoentente)--}}
+                                {{--<option value="{{$componente_formacion->id}}"--}}
+                                        {{--{{$_compoentente->componente_formacion_id==$componente_formacion->id ? 'selected':''}}>--}}
+                                    {{--{{$componente_formacion->componente_formacion}}--}}
+                                {{--</option>--}}
+                            {{--@endforeach--}}
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </select>
             </div>
 
@@ -178,30 +178,35 @@
                 <select id="selCampos" class="form-control select2"
 
                         multiple="multiple">
-                    @foreach($data->dic_campos_disciplinares as $campo_diciplinar)
-                        @foreach($data->res_campo_disciplina_docente_id as $diciplina)
-                            @foreach($diciplina as $_diciplina)
-                                <option value="{{$campo_diciplinar->id}}"
-                                        {{$_diciplina->campo_disciplinar_id==$campo_diciplinar->id ? 'selected':''}}>
-                                    {{$campo_diciplinar->campo_disciplinar}}
-                                </option>
-                            @endforeach
-                        @endforeach
-                    @endforeach
+                    {{--@foreach($data->dic_campos_disciplinares as $campo_diciplinar)--}}
+                        {{--@foreach($data->res_campo_disciplina_docente_id as $diciplina)--}}
+                            {{--@foreach($diciplina as $_diciplina)--}}
+                                {{--<option value="{{$campo_diciplinar->id}}"--}}
+                                        {{--{{$_diciplina->campo_disciplinar_id==$campo_diciplinar->id ? 'selected':''}}>--}}
+                                    {{--{{$campo_diciplinar->campo_disciplinar}}--}}
+                                {{--</option>--}}
+                            {{--@endforeach--}}
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </select>
             </div>
             <div class="form-group col-md-12">
                 <label>Disciplina</label>
+                {{json_encode(array_pluck($data->dic_disciplina,'id'))}}
+                ={{json_encode($data->res_disciplina_docente_id)}}
                 <select id="selDisciplinas" class="form-control select2"
-                        {{$data->accion=='modificar' ? 'disabled':''}}
+
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
-                        @foreach($data->res_disciplina_docente_id as $dis)
+
                             <option value="{{$disciplina->id}}"
-                                    {{$dis->disciplina_id==$disciplina->id?'selected':''}}>
+
+                            @if (!in_array( $data->res_disciplina_docente_id,array_pluck($data->dic_disciplina,'id')))
+                                    {{'selected'}}
+                                    @endif>
                                 {{$disciplina->disciplina}}
                             </option>
-                        @endforeach
+
                     @endforeach
                 </select>
             </div>
@@ -216,14 +221,14 @@
                 <select class="form-control select2"
 
                         multiple="multiple">
-                    @foreach($data->dic_tipo_nombramiento as $tipo)
-                        @foreach($data->res_tipo_nombramiento_docente_id as $nombramiento)
-                            <option value="{{$tipo->id}}"
-                                    {{$tipo->id==$nombramiento->tipo_nombramiento_id?'selected':''}}>
-                                {{$tipo->tipo_nombramiento}}
-                            </option>
-                        @endforeach
-                    @endforeach
+                    {{--@foreach($data->dic_tipo_nombramiento as $tipo)--}}
+                        {{--@foreach($data->res_tipo_nombramiento_docente_id as $nombramiento)--}}
+                            {{--<option value="{{$tipo->id}}"--}}
+                                    {{--{{$tipo->id==$nombramiento->tipo_nombramiento_id?'selected':''}}>--}}
+                                {{--{{$tipo->tipo_nombramiento}}--}}
+                            {{--</option>--}}
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </select>
             </div>
             <div class="form-group col-md-12">
@@ -232,16 +237,16 @@
                 <select class="form-control select2"
 
                         multiple="multiple">
-                    @foreach($data->dic_resultados as $resultado)
-                        @foreach($data->res_resultado_evluacion_docente_id as $item)
-                            @foreach($item as $_item)
-                                <option value="{{$resultado->id}}"
-                                        {{$_item->resultado_evaluacion_id==$resultado->id?'selected':''}}>
-                                    {{$resultado->tipo_resultado}}
-                                </option>
-                            @endforeach
-                        @endforeach
-                    @endforeach
+                    {{--@foreach($data->dic_resultados as $resultado)--}}
+                        {{--@foreach($data->res_resultado_evluacion_docente_id as $item)--}}
+                            {{--@foreach($item as $_item)--}}
+                                {{--<option value="{{$resultado->id}}"--}}
+                                        {{--{{$_item->resultado_evaluacion_id==$resultado->id?'selected':''}}>--}}
+                                    {{--{{$resultado->tipo_resultado}}--}}
+                                {{--</option>--}}
+                            {{--@endforeach--}}
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </select>
             </div>
             <div class="form-group col-md-12">
@@ -250,21 +255,21 @@
                 <select class="form-control select2"
 
                         multiple="multiple">
-                    @foreach($data->dic_actividad_administrativas as $actividad)
-                        @foreach($data->res_actividad_administrativas_docente_id as $_item)
-                            @foreach($_item as $item)
-                                <option
-                                        value="{{$actividad->id}}"
-                                        {{$item->actividad_admin_id==$actividad->id?'selected':''}}>
+                    {{--@foreach($data->dic_actividad_administrativas as $actividad)--}}
+                        {{--@foreach($data->res_actividad_administrativas_docente_id as $_item)--}}
+                            {{--@foreach($_item as $item)--}}
+                                {{--<option--}}
+                                        {{--value="{{$actividad->id}}"--}}
+                                        {{--{{$item->actividad_admin_id==$actividad->id?'selected':''}}>--}}
 
-                                        {{$actividad->actividad}}
+                                        {{--{{$actividad->actividad}}--}}
 
 
-                                </option>
-                            @endforeach
+                                {{--</option>--}}
+                            {{--@endforeach--}}
 
-                        @endforeach
-                    @endforeach
+                        {{--@endforeach--}}
+                    {{--@endforeach--}}
                 </select>
             </div>
         </div>

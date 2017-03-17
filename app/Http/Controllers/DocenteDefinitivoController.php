@@ -143,8 +143,8 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_resultados']=ResultadoEvaluacion::all();
         $data[0]['dic_actividad_administrativas']=ActividadAdmin::all();
 
-        return  $data[0];
-        #return view('docente_definitivo.editar')->with('data',$data[0]);
+        #return  $data[0];
+        return view('docente_definitivo.editar')->with('data',$data[0]);
     }
 
 
