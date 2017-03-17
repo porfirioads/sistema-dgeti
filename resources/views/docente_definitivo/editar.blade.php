@@ -378,6 +378,8 @@
     <script src="{!! asset('js/bootstrap-datepicker.js') !!}"></script>
     <script src="{!! asset('js/bootstrap-datepicker.es.js') !!}"></script>
     <script>
+        var selComponentes = $('#selComponentes');
+
         $(".select2").select2({});
         selComponentes.on('select2:select', function (evt) {
             console.log("select");
