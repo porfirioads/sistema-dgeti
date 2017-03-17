@@ -148,6 +148,8 @@
             </div>
         </div>
     </div>
+
+    {{--//////////////////////////////////////Datos académicos/////////--}}
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
@@ -157,7 +159,7 @@
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label>Componente formación</label>
                 <select id="selComponentes"
-                        name="componente_formacion"
+                        name="academico_componentes_formacion[]"
                         class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
                         multiple="multiple">
@@ -178,7 +180,9 @@
 
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label>Campo disciplinar</label>
-                <select id="selCampos" class="form-control select2"
+                <select id="selCampos"
+                        name="academico_campo_disciplinar[]"
+                        class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_campos_disciplinares as $campo_diciplinar)
@@ -198,7 +202,9 @@
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label>Disciplina</label>
-                <select id="selDisciplinas" class="form-control select2"
+                <select id="selDisciplinas"
+                        name="academico_disciplina[]"
+                        class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
@@ -227,22 +233,22 @@
         <div class="panel-body">
             <div class="form-group col-md-4 col-sm-12">
                 <label>Plaza</label>
-                {!! Form::text('codigo_plaza', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
+                {!! Form::text('plaza_codigo', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
                 'form-control', 'placeholder' => 'Plaza','required',
                 $data->accion=='ver' ? 'disabled':'',])!!}
             </div>
 
             <div class="form-group col-md-4 col-sm-12">
-                <label>Tiplo Plaza</label>
-                {!! Form::text('tipo_plaza', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
+                <label>Tiplo plaza</label>
+                {!! Form::text('plaza_tipo', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
                 'form-control', 'placeholder' => 'Tipo plaza','required',
                 $data->accion=='ver' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-3 col-sm-10">
                 <label>Tipo de nombramiento</label>
                 <select class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
-                        multiple="multiple">
+                        name="plaza_nombramiento"
+                        {{$data->accion=='ver' ? 'disabled':''}}>
                     @foreach($data->dic_tipo_nombramiento as $tipo)
                         <option value="{{$tipo->id}}"
                         @if( $data->accion=='ver' )
@@ -275,25 +281,25 @@
 
 
             <div class="form-group col-lg-2">
-                <label>Fecha Evaluación</label>
-                {!! Form::text('domicilio', $value = $data->accion=='ver' ? $data->domicilio:null,
-                ['class' => 'form-control', 'placeholder' => 'Domicilio',
+                <label>Fecha evaluación</label>
+                {!! Form::text('evaluacion_inicio', $value = $data->accion=='ver' ? $data->domicilio:null,
+                ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
                 'required',$data->accion=='ver' ? 'disabled':'','id'=>'datepicker'])!!}
             </div>
 
 
             <div class="form-group col-lg-2">
                 <label>Fecha Vigencia</label>
-                {!! Form::text('domicilio', $value = $data->accion=='ver' ? $data->domicilio:null,
-                ['class' => 'form-control', 'placeholder' => 'Domicilio',
-                'required',$data->accion=='ver' ? 'disabled':'',])!!}
+                {!! Form::text('evaluacion_vigencia', $value = $data->accion=='ver' ? $data->domicilio:null,
+                ['class' => 'form-control datepicker', 'placeholder' => 'Fecha Vigencia',
+                'required',$data->accion=='ver' ? 'disabled':'','id'=>'datepicker'])!!}
             </div>
 
             <div class="form-group col-lg-2">
                 <label>Resultados</label>
                 <select class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
-                        multiple="multiple">
+                        name="evaluacion_resultado"
+                        {{$data->accion=='ver' ? 'disabled':''}}>
                     @foreach($data->dic_resultados as $resultado)
                         <option value="{{$resultado->id}}"
                         @if( $data->accion=='ver' )
@@ -309,17 +315,19 @@
 
             <div class="form-group col-lg-2">
                 <label>Tipo Evaluación</label>
+
                 <select class="form-control select2"
-                        {{$data->accion=='ver' ? 'disabled':''}}
-                        multiple="multiple">
-                    @foreach($data->dic_resultados as $resultado)
+                        name="evaluacion_tipo"
+                        {{$data->accion=='ver' ? 'disabled':''}}>
+                    @foreach($data->dic_tipo_resultados as $resultado)
                         <option value="{{$resultado->id}}"
-                        @if( $data->accion=='ver' )
-                            @foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)
-                                {{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}
-                                    @endforeach
-                                @endif>
-                            {{$resultado->tipo_resultado}}
+                        {{--@if( $data->accion=='ver' )--}}
+                            {{--@foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)--}}
+                                {{--{{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}--}}
+                                    {{--@endforeach--}}
+                                {{--@endif--}}
+                                >
+                            {{$resultado->tipo_evaluacion}}
                         </option>
                     @endforeach
                 </select>
@@ -343,6 +351,7 @@
             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                 <label>Actividad administrativa</label>
                 <select class="form-control select2"
+                        name="actividades_administrativas[]"
                         {{$data->accion=='ver' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_actividad_administrativas as $actividad)
@@ -386,7 +395,7 @@
         });
 
         //Date picker
-        $('#datepicker').datepicker({
+        $('.datepicker').datepicker({
             autoclose: true
         });
     </script>
