@@ -162,11 +162,13 @@
                         multiple="multiple">
                     @foreach($data->dic_componente_formacion as $componente_formacion)
                         <option value="{{$componente_formacion->id}}"
-                        @foreach($data->res_componente_formacion_docente as $componente)
-                            @foreach($componente as $_compoentente)
-                                {{$_compoentente->componente_formacion_id==$componente_formacion->id ? 'selected':''}}
+                        @if( $data->accion=='ver' )
+                            @foreach($data->res_componente_formacion_docente as $componente)
+                                @foreach($componente as $_compoentente)
+                                    {{$_compoentente->componente_formacion_id==$componente_formacion->id ? 'selected':''}}
+                                        @endforeach
                                     @endforeach
-                                @endforeach>
+                                @endif>
                             {{$componente_formacion->componente_formacion}}
                         </option>
                     @endforeach
@@ -180,11 +182,13 @@
                         multiple="multiple">
                     @foreach($data->dic_campos_disciplinares as $campo_diciplinar)
                         <option value="{{$campo_diciplinar->id}}"
-                        @foreach($data->res_campo_disciplina_docente_id as $diciplina)
-                            @foreach($diciplina as $_diciplina)
-                                {{$_diciplina->campo_disciplinar_id==$campo_diciplinar->id ? 'selected':''}}
+                        @if( $data->accion=='ver' )
+                            @foreach($data->res_campo_disciplina_docente_id as $diciplina)
+                                @foreach($diciplina as $_diciplina)
+                                    {{$_diciplina->campo_disciplinar_id==$campo_diciplinar->id ? 'selected':''}}
+                                        @endforeach
                                     @endforeach
-                                @endforeach>
+                                @endif>
                             {{$campo_diciplinar->campo_disciplinar}}
                         </option>
 
@@ -198,9 +202,11 @@
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
                         <option value="{{$disciplina->id}}"
-                        @foreach($data->res_disciplina_docente_id as $_disciplina)
-                            {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
-                                @endforeach>
+                        @if( $data->accion=='ver' )
+                            @foreach($data->res_disciplina_docente_id as $_disciplina)
+                                {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
+                                    @endforeach
+                                @endif>
                             {{$disciplina->disciplina}}
                         </option>
 
@@ -220,9 +226,11 @@
                         multiple="multiple">
                     @foreach($data->dic_tipo_nombramiento as $tipo)
                         <option value="{{$tipo->id}}"
-                        @foreach($data->res_tipo_nombramiento_docente_id as $nombramiento)
-                            {{$tipo->id==$nombramiento->tipo_nombramiento_id?'selected':''}}
-                                @endforeach>
+                        @if( $data->accion=='ver' )
+                            @foreach($data->res_tipo_nombramiento_docente_id as $nombramiento)
+                                {{$tipo->id==$nombramiento->tipo_nombramiento_id?'selected':''}}
+                                    @endforeach
+                                @endif>
                             {{$tipo->tipo_nombramiento}}
                         </option>
 
@@ -236,9 +244,11 @@
                         multiple="multiple">
                     @foreach($data->dic_resultados as $resultado)
                         <option value="{{$resultado->id}}"
-                        @foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)
-                            {{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}
-                                @endforeach>
+                        @if( $data->accion=='ver' )
+                            @foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)
+                                {{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}
+                                    @endforeach
+                                @endif>
                             {{$resultado->tipo_resultado}}
                         </option>
                     @endforeach
@@ -251,15 +261,17 @@
                         {{$data->accion=='ver' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_actividad_administrativas as $actividad)
-                            <option
-                                    @foreach($data->res_actividad_administrativas_docente_id as $actividadadmin)
-                                        @foreach($actividadadmin as $_actividadadmin)
-                                            {{$_actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
-                                        @endforeach
-                                    @endforeach
-                                    value="{{$actividad->id}}">
-                                {{$actividad->actividad}}
-                            </option>
+                        <option
+                                @if( $data->accion=='ver' )
+                                @foreach($data->res_actividad_administrativas_docente_id as $actividadadmin)
+                                @foreach($actividadadmin as $_actividadadmin)
+                                    {{$_actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
+                                @endforeach
+                                @endforeach
+                                @endif
+                                value="{{$actividad->id}}">
+                            {{$actividad->actividad}}
+                        </option>
                     @endforeach
                 </select>
             </div>
