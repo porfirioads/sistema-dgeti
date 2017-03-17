@@ -36,6 +36,7 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->string('aspecto', 255);
             $table->string('descripcion', 500)->default(null);
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -69,6 +70,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('criterio', 500)->default(null);
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -76,6 +78,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('criterio', 500)->default(null);
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -83,6 +86,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('criterio', 500)->default(null);
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -207,8 +211,9 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('evidencia', 500);
-            $table->integer('SUBASPECTO_EVALUACION_id');
-            $table->index('SUBASPECTO_EVALUACION_id','fk_EVIDENCIA_SUBASPECTO_EVALUACION1_idx');
+            $table->integer('subaspecto_evaluacion_id');
+            $table->index('subaspecto_evaluacion_id','fk_EVIDENCIA_SUBASPECTO_EVALUACION1_idx');
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -216,10 +221,11 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('aplica', 1);
-            $table->integer('EVIDENCIA_id');
-            $table->integer('CRITERIO_EXISTENCIA_id');
-            $table->index('CRITERIO_EXISTENCIA_id','fk_EVIDENCIA_EXISTENCIA_CRITERIO_EXISTENCIA1_idx');
-            $table->index('EVIDENCIA_id','fk_EVIDENCIA_EXISTENCIA_EVIDENCIA1_idx');
+            $table->integer('evidencia_id');
+            $table->integer('criterio_existencia_id');
+            $table->index('criterio_existencia_id','fk_EVIDENCIA_EXISTENCIA_CRITERIO_EXISTENCIA1_idx');
+            $table->index('evidencia_id','fk_EVIDENCIA_EXISTENCIA_EVIDENCIA1_idx');
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -227,10 +233,11 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('aplica', 1);
-            $table->integer('EVIDENCIA_id');
-            $table->integer('CRITERIO_PERTINENCIA_id');
-            $table->index('EVIDENCIA_id','fk_EVIDENCIA_PERTINENCIA_EVIDENCIA1_idx');
-            $table->index('CRITERIO_PERTINENCIA_id','fk_EVIDENCIA_PERTINENCIA_CRITERIO_PERTINENCIA1_idx');
+            $table->integer('evidencia_id');
+            $table->integer('criterio_pertinencia_id');
+            $table->index('evidencia_id','fk_EVIDENCIA_PERTINENCIA_EVIDENCIA1_idx');
+            $table->index('criterio_pertinencia_id','fk_EVIDENCIA_PERTINENCIA_CRITERIO_PERTINENCIA1_idx');
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -238,10 +245,11 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('aplica', 45)->default(null);
-            $table->integer('EVIDENCIA_id');
-            $table->integer('CRITERIO_SUFICIENCIA_id');
-            $table->index('EVIDENCIA_id','fk_EVIDENCIA_SUFICIENCIA_EVIDENCIA1_idx');
-            $table->index('CRITERIO_SUFICIENCIA_id','fk_EVIDENCIA_SUFICIENCIA_CRITERIO_SUFICIENCIA1_idx');
+            $table->integer('evidencia_id');
+            $table->integer('criterio_suficiencia_id');
+            $table->index('evidencia_id','fk_EVIDENCIA_SUFICIENCIA_EVIDENCIA1_idx');
+            $table->index('criterio_suficiencia_id','fk_EVIDENCIA_SUFICIENCIA_CRITERIO_SUFICIENCIA1_idx');
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -279,6 +287,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 100);
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -286,16 +295,17 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->date('fecha_evaluacion');
-            $table->integer('EVIDENCIA_id');
-            $table->integer('CRITERIO_EXISTENCIA_id');
-            $table->integer('CRITERIO_SUFICIENCIA_id');
-            $table->integer('CRITERIO_PERTINENCIA_id');
-            $table->integer('INSTITUCION_id');
-            $table->index('CRITERIO_EXISTENCIA_id','fk_INSTITUCION_EVIDENCIA_CRITERIO_EXISTENCIA1_idx');
-            $table->index('CRITERIO_SUFICIENCIA_id','fk_INSTITUCION_EVIDENCIA_CRITERIO_SUFICIENCIA1_idx');
-            $table->index('INSTITUCION_id','fk_INSTITUCION_EVIDENCIA_INSTITUCION1_idx');
-            $table->index('CRITERIO_PERTINENCIA_id','fk_INSTITUCION_EVIDENCIA_CRITERIO_PERTINENCIA1_idx');
-            $table->index('EVIDENCIA_id','fk_INSTITUCION_EVIDENCIA_EVIDENCIA1_idx');
+            $table->integer('evidencia_id');
+            $table->integer('criterio_existencia_id');
+            $table->integer('criterio_suficiencia_id');
+            $table->integer('criterio_pertinencia_id');
+            $table->integer('institucion_id');
+            $table->index('criterio_existencia_id','fk_INSTITUCION_EVIDENCIA_CRITERIO_EXISTENCIA1_idx');
+            $table->index('criterio_suficiencia_id','fk_INSTITUCION_EVIDENCIA_CRITERIO_SUFICIENCIA1_idx');
+            $table->index('institucion_id','fk_INSTITUCION_EVIDENCIA_INSTITUCION1_idx');
+            $table->index('criterio_pertinencia_id','fk_INSTITUCION_EVIDENCIA_CRITERIO_PERTINENCIA1_idx');
+            $table->index('evidencia_id','fk_INSTITUCION_EVIDENCIA_EVIDENCIA1_idx');
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -319,8 +329,9 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('subaspecto', 255);
-            $table->integer('ASPECTO_EVALUACION_id');
-            $table->index('ASPECTO_EVALUACION_id','fk_SUBASPECTO_EVALUACION_ASPECTO_EVALUACION_idx');
+            $table->integer('aspecto_evaluacion_id');
+            $table->index('aspecto_evaluacion_id','fk_SUBASPECTO_EVALUACION_aspecto_evaluacion_idx');
+            $table->time('deleted_at')->nullable()->default(null);
             $table->timestamps();
         });
 
