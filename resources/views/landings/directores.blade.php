@@ -20,7 +20,7 @@
         </a>
     </div>
     <div class="col-md-2 col-xs-12 col-sm-12">
-        <a class=" btn btn-block btn-primary" href="v_building">
+        <a class=" btn btn-block btn-primary" href="snb">
             <i class="fa fa-institution fa-5x"></i>
             <br/>
             <span>SNB</span>
@@ -34,7 +34,7 @@
         </a>
     </div>
     <div class="col-md-2 col-xs-12 col-sm-12">
-        <a class=" btn btn-block btn-danger" href="/logout">
+        <a class=" btn btn-block btn-danger" href="logout">
             <i class="fa fa-sign-out fa-5x"></i>
             <br/>
             <span>Salir</span>

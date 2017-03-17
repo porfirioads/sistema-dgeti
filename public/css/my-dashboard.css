@@ -12,3 +12,12 @@ body {
 .panel-heading  h1{
     color: white;
 }
+
+.sidebar-menu a {
+    white-space: normal;
+}
+
+.box-title {
+    font-size: 25px !important;
+    font-weight: bold;
+}

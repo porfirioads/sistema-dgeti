@@ -91,7 +91,7 @@
         <section class="content">
             <div class="box">
                 <div class="box-header">
-                    <strong class="box-title">@yield('box_title')</strong>
+                    <h1 class="box-title">@yield('box_title')</h1>
                 </div>
                 <div class="box-body">
                     @section('box_body')

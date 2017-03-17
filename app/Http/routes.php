@@ -29,6 +29,10 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('landing_directores', function () {
         return view('landings.directores');
     });
+
+    Route::get('snb', function () {
+       return view('snb.snb');
+    });
 });
 
 Route::get('dash', function () {
