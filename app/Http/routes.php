@@ -42,3 +42,5 @@ Route::get('dash', function () {
 Route::get('defi', function () {
     return view('docente_definitivo.list');
 });
+
+Route::get('aspectos', 'AspectoEvaluacionController@index');

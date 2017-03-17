@@ -27,11 +27,14 @@ class CampoDisciplinar extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function componente_formacion(){
-        return $this->hasMany('App\Models\ComponenteFormacion','id','componente_formacion_id');
+    public function componente_formacion()
+    {
+        return $this->hasMany('App\Models\ComponenteFormacion', 'id',
+            'componente_formacion_id');
     }
 
-    public function disciplina(){
+    public function disciplina()
+    {
         return $this->belongsTo('App\Models\Disciplina');
     }
 }

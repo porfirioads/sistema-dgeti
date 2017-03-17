@@ -27,3 +27,13 @@ php artisan serve --host 0.0.0.0
 ```
 php artisan migrate:refresh --seed
 ```
+
+### Crear un seeder
+```
+php artisan make:seeder AspectoEvaluacionTableSeeder
+```
+
+### Correr un seeder específico
+```
+php artisan db:seed --class=UserTableSeeder
+```
