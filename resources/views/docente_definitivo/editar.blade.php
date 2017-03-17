@@ -192,21 +192,16 @@
             </div>
             <div class="form-group col-md-12">
                 <label>Disciplina</label>
-                {{json_encode(array_pluck($data->dic_disciplina,'id'))}}
-                ={{json_encode($data->res_disciplina_docente_id)}}
                 <select id="selDisciplinas" class="form-control select2"
 
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
-
                             <option value="{{$disciplina->id}}"
-
-                            @if (!in_array( $data->res_disciplina_docente_id,array_pluck($data->dic_disciplina,'id')))
-                                    {{'selected'}}
-                                    @endif>
+                                    @foreach($data->res_disciplina_docente_id as $item)
+                                        {{$disciplina->id==$item? 'selected':''}}
+                                        @endforeach>
                                 {{$disciplina->disciplina}}
                             </option>
-
                     @endforeach
                 </select>
             </div>
