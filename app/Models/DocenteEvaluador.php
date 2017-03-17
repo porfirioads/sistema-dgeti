@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class DocenteEvaluador
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DocenteEvaluador extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'DOCENTE_EVALUADOR';
     protected $fillable = array(
@@ -21,6 +24,8 @@ class DocenteEvaluador extends Model
         'funcion',
         'status_id'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function status(){
         return $this->hasOne('App\Models\Status');

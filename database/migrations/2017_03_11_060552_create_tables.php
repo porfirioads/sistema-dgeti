@@ -33,7 +33,7 @@ class CreateTables extends Migration
 
             $table->unique('curp','curp_UNIQUE');
             $table->unique('rfc','rfc_UNIQUE');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -48,7 +48,7 @@ class CreateTables extends Migration
 
             $table->foreign('docente_id')
                 ->references('id')->on('DOCENTE');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -58,7 +58,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->integer('concurso')->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -81,7 +81,7 @@ class CreateTables extends Migration
 
             $table->foreign('concurso_id')
                 ->references('id')->on('CONCURSO');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -96,7 +96,7 @@ class CreateTables extends Migration
 
             $table->foreign('docente_definitivo_id')
                 ->references('id')->on('DOCENTE_DEFINITIVO');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -121,7 +121,7 @@ class CreateTables extends Migration
 
             $table->foreign('concurso_id')
                 ->references('id')->on('CONCURSO');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -131,7 +131,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('status', 20)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -152,7 +152,7 @@ class CreateTables extends Migration
 
             $table->foreign('status_id')
                 ->references('id')->on('STATUS');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -162,7 +162,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('actividad', 45)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -172,7 +172,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('componente_formacion', 45)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -188,7 +188,7 @@ class CreateTables extends Migration
 
             $table->foreign('componente_formacion_id')
                 ->references('id')->on('COMPONENTE_FORMACION');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -204,7 +204,7 @@ class CreateTables extends Migration
 
             $table->foreign('campo_disciplinar_id')
                 ->references('id')->on('CAMPO_DISCIPLINAR');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -214,7 +214,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('tipo_evaluacion', 15)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -224,7 +224,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('funcion', 45)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -234,7 +234,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('tipo_resultado', 35)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -256,7 +256,7 @@ class CreateTables extends Migration
 
             $table->foreign('resultado_evaluacion_id')
                 ->references('id')->on('RESULTADO_EVALUACION');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -276,7 +276,7 @@ class CreateTables extends Migration
 
             $table->foreign('docente_id')
                 ->references('id')->on('DOCENTE');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -286,7 +286,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('tipo_nombramiento', 35)->comment('');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -310,7 +310,7 @@ class CreateTables extends Migration
 
             $table->foreign('tipo_nombramiento_id')
                 ->references('id')->on('TIPO_NOMBRAMIENTO');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -330,7 +330,7 @@ class CreateTables extends Migration
 
             $table->foreign('docente_definitivo_id')
                 ->references('id')->on('DOCENTE_DEFINITIVO');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -354,7 +354,7 @@ class CreateTables extends Migration
 
             $table->foreign('docente_tutor_id')
                 ->references('id')->on('DOCENTE_TUTOR');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -374,7 +374,7 @@ class CreateTables extends Migration
 
             $table->foreign('disciplina_id')
                 ->references('id')->on('DISCIPLINA');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });
@@ -394,7 +394,7 @@ class CreateTables extends Migration
 
             $table->foreign('funcion_id')
                 ->references('id')->on('FUNCION');
-
+            $table->softDeletes();
             $table->timestamps();
 
         });

@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Status
@@ -15,11 +16,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Status extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'STATUS';
     protected $fillable = array(
         'status'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function docente_evaluador(){
         return $this->belongsTo('Apps\Models\DocenteEvaluador');

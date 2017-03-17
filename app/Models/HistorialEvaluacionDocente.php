@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class HistorialEvaluacionDocente
@@ -15,12 +16,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class HistorialEvaluacionDocente extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'HISTORIAL_EVALUACION_DOCENTE';
     protected $fillable = array(
         'evaluacion_id',
         'docente_id'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function evaluacion(){
         return $this -> hasMany('App\Models\Evaluacion','id','evaluacion_id');

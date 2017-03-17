@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class DisciplinaDocente
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Docente extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'DOCENTE';
     protected $fillable = array(
@@ -32,6 +35,8 @@ class Docente extends Model
         'telefono_domicilio',
         'domicilio'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function disciplina_docente(){
         return $this->belongsTo('App\Models\DisciplinaDocente','id','docente_id');

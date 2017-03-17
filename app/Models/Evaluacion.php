@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Evaluacion
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Evaluacion extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'EVALUACION';
     protected $fillable = array(
@@ -23,6 +26,8 @@ class Evaluacion extends Model
         'tipo_evaluacion_id',
         'resultado_evaluacion_id'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function resultado_evaluacion(){
         return $this->hasOne('App\Models\ResultadoEvaluacion','id','resultado_evaluacion_id');

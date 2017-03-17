@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class CampoDisciplinar
@@ -15,12 +16,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CampoDisciplinar extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'CAMPO_DISCIPLINAR';
     protected $fillable = array(
         'campo_disciplinar',
         'componente_formacion_id'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function componente_formacion(){
         return $this->hasMany('App\Models\ComponenteFormacion','id','componente_formacion_id');

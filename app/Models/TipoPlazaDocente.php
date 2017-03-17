@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class TipoPlazaDocente
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TipoPlazaDocente extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'TIPO_PLAZA_DOCENTE';
     protected $fillable = array(
@@ -23,6 +26,8 @@ class TipoPlazaDocente extends Model
         'tipo_plaza_horas',
         'plaza'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function tipo_nombramiento(){
         return $this -> hasMany('App\Models\TipoNombramiento','id','tipo_nombramiento_id');

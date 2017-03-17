@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Tutoria
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tutoria extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'TUTORIA';
     protected $fillable = array(
@@ -25,6 +28,8 @@ class Tutoria extends Model
         'observacion',
         'total_horas_semana'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function docente_tutor(){
         return $this->hasMany('App\Models\DocenteTutor');

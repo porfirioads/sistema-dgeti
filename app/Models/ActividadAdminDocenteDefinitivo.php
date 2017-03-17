@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class ActividadAdminDocenteDefinitivo
@@ -15,12 +16,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ActividadAdminDocenteDefinitivo extends Model
 {
+    use SoftDeletes;
+
     protected $primaryKey = 'id';
     protected $table = 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO';
     protected $fillable = array(
         'actividad_admin_id',
         'docente_definitivo_id'
     );
+
+    protected $dates = ['deleted_at'];
 
     public function docentedefinitivo(){
         return $this->hasMany('App\Models\DocenteDefinitivo');
