@@ -23,7 +23,7 @@ Route::get('v_building', function () {
     return view('building_page');
 });
 
-//Route::group(['middleware' => 'login'], function () {
+Route::group(['middleware' => 'login'], function () {
     Route::resource('docente_definitivo', 'DocenteDefinitivoController');
 
     Route::get('landing_directores', function () {
@@ -33,7 +33,7 @@ Route::get('v_building', function () {
     Route::get('snb', function () {
        return view('snb.snb');
     });
-//});
+});
 
 Route::get('dash', function () {
     return view('dashboard_master');
