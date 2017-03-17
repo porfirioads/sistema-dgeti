@@ -20,7 +20,7 @@ $(document).ready(function () {
      */
     function iniciarSesion() {
         jQuery.ajax({
-            url: 'login',
+            url: '/login',
             type: 'POST',
             dataType: 'JSON',
             data: {

@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('landings.main');
 });
 
-Route::post('login', 'LoginController@login');
+Route::post('/login', 'LoginController@login');
 
-Route::get('logout', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout');
 
 Route::get('v_building', function () {
     return view('building_page');
