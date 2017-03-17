@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocenteDefinitivoFactory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
 
@@ -80,6 +81,7 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
+
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
         $docente = $docente_factory->crearDocente($request);
@@ -101,7 +103,7 @@ class DocenteDefinitivoController extends Controller
         ]);
 
         $plaza->save();
-        return $plaza;
+
 
 
         /////////////////////////// Historial Evaluación////////////////////////////
@@ -111,13 +113,17 @@ class DocenteDefinitivoController extends Controller
         $evaluacion_resultado  = $request['evaluacion_resultado'];
         $evaluacion_tipo        = $request['evaluacion_tipo'];
 
+        $format = 'm/d/Y';
+
 
         $evaluacion =  new Evaluacion([
-            'fecha_evaluacion'      => $request['evaluacion_inicio'],
-            'vigencia_evaluacion'   => $request['evaluacion_vigencia'],
+            'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio),
+            'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia),
             'tipo_evaluacion_id'    => $evaluacion_tipo,
-            'resultado_evaluacion'  => $evaluacion_resultado,
+            'resultado_evaluacion_id'  => $evaluacion_resultado,
         ]);
+
+
 
         $evaluacion->save();
 
@@ -140,7 +146,7 @@ class DocenteDefinitivoController extends Controller
 
         foreach ($actividades_administrativas as $actividad){
             $actividad =  new ActividadAdminDocenteDefinitivo([
-                'docente_definitivo_id' => $docente_definitivo,
+                'docente_definitivo_id' => $docente_definitivo->id,
                 'actividad_admin_id'    => $actividad
             ]);
             $actividad->save();
@@ -188,11 +194,11 @@ class DocenteDefinitivoController extends Controller
             $temporal_componentes[] = CampoDisciplinar::select('componente_formacion_id')->where('id', '=', $camp_dis[0]['campo_disciplinar_id'])->get();
         $data[0]['res_componente_formacion_docente'] = $temporal_componentes;
         //Almacena id del tipo plaza del docente
-        $data[0]['res_tipo_plaza_docente_id'] = TipoPlazaDocente::select('id')->where('docente_id', '=', $id)->get();
+        $data[0]['res_tipo_plaza_docente_id'] = TipoPlazaDocente::where('docente_id', '=', $id)->get();
         //Almacena id del tipo nombramiento del docente
         $data[0]['res_tipo_nombramiento_docente_id'] = TipoPlazaDocente::select('tipo_nombramiento_id')->where('docente_id', '=', $id)->get();
         //Almacena id del historial del docente
-        $data[0]['res_historial_evaluacion_docente_id'] = HistorialEvaluacionDocente::select('id')->where('docente_id', '=', $id)->get();
+        $data[0]['res_historial_evaluacion_docente_id'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)->get();
         //Almacena id de la evaluacion del docente
         $data[0]['res_evaluacion_docente_id'] = HistorialEvaluacionDocente::select('evaluacion_id')->where('docente_id', '=', $id)->get();
         //Almacena id tipo y resultado de evaluacion del docente
