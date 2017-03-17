@@ -158,15 +158,17 @@ hr.small {
     height: 100%;
 }
 
-.header h2 {
+h2.bolder-title {
     color: #00296B;
     font-weight: bold;
+    text-align: center;
 }
 
 /* About */
 
 .about {
     padding: 50px 0;
+    background-color: white;
 }
 
 /* Services */

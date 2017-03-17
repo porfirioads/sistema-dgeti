@@ -9,9 +9,12 @@
     <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/stylish-portfolio.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/landings.css') !!}" rel="stylesheet">
-    <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('font-awesome/css/font-awesome.min.css') !!}"
+          rel="stylesheet">
     <link href="{!! asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,
     400,700,300italic,400italic,700italic') !!}" rel="stylesheet">
+    @section('particular_styles')
+    @show
 </head>
 
 <body class="minimal-background-gray">
@@ -23,7 +26,7 @@
                      class="img-responsive img-logo"/>
             </a>
             <br/><br/>
-            <h2>@yield('tituloSeccion', 'Título')</h2>
+            <h2 class="bolder-title">@yield('tituloSeccion', 'Título')</h2>
             <br/><br/>
         </div>
     </div>
@@ -37,3 +40,13 @@
         &nbsp; INEE
     </div>
 </header>
+
+<script src="{!! asset('js/jquery.js') !!}"></script>
+
+@section('other_content')
+@show
+
+@section('particular_scripts')
+@show
+</body>
+</html>
