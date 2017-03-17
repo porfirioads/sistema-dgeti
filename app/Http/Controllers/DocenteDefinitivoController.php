@@ -29,6 +29,7 @@ use App\Models\TipoEvaluacion;
 use App\Models\TipoNombramiento;
 use App\Models\TipoPlazaDocente;
 use App\Models\Tutoria;
+use Illuminate\Support\Facades\Redirect;
 
 class DocenteDefinitivoController extends Controller
 {
@@ -179,6 +180,7 @@ class DocenteDefinitivoController extends Controller
      */
     public function destroy($id)
     {
-        return "DESTROY";
+        $data = Docente::find($id)->delete();
+        return redirect()->back()->with(["deleted" => "The post was deleted"]);
     }
 }

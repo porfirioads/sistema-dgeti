@@ -49,9 +49,39 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a class="btn btn-block btn-danger">
+                        {{--<form id="remove_docente" action="{{ route('docente_definitivo.destroy', ['id' => $docente->id])}}" method="delete">
+                            <button class='btn btn-block btn-danger' name="remove_levels" value="delete" method="delete">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>--}}
+                        {{ Form::open(['route' => ['docente_definitivo.destroy', $docente->id], 'method' => 'delete']) }}
+                        {{ Form::submit('Delete') }}
+                        {{ Form::close() }}
+                        <button class='btn btn-block btn-danger' name="remove_levels" value="delete" method="delete">
                             <i class="fa fa-trash"></i>
-                        </a>
+                        </button>
+                        <div id="confirm" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &#215;</button>
+                                        <h4 class="modal-title">Eliminar Docente</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>&#191;Deseas eliminar el docente?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="delete">Eliminar</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
                     </div>
                 </td>
             </tr>
@@ -75,4 +105,5 @@
             });
         });
     </script>
+    <script src="{!! asset('js/dgeti/DeleteConfirmDialog.js') !!}"></script>
 @endsection
