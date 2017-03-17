@@ -247,7 +247,44 @@
                 </div>
             </div>
 
-            @foreach($data->res_tipo_plaza_docente_id as $plaza)
+            @if( $data->accion=='ver' )
+                @foreach($data->res_tipo_plaza_docente_id as $plaza)
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
+
+                            {!! Form::text('plaza_codigo', $value = $data->accion=='ver' ? $plaza->plaza:null, ['class' =>
+                            'form-control', 'placeholder' => 'Plaza','required',
+                            $data->accion=='ver' ? 'disabled':'',])!!}
+                        </div>
+
+                        <div class="form-group col-md-4 col-sm-12">
+                            {!! Form::text('plaza_tipo', $value = $data->accion=='ver' ? $plaza->tipo_plaza_horas:null, ['class' =>
+                            'form-control', 'placeholder' => 'Tipo plaza','required',
+                            $data->accion=='ver' ? 'disabled':'',])!!}
+                        </div>
+                        <div class="form-group col-md-3 col-sm-10">
+
+                            <select class="form-control select2"
+                                    name="plaza_nombramiento"
+                                    {{$data->accion=='ver' ? 'disabled':''}}>
+                                @foreach($data->dic_tipo_nombramiento as $tipo)
+                                    <option value="{{$tipo->id}}"
+                                    @if( $data->accion=='ver' )
+                                        {{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}
+                                            @endif>
+                                        {{$tipo->tipo_nombramiento}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-1 col-sm-1">
+                            <button class="btn btn-block btn-primary btn-danger">-</button>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+
                 <div class="row">
                     <div class="form-group col-md-4 col-sm-12">
 
@@ -281,8 +318,7 @@
                         <button class="btn btn-block btn-primary btn-danger">-</button>
                     </div>
                 </div>
-
-            @endforeach
+            @endif
 
 
             <div class="row">
@@ -320,7 +356,68 @@
                 </div>
             </div>
 
-            @foreach($data->res_historial_evaluacion_docente_id as $evaluacion)
+
+            @if( $data->accion=='ver' )
+                @foreach($data->res_historial_evaluacion_docente_id as $evaluacion)
+                    <div class="row">
+                        <div class="form-group col-lg-3">
+
+                            {!! Form::text('evaluacion_inicio', $value = $data->accion=='ver' ? $evaluacion->id:null,
+                            ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
+                            'required',$data->accion=='ver' ? 'disabled':'','id'=>'datepicker'])!!}
+                        </div>
+
+
+                        <div class="form-group col-lg-3">
+
+                            {!! Form::text('evaluacion_vigencia', $value = $data->accion=='ver' ? $evaluacion->id:null,
+                            ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
+                            'required',$data->accion=='ver' ? 'disabled':'','id'=>'datepicker'])!!}
+                        </div>
+
+                        <div class="form-group col-lg-2">
+
+                            <select class="form-control select2"
+                                    name="evaluacion_resultado"
+                                    {{$data->accion=='ver' ? 'disabled':''}}>
+                                @foreach($data->dic_resultados as $resultado)
+                                    <option value="{{$resultado->id}}"
+                                    @if( $data->accion=='ver' )
+
+                                        {{$resultado->id == $evaluacion->id ? 'selected':''}}
+                                                @
+                                            @endif>
+                                        {{$resultado->tipo_resultado}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <select class="form-control select2"
+                                    name="evaluacion_tipo"
+                                    {{$data->accion=='ver' ? 'disabled':''}}>
+                                @foreach($data->dic_tipo_resultados as $resultado)
+                                    <option value="{{$resultado->id}}"
+                                            {{--@if( $data->accion=='ver' )--}}
+                                            {{--@foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)--}}
+                                            {{--{{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}--}}
+                                            {{--@endforeach--}}
+                                            {{--@endif--}}
+                                    >
+                                        {{$resultado->tipo_evaluacion}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group col-lg-1">
+                            <button class="btn btn-block btn-primary btn-danger">-</button>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+
                 <div class="row">
                     <div class="form-group col-lg-3">
 
@@ -345,9 +442,7 @@
                             @foreach($data->dic_resultados as $resultado)
                                 <option value="{{$resultado->id}}"
                                 @if( $data->accion=='ver' )
-
                                     {{$resultado->id == $evaluacion->id ? 'selected':''}}
-                                            @
                                         @endif>
                                     {{$resultado->tipo_resultado}}
                                 </option>
@@ -377,15 +472,14 @@
                         <button class="btn btn-block btn-primary btn-danger">-</button>
                     </div>
                 </div>
-            @endforeach
+
+            @endif
             <div class="row">
                 <div class="col-md-11"></div>
                 <div class="form-group col-md-1 col-sm-1">
                     <button class="btn btn-block btn-primary">+</button>
                 </div>
             </div>
-
-
         </div>
     </div>
 
