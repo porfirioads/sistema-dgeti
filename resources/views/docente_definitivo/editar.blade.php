@@ -4,6 +4,7 @@
 
 @section('particular_styles')
     <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/datepicker3.css') !!}" rel="stylesheet">
 @endsection
 
 @section('sidebar_options')
@@ -107,7 +108,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label for="exampleInputPassword1">
                     Perfil Profesional
                 </label>
@@ -116,7 +117,7 @@
                 'placeholder' => 'Perfil Profesional',
                 $data->accion=='ver' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-2 col-md-6 col-sm-12">
                 <label for="exampleInputPassword1">
                     Horas frente a grupo
                 </label>
@@ -125,7 +126,7 @@
                 'placeholder' => 'Horas frente a grupo',
                 $data->accion=='ver' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-2 col-md-6 col-sm-12">
                 <label for="exampleInputPassword1">
                     Horas descarga académica
                 </label>
@@ -135,7 +136,7 @@
                 'placeholder' => 'Horas descarga académica',
                 $data->accion=='ver' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-lg-2 col-md-6 col-sm-12">
                 <label for="exampleInputPassword1">
                     Horas administrativas
                 </label>
@@ -153,7 +154,7 @@
             <h3 class="panel-title">Datos académicos</h3>
         </div>
         <div class="panel-body">
-            <div class="form-group col-md-12">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label>Componente formación</label>
                 <select id="selComponentes"
                         name="componente_formacion"
@@ -175,7 +176,7 @@
                 </select>
             </div>
 
-            <div class="form-group col-md-12">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label>Campo disciplinar</label>
                 <select id="selCampos" class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
@@ -195,7 +196,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12">
                 <label>Disciplina</label>
                 <select id="selDisciplinas" class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
@@ -213,13 +214,31 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group col-md-12">
-                <label>Tipo de plaza</label>
-                {!! Form::text('tipo_plaza',
-                $value = $data->accion=='ver' ? $data->cct:null,
-                ['class' => 'form-control', 'placeholder' => 'Tipo Plaza',$data->accion=='ver' ? 'disabled':''])!!}
+        </div>
+    </div>
+
+
+    {{--//////////////////////////////////////PLAZAS/////////--}}
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <i class="icon-calendar"></i>
+            <h3 class="panel-title">Datos Plaza</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-md-4 col-sm-12">
+                <label>Plaza</label>
+                {!! Form::text('codigo_plaza', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
+                'form-control', 'placeholder' => 'Plaza','required',
+                $data->accion=='ver' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-md-12">
+
+            <div class="form-group col-md-4 col-sm-12">
+                <label>Tiplo Plaza</label>
+                {!! Form::text('tipo_plaza', $value = $data->accion=='ver' ? $data->cct:null, ['class' =>
+                'form-control', 'placeholder' => 'Tipo plaza','required',
+                $data->accion=='ver' ? 'disabled':'',])!!}
+            </div>
+            <div class="form-group col-md-3 col-sm-10">
                 <label>Tipo de nombramiento</label>
                 <select class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
@@ -233,11 +252,44 @@
                                 @endif>
                             {{$tipo->tipo_nombramiento}}
                         </option>
-
                     @endforeach
                 </select>
             </div>
-            <div class="form-group col-md-12">
+
+            <div class="form-group col-md-1 col-sm-1">
+                <label>Acciones</label>
+                <button class="btn btn-block btn-primary">+</button>
+            </div>
+
+        </div>
+    </div>
+
+    {{--//////////////////////////////////////HISTORIAL EVALUACION/////////--}}
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <i class="icon-calendar"></i>
+            <h3 class="panel-title">Historial Evaluación</h3>
+        </div>
+        <div class="panel-body">
+
+
+
+            <div class="form-group col-lg-2">
+                <label>Fecha Evaluación</label>
+                {!! Form::text('domicilio', $value = $data->accion=='ver' ? $data->domicilio:null,
+                ['class' => 'form-control', 'placeholder' => 'Domicilio',
+                'required',$data->accion=='ver' ? 'disabled':'','id'=>'datepicker'])!!}
+            </div>
+
+
+            <div class="form-group col-lg-2">
+                <label>Fecha Vigencia</label>
+                {!! Form::text('domicilio', $value = $data->accion=='ver' ? $data->domicilio:null,
+                ['class' => 'form-control', 'placeholder' => 'Domicilio',
+                'required',$data->accion=='ver' ? 'disabled':'',])!!}
+            </div>
+
+            <div class="form-group col-lg-2">
                 <label>Resultados</label>
                 <select class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
@@ -255,7 +307,40 @@
                 </select>
             </div>
 
-            <div class="form-group col-md-12">
+            <div class="form-group col-lg-2">
+                <label>Tipo Evaluación</label>
+                <select class="form-control select2"
+                        {{$data->accion=='ver' ? 'disabled':''}}
+                        multiple="multiple">
+                    @foreach($data->dic_resultados as $resultado)
+                        <option value="{{$resultado->id}}"
+                        @if( $data->accion=='ver' )
+                            @foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)
+                                {{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}
+                                    @endforeach
+                                @endif>
+                            {{$resultado->tipo_resultado}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group col-lg-2">
+                <label>Acciones</label>
+                <button class="btn btn-block btn-primary">+</button>
+            </div>
+        </div>
+    </div>
+
+
+    {{--//////////////////////////////////////ACTIVIADES ADMINISTRATIVAS/////////--}}
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <i class="icon-calendar"></i>
+            <h3 class="panel-title">Actividades Administrativas</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
                 <label>Actividad administrativa</label>
                 <select class="form-control select2"
                         {{$data->accion=='ver' ? 'disabled':''}}
@@ -265,7 +350,7 @@
                                 @if( $data->accion=='ver' )
                                 @foreach($data->res_actividad_administrativas_docente_id as $actividadadmin)
                                 @foreach($actividadadmin as $_actividadadmin)
-                                    {{$_actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
+                                {{$_actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
                                 @endforeach
                                 @endforeach
                                 @endif
@@ -277,26 +362,30 @@
             </div>
         </div>
     </div>
-    {{--{!! Form::submit(--}}
-    {{--$data ? "Guardar" : "Agregar",--}}
-    {{--['class' => 'btn btn-block btn-lg btn-primary'] ) !!}--}}
-    {!! Form::close()  !!}
+
     <div class="box-footer">
-        {{--<button type="submit" class="btn btn-primary">Submit--}}
-        {{--</button>--}}
-        <a class="btn btn-block btn-lg btn-primary" href="v_building">
-            <i class="fa fa-save"></i>
-            Guardar
-        </a>
+        {!! Form::submit(
+        $data ? "Guardar" : "Agregar",
+        ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
     </div>
+
+    {!! Form::close()  !!}
+
 @endsection
 
 @section('particular_scripts')
     <script src="{!! asset('js/select2.full.min.js') !!}"></script>
+    <script src="{!! asset('js/bootstrap-datepicker.js') !!}"></script>
+    <script src="{!! asset('js/bootstrap-datepicker.es.js') !!}"></script>
     <script>
         $(".select2").select2({});
         selComponentes.on('select2:select', function (evt) {
             console.log("select");
+        });
+
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
         });
     </script>
 @endsection
