@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocenteDefinitivoFactory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
 
@@ -81,6 +82,7 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
+
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
         $docente = $docente_factory->crearDocente($request);
@@ -98,11 +100,12 @@ class DocenteDefinitivoController extends Controller
             'docente_id'            => $docente->id,
             'tipo_nombramiento_id'  => $plaza_nombramiento,
             'plaza'                 => $plaza_codigo,
-            'tipo_plaza'            => $plaza_tipo
+            'tipo_plaza_horas'      => $plaza_tipo
         ]);
 
+
         $plaza->save();
-        return $plaza;
+
 
 
         /////////////////////////// Historial Evaluación////////////////////////////
@@ -112,13 +115,17 @@ class DocenteDefinitivoController extends Controller
         $evaluacion_resultado  = $request['evaluacion_resultado'];
         $evaluacion_tipo        = $request['evaluacion_tipo'];
 
+        $format = 'm/d/Y';
+
 
         $evaluacion =  new Evaluacion([
-            'fecha_evaluacion'      => $request['evaluacion_inicio'],
-            'vigencia_evaluacion'   => $request['evaluacion_vigencia'],
+            'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio),
+            'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia),
             'tipo_evaluacion_id'    => $evaluacion_tipo,
-            'resultado_evaluacion'  => $evaluacion_resultado,
+            'resultado_evaluacion_id'  => $evaluacion_resultado,
         ]);
+
+
 
         $evaluacion->save();
 
@@ -141,7 +148,7 @@ class DocenteDefinitivoController extends Controller
 
         foreach ($actividades_administrativas as $actividad){
             $actividad =  new ActividadAdminDocenteDefinitivo([
-                'docente_definitivo_id' => $docente_definitivo,
+                'docente_definitivo_id' => $docente_definitivo->id,
                 'actividad_admin_id'    => $actividad
             ]);
             $actividad->save();
@@ -179,39 +186,24 @@ class DocenteDefinitivoController extends Controller
 
 
         //Almacena id de las disciplinas del docente
-        $data[0]['res_disciplina_docente_id'] = DisciplinaDocente::select('disciplina_id')->where('docente_id', '=', $id)->get();
-        //Almacena id de los disciplinas del docente
-        foreach ($data[0]['res_disciplina_docente_id'] as $disciplinas => $dis)
-            $temporal_campo_disciplina[] = Disciplina::select('campo_disciplinar_id')->where('id', '=', $dis['disciplina_id'])->get();
-        $data[0]['res_campo_disciplina_docente_id'] = $temporal_campo_disciplina;
-        //Almacena los componentes formacion del docente
-        foreach ($data[0]['res_campo_disciplina_docente_id'] as $campos_disciplinas => $camp_dis)
-            $temporal_componentes[] = CampoDisciplinar::select('componente_formacion_id')->where('id', '=', $camp_dis[0]['campo_disciplinar_id'])->get();
-        $data[0]['res_componente_formacion_docente'] = $temporal_componentes;
+        $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
+                                                ->join('DISCIPLINA', 'DISCIPLINA_DOCENTE.disciplina_id', '=', 'DISCIPLINA.id')->get();
+
+
+
         //Almacena id del tipo plaza del docente
-        $data[0]['res_tipo_plaza_docente_id'] = TipoPlazaDocente::select('id')->where('docente_id', '=', $id)->get();
+        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)->get();
         //Almacena id del tipo nombramiento del docente
-        $data[0]['res_tipo_nombramiento_docente_id'] = TipoPlazaDocente::select('tipo_nombramiento_id')->where('docente_id', '=', $id)->get();
+
         //Almacena id del historial del docente
-        $data[0]['res_historial_evaluacion_docente_id'] = HistorialEvaluacionDocente::select('id')->where('docente_id', '=', $id)->get();
-        //Almacena id de la evaluacion del docente
-        $data[0]['res_evaluacion_docente_id'] = HistorialEvaluacionDocente::select('evaluacion_id')->where('docente_id', '=', $id)->get();
-        //Almacena id tipo y resultado de evaluacion del docente
-        foreach ($data[0]['res_evaluacion_docente_id'] as $evaluaciones => $eva)
-            $temporal_tipo_evaluacion[] = Evaluacion::select('tipo_evaluacion_id')->where('id', '=', $eva['evaluacion_id'])->get();
-        foreach ($data[0]['res_evaluacion_docente_id'] as $evaluaciones => $eva)
-            $temporal_resultado_evaluacion[] = Evaluacion::select('resultado_evaluacion_id')->where('id', '=', $eva['evaluacion_id'])->get();
-        //Almacena id tipo y resultado de evaluacion del docente
-        $data[0]['res_tipo_evaluacion_docente_id'] = $temporal_tipo_evaluacion;
-        //Almacena id tipo y resultado de evaluacion del docente
-        $data[0]['res_resultado_evluacion_docente_id'] = $temporal_resultado_evaluacion;
-        //Almacena id del docente definitivo del docente
-        $data[0]['res_docente_definitivo_id'] = DocenteDefinitivo::select('id')->where('docente_id', '=', $id)->get();
-        //Almacena actividades administrativas id del docente
-        foreach ($data[0]['res_docente_definitivo_id'] as $actividades_admin => $act)
-            $temporal_actividades_admin[] = ActividadAdminDocenteDefinitivo::select('actividad_admin_id')->where('docente_definitivo_id', '=', $act['id'])->get();
-        //Almacena actividades administrativas id del docente
-        $data[0]['res_actividad_administrativas_docente_id'] = $temporal_actividades_admin;
+        $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
+                                                            ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
+
+
+        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
+                                                ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
+
+
 
         $data[0]['accion'] = 'ver';
         $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
