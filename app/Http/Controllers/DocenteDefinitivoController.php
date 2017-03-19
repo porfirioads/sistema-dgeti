@@ -56,20 +56,20 @@ class DocenteDefinitivoController extends Controller
     {
 
 
-        $data = Docente::where('id', '=', 1)->get();
+        $data =  new Docente([]);;
 
 
-        $data[0]['accion'] = 'crear';
-        $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
-        $data[0]['dic_disciplina'] = Disciplina::all();
-        $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
-        $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
-        $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
-        $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
+        $data['accion'] = 'crear';
+        $data['dic_componente_formacion'] = ComponenteFormacion::all();
+        $data['dic_campos_disciplinares'] = CampoDisciplinar::all();
+        $data['dic_disciplina'] = Disciplina::all();
+        $data['dic_tipo_nombramiento'] = TipoNombramiento::all();
+        $data['dic_resultados'] = ResultadoEvaluacion::all();
+        $data['dic_tipo_resultados']= TipoEvaluacion::all();
+        $data['dic_actividad_administrativas'] = ActividadAdmin::all();
 
-        #return $data[0];
-        return view('docente_definitivo.editar')->with('data', $data[0]);
+        #return $data;
+        return view('docente_definitivo.editar')->with('data', $data);
     }
 
 
@@ -214,7 +214,7 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
         $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
 
-        #return  $data[0];
+        return  $data[0];
         return view('docente_definitivo.editar')->with('data', $data[0]);
     }
 

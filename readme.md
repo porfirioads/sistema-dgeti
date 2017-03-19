@@ -28,6 +28,11 @@ php artisan serve --host 0.0.0.0
 php artisan migrate:refresh --seed
 ```
 
+### Si marca error de seeder
+```
+composer dump-autoload
+```
+
 ### Crear un seeder
 ```
 php artisan make:seeder AspectoEvaluacionTableSeeder
