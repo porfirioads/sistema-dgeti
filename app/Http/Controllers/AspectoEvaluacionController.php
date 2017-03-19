@@ -18,27 +18,16 @@ class AspectoEvaluacionController extends Controller
      */
     public function index()
     {
-        $cont = 1;
         $aspectos = AspectoEvaluacion::all();
-        echo '<h1>aspectos</h1>';
-        foreach ($aspectos as $aspecto) {
-            echo '<h2>aspecto ' . $cont . '</h2>';
-            echo $aspecto->subaspectos_evaluacion()->get();
-            echo '<br>';
-            if ($cont++ == 5) break;
-        }
-        $cont = 1;
-        $subaspectos = SubaspectoEvaluacion::all();
-        echo '<h1>subaspectos</h1>';
-        foreach ($subaspectos as $subaspecto) {
-            echo '<h2>subaspecto ' . $cont . '</h2>';
-            echo '<h3>aspecto</h3>';
-            echo $subaspecto->aspecto_evaluacion()->get();
-            echo '<h3>evidencias</h3>';
-            echo $subaspecto->evidencias()->get();
-            echo '<br>';
-            if ($cont++ == 5) break;
-        }
+        // Obtener los aspectos de la institución del director actual
+        $estado = 'Zacatecas';
+        $plantel = 'CETis 114';
+        $saeti = 'Saeti';
+        $extension = 'Extensión :P';
+        $fecha = date('d/m/Y');
+
+        return view('snb.lista_aspectos')->with(compact('aspectos', 'estado',
+        'plantel', 'saeti', 'extension', 'fecha'));
     }
 
     /**

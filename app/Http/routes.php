@@ -43,4 +43,4 @@ Route::get('defi', function () {
     return view('docente_definitivo.list');
 });
 
-Route::get('aspectos', 'AspectoEvaluacionController@index');
+Route::get('evaluacion_snb', 'AspectoEvaluacionController@index');

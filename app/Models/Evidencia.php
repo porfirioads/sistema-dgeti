@@ -13,4 +13,8 @@ class Evidencia extends Model
     protected $table = 'EVIDENCIA';
     protected $fillable = array('evidencia', 'subaspecto_evaluacion_id');
     protected $dates = ['deleted_at'];
+
+    public function subaspecto_evaluacion() {
+        return $this->belongsTo('App\Models\SubaspectoEvaluacion');
+    }
 }
