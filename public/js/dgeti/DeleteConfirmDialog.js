@@ -2,37 +2,48 @@
  * Created by AdrianHMG on 16/03/2017.
  */
 
-function eliminar(mena, nomb, primer_ap, segundo_ap) {
-    var mensaje = mena;
-    var nombre= nomb;
-    var primer_apellido = primer_ap;
-    var segundo_apellido = segundo_ap;
+function eliminar(id_doce, nomb, primer_ap, segundo_ap) {
+        var id = id_doce;
+        var nombre = nomb;
+        var primer_apellido = primer_ap;
+        var segundo_apellido = segundo_ap;
 
-    $('button[id="btnEliminar"]').on('click', function (e) {
-        e.preventDefault();
+        console.log(id);
 
-        console.log(mensaje);
+        $('#confirm').find('.modal-body').text('\u00bf Desea eliminar a ' + nombre + ' ' + primer_apellido + ' ' + segundo_apellido + ' ?');
 
-        var modalDelete = $('#confirm');
-        modalDelete.find('.modal-body').text('¿Desea eliminar a '+nombre+' '+primer_apellido+' '+segundo_apellido+' ?');
-
-        modalDelete.modal({
+        $('#confirm').modal({
             backdrop: 'static',
             keyboard: false,
         })
 
-
             .on('click', '#btnConfirmar', function (e) {
+                eliminarDocente(id);
             })
 
             .on('click', '#btnCancelar', function (e) {
-                mensaje = "";
+                id = "";
                 nombre = "";
                 primer_apellido = "";
                 segundo_apellido = "";
-                console.log("sffs");
             })
-    });
+
+        function eliminarDocente(id) {
+            jQuery.ajax({
+                url: '/docente_definitivo/'+id,
+                type: 'DELETE',
+                dataType: 'JSON',
+                success: function (result) {
+                    console.log(result);
+                    if (!result.eliminado) {
+                        showErrorNotification('Datos incorrectos');
+                    } else {
+                        window.location = 'docente_definitivo';
+                        showInfoNotification('Docente eliminado correctamente.');
+                    }
+                }
+            });
+        }
 }
 //$('button[name="remove_levels"]').on('click', function (e) {
 //    var $form = $(this).closest('form');

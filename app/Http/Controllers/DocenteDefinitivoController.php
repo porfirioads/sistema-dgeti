@@ -251,6 +251,6 @@ class DocenteDefinitivoController extends Controller
     public function destroy($id)
     {
         $data = Docente::find($id)->delete();
-        return redirect()->back()->with(["deleted" => "The post was deleted"]);
+        return response()->json(['eliminado'=>$data]);
     }
 }
