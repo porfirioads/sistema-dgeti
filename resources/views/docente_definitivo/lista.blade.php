@@ -49,38 +49,35 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                            <button class='btn btn-block btn-danger' name="remove_levels" value={{$docente->id}}>
+                            <button class='btn btn-block btn-danger' id="btnEliminar" onclick="eliminar('{{$docente->id}}','{{$docente->nombre}}','{{$docente->primer_apellido}}','{{$docente->segundo_apellido}}')">
                                 <i class="fa fa-trash"></i>
                             </button>
-                        <div id="confirm" class="modal fade">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &#215;</button>
-                                        <h4 class="modal-title">Eliminar Docente</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
-                                        </button>
-                                        <button type="button" class="btn btn-primary" id="delete">Eliminar</button>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        {!! Form::open([ 'method'  => 'delete', 'route' => [ 'docente_definitivo.destroy', $docente->id ]])!!}
-                        {!! Form::close()!!}
-                        <!-- /.modal -->
                     </div>
                 </td>
             </tr>
         @endforeach
         </tbody>
+        <div id="confirm" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &#215;</button>
+                        <h4 class="modal-title">Eliminar Docente</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelar">Cancelar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btnConfirmar">Eliminar</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
     </table>
 @endsection
 
