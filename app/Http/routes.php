@@ -44,3 +44,5 @@ Route::get('defi', function () {
 });
 
 Route::get('evaluacion_snb', 'AspectoEvaluacionController@index');
+
+Route::get('info_gral_snb', 'AspectoEvaluacionController@showAspectoInfoGeneral');
