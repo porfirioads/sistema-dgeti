@@ -33,7 +33,7 @@ class Docente extends Model
         'correo',
         'telefono_celular',
         'telefono_domicilio',
-        'domicilio'
+        'domicilio',
     );
 
     protected $dates = ['deleted_at'];
