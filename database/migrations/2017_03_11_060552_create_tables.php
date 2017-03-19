@@ -30,7 +30,7 @@ class CreateTables extends Migration
             $table->string('telefono_celular', 20)->comment('');
             $table->string('telefono_domicilio', 20)->nullable()->comment('');
             $table->string('domicilio', 50)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->unique('curp','curp_UNIQUE');
             $table->unique('rfc','rfc_UNIQUE');
@@ -44,7 +44,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->integer('docente_id')->unsigned()->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_id','fk_DOCENTES_DEFINITIVO_DOCENTE_idx');
 
@@ -60,7 +60,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->integer('concurso')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -73,7 +73,7 @@ class CreateTables extends Migration
             $table->integer('docente_id')->unsigned()->comment('');
             $table->integer('folio_federal')->comment('');
             $table->integer('concurso_id')->unsigned()->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->unique('folio_federal','folio_general_UNIQUE');
 
@@ -95,7 +95,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->integer('docente_definitivo_id')->unsigned()->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_definitivo_id','fk_DOCENTES_TUTORES_DOCENTES_DEFINITIVO1_idx');
 
@@ -117,7 +117,7 @@ class CreateTables extends Migration
             $table->string('capacitacion_realizado', 1)->comment('');
             $table->string('evaluacion_realizado', 1)->comment('');
             $table->string('funcion', 21)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_definitivo_id','fk_DOCENTES_ATP_DOCENTES_DEFINITIVO1_idx');
             $table->index('concurso_id','fk_DOCENTES_ATP_CONCURSO1_idx');
@@ -137,7 +137,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('status', 20)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -150,7 +150,7 @@ class CreateTables extends Migration
             $table->integer('docente_definitivo_id')->unsigned()->comment('');
             $table->string('funcion', 45)->comment('');
             $table->integer('status_id')->unsigned()->comment('');
-            $table->string('delete_at', 45)->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_definitivo_id','fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1_idx');
             $table->index('status_id','fk_DOCENTE_EVALUADOR_STATUS1_idx');
@@ -170,7 +170,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('actividad', 45)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -181,7 +181,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('componente_formacion', 45)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -193,7 +193,7 @@ class CreateTables extends Migration
             $table->increments('id')->comment('');
             $table->string('campo_disciplinar', 45)->comment('');
             $table->integer('componente_formacion_id')->unsigned()->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('componente_formacion_id','fk_CAMPO_DISCIPLINAR_COMPONENTE_FORMACION1_idx');
 
@@ -210,7 +210,7 @@ class CreateTables extends Migration
             $table->increments('id')->comment('');
             $table->string('disciplina', 45)->comment('');
             $table->integer('campo_disciplinar_id')->unsigned()->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('campo_disciplinar_id','fk_DISCIPLINA_CAMPO_DISCIPLINAR1_idx');
 
@@ -226,7 +226,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('tipo_evaluacion', 15)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -237,7 +237,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('funcion', 45)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -248,7 +248,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('tipo_resultado', 35)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -262,7 +262,7 @@ class CreateTables extends Migration
             $table->date('vigencia_evaluacion')->comment('');
             $table->integer('tipo_evaluacion_id')->unsigned()->comment('');
             $table->integer('resultado_evaluacion_id')->unsigned()->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('tipo_evaluacion_id','fk_HISTORIAL_EVALUACION_TIPO_EVALUACION1_idx');
             $table->index('resultado_evaluacion_id','fk_EVALUACION_RESULTADO_EVALUACION1_idx');
@@ -283,7 +283,7 @@ class CreateTables extends Migration
             $table->integer('evaluacion_id')->unsigned()->comment('');
             $table->integer('docente_id')->unsigned()->comment('');
             $table->increments('id')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_id','fk_HISTORIAL_EVALUACION_has_DOCENTE_DOCENTE1_idx');
             $table->index('evaluacion_id','fk_HISTORIAL_EVALUACION_has_DOCENTE_HISTORIAL_EVALUACION1_idx');
@@ -303,7 +303,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('tipo_nombramiento', 35)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -315,7 +315,7 @@ class CreateTables extends Migration
             $table->integer('actividad_admin_id')->unsigned()->comment('');
             $table->integer('docente_definitivo_id')->unsigned()->comment('');
             $table->increments('id')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_definitivo_id','fk_ACTIVIDAD_ADMINISTRATIVA_has_DOCENTE_DEFINITIVO_DOCENTE__idx');
             $table->index('actividad_admin_id','fk_ACTIVIDAD_ADMINISTRATIVA_has_DOCENTE_DEFINITIVO_ACTIVIDA_idx');
@@ -340,7 +340,7 @@ class CreateTables extends Migration
             $table->string('observacion', 140)->comment('');
             $table->integer('total_horas_semana')->comment('');
             $table->increments('id')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('docente_tutor_id','fk_DOCENTE_IDONEO_has_DOCENTE_TUTOR_DOCENTE_TUTOR1_idx');
             $table->index('docente_idoneo_id','fk_DOCENTE_IDONEO_has_DOCENTE_TUTOR_DOCENTE_IDONEO1_idx');
@@ -361,7 +361,7 @@ class CreateTables extends Migration
             $table->integer('docente_id')->unsigned()->comment('');
             $table->integer('disciplina_id')->unsigned()->comment('');
             $table->increments('id')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('disciplina_id','fk_DOCENTE_has_DISCIPLINA_DISCIPLINA1_idx');
             $table->index('docente_id','fk_DOCENTE_has_DISCIPLINA_DOCENTE1_idx');
@@ -382,7 +382,7 @@ class CreateTables extends Migration
             $table->integer('docente_tutor_id')->unsigned()->comment('');
             $table->integer('funcion_id')->unsigned()->comment('');
             $table->increments('id')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('funcion_id','fk_DOCENTE_TUTOR_has_FUNCION_FUNCION1_idx');
             $table->index('docente_tutor_id','fk_DOCENTE_TUTOR_has_FUNCION_DOCENTE_TUTOR1_idx');
@@ -402,7 +402,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->integer('numero_horas')->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->timestamps();
 
@@ -413,7 +413,7 @@ class CreateTables extends Migration
 
             $table->increments('id')->comment('');
             $table->string('descripcion', 45)->comment('');
-            $table->date('delete_at')->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
             $table->integer('numero_horas_id')->unsigned()->comment('');
 
             $table->index('numero_horas_id','fk_TIPO_PLAZA_NUMERO_HORAS1_idx');
@@ -433,6 +433,7 @@ class CreateTables extends Migration
             $table->integer('tipo_plaza_id')->unsigned()->comment('');
             $table->integer('id')->comment('');
             $table->integer('docente_id')->unsigned()->comment('');
+            $table->date('deleted_at')->nullable()->comment('');
 
             $table->index('tipo_nombramiento_id','fk_PLAZA_DOCENTE_has_TIPO_NOMBRAMIENTO_TIPO_NOMBRAMIENTO1_idx');
             $table->index('tipo_plaza_id','fk_PLAZA_DOCENTE_has_TIPO_NOMBRAMIENTO_TIPO_PLAZA1_idx');
