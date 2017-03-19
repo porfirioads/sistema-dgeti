@@ -500,6 +500,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
+            $table->string('clave_aspecto')->unique();
             $table->string('aspecto', 255);
             $table->string('descripcion', 500)->nullable();
             $table->date('deleted_at')->nullable();

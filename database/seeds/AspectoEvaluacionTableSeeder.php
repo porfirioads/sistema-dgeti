@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\AspectoEvaluacion;
 
 class AspectoEvaluacionTableSeeder extends Seeder
 {
@@ -11,64 +12,13 @@ class AspectoEvaluacionTableSeeder extends Seeder
      */
     public function run()
     {
+        AspectoEvaluacion::getQuery()->delete();
+
         DB::table('ASPECTO_EVALUACION')->insert([
             'id' => null,
+            'clave_aspecto' => 'INFO_GRAL',
             'aspecto' => e('Información General'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 2'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 3'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 4'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 5'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 6'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 7'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 8'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 9'),
-            'descripcion' => e('Esta es la descripción')
-        ]);
-
-        DB::table('ASPECTO_EVALUACION')->insert([
-            'id' => null,
-            'aspecto' => e('Aspecto evaluación 10'),
-            'descripcion' => e('Esta es la descripción')
+            'descripcion' => e('Un plantel que imparte educación media superior deberá de contar con la documentación legal que avale y describa su ubicación, infraestructura, permisos y tipo de oferta educativa que le caracterizan')
         ]);
     }
 }
