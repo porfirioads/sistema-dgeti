@@ -235,14 +235,14 @@
                         </div>
 
                         <div class="col-md-1 col-sm-1">
-                            <a class="btn btn-block btn-primary btn-danger">
+                            <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
                                 <i class="fa fa-times"></i>
                             </a>
                         </div>
                     </div>
                 @endforeach
             @else
-                <div class="row">
+                <div class="row elemento">
                     <div class="form-group col-md-4 col-sm-12">
 
                         {!! Form::text('plaza_codigo', $value = $data->accion=='visualizar' ? $plaza->plaza:null, ['class' =>
@@ -251,9 +251,22 @@
                     </div>
 
                     <div class="form-group col-md-4 col-sm-12">
-                        {!! Form::text('plaza_tipo', $value = $data->accion=='visualizar' ? $plaza->tipo_plaza_horas:null, ['class' =>
-                        'form-control', 'placeholder' => 'Tipo plaza','required',
-                        $data->accion=='visualizar' ? 'disabled':'',])!!}
+
+
+
+                        <select class="form-control select2"
+                                name="plaza_tipo"
+                                {{$data->accion=='visualizar' ? 'disabled':''}}>
+                            @foreach($data->dic_tipo_plaza as $tipo)
+                                <option value="{{$tipo->id}}"
+                                {{--@if( $data->accion=='visualizar' )--}}
+                                    {{--{{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}--}}
+                                        {{--@endif--}}
+                                >
+                                    {{$tipo->descripcion }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group col-md-3 col-sm-10">
 
@@ -272,19 +285,20 @@
                     </div>
 
                     <div class="col-md-1 col-sm-1">
-                        <a class="btn btn-block btn-primary btn-danger">
+                        <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
                 </div>
 
+                <div class="division"></div>
             @endif
 
 
             <div class="row">
                 <div class="col-md-11"></div>
                 <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary">
+                    <a class="btn btn-block btn-primary add-element" {{$data->accion=='visualizar' ? 'disabled':''}}>
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
@@ -294,6 +308,9 @@
 
     {{--//////////////////////////////////////HISTORIAL EVALUACION/////////--}}
     <div class="panel panel-primary">
+        <form name="historial_evalacion">
+
+
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
             <h3 class="panel-title">Historial Evaluación</h3>
@@ -321,7 +338,7 @@
 
             @if( $data->accion=='visualizar' )
                 @foreach($data->res_evaluacion as $evaluacion)
-                    <div class="row">
+                    <div class="row ">
                         <div class="form-group col-lg-3">
 
                             {!! Form::text('evaluacion_inicio', $value = $data->accion=='visualizar' ? $evaluacion->fecha_evaluacion:null,
@@ -371,44 +388,15 @@
                         </div>
 
                         <div class="form-group col-lg-1">
-                            <a class="btn btn-block btn-primary btn-danger">
+                            <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
                                 <i class="fa fa-times"></i>
                             </a>
                         </div>
                     </div>
                 @endforeach
             @else
-                <div class="row">
-                    <div class="form-group col-lg-3">
+                <div class="row elemento" >
 
-                        {!! Form::text('evaluacion_inicio', $value = $data->accion=='visualizar' ? $evaluacion->fecha_evaluacion:null,
-                        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
-                        'required',$data->accion=='visualizar' ? 'disabled':'','id'=>'datepicker'])!!}
-                    </div>
-
-
-                    <div class="form-group col-lg-3">
-
-                        {!! Form::text('evaluacion_vigencia', $value = $data->accion=='visualizar' ? $evaluacion->vigencia_evaluacion:null,
-                        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
-                        'required',$data->accion=='visualizar' ? 'disabled':'','id'=>'datepicker'])!!}
-                    </div>
-
-                    <div class="form-group col-lg-2">
-
-                        <select class="form-control select2"
-                                name="evaluacion_resultado"
-                                {{$data->accion=='visualizar' ? 'disabled':''}}>
-                            @foreach($data->dic_resultados as $resultado)
-                                <option value="{{$resultado->id}}"
-                                @if( $data->accion=='visualizar' )
-                                    {{$resultado->id == $evaluacion->resultado_evaluacion_id ? 'selected':''}}
-                                        @endif>
-                                    {{$resultado->tipo_resultado}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <div class="form-group col-lg-3">
                         <select class="form-control select2"
@@ -427,25 +415,57 @@
                         </select>
                     </div>
 
+
+                    <div class="form-group col-lg-2">
+                        <select class="form-control select2"
+                                name="evaluacion_resultado"
+                                {{$data->accion=='visualizar' ? 'disabled':''}}>
+                            @foreach($data->dic_resultados as $resultado)
+                                <option value="{{$resultado->id}}"
+                                @if( $data->accion=='visualizar' )
+                                    {{$resultado->id == $evaluacion->resultado_evaluacion_id ? 'selected':''}}
+                                        @endif>
+                                    {{$resultado->tipo_resultado}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-3">
+
+                        {!! Form::text('evaluacion_vigencia', $value = $data->accion=='visualizar' ? $evaluacion->vigencia_evaluacion:null,
+                        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
+                        'required',$data->accion=='visualizar' ? 'disabled':''])!!}
+                    </div>
+
+                    <div class="form-group col-lg-3">
+                        {!! Form::text('evaluacion_inicio', $value = $data->accion=='visualizar' ? $evaluacion->fecha_evaluacion:null,
+                        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
+                        'required',$data->accion=='visualizar' ? 'disabled':''])!!}
+                    </div>
+
                     <div class="form-group col-lg-1">
-                        <a class="btn btn-block btn-primary btn-danger">
+                        <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
                 </div>
 
+                <div class="division"></div>
 
             @endif
             <div class="row">
                 <div class="col-md-11"></div>
                 <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary">
+                    <a class="btn btn-block btn-primary add-element" {{$data->accion=='visualizar' ? 'disabled':''}}>
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
             </div>
         </div>
+        </form>
     </div>
+
 
 
     {{--//////////////////////////////////////ACTIVIADES ADMINISTRATIVAS/////////--}}
@@ -493,6 +513,7 @@
     <script src="{!! asset('js/select2.full.min.js') !!}"></script>
     <script src="{!! asset('js/bootstrap-datepicker.js') !!}"></script>
     <script src="{!! asset('js/bootstrap-datepicker.es.js') !!}"></script>
+    <script src="{!! asset('js/add-elements.js') !!}"></script>
     <script>
         var selComponentes = $('#selComponentes');
 

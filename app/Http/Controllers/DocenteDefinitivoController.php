@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocenteDefinitivoFactory;
+use App\Models\TipoPlaza;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
@@ -67,7 +68,10 @@ class DocenteDefinitivoController extends Controller
         $data['dic_resultados'] = ResultadoEvaluacion::all();
         $data['dic_tipo_resultados']= TipoEvaluacion::all();
         $data['dic_actividad_administrativas'] = ActividadAdmin::all();
+        $data['dic_tipo_plaza'] = TipoPlaza::all();
 
+
+        #return  $data;
         #return $data;
         return view('docente_definitivo.editar')->with('data', $data);
     }
@@ -82,6 +86,7 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
+        return $request['historial_evalacion'];
 
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
@@ -189,11 +194,7 @@ class DocenteDefinitivoController extends Controller
         $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
                                                 ->join('DISCIPLINA', 'DISCIPLINA_DOCENTE.disciplina_id', '=', 'DISCIPLINA.id')->get();
 
-
-
-        //Almacena id del tipo plaza del docente
         $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)->get();
-        //Almacena id del tipo nombramiento del docente
 
         //Almacena id del historial del docente
         $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
@@ -204,8 +205,7 @@ class DocenteDefinitivoController extends Controller
                                                 ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
 
 
-
-        $data[0]['accion'] = 'ver';
+        $data[0]['accion'] = 'visualizar';
         $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
         $data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
         $data[0]['dic_disciplina'] = Disciplina::all();
@@ -213,6 +213,8 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
         $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
         $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
+        $data[0]['dic_tipo_plaza'] = TipoPlaza::all();
+
 
         return  $data[0];
         return view('docente_definitivo.editar')->with('data', $data[0]);
