@@ -250,10 +250,7 @@
                         $data->accion=='visualizar' ? 'disabled':'',])!!}
                     </div>
 
-                    <div class="form-group col-md-4 col-sm-12">
-
-
-
+                    <div class="form-group col-md-3 col-sm-12">
                         <select class="form-control select2"
                                 name="plaza_tipo"
                                 {{$data->accion=='visualizar' ? 'disabled':''}}>
@@ -268,6 +265,24 @@
                             @endforeach
                         </select>
                     </div>
+
+
+                    <div class="form-group col-md-3 col-sm-12">
+                        <select class="form-control select2"
+                                name="plaza_tipo"
+                                {{$data->accion=='visualizar' ? 'disabled':''}}>
+                            @foreach($data->dic_numero_horas as $num_horas)
+                                <option value="{{$num_horas->id}}"
+                                        {{--@if( $data->accion=='visualizar' )--}}
+                                        {{--{{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}--}}
+                                        {{--@endif--}}
+                                >
+                                    {{$tipo->numero_horas }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-group col-md-3 col-sm-10">
 
                         <select class="form-control select2"

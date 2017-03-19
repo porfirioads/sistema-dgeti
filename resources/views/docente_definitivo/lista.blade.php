@@ -44,7 +44,8 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a class="btn btn-block btn-primary">
+                        <a class="btn btn-block btn-primary"
+                           href="docente_definitivo/{{$docente->id}}/edit">
                             <i class="fa fa-pencil"></i>
                         </a>
                     </div>

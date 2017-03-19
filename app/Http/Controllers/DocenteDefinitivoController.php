@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocenteDefinitivoFactory;
+use App\Models\NumeroHoras;
 use App\Models\TipoPlaza;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -69,7 +70,7 @@ class DocenteDefinitivoController extends Controller
         $data['dic_tipo_resultados']= TipoEvaluacion::all();
         $data['dic_actividad_administrativas'] = ActividadAdmin::all();
         $data['dic_tipo_plaza'] = TipoPlaza::all();
-
+        $data['dic_numero_horas'] = NumeroHoras::all();
 
         #return  $data;
         #return $data;
@@ -216,7 +217,7 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_tipo_plaza'] = TipoPlaza::all();
 
 
-        return  $data[0];
+        #return  $data[0];
         return view('docente_definitivo.editar')->with('data', $data[0]);
     }
 
