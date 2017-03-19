@@ -1,14 +1,21 @@
 /**
  * Created by AdrianHMG on 16/03/2017.
  */
-$('button[name="remove_levels"]').on('click', function(e) {
+$('button[name="remove_levels"]').on('click', function (e) {
     var $form = $(this).closest('form');
     e.preventDefault();
-    $('#confirm').modal({
+
+    var modalDelete = $('#confirm');
+
+    modalDelete.find('.modal-body').text('heloo');
+
+    modalDelete.modal({
         backdrop: 'static',
-        keyboard: false
+        keyboard: false,
     })
-        .one('click', '#delete', function(e) {
+
+
+        .one('click', '#delete', function (e) {
             $form.trigger('submit');
         });
 });

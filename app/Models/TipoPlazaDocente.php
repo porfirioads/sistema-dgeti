@@ -19,11 +19,11 @@ class TipoPlazaDocente extends Model
     use SoftDeletes;
 
     protected $primaryKey = 'id';
-    protected $table = 'TIPO_PLAZA_DOCENTE';
+    protected $table = 'PLAZA_DOCENTE';
     protected $fillable = array(
         'docente_id',
         'tipo_nombramiento_id',
-        'tipo_plaza_horas',
+        'tipo_plaza_id',
         'plaza'
     );
 

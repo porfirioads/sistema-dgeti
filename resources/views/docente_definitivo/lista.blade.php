@@ -49,17 +49,9 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        {{--<form id="remove_docente" action="{{ route('docente_definitivo.destroy', ['id' => $docente->id])}}" method="delete">
-                            <button class='btn btn-block btn-danger' name="remove_levels" value="delete" method="delete">
+                            <button class='btn btn-block btn-danger' name="remove_levels" value={{$docente->id}}>
                                 <i class="fa fa-trash"></i>
                             </button>
-                        </form>--}}
-                        {{ Form::open(['route' => ['docente_definitivo.destroy', $docente->id], 'method' => 'delete']) }}
-                        {{ Form::submit('Delete') }}
-                        {{ Form::close() }}
-                        <button class='btn btn-block btn-danger' name="remove_levels" value="delete" method="delete">
-                            <i class="fa fa-trash"></i>
-                        </button>
                         <div id="confirm" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -69,7 +61,7 @@
                                         <h4 class="modal-title">Eliminar Docente</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <p>&#191;Deseas eliminar el docente?</p>
+                                        <p></p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar
@@ -81,6 +73,8 @@
                             </div>
                             <!-- /.modal-dialog -->
                         </div>
+                        {!! Form::open([ 'method'  => 'delete', 'route' => [ 'docente_definitivo.destroy', $docente->id ]])!!}
+                        {!! Form::close()!!}
                         <!-- /.modal -->
                     </div>
                 </td>

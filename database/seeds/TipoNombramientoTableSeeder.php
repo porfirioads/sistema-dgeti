@@ -12,7 +12,6 @@ class TipoNombramientoTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
 
         DB::table('TIPO_NOMBRAMIENTO')->insert([
             'id'=>'1',
