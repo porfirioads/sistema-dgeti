@@ -233,7 +233,40 @@ class DocenteDefinitivoController extends Controller
      */
     public function edit($id)
     {
-        return "EDITAR";
+        $data = Docente::where('id', $id)
+            ->get();
+
+
+
+        //Almacena id de las disciplinas del docente
+        $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
+            ->join('DISCIPLINA', 'DISCIPLINA_DOCENTE.disciplina_id', '=', 'DISCIPLINA.id')->get();
+
+        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)->get();
+
+        //Almacena id del historial del docente
+        $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
+            ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
+
+
+        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
+            ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
+
+
+        $data[0]['accion'] = 'modificar';
+        $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
+        $data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
+        $data[0]['dic_disciplina'] = Disciplina::all();
+        $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
+        $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
+        $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
+        $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
+        $data[0]['dic_tipo_plaza'] = TipoPlaza::all();
+        $data[0]['dic_numero_horas'] = NumeroHoras::all();
+
+
+        #return  $data[0];
+        return view('docente_definitivo.editar')->with('data', $data[0]);
     }
 
     /**

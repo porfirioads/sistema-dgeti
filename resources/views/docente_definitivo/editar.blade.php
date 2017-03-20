@@ -14,7 +14,8 @@
 @section('box_title', 'Docente definitivo')
 
 @section('box_body')
-    {!! Form::open(['route' => 'docente_definitivo.store', 'class' => '',
+    {!! Form::open(['route' => $data->accion=='modificar'?['docente_definitivo.update',$data->id]:'docente_definitivo.store', 'class' => '',
+
     'name'=>'form_docente_definitivo']) !!}
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
@@ -24,25 +25,25 @@
         <div class="panel-body">
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CCT</label>
-                {!! Form::text('cct', $value = $data->accion=='visualizar' ? $data->cct:null, ['class' =>
+                {!! Form::text('cct', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->cct:null, ['class' =>
                 'form-control', 'placeholder' => 'CCT','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CURP</label>
-                {!! Form::text('curp', $value = $data->accion=='visualizar' ? $data->curp:null, ['class' =>
+                {!! Form::text('curp', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->curp:null, ['class' =>
                 'form-control', 'placeholder' => 'Curp','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">RFC</label>
-                {!! Form::text('rfc', $value = $data->accion=='visualizar' ? $data->rfc:null, ['class' =>
+                {!! Form::text('rfc', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->rfc:null, ['class' =>
                 'form-control', 'placeholder' => 'RFC','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">Nombre</label>
-                {!! Form::text('nombre', $value = $data->accion=='visualizar' ? $data->nombre:null, ['class' =>
+                {!! Form::text('nombre', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->nombre:null, ['class' =>
                 'form-control', 'placeholder' => 'Nombre','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -51,7 +52,7 @@
                     Primer Apellido
                 </label>
                 {!! Form::text('primer_apellido',
-                $value = $data->accion=='visualizar' ? $data->primer_apellido:null,
+                $value = $data->accion=='visualizar'  ||  $data->accion=='modificar'? $data->primer_apellido:null,
                 ['class' => 'form-control',
                 'placeholder' => 'Primer Apellido','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
@@ -61,7 +62,7 @@
                     Segundo Apellido
                 </label>
                 {!! Form::text('segundo_apellido',
-                $value = $data->accion=='visualizar' ? $data->segundo_apellido:null,['class' => 'form-control',
+                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->segundo_apellido:null,['class' => 'form-control',
                 'placeholder' => 'Segundo Apellido','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -69,7 +70,7 @@
                 <label for="exampleInputPassword1">
                     Correo electrónico
                 </label>
-                {!! Form::text('correo', $value = $data->accion=='visualizar' ? $data->correo:null,['class' =>
+                {!! Form::text('correo', $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->correo:null,['class' =>
                 'form-control', 'placeholder' => 'Correo electrónico',
                 'required',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -78,7 +79,7 @@
                     Teléfono celular
                 </label>
                 {!! Form::text('telefono_celular',
-                $value = $data->accion=='visualizar' ? $data->telefono_celular:null,['class' => 'form-control',
+                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->telefono_celular:null,['class' => 'form-control',
                 'placeholder' => 'Teléfono celular','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -87,7 +88,7 @@
                     Teléfono fijo
                 </label>
                 {!! Form::text('telefono_domicilio',
-                $value = $data->accion=='visualizar' ? $data->telefono_domicilio:null,['class' => 'form-control',
+                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->telefono_domicilio:null,['class' => 'form-control',
                 'placeholder' => 'Teléfono fijo','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -95,7 +96,7 @@
                 <label for="exampleInputPassword1">
                     Domicilio
                 </label>
-                {!! Form::text('domicilio', $value = $data->accion=='visualizar' ? $data->domicilio:null,
+                {!! Form::text('domicilio', $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->domicilio:null,
                 ['class' => 'form-control', 'placeholder' => 'Domicilio',
                 'required',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -113,7 +114,7 @@
                     Perfil Profesional
                 </label>
                 {!! Form::text('perfil_profesional',
-                $value = $data->accion=='visualizar' ? $data->perfil_profesional:null,['class' => 'form-control',
+                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->perfil_profesional:null,['class' => 'form-control',
                 'placeholder' => 'Perfil Profesional',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -122,7 +123,7 @@
                     Horas frente a grupo
                 </label>
                 {!! Form::text('horas_frente_grupo',
-                $value = $data->accion=='visualizar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
+                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
                 'placeholder' => 'Horas frente a grupo',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -131,7 +132,7 @@
                     Horas descarga académica
                 </label>
                 {!! Form::text('horas_descarga_academica',
-                $value = $data->accion=='visualizar' ? $data->horas_descarga_academica:null,
+                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_descarga_academica:null,
                 ['class' => 'form-control',
                 'placeholder' => 'Horas descarga académica',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
@@ -141,7 +142,7 @@
                     Horas administrativas
                 </label>
                 {!! Form::text('horas_administrativas',
-                 $value = $data->accion=='visualizar' ? $data->horas_administrativas:null,
+                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_administrativas:null,
                  ['class' => 'form-control',
                  'placeholder' => 'Horas administrativas',
                  $data->accion=='visualizar' ? 'disabled':'',])!!}
@@ -165,7 +166,7 @@
                         multiple="multiple">
                     @foreach($data->dic_disciplina as $disciplina)
                         <option value="{{$disciplina->id}}"
-                        @if( $data->accion=='visualizar' )
+                        @if( $data->accion=='visualizar' ||  $data->accion=='modificar' )
                             @foreach($data->res_disciplina as $_disciplina)
                                 {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
                                     @endforeach
@@ -521,7 +522,7 @@
                         multiple="multiple">
                     @foreach($data->dic_actividad_administrativas as $actividad)
                         <option
-                                @if( $data->accion=='visualizar' )
+                                @if( $data->accion=='visualizar' ||  $data->accion=='modificar' )
                                 @foreach($data->res_docente_definitivo_actividad as $actividadadmin)
 
                                 {{$actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
