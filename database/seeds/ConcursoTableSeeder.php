@@ -11,6 +11,8 @@ class ConcursoTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('CONCURSO')->truncate();
+
         DB::table('CONCURSO')->insert([
             'id'=>'1',
             'concurso' => ('2014')

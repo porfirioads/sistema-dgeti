@@ -11,6 +11,8 @@ class DocenteDefinitivoTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('DOCENTE_DEFINITIVO')->truncate();
+
         DB::table('DOCENTE_DEFINITIVO')->insert([
             'id'=>'1',
             'docente_id' => '1'

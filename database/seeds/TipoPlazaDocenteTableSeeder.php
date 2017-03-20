@@ -11,6 +11,8 @@ class TipoPlazaDocenteTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('PLAZA_DOCENTE')->truncate();
+
         DB::table('PLAZA_DOCENTE')->insert([
             'id'=>'1',
             'docente_id'=>'1',

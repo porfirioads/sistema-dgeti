@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\AspectoEvaluacion;
 
 class AspectoEvaluacionTableSeeder extends Seeder
 {
@@ -12,8 +11,6 @@ class AspectoEvaluacionTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
         DB::table('ASPECTO_EVALUACION')->truncate();
 
         DB::table('ASPECTO_EVALUACION')->insert(array([
@@ -49,7 +46,5 @@ class AspectoEvaluacionTableSeeder extends Seeder
             'aspecto' => e('Programa de Mejora y Desarrollo'),
             'descripcion' => e('El director del plantel es responsable de asegurar que los procesos de gestión interna, externa, además de los de la administración del plantel, operen con transparencia, oportunidad y de forma expedita, a fin de garantizar su operación y la atención de los usuarios (población estudiantil, docente y administrativa), y permitan también subsanar y corregir insuficiencias, atender recomendaciones y dar respuesta a quejas o sugerencias de alumnos, padres de familia y docentes.')
         ]));
-
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

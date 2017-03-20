@@ -11,6 +11,8 @@ class HistorialEvaluacionDocenteTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('HISTORIAL_EVALUACION_DOCENTE')->truncate();
+
         DB::table('HISTORIAL_EVALUACION_DOCENTE')->insert([
             'id'=>'1',
             'evaluacion_id'=>'1',

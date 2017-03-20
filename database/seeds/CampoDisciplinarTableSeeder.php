@@ -11,6 +11,8 @@ class CampoDisciplinarTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('CAMPO_DISCIPLINAR')->truncate();
+
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'1',
             'campo_disciplinar' => 'Ciencias Experimentales',
@@ -19,7 +21,7 @@ class CampoDisciplinarTableSeeder extends Seeder
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'2',
-            'campo_disciplinar' => utf8_encode('Comunicación'),
+            'campo_disciplinar' => utf8_encode('Comunicaciï¿½n'),
             'componente_formacion_id' => '1',
         ]);
 
@@ -37,25 +39,25 @@ class CampoDisciplinarTableSeeder extends Seeder
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'5',
-            'campo_disciplinar' => utf8_encode('Matemáticas'),
+            'campo_disciplinar' => utf8_encode('Matemï¿½ticas'),
             'componente_formacion_id' => '1',
         ]);
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'6',
-            'campo_disciplinar' => utf8_encode('Común. Todas Las Especialidades'),
+            'campo_disciplinar' => utf8_encode('Comï¿½n. Todas Las Especialidades'),
             'componente_formacion_id' => '2',
         ]);
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'7',
-            'campo_disciplinar' => utf8_encode('Físico-Matemático'),
+            'campo_disciplinar' => utf8_encode('Fï¿½sico-Matemï¿½tico'),
             'componente_formacion_id' => '2',
         ]);
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'8',
-            'campo_disciplinar' => utf8_encode('Económico-Administrativo'),
+            'campo_disciplinar' => utf8_encode('Econï¿½mico-Administrativo'),
             'componente_formacion_id' => '2',
         ]);
 
@@ -67,7 +69,7 @@ class CampoDisciplinarTableSeeder extends Seeder
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'10',
-            'campo_disciplinar' => utf8_encode('Químico-Biológo'),
+            'campo_disciplinar' => utf8_encode('Quï¿½mico-Biolï¿½go'),
             'componente_formacion_id' => '2',
         ]);
 

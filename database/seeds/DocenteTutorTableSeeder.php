@@ -11,6 +11,8 @@ class DocenteTutorTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('DOCENTE_TUTOR')->truncate();
+
         DB::table('DOCENTE_TUTOR')->insert([
             'id'=>'1',
             'docente_definitivo_id'=>'3'
