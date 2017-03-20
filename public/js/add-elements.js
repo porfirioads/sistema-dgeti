@@ -5,7 +5,7 @@
 
 $('.add-element').click(function() {
 
-    var $orginal =  $(this).parent().parent().parent().children(".elemento");
+    var $orginal =  $(this).parent().parent().parent().find(".elemento");
     var $cloned = $orginal.clone(true,true);
 
 
@@ -25,11 +25,7 @@ $('.add-element').click(function() {
 });
 
 $('.remove').click(function(){
-    var $elementos = $(this).parent().parent().parent().parent().find(".elemento");
-    var $orginal = $(this).parent().parent();
-
-
-    var $cloned = $orginal.clone(true,true);
+    var $elementos = $(this).parent().parent().parent().find(".elemento");
 
 
 
@@ -37,7 +33,7 @@ $('.remove').click(function(){
 
     //si no tiene más elementos iguales eliminar
     // si no simplemente dejar ir
-    if ($elementos.length>=2){
+    if ($elementos.length>1){
         console.log("eliminar");
         $(this).parent().parent().remove();
     }
