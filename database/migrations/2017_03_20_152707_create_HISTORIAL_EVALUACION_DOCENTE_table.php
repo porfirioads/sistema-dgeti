@@ -18,6 +18,7 @@ class CreateHISTORIALEVALUACIONDOCENTETable extends Migration {
 			$table->integer('docente_id')->index('fk_HISTORIAL_EVALUACION_has_DOCENTE_DOCENTE1_idx');
 			$table->integer('id', true);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

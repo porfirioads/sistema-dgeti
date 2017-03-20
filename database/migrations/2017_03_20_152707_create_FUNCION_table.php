@@ -17,6 +17,7 @@ class CreateFUNCIONTable extends Migration {
 			$table->integer('id', true);
 			$table->string('funcion', 45);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

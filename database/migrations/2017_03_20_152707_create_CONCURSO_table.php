@@ -17,6 +17,7 @@ class CreateCONCURSOTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('concurso');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

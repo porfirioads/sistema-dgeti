@@ -22,6 +22,7 @@ class CreateTUTORIATable extends Migration {
 			$table->integer('total_horas_semana');
 			$table->integer('id', true);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

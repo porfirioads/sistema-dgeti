@@ -30,6 +30,7 @@ class CreateDOCENTETable extends Migration {
 			$table->string('telefono_domicilio', 20)->nullable();
 			$table->string('domicilio', 50);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

@@ -19,6 +19,7 @@ class CreateEVIDENCIASUFICIENCIATable extends Migration {
 			$table->integer('criterio_suficiencia_id')->index('fk_EVIDENCIA_SUFICIENCIA_CRITERIO_SUFICIENCIA1_idx');
 			$table->char('evidencia_id', 11)->index('fk_EVIDENCIA_SUFICIENCIA_EVIDENCIA1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

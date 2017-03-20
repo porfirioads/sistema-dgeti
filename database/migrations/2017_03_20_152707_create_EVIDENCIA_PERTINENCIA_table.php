@@ -19,6 +19,7 @@ class CreateEVIDENCIAPERTINENCIATable extends Migration {
 			$table->integer('criterio_pertinencia_id')->index('fk_EVIDENCIA_PERTINENCIA_CRITERIO_PERTINENCIA1_idx');
 			$table->char('evidencia_id', 11)->index('fk_EVIDENCIA_PERTINENCIA_EVIDENCIA1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

@@ -17,6 +17,7 @@ class CreateDOCENTETUTORTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('docente_definitivo_id')->index('fk_DOCENTES_TUTORES_DOCENTES_DEFINITIVO1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

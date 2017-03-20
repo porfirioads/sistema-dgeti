@@ -18,6 +18,7 @@ class CreateTIPOPLAZATable extends Migration {
 			$table->string('descripcion', 45);
 			$table->integer('numero_horas_id')->index('fk_TIPO_PLAZA_NUMERO_HORAS1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

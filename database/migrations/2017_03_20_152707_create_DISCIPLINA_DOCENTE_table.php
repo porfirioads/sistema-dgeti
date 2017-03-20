@@ -18,6 +18,7 @@ class CreateDISCIPLINADOCENTETable extends Migration {
 			$table->integer('disciplina_id')->index('fk_DOCENTE_has_DISCIPLINA_DISCIPLINA1_idx');
 			$table->integer('id', true);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

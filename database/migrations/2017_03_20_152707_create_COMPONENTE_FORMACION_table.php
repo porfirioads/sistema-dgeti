@@ -17,6 +17,7 @@ class CreateCOMPONENTEFORMACIONTable extends Migration {
 			$table->integer('id', true);
 			$table->string('componente_formacion', 45);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

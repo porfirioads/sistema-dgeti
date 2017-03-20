@@ -18,6 +18,7 @@ class CreateCAMPODISCIPLINARTable extends Migration {
 			$table->string('campo_disciplinar', 45);
 			$table->integer('componente_formacion_id')->index('fk_CAMPO_DISCIPLINAR_COMPONENTE_FORMACION1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

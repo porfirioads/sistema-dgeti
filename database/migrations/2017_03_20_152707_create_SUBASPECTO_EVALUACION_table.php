@@ -18,6 +18,7 @@ class CreateSUBASPECTOEVALUACIONTable extends Migration {
 			$table->string('subaspecto');
 			$table->char('aspecto_evaluacion_id', 3)->index('fk_SUBASPECTO_EVALUACION_ASPECTO_EVALUACION1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 
