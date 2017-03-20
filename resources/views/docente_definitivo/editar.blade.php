@@ -14,9 +14,11 @@
 @section('box_title', 'Docente definitivo')
 
 @section('box_body')
-    {!! Form::open(['route' => $data->accion=='modificar'?['docente_definitivo.update',$data->id]:'docente_definitivo.store', 'class' => '',
-
-    'name'=>'form_docente_definitivo']) !!}
+    {!! Form::open([
+        'route' => $data->accion=='modificar'? array('docente_definitivo.update',$data->id):'docente_definitivo.store',
+        'method'=>$data->accion=='modificar'?'PUT':'POST', 'class' => '',
+        'name'=>'form_docente_definitivo'])
+        !!}
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
@@ -362,10 +364,8 @@
     </div>
 
     <div class="box-footer">
-        {!! Form::submit(
-              $data->accion=='visualizar'? "Guardar" : "Agregar",
+        {!! Form::submit($data->accion=='visualizar'? "Guardar" : "Agregar",
               ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
-
     </div>
 
     {!! Form::close()  !!}
