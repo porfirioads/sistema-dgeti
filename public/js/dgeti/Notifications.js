@@ -19,3 +19,14 @@ function showInfoNotification(message) {
         type: 'info'
     });
 }
+
+function showSuccessNotification(message) {
+    $.notify({
+        // options
+        message: message,
+        icon: 'fa fa-check'
+    }, {
+        // settings
+        type: 'success'
+    });
+}

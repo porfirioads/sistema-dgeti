@@ -14,10 +14,10 @@
 @section('box_title', 'Docentes definitivos')
 
 @section('box_body')
-    <a class="btn btn-block btn-warning"
+    <button class="btn btn-block btn-warning"
        href="docente_definitivo/create">
         <i class="fa fa-plus"></i>
-    </a>
+    </button>
     <br/>
     <table id="tablaProfesores" class="table table-bordered table-striped">
         <thead>
@@ -38,16 +38,16 @@
                 <td>{{$docente->segundo_apellido}}</td>
                 <td class="row">
                     <div class="col-md-4">
-                        <a class="btn btn-block btn-success"
+                        <button class="btn btn-block btn-success"
                            href="docente_definitivo/{{$docente->id}}">
                             <i class="fa fa-eye"></i>
-                        </a>
+                        </button>
                     </div>
                     <div class="col-md-4">
-                        <a class="btn btn-block btn-primary"
+                        <button class="btn btn-block btn-primary"
                            href="docente_definitivo/{{$docente->id}}/edit">
                             <i class="fa fa-pencil"></i>
-                        </a>
+                        </button>
                     </div>
                     <div class="col-md-4">
                             <button class='btn btn-block btn-danger' id="btnEliminar" onclick="eliminar('{{$docente->id}}','{{$docente->nombre}}','{{$docente->primer_apellido}}','{{$docente->segundo_apellido}}')">
@@ -97,5 +97,7 @@
             });
         });
     </script>
+    <script src="{!! asset('js/dgeti/Notifications.js') !!}"></script>
+    <script src="{!! asset('js/bootstrap-notify.min.js') !!}"></script>
     <script src="{!! asset('js/dgeti/DeleteConfirmDialog.js') !!}"></script>
 @endsection
