@@ -17,6 +17,7 @@ class CreateTIPONOMBRAMIENTOTable extends Migration {
 			$table->integer('id', true);
 			$table->string('tipo_nombramiento', 35);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

@@ -20,6 +20,7 @@ class CreateEVALUACIONTable extends Migration {
 			$table->integer('tipo_evaluacion_id')->index('fk_HISTORIAL_EVALUACION_TIPO_EVALUACION1_idx');
 			$table->integer('resultado_evaluacion_id')->index('fk_EVALUACION_RESULTADO_EVALUACION1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

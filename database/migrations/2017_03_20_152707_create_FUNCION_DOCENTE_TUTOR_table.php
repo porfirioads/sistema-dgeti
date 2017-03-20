@@ -18,6 +18,7 @@ class CreateFUNCIONDOCENTETUTORTable extends Migration {
 			$table->integer('funcion_id')->index('fk_DOCENTE_TUTOR_has_FUNCION_FUNCION1_idx');
 			$table->integer('id', true);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

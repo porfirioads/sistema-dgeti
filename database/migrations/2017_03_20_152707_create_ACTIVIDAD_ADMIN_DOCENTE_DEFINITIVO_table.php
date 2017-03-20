@@ -18,6 +18,7 @@ class CreateACTIVIDADADMINDOCENTEDEFINITIVOTable extends Migration {
 			$table->integer('docente_definitivo_id')->index('fk_ACTIVIDAD_ADMINISTRATIVA_has_DOCENTE_DEFINITIVO_DOCENTE__idx');
 			$table->integer('id', true);
 			$table->date('deleted_at')->nullable();
+			$table->timestamps();
 		});
 	}
 

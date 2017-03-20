@@ -18,6 +18,7 @@ class CreateEVIDENCIATable extends Migration {
 			$table->string('subaspecto');
 			$table->char('subaspecto_evaluacion_id', 7)->index('fk_EVIDENCIA_SUBASPECTO_EVALUACION1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

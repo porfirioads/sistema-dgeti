@@ -17,6 +17,7 @@ class CreateACTIVIDADADMINTable extends Migration {
 			$table->integer('id', true);
 			$table->string('actividad', 45);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

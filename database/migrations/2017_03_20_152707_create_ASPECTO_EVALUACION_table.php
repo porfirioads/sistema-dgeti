@@ -18,6 +18,7 @@ class CreateASPECTOEVALUACIONTable extends Migration {
 			$table->string('aspecto');
 			$table->string('descripcion', 500)->nullable();
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

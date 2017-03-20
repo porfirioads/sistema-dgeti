@@ -17,6 +17,7 @@ class CreateDOCENTEDEFINITIVOTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('docente_id')->index('fk_DOCENTES_DEFINITIVO_DOCENTE_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

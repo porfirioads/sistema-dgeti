@@ -17,6 +17,7 @@ class CreateRESULTADOEVALUACIONTable extends Migration {
 			$table->integer('id', true);
 			$table->string('tipo_resultado', 35);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

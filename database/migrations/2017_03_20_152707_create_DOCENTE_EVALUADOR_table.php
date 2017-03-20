@@ -19,6 +19,7 @@ class CreateDOCENTEEVALUADORTable extends Migration {
 			$table->string('funcion', 45);
 			$table->integer('status_id')->index('fk_DOCENTE_EVALUADOR_STATUS1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

@@ -17,6 +17,7 @@ class CreateCRITERIOEXISTENCIATable extends Migration {
 			$table->integer('id', true);
 			$table->string('criterio', 500)->nullable();
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

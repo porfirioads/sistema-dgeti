@@ -19,6 +19,7 @@ class CreateDOCENTEIDONEOTable extends Migration {
 			$table->integer('folio_federal')->unique('folio_general_UNIQUE');
 			$table->integer('concurso_id')->index('fk_DOCENTES_IDONEOS_CONCURSO1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

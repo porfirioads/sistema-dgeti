@@ -20,6 +20,7 @@ class CreatePLAZADOCENTETable extends Migration {
 			$table->integer('id');
 			$table->integer('docente_id')->index('fk_PLAZA_DOCENTE_DOCENTE1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

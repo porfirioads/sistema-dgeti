@@ -17,6 +17,7 @@ class CreateNUMEROHORASTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('numero_horas');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

@@ -22,6 +22,7 @@ class CreateINSTITUCIONEVIDENCIATable extends Migration {
 			$table->integer('institucion_id')->index('fk_INSTITUCION_EVIDENCIA_INSTITUCION1_idx');
 			$table->char('evidencia_id', 11)->index('fk_INSTITUCION_EVIDENCIA_EVIDENCIA1_idx');
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

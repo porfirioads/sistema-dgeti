@@ -23,6 +23,7 @@ class CreateDOCENTEATPTable extends Migration {
 			$table->string('evaluacion_realizado', 1);
 			$table->string('funcion', 21);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 

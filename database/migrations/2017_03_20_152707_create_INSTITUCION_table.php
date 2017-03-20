@@ -17,6 +17,7 @@ class CreateINSTITUCIONTable extends Migration {
 			$table->integer('id', true);
 			$table->string('nombre', 100);
 			$table->date('deleted_at')->nullable();
+            $table->timestamps();
 		});
 	}
 
