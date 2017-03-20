@@ -42,3 +42,22 @@ php artisan make:seeder AspectoEvaluacionTableSeeder
 ```
 php artisan db:seed --class=UserTableSeeder
 ```
+
+## Generar migraciones a partir de una base de datos existente
+
+### Instalar dependencias
+```
+composer require --dev "xethron/migrations-generator"
+```
+
+### Agregar al archivo ```config/app.php``` en la sección de providers
+```
+Way\Generators\GeneratorsServiceProvider::class,
+Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+```
+
+### Generar las migraciones
+
+```
+php artisan migrate:generate
+```
