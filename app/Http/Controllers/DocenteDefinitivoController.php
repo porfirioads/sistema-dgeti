@@ -88,14 +88,7 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
-
-
-
-
-
         ###################################################################
-
-
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
         $docente = $docente_factory->crearDocente($request);
@@ -171,17 +164,15 @@ class DocenteDefinitivoController extends Controller
 
         foreach ($plaza_codigo as $key=> $plaza){
             $plaza = new TipoPlazaDocente([
+                'plaza'                 => $plaza_codigo[$key],
                 'docente_id'            => $docente->id,
                 'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
-                'plaza'                 => $plaza_codigo[$key],
-                'tipo_plaza_horas'      => $plaza_tipo[$key]
+                'tipo_plaza_id'      => $plaza_horas[$key]
             ]);
             $plaza->save();
-
-            //$plaza_docente =  new TipoPlaza();
         }
 
-        redirect()->route('docente_definitivo');
+        redirect()->route('docente_definitivo.index');
     }
 
     /**
