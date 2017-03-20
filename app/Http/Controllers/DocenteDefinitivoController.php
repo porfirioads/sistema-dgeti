@@ -102,44 +102,18 @@ class DocenteDefinitivoController extends Controller
         $docente->save();
 
 
-        /////////////////////////// Plaza////////////////////////////
-        ///////////////Nota solo agrega una plaza, falta para más.
-        $plaza_codigo           = $request['plaza_codigo'];
-        $plaza_tipo             = $request['plaza_tipo'];
-        $plaza_nombramiento     = $request['plaza_nombramiento'];
 
-        foreach ($plaza_tipo as $key=> $plaza){
-            $plaza = new TipoPlazaDocente([
-                'docente_id'            => $docente->id,
-                'tipo_nombramiento_id'  => $plaza_nombramiento,
-                'plaza'                 => $plaza_codigo,
-                'tipo_plaza_horas'      => $plaza_tipo
+        /////////////////////////// Datos Académicos////////////////////////////
+        $academico_componentes = $request['academico_componentes_formacion'];
+        $academico_campo_disciplinar = $request['academico_campo_disciplinar'];
+        $academico_disciplina = $request['academico_disciplina'];
+
+        foreach ($academico_disciplina as $disciplina){
+            $disciplina_docente =  new DisciplinaDocente([
+                'docente_id'    => $docente->id,
+                'disciplina_id' => $disciplina
             ]);
-
-            $plaza->save();
-        }
-
-
-
-
-
-        /////////////////////////// Historial Evaluación////////////////////////////
-        ///////////////Nota solo agrega una plaza, falta para más.
-        $evaluacion_inicio      = $request['evaluacion_inicio'];
-        $evaluacion_vigencia    = $request['evaluacion_vigencia'];
-        $evaluacion_resultado  = $request['evaluacion_resultado'];
-        $evaluacion_tipo        = $request['evaluacion_tipo'];
-
-        $format = 'm/d/Y';
-
-        foreach ($evaluacion_inicio as $key=>$evaluacion){
-            $evaluacion =  new Evaluacion([
-                'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
-                'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
-                'tipo_evaluacion_id'    => $evaluacion_tipo[$key],
-                'resultado_evaluacion_id'  => $evaluacion_resultado[$key],
-            ]);
-            $evaluacion->save();
+            $disciplina_docente->save();
         }
 
 
@@ -162,23 +136,52 @@ class DocenteDefinitivoController extends Controller
             $actividad->save();
         }
 
+        /////////////////////////// Historial Evaluación////////////////////////////
+        $evaluacion_inicio      = $request['evaluacion_inicio'];
+        $evaluacion_vigencia    = $request['evaluacion_vigencia'];
+        $evaluacion_resultado  = $request['evaluacion_resultado'];
+        $evaluacion_tipo        = $request['evaluacion_tipo'];
+
+        $format = 'm/d/Y';
 
 
-
-        /////////////////////////// Datos Académicos////////////////////////////
-        $academico_componentes = $request['academico_componentes_formacion'];
-        $academico_campo_disciplinar = $request['academico_campo_disciplinar'];
-        $academico_disciplina = $request['academico_disciplina'];
-
-        foreach ($academico_disciplina as $disciplina){
-            $disciplina_docente =  new DisciplinaDocente([
-                'docente_id'    => $docente->id,
-                'disciplina_id' => $disciplina
+        foreach ($evaluacion_inicio as $key=>$evaluacion){
+            $evaluacion =  new Evaluacion([
+                'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
+                'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
+                'tipo_evaluacion_id'    => $evaluacion_tipo[$key],
+                'resultado_evaluacion_id'  => $evaluacion_resultado[$key],
             ]);
-            $disciplina_docente->save();
+            $evaluacion->save();
+
+            $historial_evaluacion  =  new HistorialEvaluacionDocente([
+                'evaluacion_id'     =>  $evaluacion->id,
+                'docente_id'        =>  $docente->id
+                ]);
+            $historial_evaluacion->save();
         }
 
-        redirect('docente_definitivo');
+
+        /////////////////////////// Plaza////////////////////////////
+        $plaza_codigo           = $request['plaza_codigo'];
+        $plaza_tipo             = $request['plaza_tipo'];
+        $plaza_horas             = $request['plaza_horas'];
+        $plaza_nombramiento     = $request['plaza_nombramiento'];
+
+
+        foreach ($plaza_codigo as $key=> $plaza){
+            $plaza = new TipoPlazaDocente([
+                'docente_id'            => $docente->id,
+                'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
+                'plaza'                 => $plaza_codigo[$key],
+                'tipo_plaza_horas'      => $plaza_tipo[$key]
+            ]);
+            $plaza->save();
+
+            //$plaza_docente =  new TipoPlaza();
+        }
+
+        redirect()->route('docente_definitivo');
     }
 
     /**
@@ -278,7 +281,7 @@ class DocenteDefinitivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "ACTUALIZAR";
+        return $request;
     }
 
     /**
