@@ -70,6 +70,7 @@ class DocenteDefinitivoController extends Controller
         $data['dic_tipo_resultados']= TipoEvaluacion::all();
         $data['dic_actividad_administrativas'] = ActividadAdmin::all();
         $data['dic_tipo_plaza'] = TipoPlaza::all();
+
         $data['dic_numero_horas'] = NumeroHoras::all();
 
         #return  $data;
@@ -215,6 +216,7 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
         $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
         $data[0]['dic_tipo_plaza'] = TipoPlaza::all();
+        $data[0]['dic_numero_horas'] = NumeroHoras::all();
 
 
         #return  $data[0];

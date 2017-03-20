@@ -206,14 +206,14 @@
             @if( $data->accion=='visualizar')
                 @foreach($data->res_plaza as $plaza)
                     <div class="row">
-                        <div class="form-group col-md-4 col-sm-12">
+                        <div class="form-group col-md- col-sm-12">
 
                             {!! Form::text('plaza_codigo', $value = $data->accion=='visualizar' ? $plaza->plaza:null, ['class' =>
                             'form-control', 'placeholder' => 'Plaza','required',
                             $data->accion=='visualizar' ? 'disabled':'',])!!}
                         </div>
 
-                        <div class="form-group col-md-4 col-sm-12">
+                        <div class="form-group col-md-3 col-sm-12">
                             {!! Form::text('plaza_tipo', $value = $data->accion=='visualizar' ? $plaza->tipo_plaza_horas:null, ['class' =>
                             'form-control', 'placeholder' => 'Tipo plaza','required',
                             $data->accion=='visualizar' ? 'disabled':'',])!!}
@@ -243,7 +243,7 @@
                 @endforeach
             @else
                 <div class="row elemento">
-                    <div class="form-group col-md-4 col-sm-12">
+                    <div class="form-group col-md-3 col-sm-12">
 
                         {!! Form::text('plaza_codigo', $value = $data->accion=='visualizar' ? $plaza->plaza:null, ['class' =>
                         'form-control', 'placeholder' => 'Plaza','required',
@@ -283,7 +283,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-md-3 col-sm-10">
+                    <div class="form-group col-md-2 col-sm-10">
 
                         <select class="form-control select2"
                                 name="plaza_nombramiento"

@@ -17,11 +17,16 @@ $('.add-element').click(function() {
     });
     $final = $($cloned[0]);
 
-    $final.appendTo('.division');
+    $hermano = $(this).parent().parent().parent().children(".division");
+
+    console.log($hermano);
+    $final.appendTo($hermano);
+    //$final.appendTo('.division');
 });
 
 $('.remove').click(function(){
     var $orginal = $('.elemento');
+
 
     var $cloned = $orginal.clone(true,true);
 
