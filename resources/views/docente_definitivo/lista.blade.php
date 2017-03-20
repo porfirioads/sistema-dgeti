@@ -15,7 +15,7 @@
 
 @section('box_body')
     <button class="btn btn-block btn-warning"
-       href="docente_definitivo/create">
+            onclick="location.href='{{ url('docente_definitivo/create') }}'">
         <i class="fa fa-plus"></i>
     </button>
     <br/>
@@ -38,16 +38,16 @@
                 <td>{{$docente->segundo_apellido}}</td>
                 <td class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-block btn-success"
+                        <a class="btn btn-block btn-success"
                            href="docente_definitivo/{{$docente->id}}">
                             <i class="fa fa-eye"></i>
-                        </button>
+                        </a>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-block btn-primary"
+                        <a class="btn btn-block btn-primary"
                            href="docente_definitivo/{{$docente->id}}/edit">
                             <i class="fa fa-pencil"></i>
-                        </button>
+                        </a>
                     </div>
                     <div class="col-md-4">
                             <button class='btn btn-block btn-danger' id="btnEliminar" onclick="eliminar('{{$docente->id}}','{{$docente->nombre}}','{{$docente->primer_apellido}}','{{$docente->segundo_apellido}}')">
