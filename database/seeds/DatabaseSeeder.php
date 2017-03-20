@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\AspectoEvaluacion;
+use App\Models\SubaspectoEvaluacion;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,8 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        Model::unguard();
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->call(ResultadoEvaluacionTableSeeder::class);
@@ -41,10 +41,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DisciplinaDocenteTableSeeder::class);
         $this->call(FuncionDocenteTutorTableSeeder::class);
         $this->call(TutoriaTableSeeder::class);
+        $this->call(AspectoEvaluacionTableSeeder::class);
+        $this->call(SubaspectoEvaluacionTableSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-
-//        Model::reguard();
     }
 }
