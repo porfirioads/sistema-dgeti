@@ -25,7 +25,7 @@ $('.add-element').click(function() {
 });
 
 $('.remove').click(function(){
-    var $elementos = $(this).parent().parent().parent().parent().children(".elemento");
+    var $elementos = $(this).parent().parent().parent().parent().find(".elemento");
     var $orginal = $(this).parent().parent();
 
 
@@ -37,7 +37,7 @@ $('.remove').click(function(){
 
     //si no tiene más elementos iguales eliminar
     // si no simplemente dejar ir
-    if ($elementos.length>=0){
+    if ($elementos.length>=2){
         console.log("eliminar");
         $(this).parent().parent().remove();
     }
