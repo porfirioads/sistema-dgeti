@@ -365,7 +365,7 @@
 
     <div class="box-footer">
         {!! Form::submit($data->accion=='visualizar'? "Guardar" : "Agregar",
-              ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
+              ['class' => 'btn btn-block btn-lg btn-primary', $data->accion=='visualizar'?'disabled':''] ) !!}
     </div>
 
     {!! Form::close()  !!}
