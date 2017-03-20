@@ -88,7 +88,13 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
-        return $request['historial_evalacion'];
+
+
+
+
+
+        ###################################################################
+
 
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
@@ -102,16 +108,18 @@ class DocenteDefinitivoController extends Controller
         $plaza_tipo             = $request['plaza_tipo'];
         $plaza_nombramiento     = $request['plaza_nombramiento'];
 
+        foreach ($plaza_tipo as $key=> $plaza){
+            $plaza = new TipoPlazaDocente([
+                'docente_id'            => $docente->id,
+                'tipo_nombramiento_id'  => $plaza_nombramiento,
+                'plaza'                 => $plaza_codigo,
+                'tipo_plaza_horas'      => $plaza_tipo
+            ]);
 
-        $plaza = new TipoPlazaDocente([
-            'docente_id'            => $docente->id,
-            'tipo_nombramiento_id'  => $plaza_nombramiento,
-            'plaza'                 => $plaza_codigo,
-            'tipo_plaza_horas'      => $plaza_tipo
-        ]);
+            $plaza->save();
+        }
 
 
-        $plaza->save();
 
 
 
@@ -124,23 +132,16 @@ class DocenteDefinitivoController extends Controller
 
         $format = 'm/d/Y';
 
+        foreach ($evaluacion_inicio as $key=>$evaluacion){
+            $evaluacion =  new Evaluacion([
+                'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
+                'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
+                'tipo_evaluacion_id'    => $evaluacion_tipo[$key],
+                'resultado_evaluacion_id'  => $evaluacion_resultado[$key],
+            ]);
+            $evaluacion->save();
+        }
 
-        $evaluacion =  new Evaluacion([
-            'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio),
-            'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia),
-            'tipo_evaluacion_id'    => $evaluacion_tipo,
-            'resultado_evaluacion_id'  => $evaluacion_resultado,
-        ]);
-
-
-
-        $evaluacion->save();
-
-        $historial =  new HistorialEvaluacionDocente([
-            'docente_id'        => $docente->id,
-            'evaluacion_id'     =>  $evaluacion->id
-        ]);
-        $historial->save();
 
 
         /////////////////////////// Docente Definitivo ////////////////////////////

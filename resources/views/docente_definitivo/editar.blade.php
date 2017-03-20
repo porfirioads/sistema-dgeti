@@ -167,7 +167,7 @@
                         <option value="{{$disciplina->id}}"
                         @if( $data->accion=='visualizar' )
                             @foreach($data->res_disciplina as $_disciplina)
-                                    {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
+                                {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
                                     @endforeach
                                 @endif>
                             {{$disciplina->disciplina}}
@@ -284,8 +284,8 @@
                                 {{$data->accion=='visualizar' ? 'disabled':''}}>
                             @foreach($data->dic_tipo_plaza as $tipo)
                                 <option value="{{$tipo->id}}"
-                                {{--@if( $data->accion=='visualizar' )--}}
-                                    {{--{{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}--}}
+                                        {{--@if( $data->accion=='visualizar' )--}}
+                                        {{--{{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}--}}
                                         {{--@endif--}}
                                 >
                                     {{$tipo->descripcion }}
@@ -351,9 +351,6 @@
 
     {{--//////////////////////////////////////HISTORIAL EVALUACION/////////--}}
     <div class="panel panel-primary">
-        <form name="historial_evalacion">
-
-
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
             <h3 class="panel-title">Historial Evaluación</h3>
@@ -438,10 +435,10 @@
                     </div>
                 @endforeach
             @else
-                <div class="row elemento" >
+                <div class="row elemento">
                     <div class="form-group col-lg-3">
                         <select class="form-control select2"
-                                name="evaluacion_tipo"
+                                name="evaluacion_tipo[]"
                                 {{$data->accion=='visualizar' ? 'disabled':''}}>
                             @foreach($data->dic_tipo_resultados as $resultado)
                                 <option value="{{$resultado->id}}"
@@ -459,7 +456,7 @@
 
                     <div class="form-group col-lg-2">
                         <select class="form-control select2"
-                                name="evaluacion_resultado"
+                                name="evaluacion_resultado[]"
                                 {{$data->accion=='visualizar' ? 'disabled':''}}>
                             @foreach($data->dic_resultados as $resultado)
                                 <option value="{{$resultado->id}}"
@@ -474,13 +471,13 @@
 
                     <div class="form-group col-lg-3">
 
-                        {!! Form::text('evaluacion_vigencia', $value = $data->accion=='visualizar' ? $evaluacion->vigencia_evaluacion:null,
+                        {!! Form::text('evaluacion_vigencia[]', $value = $data->accion=='visualizar' ? $evaluacion->vigencia_evaluacion:null,
                         ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
                         'required',$data->accion=='visualizar' ? 'disabled':''])!!}
                     </div>
 
                     <div class="form-group col-lg-3">
-                        {!! Form::text('evaluacion_inicio', $value = $data->accion=='visualizar' ? $evaluacion->fecha_evaluacion:null,
+                        {!! Form::text('evaluacion_inicio[]', $value = $data->accion=='visualizar' ? $evaluacion->fecha_evaluacion:null,
                         ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
                         'required',$data->accion=='visualizar' ? 'disabled':''])!!}
                     </div>
@@ -504,7 +501,7 @@
                 </div>
             </div>
         </div>
-        </form>
+
     </div>
 
 
@@ -525,11 +522,11 @@
                     @foreach($data->dic_actividad_administrativas as $actividad)
                         <option
                                 @if( $data->accion=='visualizar' )
-                                    @foreach($data->res_docente_definitivo_actividad as $actividadadmin)
+                                @foreach($data->res_docente_definitivo_actividad as $actividadadmin)
 
-                                            {{$actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
+                                {{$actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
 
-                                    @endforeach
+                                @endforeach
                                 @endif
                                 value="{{$actividad->id}}">
                             {{$actividad->actividad}}
@@ -542,8 +539,9 @@
 
     <div class="box-footer">
         {!! Form::submit(
-        $data ? "Guardar" : "Agregar",
-        ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
+              $data->accion=='visualizar'? "Guardar" : "Agregar",
+              ['class' => 'btn btn-block btn-lg btn-primary'] ) !!}
+
     </div>
 
     {!! Form::close()  !!}
