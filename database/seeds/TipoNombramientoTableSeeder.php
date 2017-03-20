@@ -12,6 +12,7 @@ class TipoNombramientoTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('TIPO_NOMBRAMIENTO')->truncate();
 
         DB::table('TIPO_NOMBRAMIENTO')->insert([
             'id'=>'1',

@@ -11,6 +11,8 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('STATUS')->truncate();
+
         DB::table('STATUS')->insert([
             'id'=>'1',
             'status' => ('Activo')
@@ -18,7 +20,7 @@ class StatusTableSeeder extends Seeder
 
         DB::table('STATUS')->insert([
             'id'=>'2',
-            'status' => utf8_encode('En Evaluación')
+            'status' => utf8_encode('En Evaluaciï¿½n')
         ]);
     }
 }

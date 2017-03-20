@@ -12,6 +12,8 @@ class EvaluacionTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('EVALUACION')->truncate();
+
         DB::table('EVALUACION')->insert([
             'id'=>'1',
             'fecha_evaluacion' => Carbon::parse('2016-08-03'),

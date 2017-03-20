@@ -11,6 +11,8 @@ class FuncionTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('FUNCION')->truncate();
+
         DB::table('FUNCION')->insert([
             'id'=>'1',
             'funcion' => 'Docente'
@@ -18,7 +20,7 @@ class FuncionTableSeeder extends Seeder
 
         DB::table('FUNCION')->insert([
             'id'=>'2',
-            'funcion' => utf8_encode('Subdirector Académico')
+            'funcion' => utf8_encode('Subdirector Acadï¿½mico')
         ]);
 
         DB::table('FUNCION')->insert([

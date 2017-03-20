@@ -11,6 +11,8 @@ class ActividadAdminDocenteDefinitivoTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO')->truncate();
+
         DB::table('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO')->insert([
             'id'=>'1',
             'actividad_admin_id' => ('1'),

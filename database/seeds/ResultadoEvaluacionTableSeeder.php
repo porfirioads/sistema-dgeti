@@ -11,6 +11,8 @@ class ResultadoEvaluacionTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('RESULTADO_EVALUACION')->truncate();
+
         DB::table('RESULTADO_EVALUACION')->insert([
             'id'=>'1',
             'tipo_resultado' => 'Insuficiente'

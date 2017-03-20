@@ -11,14 +11,16 @@ class TipoEvaluacionTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('TIPO_EVALUACION')->truncate();
+
         DB::table('TIPO_EVALUACION')->insert([
             'id'=>'1',
-            'tipo_evaluacion' => utf8_encode('Diagnóstica')
+            'tipo_evaluacion' => utf8_encode('Diagnï¿½stica')
         ]);
 
         DB::table('TIPO_EVALUACION')->insert([
             'id'=>'2',
-            'tipo_evaluacion' => utf8_encode('Desempeño')
+            'tipo_evaluacion' => utf8_encode('Desempeï¿½o')
         ]);
 
         DB::table('TIPO_EVALUACION')->insert([

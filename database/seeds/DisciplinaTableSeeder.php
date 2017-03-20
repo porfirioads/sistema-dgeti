@@ -11,63 +11,65 @@ class DisciplinaTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('DISCIPLINA')->truncate();
+
         DB::table('DISCIPLINA')->insert([
             'id'=>'1',
-            'disciplina' => utf8_encode('Biología'),
+            'disciplina' => utf8_encode('Biologï¿½a'),
             'campo_disciplinar_id' => '1',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'2',
-            'disciplina' => utf8_encode('Física'),
+            'disciplina' => utf8_encode('Fï¿½sica'),
             'campo_disciplinar_id' => '1',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'3',
-            'disciplina' => utf8_encode('Química'),
+            'disciplina' => utf8_encode('Quï¿½mica'),
             'campo_disciplinar_id' => '1',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'4',
-            'disciplina' => utf8_encode('Ecología'),
+            'disciplina' => utf8_encode('Ecologï¿½a'),
             'campo_disciplinar_id' => '1',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'5',
-            'disciplina' => utf8_encode('Inglés'),
+            'disciplina' => utf8_encode('Inglï¿½s'),
             'campo_disciplinar_id' => '2',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'6',
-            'disciplina' => utf8_encode('Tecnologías de la Información y la Comunicación'),
+            'disciplina' => utf8_encode('Tecnologï¿½as de la Informaciï¿½n y la Comunicaciï¿½n'),
             'campo_disciplinar_id' => '2',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'7',
-            'disciplina' => utf8_encode('Lectura, Expresión Oral y Escrita'),
+            'disciplina' => utf8_encode('Lectura, Expresiï¿½n Oral y Escrita'),
             'campo_disciplinar_id' => '2',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'8',
-            'disciplina' => utf8_encode('Lógica'),
+            'disciplina' => utf8_encode('Lï¿½gica'),
             'campo_disciplinar_id' => '3',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'9',
-            'disciplina' => utf8_encode('Ética'),
+            'disciplina' => utf8_encode('ï¿½tica'),
             'campo_disciplinar_id' => '3',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'10',
-            'disciplina' => utf8_encode('Filosofía'),
+            'disciplina' => utf8_encode('Filosofï¿½a'),
             'campo_disciplinar_id' => '3',
         ]);
 
@@ -79,67 +81,67 @@ class DisciplinaTableSeeder extends Seeder
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'12',
-            'disciplina' => utf8_encode('Matemáticas'),
+            'disciplina' => utf8_encode('Matemï¿½ticas'),
             'campo_disciplinar_id' => '5',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'13',
-            'disciplina' => utf8_encode('Cálculo Integral'),
+            'disciplina' => utf8_encode('Cï¿½lculo Integral'),
             'campo_disciplinar_id' => '6',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'14',
-            'disciplina' => utf8_encode('Inglés V'),
+            'disciplina' => utf8_encode('Inglï¿½s V'),
             'campo_disciplinar_id' => '6',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'15',
-            'disciplina' => utf8_encode('Probabilidad y Estadística'),
+            'disciplina' => utf8_encode('Probabilidad y Estadï¿½stica'),
             'campo_disciplinar_id' => '6',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'16',
-            'disciplina' => utf8_encode('Temas de Filosofía'),
+            'disciplina' => utf8_encode('Temas de Filosofï¿½a'),
             'campo_disciplinar_id' => '6',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'17',
-            'disciplina' => utf8_encode('Temas de Física'),
+            'disciplina' => utf8_encode('Temas de Fï¿½sica'),
             'campo_disciplinar_id' => '7',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'18',
-            'disciplina' => utf8_encode('Dibujo Técnico'),
+            'disciplina' => utf8_encode('Dibujo Tï¿½cnico'),
             'campo_disciplinar_id' => '7',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'19',
-            'disciplina' => utf8_encode('Matemáticas Aplicadas'),
+            'disciplina' => utf8_encode('Matemï¿½ticas Aplicadas'),
             'campo_disciplinar_id' => '7',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'20',
-            'disciplina' => utf8_encode('Temas de Administración'),
+            'disciplina' => utf8_encode('Temas de Administraciï¿½n'),
             'campo_disciplinar_id' => '8',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'21',
-            'disciplina' => utf8_encode('Introducción a la Economía'),
+            'disciplina' => utf8_encode('Introducciï¿½n a la Economï¿½a'),
             'campo_disciplinar_id' => '8',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'22',
-            'disciplina' => utf8_encode('Introducción al Derecho'),
+            'disciplina' => utf8_encode('Introducciï¿½n al Derecho'),
             'campo_disciplinar_id' => '8',
         ]);
 
@@ -163,13 +165,13 @@ class DisciplinaTableSeeder extends Seeder
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'26',
-            'disciplina' => utf8_encode('Introducción a la Bioquímica'),
+            'disciplina' => utf8_encode('Introducciï¿½n a la Bioquï¿½mica'),
             'campo_disciplinar_id' => '10',
         ]);
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'27',
-            'disciplina' => utf8_encode('Temas de Biología Contemporánea'),
+            'disciplina' => utf8_encode('Temas de Biologï¿½a Contemporï¿½nea'),
             'campo_disciplinar_id' => '10',
         ]);
 
@@ -181,7 +183,7 @@ class DisciplinaTableSeeder extends Seeder
 
         DB::table('DISCIPLINA')->insert([
             'id'=>'29',
-            'disciplina' => utf8_encode('Ingeniería de Software'),
+            'disciplina' => utf8_encode('Ingenierï¿½a de Software'),
             'campo_disciplinar_id' => '11',
         ]);
     }

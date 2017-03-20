@@ -11,14 +11,16 @@ class DocenteTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('DOCENTE')->truncate();
+
         DB::table('DOCENTE')->insert([
             'id'=>'1',
             'cct' => utf8_encode('12DJN0090U'),
             'curp' => utf8_encode('MOGA950715HCLRRD03'),
             'rfc' => utf8_encode('MOGA950715'),
-            'nombre' => utf8_encode('Adrián Homero'),
+            'nombre' => utf8_encode('Adriï¿½n Homero'),
             'primer_apellido' => 'Moreno',
-            'segundo_apellido' => 'García',
+            'segundo_apellido' => 'Garcï¿½a',
             'perfil_profesional' => 'Ingeniero en Negocios',
             'horas_frente_grupo' => '5',
             'horas_descarga_academica' => '2',
@@ -26,7 +28,7 @@ class DocenteTableSeeder extends Seeder
             'correo' => 'adrian.hmg@gmail.com',
             'telefono_celular' => '8717881112',
             'telefono_domicilio' => '8717230319',
-            'domicilio' => utf8_encode('Calle Grava #456 Rincón del Pedregal II, Goméz Palacio, Durango')
+            'domicilio' => utf8_encode('Calle Grava #456 Rincï¿½n del Pedregal II, Gomï¿½z Palacio, Durango')
         ]);
 
         DB::table('DOCENTE')->insert([
@@ -36,8 +38,8 @@ class DocenteTableSeeder extends Seeder
             'rfc' => utf8_encode('PEAO213243'),
             'nombre' => utf8_encode('Rafael Porfirio'),
             'primer_apellido' => 'Zepeda',
-            'segundo_apellido' => utf8_encode('Ortíz'),
-            'perfil_profesional' => 'Ingeniero Químico',
+            'segundo_apellido' => utf8_encode('Ortï¿½z'),
+            'perfil_profesional' => 'Ingeniero Quï¿½mico',
             'horas_frente_grupo' => '4',
             'horas_descarga_academica' => '4',
             'horas_administrativas' => '0',
@@ -54,7 +56,7 @@ class DocenteTableSeeder extends Seeder
             'rfc' => utf8_encode('POLA920184'),
             'nombre' => utf8_encode('Julieta Hamurabi'),
             'primer_apellido' => 'Morin',
-            'segundo_apellido' => utf8_encode('García'),
+            'segundo_apellido' => utf8_encode('Garcï¿½a'),
             'perfil_profesional' => 'Licenciado en Derecho',
             'horas_frente_grupo' => '5',
             'horas_descarga_academica' => '6',
@@ -73,7 +75,7 @@ class DocenteTableSeeder extends Seeder
             'nombre' => utf8_encode('Sodel Emiliano'),
             'primer_apellido' => 'Haro',
             'segundo_apellido' => utf8_encode('Moreno'),
-            'perfil_profesional' => utf8_encode('Licenciado en Gastronomía'),
+            'perfil_profesional' => utf8_encode('Licenciado en Gastronomï¿½a'),
             'horas_frente_grupo' => '7',
             'horas_descarga_academica' => '1',
             'horas_administrativas' => '5',
@@ -90,15 +92,15 @@ class DocenteTableSeeder extends Seeder
             'rfc' => utf8_encode('QKFA930218'),
             'nombre' => utf8_encode('Manuel'),
             'primer_apellido' => 'Dorlingas',
-            'segundo_apellido' => utf8_encode('Hernández'),
-            'perfil_profesional' => utf8_encode('Licenciado en Administración'),
+            'segundo_apellido' => utf8_encode('Hernï¿½ndez'),
+            'perfil_profesional' => utf8_encode('Licenciado en Administraciï¿½n'),
             'horas_frente_grupo' => '8',
             'horas_descarga_academica' => '2',
             'horas_administrativas' => '3',
             'correo' => 'manuelin@gmail.com',
             'telefono_celular' => '3602557788',
             'telefono_domicilio' => '147562389',
-            'domicilio' => utf8_encode('Calle Estable #222 El Cerro, Mérida, Yucatán')
+            'domicilio' => utf8_encode('Calle Estable #222 El Cerro, Mï¿½rida, Yucatï¿½n')
         ]);
     }
 }

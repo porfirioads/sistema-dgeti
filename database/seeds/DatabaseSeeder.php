@@ -12,7 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+//        Model::unguard();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->call(ResultadoEvaluacionTableSeeder::class);
         $this->call(TipoEvaluacionTableSeeder::class);
@@ -40,7 +42,9 @@ class DatabaseSeeder extends Seeder
         $this->call(FuncionDocenteTutorTableSeeder::class);
         $this->call(TutoriaTableSeeder::class);
 
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        Model::reguard();
+
+//        Model::reguard();
     }
 }

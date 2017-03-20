@@ -11,6 +11,8 @@ class NumeroHorasTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('NUMERO_HORAS')->truncate();
+
         DB::table('NUMERO_HORAS')->insert([
             'id'=>'1',
             'numero_horas' => '40'
