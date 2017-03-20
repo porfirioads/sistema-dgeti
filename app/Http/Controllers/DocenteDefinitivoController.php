@@ -283,7 +283,40 @@ class DocenteDefinitivoController extends Controller
      */
     public function destroy($id)
     {
-        $data = Docente::find($id)->delete();
-        return response()->json(['eliminado'=>$data]);
+        $docenteDelete = Docente::where('id', '=', $id)->exists();
+        $historialEvaluacionDelete = HistorialEvaluacionDocente::where('docente_id', '=', $id)->exists();
+        $plazaDocenteDelete = TipoPlazaDocente::where('docente_id', '=', $id)->exists();
+        $disciplinaDocenteDelete = DisciplinaDocente::where('docente_id', '=', $id)->exists();
+        $docenteIdoneoDocenteDelete = DocenteIdoneo::where('docente_id', '=', $id)->exists();
+        $docenteDefinitivoDocenteDelete = DocenteDefinitivo::where('docente_id', '=', $id)->exists();
+
+
+        if ($docenteDelete) {
+            $dataDocente = Docente::find($id)->delete();
+        }
+
+        if ($historialEvaluacionDelete) {
+            $dataHistorial = HistorialEvaluacionDocente::where('docente_id', '=', $id)->delete();
+        }
+
+        if($plazaDocenteDelete){
+            $dataPlaza = TipoPlazaDocente::where('docente_id', '=', $id)->delete();
+        }
+
+        if($disciplinaDocenteDelete){
+            $dataDisciplina = DisciplinaDocente::where('docente_id', '=', $id)->delete();
+        }
+
+        if($docenteIdoneoDocenteDelete){
+            $dataIdoneo = DocenteIdoneo::where('docente_id', '=', $id)->delete();
+        }
+
+        if($docenteDefinitivoDocenteDelete){
+            $dataDocenteDefinitivo = DocenteDefinitivo::where('docente_id', '=', $id)->delete();
+        }
+
+
+
+        return response()->json(['eliminado'=>$docenteDelete]);
     }
 }

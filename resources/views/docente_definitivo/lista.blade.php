@@ -5,6 +5,7 @@
 @section('particular_styles')
     <link href="{!! asset('css/dataTables.bootstrap.css') !!}"
           rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection
 
 @section('sidebar_options')
