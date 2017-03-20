@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AspectoEvaluacionController extends Controller
 {
@@ -25,74 +26,18 @@ class AspectoEvaluacionController extends Controller
         $saeti = 'Saeti';
         $extension = 'Extensión :P';
         $fecha = date('d/m/Y');
-
         return view('snb.lista_aspectos')->with(compact('aspectos', 'estado',
-        'plantel', 'saeti', 'extension', 'fecha'));
+            'plantel', 'saeti', 'extension', 'fecha'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function showAspectoInfoGeneral()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $aspecto = DB::table('ASPECTO_EVALUACION')->where('clave_aspecto',
+            'INFO_GRAL')->first();
+        $page_title = 'SNB: Información General';
+        $box_title = 'Información General';
+        $descripcion_aspecto = $aspecto->descripcion;
+        return view('snb.aspecto_evaluacion')->with(compact('page_title',
+            'box_title', 'descripcion_aspecto'));
     }
 }

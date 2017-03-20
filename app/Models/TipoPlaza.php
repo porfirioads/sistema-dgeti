@@ -7,7 +7,8 @@
  */
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TipoPlaza extends Model
 {
@@ -16,14 +17,11 @@ class TipoPlaza extends Model
     protected $primaryKey = 'id';
     protected $table = 'TIPO_PLAZA';
     protected $fillable = array(
-        'numero_horas_id, descripcion'
+        'numero_horas_id, descripcion',
     );
 
     protected $dates = ['deleted_at'];
 
-    public function numero_horas(){
-        return $this -> hasMany('App\Models\NumeroHoras');
-    }
 
     public function tipo_plaza_docente()
     {

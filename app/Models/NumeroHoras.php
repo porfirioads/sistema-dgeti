@@ -7,7 +7,8 @@
  */
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NumeroHoras extends Model
 {
@@ -21,7 +22,5 @@ class NumeroHoras extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function tipo_plaza(){
-        return $this -> belongsTo('App\Models\TipoPlaza');
-    }
+
 }
