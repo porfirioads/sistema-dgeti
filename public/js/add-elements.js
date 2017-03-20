@@ -5,11 +5,11 @@
 
 $('.add-element').click(function() {
 
-    var $orginal = $('.elemento');
+    var $orginal =  $(this).parent().parent().parent().children(".elemento");
     var $cloned = $orginal.clone(true,true);
 
 
-    //get original selects into a jq object
+
     var $originalSelects = $orginal.find('select');
     $cloned.find('select').each(function(index, item) {
         //set new select to value of old select
@@ -25,14 +25,19 @@ $('.add-element').click(function() {
 });
 
 $('.remove').click(function(){
-    var $orginal = $('.elemento');
+    var $elementos = $(this).parent().parent().parent().parent().children(".elemento");
+    var $orginal = $(this).parent().parent();
 
 
     var $cloned = $orginal.clone(true,true);
 
+
+
+    console.log($elementos);
+
     //si no tiene más elementos iguales eliminar
     // si no simplemente dejar ir
-    if ($cloned.length>1){
+    if ($elementos.length>=0){
         console.log("eliminar");
         $(this).parent().parent().remove();
     }
