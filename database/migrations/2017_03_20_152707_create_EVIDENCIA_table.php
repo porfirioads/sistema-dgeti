@@ -15,7 +15,7 @@ class CreateEVIDENCIATable extends Migration {
 		Schema::create('EVIDENCIA', function(Blueprint $table)
 		{
 			$table->char('id', 11)->primary();
-			$table->string('subaspecto');
+			$table->string('evidencia');
 			$table->char('subaspecto_evaluacion_id', 7)->index('fk_EVIDENCIA_SUBASPECTO_EVALUACION1_idx');
 			$table->date('deleted_at')->nullable();
             $table->timestamps();

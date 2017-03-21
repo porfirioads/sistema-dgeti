@@ -32,12 +32,16 @@ class AspectoEvaluacionController extends Controller
 
     public function showAspectoInfoGeneral()
     {
-        $aspecto = DB::table('ASPECTO_EVALUACION')->where('clave_aspecto',
-            'INFO_GRAL')->first();
+        // El select de esta instrucción selecciona los campos de la tabla
+        // AspectoEvaluacion, para manejar los campos seleccionados de los
+        // subaspectos y evidencias se debe ir a los métodos de los eager
+        // loaders en sus respectivos modelos.
+        $aspecto = AspectoEvaluacion::with(
+            'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
+            'descripcion'])->where('id', '=', 'A01')->first();
         $page_title = 'SNB: Información General';
         $box_title = 'Información General';
-        $descripcion_aspecto = $aspecto->descripcion;
         return view('snb.aspecto_evaluacion')->with(compact('page_title',
-            'box_title', 'descripcion_aspecto'));
+            'box_title', 'aspecto'));
     }
 }

@@ -19,6 +19,8 @@ class SubaspectoEvaluacion extends Model
     }
 
     public function evidencias() {
-        return $this->hasMany('App\Models\Evidencia');
+        return $this->hasMany('App\Models\Evidencia',
+            'subaspecto_evaluacion_id', 'id')->select(['id', 'subaspecto_evaluacion_id',
+            'evidencia']);
     }
 }

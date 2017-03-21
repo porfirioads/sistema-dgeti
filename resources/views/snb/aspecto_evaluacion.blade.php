@@ -15,7 +15,7 @@
                 <table class="table table-hover">
                     <tbody>
                     <tr>
-                        <th colspan="4">{{$descripcion_aspecto}}</th>
+                        <th colspan="4">{{$aspecto->descripcion}}</th>
                         <th colspan="3">
                             Criterios de Evaluación
                         </th>
@@ -28,23 +28,13 @@
                         <th>Criterios de Pertinencia</th>
                         <th>Criterios de Suficiencia</th>
                     </tr>
-                    {{-- La instrucción de abajo declara e inicializa una
-                    variable, pero no la pinta en el html --}}
-                    {{--*/ $contador_aspecto = 1 /*--}}
-                    {{--@foreach($aspectos as $aspecto)--}}
-                        {{-- TODO Determinar si el aspecto ya fue evaluado --}}
-                        {{--*/ $evaluado = rand(0, 1) /*--}}
-                        {{--<tr class="{{$evaluado ? 'success' : 'warning'}}">--}}
-                            {{--<td>{{$contador_aspecto++}}</td>--}}
-                            {{--<td>{{$aspecto->aspecto}}</td>--}}
-                            {{--<td>{{$evaluado ? 'Sí' : 'No'}}</td>--}}
-                            {{--<td>{{$estado}}</td>--}}
-                            {{--<td>{{$plantel}}</td>--}}
-                            {{--<td>{{$saeti}}</td>--}}
-                            {{--<td>{{$extension}}</td>--}}
-                            {{--<td>{{$evaluado ? $fecha : '---'}}</td>--}}
-                        {{--</tr>--}}
-                    {{--@endforeach--}}
+                    {{--*/ $contador_subaspecto = 1 /*--}}
+                    @foreach($aspecto['subaspectos_evaluacion'] as $subaspecto)
+                        <tr>
+                            <td>1.{{$contador_subaspecto++}}</td>
+                            <td>{{$subaspecto->subaspecto}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

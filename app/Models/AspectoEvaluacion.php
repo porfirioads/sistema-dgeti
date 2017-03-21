@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class AspectoEvaluacion extends Model
 {
@@ -15,6 +16,8 @@ class AspectoEvaluacion extends Model
     protected $dates = ['deleted_at'];
 
     public function subaspectos_evaluacion() {
-        return $this->hasMany('App\Models\SubaspectoEvaluacion');
+        return $this->hasMany('App\Models\SubaspectoEvaluacion',
+            'aspecto_evaluacion_id', 'id')->select(['id',
+            'aspecto_evaluacion_id', 'subaspecto']);
     }
 }
