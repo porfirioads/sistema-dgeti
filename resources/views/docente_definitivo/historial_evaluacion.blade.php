@@ -1,11 +1,11 @@
-<div class="row elemento">
+<div class="row elemento" id="historial_evaluacion_row">
     <div class="form-group col-lg-3">
         <select class="form-control select2"
                 name="evaluacion_tipo[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
             @foreach($data->dic_tipo_resultados as $resultado)
                 <option value="{{$resultado->id}}"
-                @if( $data->accion=='visualizar' )
+                @if( $data->accion=='visualizar' || $data->accion=='modificar'  )
                     @foreach($data->historial_evaluacion_docente->evaluacion as $evaluacion)
                         {{$resultado->id == $evaluacion->resultado_evaluacion->id ? 'selected':''}}
                             @endforeach
@@ -52,4 +52,3 @@
     </div>
 </div>
 
-<div class="division"></div>

@@ -1,48 +1,39 @@
 /**
  * Created by santiago on 18/03/17.
  */
+var idCount = 1;
 
+$('.add-element').click(function () {
+/*
+    var $orginal = $(this).parent().parent().parent().children(".elemento").first().clone(true, true);
 
-$('.add-element').click(function() {
-
-    var $orginal =  $(this).parent().parent().parent().first().children(".elemento");
-
-    var $cloned = $orginal.clone(true,true);
-
-    var $originalSelects = $orginal.find('select');
-    $cloned.find('select').each(function(index, item) {
-        $(item).val($originalSelects.eq(index).val());
-
-    });
-    $final = $($cloned[0]);
     $hermano = $(this).parent().parent().parent().children(".division");
-    $final.appendTo($hermano);
-    inicializaComponentes();
-});
+ */
 
-function inicializaComponentes() {
-    var $elementos = $('.elemento');
+    var htmlRow = historial_original[0].outerHTML;
+    var newId = 'historial_evaluacion_row_' + idCount++;
+    htmlRow = htmlRow.replace('id="historial_evaluacion_row', 'id="' + newId);
 
-    console.log($elementos);
+    $('#agregar').append(htmlRow);
+
+    $('#' + newId).find('select').each(function (index, item) {
+        $(item).select2({});
+           console.log(item);
+        });
 
 
-    $elementos.on('select2:select', function (evt) {
-        console.log("select");
+    $('#' + newId).find('.datepicker').each(function (index, item) {
+        $(item).datepicker({
+            autoclose: true
+        });
     });
 
-    //Date picker
-    $('.datepicker').datepicker({
-        autoclose: true
-    });
-}
-
-$('.remove').click(function(){
-    var $elementos = $(this).parent().parent().parent().parent().find(".elemento");
-
-    //si no tiene más elementos iguales eliminar
-    // si no simplemente dejar ir
-    if ($elementos.length>=2){
+    $('#' + newId + ' .remove').click(function () {
         $(this).parent().parent().remove();
-    }
+    });
+
+
 });
+
+
 
