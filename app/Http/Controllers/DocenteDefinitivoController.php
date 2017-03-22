@@ -73,7 +73,7 @@ class DocenteDefinitivoController extends Controller
 
         $data['dic_numero_horas'] = NumeroHoras::all();
 
-        #return  $data;
+
         #return $data;
         return view('docente_definitivo.editar')->with('data', $data);
     }
@@ -88,7 +88,7 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
-        /////////////////////////// Plaza////////////////////////////
+/*        /////////////////////////// Plaza////////////////////////////
         $plaza_codigo           = $request['plaza_codigo'];
         $plaza_tipo             = $request['plaza_tipo'];
         $plaza_horas             = $request['plaza_horas'];
@@ -117,7 +117,7 @@ class DocenteDefinitivoController extends Controller
         $general['$evaluacion_vigencia']=$evaluacion_vigencia;
         $general['$evaluacion_resultado']=$evaluacion_resultado;
         $general['$evaluacion_tipo']=$evaluacion_tipo;
-        return $general;
+        return $general;*/
 
         ###################################################################
         /////////////////////////// Docentes ////////////////////////////
