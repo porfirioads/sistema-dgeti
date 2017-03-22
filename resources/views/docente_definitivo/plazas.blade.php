@@ -15,7 +15,7 @@
                         @if( $data->accion=='visualizar' || $data->accion=='modificar')
                             {{$tipo->id==$plaza->tipo_plaza_id?'selected':''}}
                         @endif>
-                    {{$tipo->descripcion }}
+                            {{$tipo->descripcion }}
                 </option>
             @endforeach
         </select>
@@ -30,9 +30,8 @@
                 <option value="{{$num_horas->id}}"
                         @if( $data->accion=='visualizar' || $data->accion=='modificar')
                             {{$num_horas->id==$plaza->numero_horas_id?'selected':''}}
-                        @endif
-                >
-                    {{$num_horas->numero_horas }}
+                        @endif>
+                            {{$num_horas->numero_horas }}
                 </option>
             @endforeach
         </select>
