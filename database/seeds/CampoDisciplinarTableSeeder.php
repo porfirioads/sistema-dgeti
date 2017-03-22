@@ -21,7 +21,7 @@ class CampoDisciplinarTableSeeder extends Seeder
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'2',
-            'campo_disciplinar' => utf8_encode('Comunicaci�n'),
+            'campo_disciplinar' => e('Comunicación'),
             'componente_formacion_id' => '1',
         ]);
 
@@ -39,25 +39,25 @@ class CampoDisciplinarTableSeeder extends Seeder
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'5',
-            'campo_disciplinar' => utf8_encode('Matem�ticas'),
+            'campo_disciplinar' => e('Matemáticas'),
             'componente_formacion_id' => '1',
         ]);
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'6',
-            'campo_disciplinar' => utf8_encode('Com�n. Todas Las Especialidades'),
+            'campo_disciplinar' => e('Común. Todas Las Especialidades'),
             'componente_formacion_id' => '2',
         ]);
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'7',
-            'campo_disciplinar' => utf8_encode('F�sico-Matem�tico'),
+            'campo_disciplinar' => e('Físico-Matemático'),
             'componente_formacion_id' => '2',
         ]);
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'8',
-            'campo_disciplinar' => utf8_encode('Econ�mico-Administrativo'),
+            'campo_disciplinar' => e('Económico-Administrativo'),
             'componente_formacion_id' => '2',
         ]);
 
@@ -69,7 +69,7 @@ class CampoDisciplinarTableSeeder extends Seeder
 
         DB::table('CAMPO_DISCIPLINAR')->insert([
             'id'=>'10',
-            'campo_disciplinar' => utf8_encode('Qu�mico-Biol�go'),
+            'campo_disciplinar' => e('Químico-Biológo'),
             'componente_formacion_id' => '2',
         ]);
 

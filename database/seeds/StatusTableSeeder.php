@@ -20,7 +20,7 @@ class StatusTableSeeder extends Seeder
 
         DB::table('STATUS')->insert([
             'id'=>'2',
-            'status' => utf8_encode('En Evaluaci�n')
+            'status' => e('En Evaluación')
         ]);
     }
 }

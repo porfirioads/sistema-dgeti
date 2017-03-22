@@ -25,6 +25,11 @@ Route::get('/information/create/ajax-state-disciplinas',[
     'as' => 'docente.disciplina'
     ]);
 
+Route::get('/information/create/ajax-state-numero-horas',[
+    'uses' => 'DocenteDefinitivoController@obtener_numero_horas',
+    'as' => 'docente.numerohoras'
+    ]);
+
 Route::post('/login', 'LoginController@login');
 
 Route::get('/logout', 'LoginController@logout');

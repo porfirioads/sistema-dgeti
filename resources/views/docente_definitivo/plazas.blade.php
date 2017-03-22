@@ -13,10 +13,10 @@
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
             @foreach($data->dic_descripcion_plaza as $tipo)
                 <option value="{{$tipo->id}}"
-                        @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                            {{$tipo->id== $plaza->descripcion_tipo_plaza_id?'selected':''}}
+                @if( $data->accion=='visualizar' || $data->accion=='modificar')
+                    {{$tipo->id== $plaza->descripcion_tipo_plaza_id?'selected':''}}
                         @endif>
-                            {{$tipo->descripcion }}
+                    {{$tipo->descripcion }}
                 </option>
             @endforeach
         </select>
@@ -28,14 +28,12 @@
                 class="form-control select2"
                 name="plaza_horas[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
-            @foreach($data->dic_hora_plaza as $num_horas)
-                <option value="{{$num_horas->id}}"
-                        @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                            {{$num_horas->id==$plaza->tipo_plaza_id?'selected':''}}
-                        @endif>
-                            {{$num_horas->numero_horas }}
-                </option>
-            @endforeach
+            {{--                <option value="{{$num_horas->id}}"
+                                    @if( $data->accion=='visualizar' || $data->accion=='modificar')
+                                        {{$num_horas->id==$plaza->tipo_plaza_id?'selected':''}}
+                                    @endif>
+                                        {{$num_horas->numero_horas }}
+                            </option>--}}
         </select>
     </div>
 
@@ -45,9 +43,9 @@
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
             @foreach($data->dic_tipo_nombramiento as $tipo)
                 <option value="{{$tipo->id}}"
-                    @if( $data->accion=='visualizar' || $data->accion=='modificar' )
-                            {{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}
-                     @endif>
+                @if( $data->accion=='visualizar' || $data->accion=='modificar' )
+                    {{$tipo->id==$plaza->tipo_nombramiento_id?'selected':''}}
+                        @endif>
                     {{$tipo->tipo_nombramiento}}
                 </option>
             @endforeach
