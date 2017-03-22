@@ -23,7 +23,7 @@ class TipoPlazaDocente extends Model
     protected $fillable = array(
         'docente_id',
         'tipo_nombramiento_id',
-        'descripcion_tipo_id',
+        'tipo_plaza_id',
         'plaza'
     );
 

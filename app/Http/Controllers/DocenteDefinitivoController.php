@@ -162,7 +162,7 @@ class DocenteDefinitivoController extends Controller
             $tipo_plaza_guardar->save();
 
             $plaza = new TipoPlazaDocente([
-                'plaza'                 => $plaza_codigo[$key],
+                'plaza'                 => $plaza,
                 'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
                 'docente_id'            => $docente->id,
                 'tipo_plaza_id'         => $tipo_plaza_guardar->id
@@ -197,17 +197,13 @@ class DocenteDefinitivoController extends Controller
 
         $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
                                     ->join('TIPO_PLAZA','TIPO_PLAZA.id','=','PLAZA_DOCENTE.tipo_plaza_id')
-                                    ->join('DESCRIPCION_TIPO_PLAZA','DESCRIPCION_TIPO_PLAZA.id','=','TIPO_PLAZA.descripcion_tipo_plaza_id')
+                                    //->join('DESCRIPCION_TIPO_PLAZA','DESCRIPCION_TIPO_PLAZA.id','=','TIPO_PLAZA.descripcion_tipo_plaza_id')
                                     ->get();
 
         //Almacena id del historial del docente
         $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
                                                             ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
 
-
-/*        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
-                                                ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
-*/
 
         $data[0]['accion'] = 'visualizar';
 
@@ -258,10 +254,6 @@ class DocenteDefinitivoController extends Controller
         $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
             ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
 
-
-        /*        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
-                                                        ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
-        */
 
         $data[0]['accion'] = 'modificar';
 
