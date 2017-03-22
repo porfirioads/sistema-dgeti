@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\DocenteDefinitivoFactory;
+use App\Models\DescripcionTipoPlaza;
 use App\Models\NumeroHoras;
 use App\Models\TipoPlaza;
 use Carbon\Carbon;
@@ -200,7 +201,7 @@ class DocenteDefinitivoController extends Controller
 
         $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
                                     ->join('TIPO_PLAZA','TIPO_PLAZA.id','=','PLAZA_DOCENTE.tipo_plaza_id')
-                                    ->join('NUMERO_HORAS','NUMERO_HORAS.id','=','TIPO_PLAZA.numero_horas_id')
+                                    ->join('DESCRIPCION_TIPO_PLAZA','DESCRIPCION_TIPO_PLAZA.id','=','TIPO_PLAZA.descripcion_tipo_plaza_id')
                                     ->get();
 
         //Almacena id del historial del docente
@@ -208,20 +209,23 @@ class DocenteDefinitivoController extends Controller
                                                             ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
 
 
-        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
+/*        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
                                                 ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
-
+*/
 
         $data[0]['accion'] = 'visualizar';
+
+        ///////////////// COMPONENTE FORMACION /////////////////
         $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
-        //$data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
-        //$data[0]['dic_disciplina'] = Disciplina::all();
         $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
+
+        ///////////////// EVALUACIONES  /////////////////
         $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
         $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
-        $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
-        $data[0]['dic_tipo_plaza'] = TipoPlaza::all();
-        $data[0]['dic_numero_horas'] = NumeroHoras::all();
+
+        $data[0]['dic_hora_plaza'] = TipoPlaza::all();
+        $data[0]['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
+
 
 
         #return $data;

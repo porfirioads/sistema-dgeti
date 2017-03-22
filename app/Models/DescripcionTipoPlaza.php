@@ -10,7 +10,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DescripcionTipoTabla extends Model
+class DescripcionTipoPlaza extends Model
 {
     use SoftDeletes;
 

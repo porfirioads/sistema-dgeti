@@ -11,7 +11,7 @@
                     name="actividades_administrativas[]"
                     {{$data->accion=='visualizar' ? 'disabled':''}}
                     multiple="multiple">
-                @foreach($data->dic_actividad_administrativas as $actividad)
+               {{-- @foreach($data->dic_actividad_administrativas as $actividad)
                     <option value="{{$actividad->id}}"
                     @if( $data->accion=='visualizar' ||  $data->accion=='modificar' )
                         @foreach($data->res_docente_definitivo_actividad as $actividadadmin)
@@ -20,7 +20,7 @@
                             @endif>
                         {{$actividad->actividad}}
                     </option>
-                @endforeach
+                @endforeach--}}
             </select>
         </div>
     </div>

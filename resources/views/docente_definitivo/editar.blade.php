@@ -299,7 +299,8 @@
     </div>
 
 
-    @include('docente_definitivo.actividades_administrativas')
+        {{--DE MOMENTO NO SE INCLUYE ESTE APARTADO--}}
+{{--    @include('docente_definitivo.actividades_administrativas')--}}
 
 
     <div class="box-footer">

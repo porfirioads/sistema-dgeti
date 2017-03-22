@@ -11,10 +11,10 @@
                 class="form-control select2"
                 name="plaza_tipo[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
-            @foreach($data->dic_tipo_plaza as $tipo)
+            @foreach($data->dic_descripcion_plaza as $tipo)
                 <option value="{{$tipo->id}}"
                         @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                            {{$tipo->id==$plaza->tipo_plaza_id?'selected':''}}
+                            {{$tipo->id== $plaza->descripcion_tipo_plaza_id?'selected':''}}
                         @endif>
                             {{$tipo->descripcion }}
                 </option>
@@ -28,10 +28,10 @@
                 class="form-control select2"
                 name="plaza_horas[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
-            @foreach($data->dic_numero_horas as $num_horas)
+            @foreach($data->dic_hora_plaza as $num_horas)
                 <option value="{{$num_horas->id}}"
                         @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                            {{$num_horas->id==$plaza->numero_horas_id?'selected':''}}
+                            {{$num_horas->id==$plaza->tipo_plaza_id?'selected':''}}
                         @endif>
                             {{$num_horas->numero_horas }}
                 </option>
