@@ -40,7 +40,6 @@
     </div>
 
     <div class="form-group col-md-2 col-sm-10">
-
         <select class="form-control select2"
                 name="plaza_nombramiento[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>

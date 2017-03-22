@@ -2,38 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Factories\DocenteDefinitivoFactory;
 use App\Models\DescripcionTipoPlaza;
 use App\Models\NumeroHoras;
 use App\Models\TipoPlaza;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
-
 use App\Models\ActividadAdmin;
 use App\Models\ActividadAdminDocenteDefinitivo;
 use App\Models\CampoDisciplinar;
 use App\Models\ComponenteFormacion;
-use App\Models\Concurso;
 use App\Models\Disciplina;
 use App\Models\DisciplinaDocente;
 use App\Models\Docente;
-use App\Models\DocenteATP;
 use App\Models\DocenteDefinitivo;
-use App\Models\DocenteEvaluador;
 use App\Models\DocenteIdoneo;
-use App\Models\DocenteTutor;
 use App\Models\Evaluacion;
-use App\Models\Funcion;
-use App\Models\FuncionDocenteTutor;
 use App\Models\HistorialEvaluacionDocente;
 use App\Models\ResultadoEvaluacion;
-use App\Models\Status;
 use App\Models\TipoEvaluacion;
 use App\Models\TipoNombramiento;
 use App\Models\TipoPlazaDocente;
-use App\Models\Tutoria;
-use Illuminate\Support\Facades\Redirect;
+
 
 class DocenteDefinitivoController extends Controller
 {
@@ -63,16 +53,16 @@ class DocenteDefinitivoController extends Controller
 
 
         $data['accion'] = 'crear';
+        ///////////////// COMPONENTE FORMACION /////////////////
         $data['dic_componente_formacion'] = ComponenteFormacion::all();
-        #$data['dic_campos_disciplinares'] = CampoDisciplinar::all();
-        #$data['dic_disciplina'] = Disciplina::all();
         $data['dic_tipo_nombramiento'] = TipoNombramiento::all();
+
+        ///////////////// EVALUACIONES  /////////////////
         $data['dic_resultados'] = ResultadoEvaluacion::all();
         $data['dic_tipo_resultados']= TipoEvaluacion::all();
-        $data['dic_actividad_administrativas'] = ActividadAdmin::all();
-        $data['dic_tipo_plaza'] = TipoPlaza::all();
 
-        $data['dic_numero_horas'] = NumeroHoras::all();
+        $data['dic_hora_plaza'] = TipoPlaza::all();
+        $data['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
 
 
         #return $data;
@@ -88,6 +78,19 @@ class DocenteDefinitivoController extends Controller
      */
     public function store(Request $request)
     {
+/*        $plaza_codigo           = $request['plaza_codigo'];
+        $plaza_tipo             = $request['plaza_tipo'];
+        $plaza_horas            = $request['plaza_horas'];
+        $plaza_nombramiento     = $request['plaza_nombramiento'];
+
+        $data = [];
+        $data ['$plaza_codigo'] =$plaza_codigo;
+        $data ['$plaza_tipo'] =$plaza_tipo;
+        $data ['$plaza_horas'] =$plaza_horas;
+        $data ['$plaza_nombramiento'] =$plaza_nombramiento;
+
+        return $data;*/
+
         ###################################################################
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
@@ -118,17 +121,6 @@ class DocenteDefinitivoController extends Controller
         $docente_definitivo->save();
 
 
-        /////////////////////////// Actividades Administrativas////////////////////////////
-        $actividades_administrativas = $request['actividades_administrativas'];
-
-        foreach ($actividades_administrativas as $actividad){
-            $actividad =  new ActividadAdminDocenteDefinitivo([
-                'docente_definitivo_id' => $docente_definitivo->id,
-                'actividad_admin_id'    => $actividad
-            ]);
-            $actividad->save();
-        }
-
         /////////////////////////// Historial Evaluación////////////////////////////
         $evaluacion_inicio      = $request['evaluacion_inicio'];
         $evaluacion_vigencia    = $request['evaluacion_vigencia'];
@@ -136,9 +128,6 @@ class DocenteDefinitivoController extends Controller
         $evaluacion_tipo        = $request['evaluacion_tipo'];
 
         $format = 'd/m/Y';
-
-
-
         $key = 0;
         foreach ($evaluacion_inicio as $evaluacion){
             $evaluacion =  new Evaluacion([
@@ -161,16 +150,22 @@ class DocenteDefinitivoController extends Controller
         /////////////////////////// Plaza////////////////////////////
         $plaza_codigo           = $request['plaza_codigo'];
         $plaza_tipo             = $request['plaza_tipo'];
-        $plaza_horas             = $request['plaza_horas'];
+        $plaza_horas            = $request['plaza_horas'];
         $plaza_nombramiento     = $request['plaza_nombramiento'];
 
         $key=0;
         foreach ($plaza_codigo as $plaza){
+            $tipo_plaza_guardar =  new TipoPlaza([
+                'numero_horas'          => $plaza_horas[$key],
+                'descripcion_plaza_id'  =>  $plaza_tipo[$key]
+            ]);
+            $tipo_plaza_guardar->save();
+
             $plaza = new TipoPlazaDocente([
                 'plaza'                 => $plaza_codigo[$key],
-                'docente_id'            => $docente->id,
                 'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
-                'tipo_plaza_id'      => $plaza_tipo[$key]
+                'docente_id'            => $docente->id,
+                'tipo_plaza_id'         => $tipo_plaza_guardar->id
             ]);
             $plaza->save();
             $key++;
@@ -178,6 +173,7 @@ class DocenteDefinitivoController extends Controller
 
         return redirect()->action('DocenteDefinitivoController@index');
     }
+
 
     /**
      * Display the specified resource.
