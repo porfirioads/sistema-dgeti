@@ -19,10 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ResultadoEvaluacionTableSeeder::class);
         $this->call(TipoEvaluacionTableSeeder::class);
         $this->call(TipoNombramientoTableSeeder::class);
-        $this->call(NumeroHorasTableSeeder::class);
+        $this->call(DescripcionPlazaTableSeeder::class);
         $this->call(TipoPlazaTableSeeder::class);
         $this->call(StatusTableSeeder::class);
-        $this->call(ActividadAdminTableSeeder::class);
         $this->call(FuncionTableSeeder::class);
         $this->call(ComponenteFormacionTableSeeder::class);
         $this->call(CampoDisciplinarTableSeeder::class);
@@ -32,7 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HistorialEvaluacionDocenteTableSeeder::class);
         $this->call(DocenteDefinitivoTableSeeder::class);
         $this->call(DocenteEvaluadorTableSeeder::class);
-        $this->call(ActividadAdminDocenteDefinitivoTableSeeder::class);
         $this->call(ConcursoTableSeeder::class);
         $this->call(DocenteAtpTableSeeder::class);
         $this->call(DocenteIdoneoTableSeeder::class);
@@ -44,6 +42,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AspectoEvaluacionTableSeeder::class);
         $this->call(SubaspectoEvaluacionTableSeeder::class);
         $this->call(EvidenciaTableSeeder::class);
+        $this->call(CriterioExistenciaTableSeeder::class);
+        $this->call(CriterioPertinenciaTableSeeder::class);
+        $this->call(CriterioSuficienciaTableSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

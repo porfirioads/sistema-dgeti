@@ -10,14 +10,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TipoPlaza extends Model
+class DescripcionTipoTabla extends Model
 {
     use SoftDeletes;
 
     protected $primaryKey = 'id';
-    protected $table = 'TIPO_PLAZA';
+    protected $table = 'DESCRIPCION_TIPO_PLAZA';
     protected $fillable = array(
-        'numero_horas, descripcion_plaza_id',
+        'descripcion',
     );
 
     protected $dates = ['deleted_at'];

@@ -2,6 +2,10 @@
 
 @section('title', $page_title)
 
+@section('particular_styles')
+    <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
+@endsection
+
 @section('sidebar_options')
     @include('snb.sidebar_items')
 @endsection
@@ -9,7 +13,7 @@
 @section('box_title', $box_title)
 
 @section('box_body')
-    <div class="row">
+    <div class="row no-horizontal-scroll">
         <div class="col-xs-12">
             <div class="table-responsive no-padding">
                 <table class="table table-aspecto-snb">
@@ -46,24 +50,52 @@
                         @foreach($subaspecto['evidencias'] as $evidencia)
                             <tr>
                                 <td colspan="2">{{$evidencia->evidencia}}</td>
-                                <td>h</td>
-                                <td>h</td>
-                                <td>h</td>
+                                <td class="select-snb">
+                                    <select class="form-control select2">
+                                        @foreach($criterios_existencia as
+                                        $criterio)
+                                            <option>
+                                                {{$criterio->criterio}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td class="select-snb">
+                                    <select class="form-control select2">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </td>
+                                <td class="select-snb">
+                                    <select class="form-control select2">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </td>
                             </tr>
                         @endforeach
                     @endforeach
 
                     {{--<tr>--}}
                     {{--@foreach($subaspecto['evidencias'] as $evidencia)--}}
-                        {{--<td>{{$evidencia->evidencia}}</td>--}}
-                        {{--<td>f</td>--}}
-                        {{--<td>g</td>--}}
-                        {{--<td>h</td>--}}
-                        {{--@endforeach--}}
+                    {{--<td>{{$evidencia->evidencia}}</td>--}}
+                    {{--<td>f</td>--}}
+                    {{--<td>g</td>--}}
+                    {{--<td>h</td>--}}
+                    {{--@endforeach--}}
                     {{--</tr>--}}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+@endsection
+
+@section('particular_scripts')
+    <script src="{!! asset('js/select2.full.min.js') !!}"></script>
+    <script>
+        $(".select2").select2({});
+    </script>
 @endsection

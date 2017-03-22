@@ -345,4 +345,11 @@ class DocenteDefinitivoController extends Controller
 
         return response()->json($disciplinas);
     }
+
+    public function obtener_numero_horas(Request $request){
+        $numero_horas_id = $request->input('numero_horas_id');
+
+        $numero_horas = TipoPlaza::where('numero_horas_id','=',$numero_horas_id)->get();
+
+    }
 }
