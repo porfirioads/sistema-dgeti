@@ -191,7 +191,7 @@
         </div>
         <div class="panel-body">
 
-            <div class="row">
+            <div class="row hidden-xs hidden-sm hidden-md">
                 <div class="form-group col-md-3 col-sm-12">
                     <label>Plaza</label>
                 </div>
@@ -209,19 +209,23 @@
                 </div>
             </div>
 
-            @if( $data->accion=='visualizar')
-                @foreach($data->res_plaza as $plaza)
-                    @include('docente_definitivo.plazas')
-                @endforeach
+            @if( $data->accion=='visualizar' || $data->accion=='modificar')
+                <div id="agregarPlaza">
+                    @foreach($data->res_plaza as $plaza)
+                        @include('docente_definitivo.plazas')
+                    @endforeach
+                </div>
             @else
-                @include('docente_definitivo.plazas')
+                <div id="agregarPlaza">
+                    @include('docente_definitivo.plazas')
+                </div>
             @endif
 
 
             <div class="row">
                 <div class="col-md-11"></div>
                 <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary add-element" {{$data->accion=='visualizar' ? 'disabled':''}}>
+                    <a class="btn btn-block btn-primary add-element-plaza" {{$data->accion=='visualizar' ? 'disabled':''}}>
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
@@ -237,41 +241,30 @@
         </div>
         <div class="panel-body">
 
-            <div class="row">
-                <div class="form-group col-lg-3">
-                    <label>Fecha evaluación</label>
-                </div>
-                <div class="form-group col-lg-3">
-                    <label>Fecha vigencia</label>
-                </div>
-                <div class="form-group col-lg-2">
-                    <label>Resultados</label>
-                </div>
-                <div class="form-group col-lg-3">
-                    <label>Tipo Evaluación</label>
-                </div>
-                <div class="form-group col-lg-1">
-                    <label>Acciones</label>
-                </div>
+            <div class="row hidden-xs hidden-sm hidden-md">
+                <div class="form-group col-lg-3"><label>Tipo Evaluación</label></div>
+                <div class="form-group col-lg-2"><label>Resultados</label></div>
+                <div class="form-group col-lg-3"><label>Fecha evaluación</label></div>
+                <div class="form-group col-lg-3"><label>Fecha vigencia</label></div>
+                <div class="form-group col-lg-1"><label>Acciones</label></div>
             </div>
 
 
             @if( $data->accion=='visualizar' || $data->accion=='modificar' )
-                {{$data->res_evaluacion}}
-                <div id="agregar">
-                @foreach($data->res_evaluacion as $evaluacion)
-                    @include('docente_definitivo.historial_evaluacion')
-                @endforeach
+                <div id="agregarHistorial">
+                    @foreach($data->res_evaluacion as $evaluacion)
+                        @include('docente_definitivo.historial_evaluacion')
+                    @endforeach
                 </div>
             @else
-                <div id="agregar">
+                <div id="agregarHistorial">
                     @include('docente_definitivo.historial_evaluacion')
                 </div>
             @endif
             <div class="row">
                 <div class="col-md-11"></div>
                 <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary add-element" {{$data->accion=='visualizar' ? 'disabled':''}}>
+                    <a class="btn btn-block btn-primary add-element-evaluacion" {{$data->accion=='visualizar' ? 'disabled':''}}>
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
@@ -330,7 +323,8 @@
     <script>
         var selComponentes = $('#selComponentes');
 
-        var historial_original= $("#historial_evaluacion_row").clone(true,true);
+        var historial_original = $("#historial_evaluacion_row").clone(true, true);
+        var plaza_original = $("#plaza_row").clone(true, true);
 
         $(".select2").select2({});
         selComponentes.on('select2:select', function (evt) {

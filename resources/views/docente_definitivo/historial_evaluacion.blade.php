@@ -23,7 +23,7 @@
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
             @foreach($data->dic_resultados as $resultado)
                 <option value="{{$resultado->id}}"
-                @if( $data->accion=='visualizar' )
+                @if( $data->accion=='visualizar' || $data->accion=='modificar'  )
                     {{$resultado->id == $evaluacion->resultado_evaluacion_id ? 'selected':''}}
                         @endif>
                     {{$resultado->tipo_resultado}}
@@ -33,17 +33,18 @@
     </div>
 
     <div class="form-group col-lg-3">
-
-        {!! Form::text('evaluacion_vigencia[]', $value = $data->accion=='visualizar' ? $evaluacion->vigencia_evaluacion:null,
-        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
+        {!! Form::text('evaluacion_inicio[]', $value = $data->accion=='visualizar' || $data->accion=='modificar'  ? $evaluacion->fecha_evaluacion:null,
+        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
         'required',$data->accion=='visualizar' ? 'disabled':''])!!}
     </div>
 
     <div class="form-group col-lg-3">
-        {!! Form::text('evaluacion_inicio[]', $value = $data->accion=='visualizar' ? $evaluacion->fecha_evaluacion:null,
-        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
+        {!! Form::text('evaluacion_vigencia[]', $value = $data->accion=='visualizar' || $data->accion=='modificar'  ? $evaluacion->vigencia_evaluacion:null,
+        ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
         'required',$data->accion=='visualizar' ? 'disabled':''])!!}
     </div>
+
+
 
     <div class="form-group col-lg-1">
         <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
