@@ -167,7 +167,7 @@ class DocenteDefinitivoController extends Controller
                 'plaza'                 => $plaza_codigo[$key],
                 'docente_id'            => $docente->id,
                 'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
-                'tipo_plaza_id'      => $plaza_horas[$key]
+                'tipo_plaza_id'      => $plaza_tipo[$key]
             ]);
             $plaza->save();
             $key++;

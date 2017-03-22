@@ -1,5 +1,4 @@
 {{--//////////////////////////////////////PLAZAS/////////--}}
-
 <div class="row elemento" id="plaza_row">
     <div class="form-group col-md-3 col-sm-12">
         {!! Form::text('plaza_codigo[]', $value = $data->accion=='visualizar'  || $data->accion=='modificar'  ? $plaza->plaza:null, ['class' =>
