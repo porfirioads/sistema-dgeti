@@ -88,37 +88,6 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
-/*        /////////////////////////// Plaza////////////////////////////
-        $plaza_codigo           = $request['plaza_codigo'];
-        $plaza_tipo             = $request['plaza_tipo'];
-        $plaza_horas             = $request['plaza_horas'];
-        $plaza_nombramiento     = $request['plaza_nombramiento'];
-
-
-        $general=[];
-
-        $general['plaza_codigo']= $request['plaza_codigo'];
-        $general['plaza_tipo']= $request['plaza_tipo'];
-        $general['plaza_horas']= $request['plaza_horas'];
-        $general['plaza_nombramiento']= $request['plaza_nombramiento'];
-        return $general;
-
-
-
-
-        $evaluacion_inicio      = $request['evaluacion_inicio'];
-        $evaluacion_vigencia    = $request['evaluacion_vigencia'];
-        $evaluacion_resultado  = $request['evaluacion_resultado'];
-        $evaluacion_tipo        = $request['evaluacion_tipo'];
-
-        $general=[];
-
-        $general['$evaluacion_inicio']=$evaluacion_inicio;
-        $general['$evaluacion_vigencia']=$evaluacion_vigencia;
-        $general['$evaluacion_resultado']=$evaluacion_resultado;
-        $general['$evaluacion_tipo']=$evaluacion_tipo;
-        return $general;*/
-
         ###################################################################
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
@@ -128,8 +97,6 @@ class DocenteDefinitivoController extends Controller
 
 
         /////////////////////////// Datos Académicos////////////////////////////
-        $academico_componentes = $request['academico_componentes_formacion'];
-        $academico_campo_disciplinar = $request['academico_campo_disciplinar'];
         $academico_disciplina = $request['academico_disciplina'];
 
         foreach ($academico_disciplina as $disciplina){
@@ -166,10 +133,11 @@ class DocenteDefinitivoController extends Controller
         $evaluacion_resultado   = $request['evaluacion_resultado'];
         $evaluacion_tipo        = $request['evaluacion_tipo'];
 
-        $format = 'm/d/Y';
+        $format = 'd/m/Y';
 
 
-        foreach ($evaluacion_inicio as $key=>$evaluacion){
+        $key = 0;
+        foreach ($evaluacion_inicio as $evaluacion){
             $evaluacion =  new Evaluacion([
                 'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
                 'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
@@ -183,6 +151,7 @@ class DocenteDefinitivoController extends Controller
                 'docente_id'        =>  $docente->id
                 ]);
             $historial_evaluacion->save();
+            $key++;
         }
 
 
@@ -192,8 +161,8 @@ class DocenteDefinitivoController extends Controller
         $plaza_horas             = $request['plaza_horas'];
         $plaza_nombramiento     = $request['plaza_nombramiento'];
 
-
-        foreach ($plaza_codigo as $key=> $plaza){
+        $key=0;
+        foreach ($plaza_codigo as $plaza){
             $plaza = new TipoPlazaDocente([
                 'plaza'                 => $plaza_codigo[$key],
                 'docente_id'            => $docente->id,
@@ -201,9 +170,10 @@ class DocenteDefinitivoController extends Controller
                 'tipo_plaza_id'      => $plaza_horas[$key]
             ]);
             $plaza->save();
+            $key++;
         }
 
-        redirect()->route('docente_definitivo.index');
+        return redirect()->action('DocenteDefinitivoController@index');
     }
 
     /**

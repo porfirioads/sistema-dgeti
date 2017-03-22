@@ -36,13 +36,21 @@
 
         <div class="form-group col-md-12">
             <label>Disciplina</label>
-            <select id="selDisciplinas" class="form-control select2"
-                    {{$data->accion=='ver' ? 'disabled':''}}
+            <select id="selDisciplinas"
+                    name="academico_disciplina[]"
+                    class="form-control select2"
+                    {{$data->accion=='visualizar' ? 'disabled':''}}
                     multiple="multiple">
-
-
-
-
+                @foreach($data->dic_disciplina as $disciplina)
+                    <option value="{{$disciplina->id}}"
+                    @if( $data->accion=='visualizar' ||  $data->accion=='modificar' )
+                        @foreach($data->res_disciplina as $_disciplina)
+                            {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
+                                @endforeach
+                            @endif>
+                        {{$disciplina->disciplina}}
+                    </option>
+                @endforeach
             </select>
         </div>
     </div>
