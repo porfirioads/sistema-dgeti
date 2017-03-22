@@ -290,6 +290,7 @@
     <script src="{!! asset('js/select2.full.min.js') !!}"></script>
     <script src="{!! asset('js/bootstrap-datepicker.js') !!}"></script>
     <script src="{!! asset('js/bootstrap-datepicker.es.js') !!}"></script>
+    <script src="{!! asset('js/dgeti/ObtenerCamposDisciplina.js') !!}"></script>
     <script src="{!! asset('js/add-elements.js') !!}"></script>
     <script>
         var selComponentes = $('#selComponentes');
@@ -304,7 +305,8 @@
 
         //Date picker
         $('.datepicker').datepicker({
-            autoclose: true
+            autoclose: true,
+            format: "dd/mm/yyyy",
         });
     </script>
 @endsection

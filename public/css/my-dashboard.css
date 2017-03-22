@@ -21,3 +21,22 @@ body {
     font-size: 25px !important;
     font-weight: bold;
 }
+
+/* Tabla SNB */
+
+.table-aspecto-snb * {
+    border: solid #D2D6DE !important;
+}
+
+.table-aspecto-snb * {
+    border-width: 2px;
+}
+
+.table-aspecto-snb thead tr.table-header {
+    background-color: #D2D6DE;
+    font-size: 1.5em;
+}
+
+.table-aspecto-snb th {
+    text-align: center;
+}
