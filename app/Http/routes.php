@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('landings.main');
 });
 
+Route::get('/information/create/ajax-state',[
+    'uses' => 'DocenteDefinitivoController@obtener_campo_disciplinar',
+    'as' => 'docente.campo'
+    ]);
+
+Route::get('/information/create/ajax-state-disciplinas',[
+    'uses' => 'DocenteDefinitivoController@obtener_disciplinas',
+    'as' => 'docente.disciplina'
+    ]);
+
 Route::post('/login', 'LoginController@login');
 
 Route::get('/logout', 'LoginController@logout');
