@@ -12,10 +12,12 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="table-responsive no-padding">
-                <table class="table table-hover">
-                    <tbody>
-                    <tr>
-                        <th colspan="4">{{$aspecto->descripcion}}</th>
+                <table class="table table-hover table-aspecto-snb">
+                    <thead>
+                    <tr class="table-header">
+                        <th colspan="4">
+                            {{$aspecto->descripcion}}
+                        </th>
                         <th colspan="3">
                             Criterios de Evaluación
                         </th>
@@ -28,6 +30,10 @@
                         <th>Criterios de Pertinencia</th>
                         <th>Criterios de Suficiencia</th>
                     </tr>
+                    </thead>
+                    <tbody>
+
+
                     {{--*/ $contador_subaspecto = 1 /*--}}
                     @foreach($aspecto['subaspectos_evaluacion'] as $subaspecto)
                         <tr>
