@@ -180,19 +180,15 @@
 
             @if( $data->accion=='visualizar' || $data->accion=='modificar')
                 <div id="agregarAcademico">
-                    {{--@foreach($data->res_plaza as $plaza)
+                    @foreach($data->res_disciplina as $componente)
                         @include('docente_definitivo.datos_academicos')
-                    @endforeach--}}
+                    @endforeach
                 </div>
             @else
                 <div id="agregarAcademico">
                         @include('docente_definitivo.datos_academicos')
                 </div>
             @endif
-
-            <div id="agregarAcademico">
-                @include('docente_definitivo.datos_academicos')
-            </div>
 
 
 

@@ -63,8 +63,8 @@ class DocenteDefinitivoController extends Controller
 
         $data['accion'] = 'crear';
         $data['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data['dic_campos_disciplinares'] = CampoDisciplinar::all();
-        $data['dic_disciplina'] = Disciplina::all();
+        #$data['dic_campos_disciplinares'] = CampoDisciplinar::all();
+        #$data['dic_disciplina'] = Disciplina::all();
         $data['dic_tipo_nombramiento'] = TipoNombramiento::all();
         $data['dic_resultados'] = ResultadoEvaluacion::all();
         $data['dic_tipo_resultados']= TipoEvaluacion::all();
@@ -87,7 +87,6 @@ class DocenteDefinitivoController extends Controller
      */
     public function store(Request $request)
     {
-
         ###################################################################
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
@@ -97,14 +96,16 @@ class DocenteDefinitivoController extends Controller
 
 
         /////////////////////////// Datos Académicos////////////////////////////
-        $academico_disciplina = $request['academico_disciplina'];
+        $academico_disciplina = $request['disciplina'];
 
         foreach ($academico_disciplina as $disciplina){
-            $disciplina_docente =  new DisciplinaDocente([
-                'docente_id'    => $docente->id,
-                'disciplina_id' => $disciplina
-            ]);
-            $disciplina_docente->save();
+            if($disciplina != -1){
+                $disciplina_docente =  new DisciplinaDocente([
+                    'docente_id'    => $docente->id,
+                    'disciplina_id' => $disciplina
+                ]);
+                $disciplina_docente->save();
+            }
         }
 
 
@@ -191,7 +192,11 @@ class DocenteDefinitivoController extends Controller
 
         //Almacena id de las disciplinas del docente
         $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
-                                                ->join('DISCIPLINA', 'DISCIPLINA_DOCENTE.disciplina_id', '=', 'DISCIPLINA.id')->get();
+                                                ->join('DISCIPLINA', 'DISCIPLINA.id', '=', 'DISCIPLINA_DOCENTE.disciplina_id')
+                                                ->join('CAMPO_DISCIPLINAR', 'CAMPO_DISCIPLINAR.id', '=', 'DISCIPLINA.campo_disciplinar_id')
+                                                ->join('COMPONENTE_FORMACION', 'COMPONENTE_FORMACION.id', '=', 'CAMPO_DISCIPLINAR.componente_formacion_id')
+            ->get();
+
 
         $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
                                     ->join('TIPO_PLAZA','TIPO_PLAZA.id','=','PLAZA_DOCENTE.tipo_plaza_id')
@@ -209,8 +214,8 @@ class DocenteDefinitivoController extends Controller
 
         $data[0]['accion'] = 'visualizar';
         $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
-        $data[0]['dic_disciplina'] = Disciplina::all();
+        //$data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
+        //$data[0]['dic_disciplina'] = Disciplina::all();
         $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
         $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
         $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
@@ -219,7 +224,7 @@ class DocenteDefinitivoController extends Controller
         $data[0]['dic_numero_horas'] = NumeroHoras::all();
 
 
-        #return  $data[0];
+        #return $data;
         return view('docente_definitivo.editar')->with('data', $data[0]);
     }
 
