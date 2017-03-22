@@ -7,7 +7,8 @@
     </div>
 
     <div class="form-group col-md-3 col-sm-12">
-        <select class="form-control select2"
+        <select id="plaza_tipo"
+                class="form-control select2"
                 name="plaza_tipo[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
             @foreach($data->dic_tipo_plaza as $tipo)
@@ -23,7 +24,8 @@
 
 
     <div class="form-group col-md-3 col-sm-12">
-        <select class="form-control select2"
+        <select id="numero_horas"
+                class="form-control select2"
                 name="plaza_horas[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
             @foreach($data->dic_numero_horas as $num_horas)

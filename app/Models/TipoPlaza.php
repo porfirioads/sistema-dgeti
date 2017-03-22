@@ -17,14 +17,8 @@ class TipoPlaza extends Model
     protected $primaryKey = 'id';
     protected $table = 'TIPO_PLAZA';
     protected $fillable = array(
-        'numero_horas_id, descripcion',
+        'numero_horas, descripcion_plaza_id',
     );
 
     protected $dates = ['deleted_at'];
-
-
-    public function tipo_plaza_docente()
-    {
-        return $this->belongsTo('App\Models\TipoPlazaDocente');
-    }
 }
