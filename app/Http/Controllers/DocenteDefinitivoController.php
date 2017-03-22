@@ -241,35 +241,44 @@ class DocenteDefinitivoController extends Controller
             ->get();
 
 
-
         //Almacena id de las disciplinas del docente
         $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
-            ->join('DISCIPLINA', 'DISCIPLINA_DOCENTE.disciplina_id', '=', 'DISCIPLINA.id')->get();
+            ->join('DISCIPLINA', 'DISCIPLINA.id', '=', 'DISCIPLINA_DOCENTE.disciplina_id')
+            ->join('CAMPO_DISCIPLINAR', 'CAMPO_DISCIPLINAR.id', '=', 'DISCIPLINA.campo_disciplinar_id')
+            ->join('COMPONENTE_FORMACION', 'COMPONENTE_FORMACION.id', '=', 'CAMPO_DISCIPLINAR.componente_formacion_id')
+            ->get();
 
-        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)->get();
+
+        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
+            ->join('TIPO_PLAZA','TIPO_PLAZA.id','=','PLAZA_DOCENTE.tipo_plaza_id')
+            ->join('DESCRIPCION_TIPO_PLAZA','DESCRIPCION_TIPO_PLAZA.id','=','TIPO_PLAZA.descripcion_tipo_plaza_id')
+            ->get();
 
         //Almacena id del historial del docente
         $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
             ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
 
 
-        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
-            ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
-
+        /*        $data[0]['res_docente_definitivo_actividad'] = DocenteDefinitivo::where('docente_id','=',$id)
+                                                        ->join('ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO', 'ACTIVIDAD_ADMIN_DOCENTE_DEFINITIVO.docente_definitivo_id', '=', 'DOCENTE_DEFINITIVO.id')->get();
+        */
 
         $data[0]['accion'] = 'modificar';
+
+        ///////////////// COMPONENTE FORMACION /////////////////
         $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data[0]['dic_campos_disciplinares'] = CampoDisciplinar::all();
-        $data[0]['dic_disciplina'] = Disciplina::all();
         $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
+
+        ///////////////// EVALUACIONES  /////////////////
         $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
         $data[0]['dic_tipo_resultados']= TipoEvaluacion::all();
-        $data[0]['dic_actividad_administrativas'] = ActividadAdmin::all();
-        $data[0]['dic_tipo_plaza'] = TipoPlaza::all();
-        $data[0]['dic_numero_horas'] = NumeroHoras::all();
+
+        $data[0]['dic_hora_plaza'] = TipoPlaza::all();
+        $data[0]['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
 
 
-        #return  $data[0];
+
+        #return $data;
         return view('docente_definitivo.editar')->with('data', $data[0]);
     }
 
