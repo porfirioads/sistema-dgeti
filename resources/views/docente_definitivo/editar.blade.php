@@ -153,34 +153,7 @@
     </div>
 
     {{--//////////////////////////////////////Datos académicos/////////--}}
-    <div class="panel panel-primary">
-        <div class="panel-heading clearfix">
-            <i class="icon-calendar"></i>
-            <h3 class="panel-title">Datos académicos</h3>
-        </div>
-        <div class="panel-body">
-            <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                <label>Disciplina</label>
-                <select id="selDisciplinas"
-                        name="academico_disciplina[]"
-                        class="form-control select2"
-                        {{$data->accion=='visualizar' ? 'disabled':''}}
-                        multiple="multiple">
-                    @foreach($data->dic_disciplina as $disciplina)
-                        <option value="{{$disciplina->id}}"
-                        @if( $data->accion=='visualizar' ||  $data->accion=='modificar' )
-                            @foreach($data->res_disciplina as $_disciplina)
-                                {{$disciplina->id==$_disciplina->disciplina_id?'selected':''}}
-                                    @endforeach
-                                @endif>
-                            {{$disciplina->disciplina}}
-                        </option>
-
-                    @endforeach
-                </select>
-            </div>
-        </div>
-    </div>
+    @include('docente_definitivo.datos_academicos')
 
 
     {{--//////////////////////////////////////PLAZAS/////////--}}
@@ -289,15 +262,12 @@
                         {{$data->accion=='visualizar' ? 'disabled':''}}
                         multiple="multiple">
                     @foreach($data->dic_actividad_administrativas as $actividad)
-                        <option
+                        <option value="{{$actividad->id}}"
                                 @if( $data->accion=='visualizar' ||  $data->accion=='modificar' )
-                                @foreach($data->res_docente_definitivo_actividad as $actividadadmin)
-
-                                {{$actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
-
-                                @endforeach
-                                @endif
-                                value="{{$actividad->id}}">
+                                    @foreach($data->res_docente_definitivo_actividad as $actividadadmin)
+                                        {{$actividadadmin->actividad_admin_id == $actividad->id ? 'selected':''}}
+                                    @endforeach
+                                @endif>
                             {{$actividad->actividad}}
                         </option>
                     @endforeach
@@ -308,7 +278,8 @@
 
     <div class="box-footer">
         {!! Form::submit($data->accion=='visualizar'? "Guardar" : "Agregar",
-              ['class' => 'btn btn-block btn-lg btn-primary', $data->accion=='visualizar'?'disabled':''] ) !!}
+              ['class' => 'btn btn-block btn-lg btn-primary',
+              $data->accion=='visualizar'?'disabled':''] ) !!}
     </div>
 
     {!! Form::close()  !!}

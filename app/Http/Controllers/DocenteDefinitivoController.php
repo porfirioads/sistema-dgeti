@@ -88,6 +88,37 @@ class DocenteDefinitivoController extends Controller
     public function store(Request $request)
     {
 
+        /////////////////////////// Plaza////////////////////////////
+        $plaza_codigo           = $request['plaza_codigo'];
+        $plaza_tipo             = $request['plaza_tipo'];
+        $plaza_horas             = $request['plaza_horas'];
+        $plaza_nombramiento     = $request['plaza_nombramiento'];
+
+
+        $general=[];
+
+        $general['plaza_codigo']= $request['plaza_codigo'];
+        $general['plaza_tipo']= $request['plaza_tipo'];
+        $general['plaza_horas']= $request['plaza_horas'];
+        $general['plaza_nombramiento']= $request['plaza_nombramiento'];
+        return $general;
+
+
+
+
+        $evaluacion_inicio      = $request['evaluacion_inicio'];
+        $evaluacion_vigencia    = $request['evaluacion_vigencia'];
+        $evaluacion_resultado  = $request['evaluacion_resultado'];
+        $evaluacion_tipo        = $request['evaluacion_tipo'];
+
+        $general=[];
+
+        $general['$evaluacion_inicio']=$evaluacion_inicio;
+        $general['$evaluacion_vigencia']=$evaluacion_vigencia;
+        $general['$evaluacion_resultado']=$evaluacion_resultado;
+        $general['$evaluacion_tipo']=$evaluacion_tipo;
+        return $general;
+
         ###################################################################
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
@@ -132,7 +163,7 @@ class DocenteDefinitivoController extends Controller
         /////////////////////////// Historial Evaluación////////////////////////////
         $evaluacion_inicio      = $request['evaluacion_inicio'];
         $evaluacion_vigencia    = $request['evaluacion_vigencia'];
-        $evaluacion_resultado  = $request['evaluacion_resultado'];
+        $evaluacion_resultado   = $request['evaluacion_resultado'];
         $evaluacion_tipo        = $request['evaluacion_tipo'];
 
         $format = 'm/d/Y';
@@ -191,7 +222,10 @@ class DocenteDefinitivoController extends Controller
         $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
                                                 ->join('DISCIPLINA', 'DISCIPLINA_DOCENTE.disciplina_id', '=', 'DISCIPLINA.id')->get();
 
-        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)->get();
+        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
+                                    ->join('TIPO_PLAZA','TIPO_PLAZA.id','=','PLAZA_DOCENTE.tipo_plaza_id')
+                                    ->join('NUMERO_HORAS','NUMERO_HORAS.id','=','TIPO_PLAZA.numero_horas_id')
+                                    ->get();
 
         //Almacena id del historial del docente
         $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
