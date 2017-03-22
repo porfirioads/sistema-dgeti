@@ -25,6 +25,8 @@ class HistorialEvaluacionDocente extends Model
         'docente_id'
     );
 
+    protected $dateFormat = 'd-m-Y  H:i:s';
+
     protected $dates = ['deleted_at'];
 
     public function evaluacion(){
