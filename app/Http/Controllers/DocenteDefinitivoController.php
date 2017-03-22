@@ -324,4 +324,20 @@ class DocenteDefinitivoController extends Controller
 
         return response()->json(['eliminado'=>$docenteDelete]);
     }
+
+    public function obtener_campo_disciplinar(Request $request){
+        $componente_formacion_id = $request->input('componente_formacion_id');
+
+        $campos_disciplinares = CampoDisciplinar::where('componente_formacion_id','=',$componente_formacion_id)->get();
+
+        return response()->json($campos_disciplinares);
+    }
+
+    public function obtener_disciplinas(Request $request){
+        $campo_disciplinar_id = $request->input('campo_disciplinar_id');
+
+        $disciplinas = Disciplina::where('campo_disciplinar_id','=',$campo_disciplinar_id)->get();
+
+        return response()->json($disciplinas);
+    }
 }
