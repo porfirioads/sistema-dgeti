@@ -24,11 +24,11 @@ body {
 
 /* Tabla SNB */
 
-.table-aspecto-snb * {
+.table-aspecto-snb th, .table-aspecto-snb td {
     border: solid #D2D6DE !important;
 }
 
-.table-aspecto-snb * {
+.table-aspecto-snb th, .table-aspecto-snb td {
     border-width: 2px;
 }
 
@@ -39,4 +39,13 @@ body {
 
 .table-aspecto-snb th {
     text-align: center;
+}
+
+.table-aspecto-snb .select2 {
+    width: 100% !important;
+}
+
+td.select-snb {
+    width: 200px;
+    max-width: 200px;
 }
