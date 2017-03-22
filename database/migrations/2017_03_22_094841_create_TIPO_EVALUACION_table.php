@@ -17,8 +17,8 @@ class CreateTIPOEVALUACIONTable extends Migration {
 			$table->integer('id', true);
 			$table->string('tipo_evaluacion', 15);
 			$table->date('deleted_at')->nullable();
-			$table->date('created_at');
-			$table->date('updated_at');
+			$table->date('created_at')->default('1970-01-01');
+			$table->date('updated_at')->default('1970-01-01');
 		});
 	}
 

@@ -14,8 +14,8 @@ class AddForeignKeysToEVALUACIONTable extends Migration {
 	{
 		Schema::table('EVALUACION', function(Blueprint $table)
 		{
-			$table->foreign('resultado_evaluacion_id', 'fk_EVALUACION_RESULTADO_EVALUACION1')->references('id')->on('RESULTADO_EVALUACION')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('tipo_evaluacion_id', 'fk_HISTORIAL_EVALUACION_TIPO_EVALUACION1')->references('id')->on('TIPO_EVALUACION')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('resultado_evaluacion_id', 'fk_EVALUACION_RESULTADO_EVALUACION1')->references('id')->on('RESULTADO_EVALUACION')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToEVALUACIONTable extends Migration {
 	{
 		Schema::table('EVALUACION', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_EVALUACION_RESULTADO_EVALUACION1');
 			$table->dropForeign('fk_HISTORIAL_EVALUACION_TIPO_EVALUACION1');
+			$table->dropForeign('fk_EVALUACION_RESULTADO_EVALUACION1');
 		});
 	}
 
