@@ -9,6 +9,11 @@ $('#plaza_tipo').on('change', function (e) {
 
         $('#numero_horas').empty();
 
+        $('#numero_horas').append($('<option selected>', {
+            value: -1,
+            text: 'Selecciona Número Horas ...'
+        }));
+
         $.each(data, function (index, subCatObj) {
             //console.log(subCatObj.numero_horas);
             $('#numero_horas').append($('<option>', {

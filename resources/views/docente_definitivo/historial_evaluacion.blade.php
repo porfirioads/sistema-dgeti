@@ -4,6 +4,7 @@
         <select class="form-control select2"
                 name="evaluacion_tipo[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
+            <option value='-1' selected>Seleccionar Tipo de Evaluaci&oacute;n ...</option>
             @foreach($data->dic_tipo_resultados as $tipo_resultado)
                 <option value="{{$tipo_resultado->id}}"
                 @if( $data->accion=='visualizar' || $data->accion=='modificar'  )
@@ -20,6 +21,7 @@
         <select class="form-control select2"
                 name="evaluacion_resultado[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
+            <option value='-1' selected>Seleccionar Tipo de Resultado ...</option>
             @foreach($data->dic_resultados as $resultado)
                 <option value="{{$resultado->id}}"
                 @if( $data->accion=='visualizar' || $data->accion=='modificar'  )

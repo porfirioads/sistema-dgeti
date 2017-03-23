@@ -111,7 +111,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="form-group col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="exampleInputPassword1">
                     Perfil Profesional
                 </label>
@@ -129,7 +129,7 @@
                 'placeholder' => 'Horas frente a grupo',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-lg-2 col-md-6 col-sm-12">
+            <div class="form-group col-lg-4 col-md-6 col-sm-12">
                 <label for="exampleInputPassword1">
                     Horas descarga académica
                 </label>

@@ -11,6 +11,7 @@
                 class="form-control select2"
                 name="plaza_tipo[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
+            <option value='-1' selected>Seleccionar Tipo de Plaza ...</option>
             @foreach($data->dic_descripcion_plaza as $tipo)
                 <option value="{{$tipo->id}}"
                 @if( $data->accion=='visualizar' || $data->accion=='modificar')
@@ -28,6 +29,7 @@
                 class="form-control select2"
                 name="plaza_horas[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
+            <option value='-1' selected>Seleccionar N&uacute;mero de Horas ...</option>
             {{--                <option value="{{$num_horas->id}}"
                                     @if( $data->accion=='visualizar' || $data->accion=='modificar')
                                         {{$num_horas->id==$plaza->tipo_plaza_id?'selected':''}}
@@ -41,6 +43,7 @@
         <select class="form-control select2"
                 name="plaza_nombramiento[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
+            <option value='-1' selected>Seleccionar Tipo de Nombramiento ...</option>
             @foreach($data->dic_tipo_nombramiento as $tipo)
                 <option value="{{$tipo->id}}"
                 @if( $data->accion=='visualizar' || $data->accion=='modificar' )
