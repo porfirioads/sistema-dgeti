@@ -5,7 +5,8 @@
                 name="componente_formacion[]"
                 class="form-control select2"
                 required
-                {{$data->accion=='visualizar' ? 'disabled':''}}>
+                {{$data->accion=='visualizar' ? 'disabled':''}}
+                onchange="changeFuncComponente(this);">
             <option value='-1' selected>Seleccionar Componente de Formación ...</option>
             @foreach($data->dic_componente_formacion as $componente_dic)
                 <option value="{{$componente_dic->id}}"
