@@ -33,7 +33,8 @@ class DocenteDefinitivoController extends Controller
      */
     public function index()
     {
-        $docentes_definitivos =Docente::all();
+        $docentes_definitivos =DocenteDefinitivo::join ('DOCENTE','DOCENTE.id','=','DOCENTE_DEFINITIVO.docente_id')->get();
+
         return view('docente_definitivo.lista')->with('docentes',$docentes_definitivos);
     }
 
