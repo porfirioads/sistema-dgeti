@@ -25,7 +25,6 @@
     </div>
 
 
-    {{$plaza}}
     <div class="form-group col-md-3 col-sm-12">
         <select id="numero_horas"
                 class="form-control select2"
