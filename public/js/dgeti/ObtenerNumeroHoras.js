@@ -21,7 +21,7 @@ function changeFunc(value) {
         $.each(data, function (index, subCatObj) {
             //console.log(subCatObj.numero_horas);
             $(elem).append($('<option>', {
-                value: subCatObj.id,
+                value: subCatObj.numero_horas,
                 text: subCatObj.numero_horas
             }));
         });
