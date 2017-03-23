@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\EvaluacionFactory;
+use App\Factories\PlazaFactory;
 use App\Models\DescripcionTipoPlaza;
-use App\Models\NumeroHoras;
 use App\Models\TipoPlaza;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Factories\DocenteFactory;
-use App\Models\ActividadAdmin;
-use App\Models\ActividadAdminDocenteDefinitivo;
 use App\Models\CampoDisciplinar;
 use App\Models\ComponenteFormacion;
 use App\Models\Disciplina;
@@ -34,11 +33,8 @@ class DocenteDefinitivoController extends Controller
      */
     public function index()
     {
-        $docentes_definitivos = Docente::all();
-
-
-        return view('docente_definitivo.lista')->with('docentes',
-            $docentes_definitivos);
+        $docentes_definitivos =Docente::all();
+        return view('docente_definitivo.lista')->with('docentes',$docentes_definitivos);
     }
 
     /**
@@ -48,23 +44,11 @@ class DocenteDefinitivoController extends Controller
      */
     public function create()
     {
-
-
         $data = new Docente([]);;
 
-
         $data['accion'] = 'crear';
-        ///////////////// COMPONENTE FORMACION /////////////////
-        $data['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data['dic_tipo_nombramiento'] = TipoNombramiento::all();
 
-        ///////////////// EVALUACIONES  /////////////////
-        $data['dic_resultados'] = ResultadoEvaluacion::all();
-        $data['dic_tipo_resultados'] = TipoEvaluacion::all();
-
-        $data['dic_hora_plaza'] = TipoPlaza::all();
-        $data['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
-
+        $data = $this->getDiccionarios($data);
 
         #return $data;
         return view('docente_definitivo.editar')->with('data', $data);
@@ -79,10 +63,12 @@ class DocenteDefinitivoController extends Controller
      */
     public function store(Request $request)
     {
-        ###################################################################
+
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
+
         $docente = $docente_factory->crearDocente($request);
+
         $docente->save();
 
 
@@ -108,58 +94,41 @@ class DocenteDefinitivoController extends Controller
 
 
         /////////////////////////// Historial Evaluación////////////////////////////
-        $evaluacion_inicio = $request['evaluacion_inicio'];
-        $evaluacion_vigencia = $request['evaluacion_vigencia'];
-        $evaluacion_resultado = $request['evaluacion_resultado'];
-        $evaluacion_tipo = $request['evaluacion_tipo'];
 
-        $format = 'd/m/Y';
-        $key = 0;
-        foreach ($evaluacion_inicio as $evaluacion_) {
-            $evaluacion = new Evaluacion([
-                'fecha_evaluacion' => Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
-                'vigencia_evaluacion' => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
-                'tipo_evaluacion_id' => $evaluacion_tipo[$key],
-                'resultado_evaluacion_id' => $evaluacion_resultado[$key],
-            ]);
+        $evaluacion_factory =  new EvaluacionFactory();
+
+        foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion){
             $evaluacion->save();
-
             $historial_evaluacion = new HistorialEvaluacionDocente([
                 'evaluacion_id' => $evaluacion->id,
                 'docente_id' => $docente->id
             ]);
             $historial_evaluacion->save();
-            $key++;
         }
 
-
         /////////////////////////// Plaza////////////////////////////
-        $plaza_codigo = $request['plaza_codigo'];
-        $plaza_tipo = $request['plaza_tipo'];
-        $plaza_horas = $request['plaza_horas'];
-        $plaza_nombramiento = $request['plaza_nombramiento'];
+        $plaza_codigo           = $request['plaza_codigo'];
+        $plaza_tipo             = $request['plaza_tipo'];
+        $plaza_horas            = $request['plaza_horas'];
+        $plaza_nombramiento     = $request['plaza_nombramiento'];
 
-        $key = 0;
 
-        $agregado = [];
-        foreach ($plaza_codigo as $plaza) {
-            $tipo_plaza_guardar = new TipoPlaza([
-                'numero_horas' => $plaza_horas[$key],
-                'descripcion_tipo_plaza_id' => $plaza_tipo[$key]
+        $key=0;
+        foreach ($plaza_codigo as $plaza){
+            $tipo_plaza_guardar =  new TipoPlaza([
+                'numero_horas'          =>      $plaza_horas[$key],
+                'descripcion_tipo_plaza_id'  =>  $plaza_tipo[$key]
             ]);
             $tipo_plaza_guardar->save();
-            $agregado[$key]['tipo'] = $tipo_plaza_guardar;
-
 
             $plaza = new TipoPlazaDocente([
-                'plaza' => $plaza,
-                'tipo_nombramiento_id' => $plaza_nombramiento[$key],
-                'docente_id' => $docente->id,
-                'tipo_plaza_id' => $tipo_plaza_guardar->id
+                'plaza'                 => $plaza,
+                'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
+                'docente_id'            => $docente->id,
+                'tipo_plaza_id'         => $tipo_plaza_guardar->id
             ]);
 
             $plaza->save();
-            $agregado[$key]['plaza'] = $plaza;
             $key++;
         }
 
@@ -177,26 +146,24 @@ class DocenteDefinitivoController extends Controller
     public function update(Request $request, $id)
     {
 
-        $docente = Docente::where('id', $id)
-            ->get()->first();
+        $docente = Docente::where('id', $id)->get()->first();
 
+        $docente->cct                       =   $request['cct'];
+        $docente->curp                      =   $request['curp'];
+        $docente->rfc                       =   $request['rfc'];
+        $docente->nombre                    =   $request['nombre'];
+        $docente->primer_apellido           =   $request['primer_apellido'];
+        $docente->segundo_apellido          =   $request['segundo_apellido'];
+        $docente->perfil_profesional        =   $request['perfil_profesional'];
+        $docente->horas_frente_grupo        =   $request['horas_frente_grupo'];
+        $docente->horas_descarga_academica  =   $request['horas_descarga_academica'];
+        $docente->horas_administrativas     =   $request['horas_administrativas'];
+        $docente->correo                    =   $request['correo'];
+        $docente->telefono_celular          =   $request['telefono_celular'];
+        $docente->telefono_domicilio        =   $request['telefono_domicilio'];
+        $docente->domicilio                 =   $request['domicilio'];
 
-        $docente->cct = $request['cct'];
-        $docente->    curp = $request['curp'];
-            $docente->rfc = $request['rfc'];
-            $docente->nombre = $request['nombre'];
-            $docente->primer_apellido = $request['primer_apellido'];
-            $docente->segundo_apellido = $request['segundo_apellido'];
-            $docente->perfil_profesional = $request['perfil_profesional'];
-            $docente->horas_frente_grupo = $request['horas_frente_grupo'];
-            $docente->horas_descarga_academica = $request['horas_descarga_academica'];
-            $docente->horas_administrativas = $request['horas_administrativas'];
-            $docente->correo = $request['correo'];
-            $docente->telefono_celular = $request['telefono_celular'];
-            $docente->telefono_domicilio = $request['telefono_domicilio'];
-            $docente->domicilio = $request['domicilio'];
         $docente->save();
-
 
 
         /////////////////////////// Datos Académicos////////////////////////////
@@ -215,8 +182,6 @@ class DocenteDefinitivoController extends Controller
                 $disciplina_docente->save();
             }
         }
-
-
 
 
         /////////////////////////// Historial Evaluación////////////////////////////
@@ -283,14 +248,10 @@ class DocenteDefinitivoController extends Controller
             $agregado[$key]['plaza'] = $plaza;
             $key++;
         }
-
-
-
-
-
         //return $docente;
         return redirect()->action('DocenteDefinitivoController@index');
     }
+
 
     /**
      * Display the specified resource.
@@ -300,46 +261,65 @@ class DocenteDefinitivoController extends Controller
      */
     public function show($id)
     {
-        $data = Docente::where('id', $id)
-            ->get();
+        $data = Docente::where('id', $id)->get()->first();
+        $data = $this->getDatosDocente($data, $id);
+
+        $data['accion'] = 'visualizar';
+
+        $data = $this->getDiccionarios($data);
+
+        #return $data;
+        return view('docente_definitivo.editar')->with('data', $data);
+    }
 
 
-        //Almacena id de las disciplinas del docente
-        $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
+    /**
+     * @param $data
+     * @param $id
+     * @return mixed
+     */
+    private function getDatosDocente($data, $id)
+    {
+
+        /////////////////   DISCIPLINAS   /////////////////
+        $data['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
             ->join('DISCIPLINA', 'DISCIPLINA.id', '=', 'DISCIPLINA_DOCENTE.disciplina_id')
             ->join('CAMPO_DISCIPLINAR', 'CAMPO_DISCIPLINAR.id', '=', 'DISCIPLINA.campo_disciplinar_id')
             ->join('COMPONENTE_FORMACION', 'COMPONENTE_FORMACION.id', '=', 'CAMPO_DISCIPLINAR.componente_formacion_id')
             ->get();
 
-
-        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
+        /////////////////   PLAZAS   /////////////////
+        $data['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
             ->join('TIPO_PLAZA', 'TIPO_PLAZA.id', '=', 'PLAZA_DOCENTE.tipo_plaza_id')
             ->join('DESCRIPCION_TIPO_PLAZA', 'DESCRIPCION_TIPO_PLAZA.id', '=', 'TIPO_PLAZA.descripcion_tipo_plaza_id')
             ->get();
 
-        //Almacena id del historial del docente
-        $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
+        /////////////////   EVALUACIONES   /////////////////
+        $data['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
             ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
-
-
-        $data[0]['accion'] = 'visualizar';
-
-        ///////////////// COMPONENTE FORMACION /////////////////
-        $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
-
-        ///////////////// EVALUACIONES  /////////////////
-        $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
-        $data[0]['dic_tipo_resultados'] = TipoEvaluacion::all();
-
-        $data[0]['dic_hora_plaza'] = TipoPlaza::all();
-        $data[0]['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
-
-
-        #return $data;
-        return view('docente_definitivo.editar')->with('data', $data[0]);
+        return $data;
     }
 
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    private function getDiccionarios($data)
+    {
+        ///////////////// COMPONENTE FORMACION /////////////////
+        $data['dic_componente_formacion'] = ComponenteFormacion::all();
+        $data['dic_tipo_nombramiento'] = TipoNombramiento::all();
+
+        ///////////////// EVALUACIONES  /////////////////
+        $data['dic_resultados'] = ResultadoEvaluacion::all();
+        $data['dic_tipo_resultados'] = TipoEvaluacion::all();
+
+        /////////////////   PLAZAS     /////////////////
+        $data['dic_hora_plaza'] = TipoPlaza::all();
+        $data['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
+        return $data;
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -349,44 +329,15 @@ class DocenteDefinitivoController extends Controller
      */
     public function edit($id)
     {
-        $data = Docente::where('id', $id)
-            ->get();
+        $data = Docente::where('id', $id)->get()->first();
 
+        $data = $this->getDatosDocente($data, $id);
 
-        //Almacena id de las disciplinas del docente
-        $data[0]['res_disciplina'] = DisciplinaDocente::where('docente_id', '=', $id)
-            ->join('DISCIPLINA', 'DISCIPLINA.id', '=', 'DISCIPLINA_DOCENTE.disciplina_id')
-            ->join('CAMPO_DISCIPLINAR', 'CAMPO_DISCIPLINAR.id', '=', 'DISCIPLINA.campo_disciplinar_id')
-            ->join('COMPONENTE_FORMACION', 'COMPONENTE_FORMACION.id', '=', 'CAMPO_DISCIPLINAR.componente_formacion_id')
-            ->get();
+        $data['accion'] = 'modificar';
 
-
-        $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
-            ->join('TIPO_PLAZA', 'TIPO_PLAZA.id', '=', 'PLAZA_DOCENTE.tipo_plaza_id')
-            ->join('DESCRIPCION_TIPO_PLAZA', 'DESCRIPCION_TIPO_PLAZA.id', '=', 'TIPO_PLAZA.descripcion_tipo_plaza_id')
-            ->get();
-
-        //Almacena id del historial del docente
-        $data[0]['res_evaluacion'] = HistorialEvaluacionDocente::where('docente_id', '=', $id)
-            ->join('EVALUACION', 'HISTORIAL_EVALUACION_DOCENTE.evaluacion_id', '=', 'EVALUACION.id')->get();
-
-
-        $data[0]['accion'] = 'modificar';
-
-        ///////////////// COMPONENTE FORMACION /////////////////
-        $data[0]['dic_componente_formacion'] = ComponenteFormacion::all();
-        $data[0]['dic_tipo_nombramiento'] = TipoNombramiento::all();
-
-        ///////////////// EVALUACIONES  /////////////////
-        $data[0]['dic_resultados'] = ResultadoEvaluacion::all();
-        $data[0]['dic_tipo_resultados'] = TipoEvaluacion::all();
-
-        $data[0]['dic_hora_plaza'] = TipoPlaza::all();
-        $data[0]['dic_descripcion_plaza'] = DescripcionTipoPlaza::all();
-
-
+        $data = $this->getDiccionarios($data);
         #return $data;
-        return view('docente_definitivo.editar')->with('data', $data[0]);
+        return view('docente_definitivo.editar')->with('data', $data);
     }
 
 
@@ -434,6 +385,7 @@ class DocenteDefinitivoController extends Controller
         return response()->json(['eliminado' => $docenteDelete]);
     }
 
+
     public function obtener_campo_disciplinar(Request $request)
     {
         $componente_formacion_id = $request->input('componente_formacion_id');
@@ -442,6 +394,7 @@ class DocenteDefinitivoController extends Controller
 
         return response()->json($campos_disciplinares);
     }
+
 
     public function obtener_disciplinas(Request $request)
     {
@@ -452,6 +405,7 @@ class DocenteDefinitivoController extends Controller
         return response()->json($disciplinas);
     }
 
+
     public function obtener_numero_horas(Request $request)
     {
         $descripcion_tipo_plaza_id = $request->input('descripcion_tipo_plaza_id');
@@ -459,6 +413,5 @@ class DocenteDefinitivoController extends Controller
         $numero_horas = TipoPlaza::where('descripcion_tipo_plaza_id', '=', $descripcion_tipo_plaza_id)->get();
 
         return response()->json($numero_horas);
-
     }
 }
