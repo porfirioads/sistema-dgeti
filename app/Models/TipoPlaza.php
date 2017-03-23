@@ -17,7 +17,7 @@ class TipoPlaza extends Model
     protected $primaryKey = 'id';
     protected $table = 'TIPO_PLAZA';
     protected $fillable = array(
-        'numero_horas, descripcion_plaza_id',
+        'numero_horas', 'descripcion_tipo_plaza_id'
     );
 
     protected $dates = ['deleted_at'];

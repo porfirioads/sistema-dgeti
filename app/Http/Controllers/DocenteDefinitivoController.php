@@ -129,7 +129,7 @@ class DocenteDefinitivoController extends Controller
 
         $format = 'd/m/Y';
         $key = 0;
-        foreach ($evaluacion_inicio as $evaluacion){
+        foreach ($evaluacion_inicio as $evaluacion_){
             $evaluacion =  new Evaluacion([
                 'fecha_evaluacion'      =>Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
                 'vigencia_evaluacion'   => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
@@ -154,12 +154,16 @@ class DocenteDefinitivoController extends Controller
         $plaza_nombramiento     = $request['plaza_nombramiento'];
 
         $key=0;
+
+        $agregado = [];
         foreach ($plaza_codigo as $plaza){
             $tipo_plaza_guardar =  new TipoPlaza([
-                'numero_horas'          => $plaza_horas[$key],
-                'descripcion_plaza_id'  =>  $plaza_tipo[$key]
+                'numero_horas'          =>      $plaza_horas[$key],
+                'descripcion_tipo_plaza_id'  =>  $plaza_tipo[$key]
             ]);
             $tipo_plaza_guardar->save();
+            $agregado[$key]['tipo']=$tipo_plaza_guardar;
+
 
             $plaza = new TipoPlazaDocente([
                 'plaza'                 => $plaza,
@@ -167,10 +171,13 @@ class DocenteDefinitivoController extends Controller
                 'docente_id'            => $docente->id,
                 'tipo_plaza_id'         => $tipo_plaza_guardar->id
             ]);
+
             $plaza->save();
+            $agregado[$key]['plaza']=$plaza;
             $key++;
         }
 
+        return $agregado;
         return redirect()->action('DocenteDefinitivoController@index');
     }
 
@@ -197,7 +204,7 @@ class DocenteDefinitivoController extends Controller
 
         $data[0]['res_plaza'] = TipoPlazaDocente::where('docente_id', '=', $id)
                                     ->join('TIPO_PLAZA','TIPO_PLAZA.id','=','PLAZA_DOCENTE.tipo_plaza_id')
-                                    //->join('DESCRIPCION_TIPO_PLAZA','DESCRIPCION_TIPO_PLAZA.id','=','TIPO_PLAZA.descripcion_tipo_plaza_id')
+                                    ->join('DESCRIPCION_TIPO_PLAZA','DESCRIPCION_TIPO_PLAZA.id','=','TIPO_PLAZA.descripcion_tipo_plaza_id')
                                     ->get();
 
         //Almacena id del historial del docente

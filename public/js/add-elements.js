@@ -48,7 +48,8 @@ $('.add-element-evaluacion').click(function () {
 
     $('#' + newId).find('.datepicker').each(function (index, item) {
         $(item).datepicker({
-            autoclose: true
+            autoclose: true,
+            format: "dd/mm/yyyy"
         });
     });
 

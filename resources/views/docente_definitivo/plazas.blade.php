@@ -25,18 +25,19 @@
     </div>
 
 
+    {{$plaza}}
     <div class="form-group col-md-3 col-sm-12">
         <select id="numero_horas"
                 class="form-control select2"
                 name="plaza_horas[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
-            <option value='-1' selected>Seleccionar N&uacute;mero de Horas ...</option>
-            {{--                <option value="{{$num_horas->id}}"
-                                    @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                                        {{$num_horas->id==$plaza->tipo_plaza_id?'selected':''}}
-                                    @endif>
-                                        {{$num_horas->numero_horas }}
-                            </option>--}}
+            @if( $data->accion=='visualizar' || $data->accion=='modificar')
+                <option value='{{ $plaza->tipo_plaza_id}}'
+                        selected>{{$plaza->numero_horas}}</option>
+            @else
+                <option value='-1' selected>Seleccionar N&uacute;mero de Horas ...</option>
+            @endif
+
         </select>
     </div>
 
