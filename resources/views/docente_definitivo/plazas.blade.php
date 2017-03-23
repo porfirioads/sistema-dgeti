@@ -10,7 +10,8 @@
         <select id="plaza_tipo"
                 class="form-control select2"
                 name="plaza_tipo[]"
-                {{$data->accion=='visualizar' ? 'disabled':''}}>
+                {{$data->accion=='visualizar' ? 'disabled':''}}
+                onchange="changeFunc(this);">
             <option value='-1' selected>Seleccionar Tipo de Plaza ...</option>
             @foreach($data->dic_descripcion_plaza as $tipo)
                 <option value="{{$tipo->id}}"
