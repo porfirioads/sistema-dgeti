@@ -14,8 +14,8 @@ class AddForeignKeysToFUNCIONDOCENTETUTORTable extends Migration {
 	{
 		Schema::table('FUNCION_DOCENTE_TUTOR', function(Blueprint $table)
 		{
-			$table->foreign('docente_tutor_id', 'fk_DOCENTE_TUTOR_has_FUNCION_DOCENTE_TUTOR1')->references('id')->on('DOCENTE_TUTOR')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('funcion_id', 'fk_DOCENTE_TUTOR_has_FUNCION_FUNCION1')->references('id')->on('FUNCION')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('docente_tutor_id', 'fk_DOCENTE_TUTOR_has_FUNCION_DOCENTE_TUTOR1')->references('id')->on('DOCENTE_TUTOR')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToFUNCIONDOCENTETUTORTable extends Migration {
 	{
 		Schema::table('FUNCION_DOCENTE_TUTOR', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_DOCENTE_TUTOR_has_FUNCION_DOCENTE_TUTOR1');
 			$table->dropForeign('fk_DOCENTE_TUTOR_has_FUNCION_FUNCION1');
+			$table->dropForeign('fk_DOCENTE_TUTOR_has_FUNCION_DOCENTE_TUTOR1');
 		});
 	}
 

@@ -14,8 +14,8 @@ class AddForeignKeysToDOCENTEIDONEOTable extends Migration {
 	{
 		Schema::table('DOCENTE_IDONEO', function(Blueprint $table)
 		{
-			$table->foreign('docente_id', 'fk_DOCENTES_IDONEOS_DOCENTE1')->references('id')->on('DOCENTE')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('concurso_id', 'fk_DOCENTES_IDONEOS_CONCURSO1')->references('id')->on('CONCURSO')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('docente_id', 'fk_DOCENTES_IDONEOS_DOCENTE1')->references('id')->on('DOCENTE')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToDOCENTEIDONEOTable extends Migration {
 	{
 		Schema::table('DOCENTE_IDONEO', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_DOCENTES_IDONEOS_DOCENTE1');
 			$table->dropForeign('fk_DOCENTES_IDONEOS_CONCURSO1');
+			$table->dropForeign('fk_DOCENTES_IDONEOS_DOCENTE1');
 		});
 	}
 

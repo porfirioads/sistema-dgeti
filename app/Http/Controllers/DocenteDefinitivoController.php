@@ -64,6 +64,9 @@ class DocenteDefinitivoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request['correo'], [
+            $request['correo']->get() => 'email|required'
+        ]);
 
         /////////////////////////// Docentes ////////////////////////////
         $docente_factory = new DocenteFactory();
