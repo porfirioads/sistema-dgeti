@@ -417,6 +417,230 @@ class EvidenciaTableSeeder extends Seeder
             'id' => 'A04_S04_E01',
             'subaspecto_evaluacion_id' => 'A04_S04',
             'evidencia' => e('Los horarios del plantel con los nombres de las asignaturas y los docentes que imparten clases a los estudiantes de la “matrícula RIEMS”, de acuerdo al formato III.4')
+        ], [
+            'id' => 'A05_S01_E01',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('La documentación consignada para ejercer como director de plantel (nombramiento, contrato, títulos, constancias, etc.);')
+        ], [
+            'id' => 'A05_S01_E02',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Constancia que acredite su experiencia docente o administrativa de al menos cinco años, preferentemente en educación media superior;')
+        ], [
+            'id' => 'A05_S01_E03',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Constancia que acredite su experiencia en el desarrollo de proyectos de gestión, innovación y mejora continua en la educación;')
+        ], [
+            'id' => 'A05_S01_E04',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Desde el nivel III habrá que presentar el título de licenciatura o de grado;')
+        ], [
+            'id' => 'A05_S01_E05',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Para el nivel I se deberá mostrar el documento que avale la conclusión satisfactoria de un programa de formación de directores reconocido por el CD-SNB')
+        ], [
+            'id' => 'A06_S01_E01',
+            'subaspecto_evaluacion_id' => 'A06_S01',
+            'evidencia' => e('Desde el nivel III se observará en el plantel la operación de modos, maneras, mecanismos, instrumentos, estrategias o sistema de registro en cuestión (no necesariamente computarizado), que permitan dar seguimiento al desarrollo de las competencias señaladas en la RIEMS, e ir conformando un directorio actualizado de egresados en el marco de la misma reforma;')
+        ], [
+            'id' => 'A06_S01_E02',
+            'subaspecto_evaluacion_id' => 'A06_S01',
+            'evidencia' => e('Desde el nivel II el sistema de servicios escolares ha de tener la información y la forma de operar que permita el registro confiable y seguro de la trayectoria académica de los estudiantes, así como del desarrollo de sus competencias genéricas, disciplinares y profesionales en su caso;')
+        ], [
+            'id' => 'A06_S01_E03',
+            'subaspecto_evaluacion_id' => 'A06_S01',
+            'evidencia' => e('Para el nivel I el sistema ha de generar información que permita construir indicadores de la eficacia y eficiencia del plantel.')
+        ], [
+            'id' => 'A06_S02_E01',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Registros en el sistema en cuestión del plantel de estudiantes matriculados, calificaciones obtenidas, competencias genéricas, disciplinares y profesionales en su caso, alcanzadas durante su trayectoria escolar;')
+        ], [
+            'id' => 'A06_S02_E02',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Los registros en el sistema de servicios escolares del plantel deberán abarcar los siguientes aspectos:')
+        ], [
+            'id' => 'A06_S02_E03',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Cobertura;')
+        ], [
+            'id' => 'A06_S02_E04',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Absorción')
+        ], [
+            'id' => 'A06_S02_E05',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Matrícula;')
+        ], [
+            'id' => 'A06_S02_E06',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Alumnos matriculados;')
+        ], [
+            'id' => 'A06_S02_E07',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Calificaciones obtenidas;')
+        ], [
+            'id' => 'A06_S02_E08',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Desde el nivel II registro de logro de competencias genéricas, disciplinares y profesionales por alumno alcanzadas a lo largo de su trayectoria escolar;')
+        ], [
+            'id' => 'A06_S02_E09',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Eficiencia terminal;')
+        ], [
+            'id' => 'A06_S02_E10',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Índices y registros de reprobación por asignatura o UAC;')
+        ], [
+            'id' => 'A06_S02_E11',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Índices y registros de deserción;')
+        ], [
+            'id' => 'A06_S02_E12',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Datos de trayectoria de los estudiantes;')
+        ], [
+            'id' => 'A06_S02_E13',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Únicamente para el nivel I, se solicitarán mecanismos para seguimiento de egresados, en su caso.')
+        ], [
+            'id' => 'A07_S01_E01',
+            'subaspecto_evaluacion_id' => 'A07_S01',
+            'evidencia' => e('Existencia de aulas y mobiliario para el aprendizaje y desarrollo de competencias;')
+        ], [
+            'id' => 'A07_S01_E02',
+            'subaspecto_evaluacion_id' => 'A07_S01',
+            'evidencia' => e('Cumplimiento de la normativa de la autoridad municipal competente;')
+        ], [
+            'id' => 'A07_S01_E03',
+            'subaspecto_evaluacion_id' => 'A07_S01',
+            'evidencia' => e('Evidencia fotográfica y de video cuando las condiciones lo permitan. Estas evidencias serán compiladas por los evaluadores durante la visita al plantel;')
+        ], [
+            'id' => 'A07_S02_E01',
+            'subaspecto_evaluacion_id' => 'A07_S02',
+            'evidencia' => e('Existencia de laboratorios, talleres, equipo, herramienta, simuladores y material para que los estudiantes incorporados a la “matrícula RIEMS” realicen prácticas;')
+        ], [
+            'id' => 'A07_S02_E02',
+            'subaspecto_evaluacion_id' => 'A07_S02',
+            'evidencia' => e('Inventario de los laboratorios y talleres existentes en el plantel y en sus instalaciones distantes, si es el caso, mismos que serán revisados in situ;')
+        ], [
+            'id' => 'A07_S02_E03',
+            'subaspecto_evaluacion_id' => 'A07_S02',
+            'evidencia' => e('Reglamentos o normativa del plantel que expliciten el cumplimiento de las Normas Oficiales Mexicanas aplicables a aspectos de seguridad, protección civil e higiene;')
+        ], [
+            'id' => 'A07_S02_E04',
+            'subaspecto_evaluacion_id' => 'A07_S02',
+            'evidencia' => e('Descripción de los laboratorios, talleres, herramientas y materiales señalados en los programas de estudio.')
+        ], [
+            'id' => 'A07_S03_E01',
+            'subaspecto_evaluacion_id' => 'A07_S03',
+            'evidencia' => e('Descripción de las TIC y tecnologías para el aprendizaje y el conocimiento señaladas en los programas de asignatura o UAC;')
+        ], [
+            'id' => 'A07_S03_E02',
+            'subaspecto_evaluacion_id' => 'A07_S03',
+            'evidencia' => e('Verificación en funciones de las TIC y tecnologías para el aprendizaje y el conocimiento tales como equipos, programas, simuladores, acceso a bibliotecas y bases de datos remotas, Internet, etc., así como sus respectivos inventarios;')
+        ], [
+            'id' => 'A07_S03_E03',
+            'subaspecto_evaluacion_id' => 'A07_S03',
+            'evidencia' => e('Licencias de uso de los programas informáticos;')
+        ], [
+            'id' => 'A07_S04_E01',
+            'subaspecto_evaluacion_id' => 'A07_S04',
+            'evidencia' => e('Normativa de la biblioteca;')
+        ], [
+            'id' => 'A07_S04_E02',
+            'subaspecto_evaluacion_id' => 'A07_S04',
+            'evidencia' => e('Reglamento de usuarios de la biblioteca;')
+        ], [
+            'id' => 'A07_S04_E03',
+            'subaspecto_evaluacion_id' => 'A07_S04',
+            'evidencia' => e('Reglamento para préstamo de material bibliográfico;')
+        ], [
+            'id' => 'A07_S04_E04',
+            'subaspecto_evaluacion_id' => 'A07_S04',
+            'evidencia' => e('Biblioteca(s) en servicio indicando horarios y requisitos de uso;')
+        ], [
+            'id' => 'A07_S04_E05',
+            'subaspecto_evaluacion_id' => 'A07_S04',
+            'evidencia' => e('Acervo bibliográfico con su respectivo inventario y catálogo en función a la matrícula de estudiantes RIEMS y de la bibliografía básica señalada en los programas de estudio;')
+        ], [
+            'id' => 'A07_S04_E06',
+            'subaspecto_evaluacion_id' => 'A07_S04',
+            'evidencia' => e('Bitácora de préstamo a domicilio, cuando aplique;')
+        ], [
+            'id' => 'A07_S05_E01',
+            'subaspecto_evaluacion_id' => 'A07_S05',
+            'evidencia' => e('Existencia de espacios para docentes;')
+        ], [
+            'id' => 'A07_S05_E02',
+            'subaspecto_evaluacion_id' => 'A07_S05',
+            'evidencia' => e('Equipamiento de TIC en los espacios para docentes o, en su caso, disponibilidad de estas tecnologías en la biblioteca o el aula de medios;')
+        ], [
+            'id' => 'A07_S06_E01',
+            'subaspecto_evaluacion_id' => 'A07_S06',
+            'evidencia' => e('Verificación en funciones de espacios destinados para brindar orientación y tutoría individual y en pequeños grupos;')
+        ], [
+            'id' => 'A07_S06_E02',
+            'subaspecto_evaluacion_id' => 'A07_S06',
+            'evidencia' => e('Registros del seguimiento a los alumnos atendidos;')
+        ], [
+            'id' => 'A07_S07_E01',
+            'subaspecto_evaluacion_id' => 'A07_S07',
+            'evidencia' => e('Verificación en funciones de los espacios administrativos, mobiliario y equipo, acordes al volumen de personas que trabajan y la cantidad de actividades administrativas que realizan;')
+        ], [
+            'id' => 'A07_S08_E01',
+            'subaspecto_evaluacion_id' => 'A07_S08',
+            'evidencia' => e('Verificación de la norma en funciones de los sanitarios con que cuenta el plantel, observando su señalización y condiciones de acceso, según el tipo de población para la que están destinados;')
+        ], [
+            'id' => 'A07_S08_E02',
+            'subaspecto_evaluacion_id' => 'A07_S08',
+            'evidencia' => e('Disposición del mobiliario diferenciado según género;')
+        ], [
+            'id' => 'A07_S09_E01',
+            'subaspecto_evaluacion_id' => 'A07_S09',
+            'evidencia' => e('Verificación en funciones de los espacios propios o de uso por convenio, destinados a las actividades deportivas, culturales y recreativas;')
+        ], [
+            'id' => 'A08_S01_E01',
+            'subaspecto_evaluacion_id' => 'A08_S01',
+            'evidencia' => e('Plan y programas anuales de mejora continua;')
+        ], [
+            'id' => 'A08_S02_E01',
+            'subaspecto_evaluacion_id' => 'A08_S02',
+            'evidencia' => e('Existencia de la obra civil (edificio), instalaciones y equipo conforme a la norma vigente;')
+        ], [
+            'id' => 'A08_S02_E02',
+            'subaspecto_evaluacion_id' => 'A08_S02',
+            'evidencia' => e('Funcionamiento del programa de mantenimiento preventivo y correctivo del equipo, instalaciones y obra civil;')
+        ], [
+            'id' => 'A08_S02_E03',
+            'subaspecto_evaluacion_id' => 'A08_S02',
+            'evidencia' => e('Existencia del programa de mantenimiento de las instalaciones;')
+        ], [
+            'id' => 'A08_S03_E01',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Normativa vigente;')
+        ], [
+            'id' => 'A08_S03_E02',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Actas de la sesión de instalación del “Comité de protección civil y prevención de riesgos”;')
+        ], [
+            'id' => 'A08_S03_E03',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Validación del cumplimiento de las normas aplicables en la materia otorgada por la autoridad local competente;')
+        ], [
+            'id' => 'A08_S03_E04',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Existencia del programa de higiene y seguridad;')
+        ], [
+            'id' => 'A08_S03_E05',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Minutas o actas de la instalación, reuniones y actividades del Comité de higiene y seguridad;')
+        ], [
+            'id' => 'A08_S04_E01',
+            'subaspecto_evaluacion_id' => 'A08_S04',
+            'evidencia' => e('Verificar la ejecución de acciones de protección al medio ambiente;')
+        ], [
+            'id' => 'A08_S04_E02',
+            'subaspecto_evaluacion_id' => 'A08_S04',
+            'evidencia' => e('Minutas, actas o bitácoras que den cuenta de la existencia e instrumentación de las estrategias.')
         ]
         ));
     }
