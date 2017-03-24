@@ -49,9 +49,9 @@
 
 
     <div class="form-group col-lg-1">
-        <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
+        <button class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
             <i class="fa fa-times"></i>
-        </a>
+        </button>
     </div>
 </div>
 

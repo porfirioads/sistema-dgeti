@@ -6,43 +6,40 @@
  * Time: 1:24 PM
  */
 namespace App\Factories;
+
 use App\Models\TipoPlaza;
 use App\Models\TipoPlazaDocente;
 use Illuminate\Http\Request;
 
 
-
 class PlazaFactory
 {
 
-    public function crearPlaza(Request $request)
+    public function crearPlaza(Request $request, $id)
     {
-        $plazas=[];
+        $plazas = [];
+
         /////////////////////////// Plaza////////////////////////////
-        $plaza_codigo       = $request['plaza_codigo'];
-        $plaza_tipo         = $request['plaza_tipo'];
-        $plaza_horas        = $request['plaza_horas'];
+        $plaza_codigo = $request['plaza_codigo'];
+        $plaza_tipo = $request['plaza_tipo'];
+        $plaza_horas = $request['plaza_horas'];
         $plaza_nombramiento = $request['plaza_nombramiento'];
 
+
         $key = 0;
-        foreach ($plaza_codigo as $plaza) {
-            $tipo_plaza_guardar = new TipoPlaza([
-                'numero_horas' => $plaza_horas[$key],
-                'descripcion_tipo_plaza_id' => $plaza_tipo[$key]
-            ]);
-            $plazas[$key]['tipo_plaza']= $tipo_plaza_guardar;
+        if ($plaza_codigo != null) {
+            foreach ($plaza_codigo as $plaza) {
+                $plaza = new TipoPlazaDocente([
+                    'plaza' => $plaza,
+                    'tipo_nombramiento_id' => $plaza_nombramiento[$key],
+                    'docente_id' => $id,
+                    'tipo_plaza_id' => $plaza_horas[$key]
+                ]);
+                $plazas[$key++] = $plaza;
 
-
-            $plaza_docente = new TipoPlazaDocente([
-                'plaza' => $plaza,
-                'tipo_nombramiento_id' => $plaza_nombramiento[$key],
-                'tipo_plaza_id' => $tipo_plaza_guardar->id
-            ]);
-            $plazas[$key]['plaza_docente'] =$plaza_docente;
-            $key++;
+            }
+            return $plazas;
         }
-
-        return $plazas;
+        return null;
     }
-
 }

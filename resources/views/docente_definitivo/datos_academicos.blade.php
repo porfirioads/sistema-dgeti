@@ -29,8 +29,6 @@
             @else
                 <option value='-1' selected>Seleccionar Campo Disciplinar ...</option>
             @endif
-
-
         </select>
     </div>
 

@@ -14,7 +14,7 @@
 
 @section('box_body')
     <div class="row no-horizontal-scroll">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             <div class="table-responsive no-padding">
                 <table class="table table-aspecto-snb">
                     <thead>
@@ -41,7 +41,7 @@
                         {{--*/ $rowspan = count($subaspecto['evidencias']) /*--}}
                         <tr>
                             <td rowspan="{{$rowspan + 1}}">
-                                1.{{$contador_subaspecto++}}
+                                {{$aspecto_index}}.{{$contador_subaspecto++}}
                             </td>
                             <td rowspan="{{$rowspan + 1}}">
                                 {{$subaspecto->subaspecto}}
@@ -69,11 +69,28 @@
                 </table>
             </div>
         </div>
+        <div class="col-md-6">
+            <a id="btnGuardarAspectoSNB" class="btn btn-lg btn-block
+            btn-danger">
+                <i class="fa fa-times"></i>
+                <span>Cancelar</span>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a id="btnGuardarAspectoSNB" class="btn btn-lg btn-block
+            btn-primary">
+                <i class="fa fa-check"></i>
+                <span>Guardar</span>
+            </a>
+        </div>
     </div>
 @endsection
 
 @section('particular_scripts')
     <script>
+        // Esta función se llama cuando se hace click en algún dropdown de un
+        // aspecto de evaluación del SNB, y cambia del color y texto del
+        // elemento dependiendo de la opción seleccionada
         $('.drop_snb_item').click(function () {
             var drop_button = $(this).parent().parent().parent().children()
                 .first();

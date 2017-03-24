@@ -133,44 +133,259 @@ class EvidenciaTableSeeder extends Seeder
             'id' => 'A01_S09_E03',
             'subaspecto_evaluacion_id' => 'A01_S09',
             'evidencia' => e('En caso de no contar con conexión a Internet, indicar el número de computadoras conectadas en red o en su caso, el número de computadoras disponibles para uso individual de los estudiantes durante la encuesta;')
-        ],
-//            [
-//            'id' => 'A02_S01_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S01',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S02_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S02',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S03_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S03',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S04_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S04',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S05_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S05',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S06_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S06',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S07_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S07',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S08_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S08',
-//            'evidencia' => e('')
-//        ], [
-//            'id' => 'A02_S09_E01',
-//            'subaspecto_evaluacion_id' => 'A02_S09',
-//            'evidencia' => e('')
-//        ]
-    ));
+        ], [
+            'id' => 'A02_S01_E01',
+            'subaspecto_evaluacion_id' => 'A02_S01',
+            'evidencia' => e(' Los derechos y obligaciones de manera clara, mismos que deben ser de su conocimiento; y')
+        ], [
+            'id' => 'A02_S01_E02',
+            'subaspecto_evaluacion_id' => 'A02_S01',
+            'evidencia' => e('Los criterios normativos para el uso de derechos y el cumplimiento de las obligaciones.')
+        ], [
+            'id' => 'A02_S02_E01',
+            'subaspecto_evaluacion_id' => 'A02_S02',
+            'evidencia' => e(' Los requisitos y perfil del estudiante de manera clara, mismos que deben ser de su conocimiento; y')
+        ], [
+            'id' => 'A02_S02_E02',
+            'subaspecto_evaluacion_id' => 'A02_S02',
+            'evidencia' => e('b. Los criterios normativos para el ingreso o reingreso al plantel.')
+        ], [
+            'id' => 'A02_S03_E01',
+            'subaspecto_evaluacion_id' => 'A02_S03',
+            'evidencia' => e('Instancia que realiza la evaluación;')
+        ], [
+            'id' => 'A02_S03_E02',
+            'subaspecto_evaluacion_id' => 'A02_S03',
+            'evidencia' => e('Requisitos para la certificación, indicando:')
+        ], [
+            'id' => 'A02_S03_E03',
+            'subaspecto_evaluacion_id' => 'A02_S03',
+            'evidencia' => e('Cumplimiento y acreditación parcial o total del plan de estudios por medio de documentos con validez oficial; y')
+        ], [
+            'id' => 'A02_S03_E04',
+            'subaspecto_evaluacion_id' => 'A02_S03',
+            'evidencia' => e('Procesos de evaluación mediante los cuales se lleva a cabo la certificación.')
+        ], [
+            'id' => 'A02_S03_E05',
+            'subaspecto_evaluacion_id' => 'A02_S03',
+            'evidencia' => e('Instancia que otorga el certificado, diploma o título.')
+        ], [
+            'id' => 'A02_S04_E01',
+            'subaspecto_evaluacion_id' => 'A02_S04',
+            'evidencia' => e('El plantel, con base en las políticas y perfiles que definen sus autoridades y cuerpos académicos, establecerá y presentará las normas con las cuales se rige la planta docente')
+        ], [
+            'id' => 'A02_S05_E01',
+            'subaspecto_evaluacion_id' => 'A02_S05',
+            'evidencia' => e('Academias, consejos técnicos, comités o su equivalente')
+        ], [
+            'id' => 'A02_S06_E01',
+            'subaspecto_evaluacion_id' => 'A02_S06',
+            'evidencia' => e('La reglamentación para la integración de la comisión o cuerpo académico y el alcance y efecto de sus resultados; y')
+        ], [
+            'id' => 'A02_S06_E02',
+            'subaspecto_evaluacion_id' => 'A02_S06',
+            'evidencia' => e('La periodicidad con la que se revisarán el plan y los programas de estudio.')
+        ], [
+            'id' => 'A02_S07_E01',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Aulas;')
+        ], [
+            'id' => 'A02_S07_E02',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Talleres;')
+        ], [
+            'id' => 'A02_S07_E03',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Laboratorios;')
+        ], [
+            'id' => 'A02_S07_E04',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Biblioteca y espacios afines;')
+        ], [
+            'id' => 'A02_S07_E05',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Sala de cómputo;')
+        ], [
+            'id' => 'A02_S07_E06',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Áreas administrativas;')
+        ], [
+            'id' => 'A02_S07_E07',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Sanitarios;')
+        ], [
+            'id' => 'A02_S07_E08',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Áreas deportivas, culturales y recreativas; y')
+        ], [
+            'id' => 'A02_S07_E09',
+            'subaspecto_evaluacion_id' => 'A02_S07',
+            'evidencia' => e('Otros (auditorio, área de medios audiovisuales, cafetería, servicio médico, salas de   uso múltiple, etc.). ')
+        ], [
+            'id' => 'A02_S08_E01',
+            'subaspecto_evaluacion_id' => 'A02_S08',
+            'evidencia' => e('Normas para la contratación, permanencia y promoción del personal administrativo;')
+        ], [
+            'id' => 'A02_S08_E02',
+            'subaspecto_evaluacion_id' => 'A02_S08',
+            'evidencia' => e('Normas para la contratación, permanencia y promoción del personal de servicios.')
+        ], [
+            'id' => 'A02_S09_E01',
+            'subaspecto_evaluacion_id' => 'A02_S09',
+            'evidencia' => e('Reglamento de Protección Civil;')
+        ], [
+            'id' => 'A02_S09_E02',
+            'subaspecto_evaluacion_id' => 'A02_S09',
+            'evidencia' => e('Prevención de accidentes;')
+        ], [
+            'id' => 'A02_S09_E03',
+            'subaspecto_evaluacion_id' => 'A02_S09',
+            'evidencia' => e('Señalizaciones en caso de riesgo; y')
+        ], [
+            'id' => 'A02_S09_E04',
+            'subaspecto_evaluacion_id' => 'A02_S09',
+            'evidencia' => e('Cuerpos brigadistas.')
+        ], [
+            'id' => 'A03_S01_E01',
+            'subaspecto_evaluacion_id' => 'A03_S01',
+            'evidencia' => e('Identificar en cada plan de estudios y sus respectivos programas de “unidades curriculares de aprendizaje” (UCA), las competencias genéricas, disciplinares (básicas y extendidas) y profesionales (básicas y extendidas) que correspondan a su enfoque educativo y garanticen el desarrollo del MCC y, en general, del perfil del egresado;')
+        ], [
+            'id' => 'A03_S01_E02',
+            'subaspecto_evaluacion_id' => 'A03_S01',
+            'evidencia' => e('Mostrar los procesos académicos internos con los que el plantel pretende asegurar el logro de los fines y objetivos de cada plan de estudios;')
+        ], [
+            'id' => 'A03_S01_E03',
+            'subaspecto_evaluacion_id' => 'A03_S01',
+            'evidencia' => e('Identificar la vinculación entre el perfil de egreso y las competencias y otros logros que obtendrá el estudiante en cada UAC;')
+        ], [
+            'id' => 'A03_S01_E04',
+            'subaspecto_evaluacion_id' => 'A03_S01',
+            'evidencia' => e('Mostrar el funcionamiento de los servicios de orientación y tutoría y los dedicados a la atención de otras necesidades de los estudiantes; y')
+        ], [
+            'id' => 'A03_S01_E05',
+            'subaspecto_evaluacion_id' => 'A03_S01',
+            'evidencia' => e('Precisar en el perfil de egreso las competencias que el estudiante desarrollará al concluir satisfactoriamente sus estudios.')
+        ], [
+            'id' => 'A03_S02_E01',
+            'subaspecto_evaluacion_id' => 'A03_S02',
+            'evidencia' => e('Serán exigibles documentalmente desde el nivel III; es decir, deberán estar plasmadas en documentos que las describan; a partir del nivel II tendrá que verificarse que estén en funciones las estrategias  que se establecen en los programas de las UAC;')
+        ], [
+            'id' => 'A03_S02_E02',
+            'subaspecto_evaluacion_id' => 'A03_S02',
+            'evidencia' => e('Conjunto de estrategias didácticas aplicadas para el desarrollo de competencias genéricas y disciplinares.')
+        ], [
+            'id' => 'A03_S03_E01',
+            'subaspecto_evaluacion_id' => 'A03_S03',
+            'evidencia' => e('Programas de asignatura o UAC de cada plan de estudios acordes a la RIEMS y la verificación de su aplicación en la práctica educativa;')
+        ], [
+            'id' => 'A03_S03_E02',
+            'subaspecto_evaluacion_id' => 'A03_S03',
+            'evidencia' => e('Indicación explícita del uso de recursos didácticos en los programas de laS UAC;')
+        ], [
+            'id' => 'A03_S03_E03',
+            'subaspecto_evaluacion_id' => 'A03_S03',
+            'evidencia' => e('Inclusión de estos recursos en la planeación didáctica;')
+        ], [
+            'id' => 'A03_S03_E04',
+            'subaspecto_evaluacion_id' => 'A03_S03',
+            'evidencia' => e('Conjunto de recursos didácticos acorde a la cantidad de docentes y grupos escolares existente en el plantel;')
+        ], [
+            'id' => 'A03_S03_E05',
+            'subaspecto_evaluacion_id' => 'A03_S03',
+            'evidencia' => e('Conjunto de estrategias didácticas puesto a disposición de los docentes, además de un catálogo de buenas prácticas.')
+        ], [
+            'id' => 'A03_S04_E01',
+            'subaspecto_evaluacion_id' => 'A03_S04',
+            'evidencia' => e('Programas de asignatura o UAC de cada plan de estudios acorde a la RIEMS y la verificación de su aplicación en la práctica educativa;')
+        ], [
+            'id' => 'A03_S04_E02',
+            'subaspecto_evaluacion_id' => 'A03_S04',
+            'evidencia' => e('Indicación del uso de recursos bibliográficos en los programas de estudio;')
+        ], [
+            'id' => 'A03_S04_E03',
+            'subaspecto_evaluacion_id' => 'A03_S04',
+            'evidencia' => e('Inclusión de estos recursos en la planeación didáctica;')
+        ], [
+            'id' => 'A03_S04_E04',
+            'subaspecto_evaluacion_id' => 'A03_S04',
+            'evidencia' => e('Inventario de recursos bibliográficos en función a la matrícula de estudiantes RIEMS y a la bibliografía básica señalada en los programas de estudio;')
+        ], [
+            'id' => 'A03_S05_E01',
+            'subaspecto_evaluacion_id' => 'A03_S05',
+            'evidencia' => e('Dichas fuentes deberán estar ceñidas a favorecer los procesos de enseñanza, aprendizaje y evaluación, así como el desarrollo de las competencias, considerando primordialmente el uso de las tecnologías para el aprendizaje y el conocimiento como equipos, programas, simuladores, acceso a bibliotecas y bases de datos remotas, Internet, etc')
+        ], [
+            'id' => 'A03_S06_E01',
+            'subaspecto_evaluacion_id' => 'A03_S06',
+            'evidencia' => e('Documento oficial normativo que contiene los elementos para evaluar los logros de competencias de los estudiantes;')
+        ], [
+            'id' => 'A03_S06_E02',
+            'subaspecto_evaluacion_id' => 'A03_S06',
+            'evidencia' => e('La normativa que establece los procedimientos para el egreso, la certificación y, en su caso, el servicio social y la titulación de los estudiantes;')
+        ], [
+            'id' => 'A03_S06_E03',
+            'subaspecto_evaluacion_id' => 'A03_S06',
+            'evidencia' => e('Descripción en los planes y programas de estudio de los métodos, medios e instrumentos para evaluar los aprendizajes;')
+        ], [
+            'id' => 'A03_S06_E04',
+            'subaspecto_evaluacion_id' => 'A03_S06',
+            'evidencia' => e('Ejemplos de instrumentos utilizados en la evaluación de los aprendizajes y desarrollo de las competencias (matrices de evaluación, portafolios de evidencias, evidencias de comportamiento, entre otros);')
+        ], [
+            'id' => 'A03_S06_E05',
+            'subaspecto_evaluacion_id' => 'A03_S06',
+            'evidencia' => e('Ejemplos de heteroevaluación: exámenes externos institucionales, departamentales, o por jueces o sinodales diferentes al docente del grupo.')
+        ], [
+            'id' => 'A03_S07_E01',
+            'subaspecto_evaluacion_id' => 'A03_S07',
+            'evidencia' => e('Documentos institucionales sancionados por la autoridad respectiva (programa correspondiente establecido en el plantel, nombramiento de tutores y sus asignaciones de trabajo); o la lista de control en los casos en los que conforme al programa de tutoría se utilicen prestadores de servicio social u otro de tipo de colaboradores con los cuales el plantel no tenga una relación laboral;')
+        ], [
+            'id' => 'A03_S07_E02',
+            'subaspecto_evaluacion_id' => 'A03_S07',
+            'evidencia' => e('Currículum vitae y documentos comprobatorios que correspondan a su perfil docente (escolaridad requerida y acreditación en un programa reconocido por el CD-SNB). La tutoría podrá ofrecerse mediante prestadores de servicio social, cuando así lo establezca el programa de tutoría aprobado por la dependencia o institución educativa, pero para el nivel I es exigible que los tutores cumplan con los requisitos de escolaridad y acreditación en un programa reconocido por el CD-SNB. En el caso de la opción virtual el tutor deberá mostrar competencias en el uso de tecnologías de información y comunicación;')
+        ], [
+            'id' => 'A03_S07_E03',
+            'subaspecto_evaluacion_id' => 'A03_S07',
+            'evidencia' => e('Expedientes de estudiantes tutorados;')
+        ], [
+            'id' => 'A03_S07_E04',
+            'subaspecto_evaluacion_id' => 'A03_S07',
+            'evidencia' => e('Desde el nivel II, la disponibilidad de espacios reflejada en la conformación de los horarios. Para el nivel I será exigible la existencia de espacios exclusivos (cubículos) para la atención.')
+        ], [
+            'id' => 'A03_S08_E01',
+            'subaspecto_evaluacion_id' => 'A03_S08',
+            'evidencia' => e('Programa oficial de orientación educativa aprobado y difundido en la comunidad educativa;')
+        ], [
+            'id' => 'A03_S08_E02',
+            'subaspecto_evaluacion_id' => 'A03_S08',
+            'evidencia' => e('Nombramiento o asignación oficial del orientador para la atención de determinados alumnos; o la lista de control en los casos en los que conforme al programa de orientación educativa se utilicen prestadores de servicio social u otro de tipo de colaboradores con los cuales el plantel no tenga una relación laboral;')
+        ], [
+            'id' => 'A03_S08_E03',
+            'subaspecto_evaluacion_id' => 'A03_S08',
+            'evidencia' => e('Currículum vitae y documentos comprobatorios que correspondan a su perfil docente (escolaridad requerida y acreditación en un programa reconocido por el CD-SNB). La orientación educativa podrá ofrecerse mediante prestadores de servicio social, cuando así lo establezca el programa de orientación aprobado por la dependencia o institución educativa, pero para el nivel I es exigible que los orientadores cumplan con los requisitos de escolaridad y acreditación en un programa reconocido por el CD-SNB. En el caso de la opción virtual el orientador deberá mostrar competencias en el uso de tecnologías de información y comunicación;')
+        ], [
+            'id' => 'A03_S08_E04',
+            'subaspecto_evaluacion_id' => 'A03_S08',
+            'evidencia' => e('Registros de atención a estudiantes, padres de familia e interacción con tutores;')
+        ], [
+            'id' => 'A03_S08_E05',
+            'subaspecto_evaluacion_id' => 'A03_S08',
+            'evidencia' => e('Desde el nivel II, la disponibilidad de espacios reflejada en la conformación de los horarios. Para el nivel I será exigible la existencia de espacios exclusivos (cubículos) para la atención.')
+        ], [
+            'id' => 'A03_S09_E01',
+            'subaspecto_evaluacion_id' => 'A03_S09',
+            'evidencia' => e('Servicio médico;')
+        ], [
+            'id' => 'A03_S09_E02',
+            'subaspecto_evaluacion_id' => 'A03_S09',
+            'evidencia' => e('Servicio de transporte;')
+        ], [
+            'id' => 'A03_S09_E03',
+            'subaspecto_evaluacion_id' => 'A03_S09',
+            'evidencia' => e('Servicio de alimentos para estudiantes de bajos recursos;')
+        ], [
+            'id' => 'A03_S09_E04',
+            'subaspecto_evaluacion_id' => 'A03_S09',
+            'evidencia' => e('Becas.')
+        ]
+        ));
     }
 }
