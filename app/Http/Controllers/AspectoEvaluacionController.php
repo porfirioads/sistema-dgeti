@@ -53,7 +53,7 @@ class AspectoEvaluacionController extends Controller
             case 'A05':
                 return $this->showAspectoDirectorPlantel();
             case 'A06':
-                break;
+                return $this->showAspectoServiciosEscolares();
             case 'A07':
                 break;
             case 'A08':
@@ -132,6 +132,20 @@ class AspectoEvaluacionController extends Controller
         $page_title = 'SNB: Director del Plantel';
         $box_title = 'Director del Plantel';
         $aspecto_index = 5;
+        return view('snb.aspecto_evaluacion')->with(compact('page_title',
+            'box_title', 'aspecto', 'criterios_existencia',
+            'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
+    }
+
+    public function showAspectoServiciosEscolares()
+    {
+        $aspecto = $this->getAspectoEager('A06');
+        $criterios_existencia = CriterioExistencia::all();
+        $criterios_suficiencia = CriterioSuficiencia::all();
+        $criterios_pertinencia = CriterioPertinencia::all();
+        $page_title = 'SNB: Servicios Escolares';
+        $box_title = 'Servicios Escolares';
+        $aspecto_index = 6;
         return view('snb.aspecto_evaluacion')->with(compact('page_title',
             'box_title', 'aspecto', 'criterios_existencia',
             'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));

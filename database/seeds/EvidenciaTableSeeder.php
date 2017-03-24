@@ -437,6 +437,70 @@ class EvidenciaTableSeeder extends Seeder
             'id' => 'A05_S01_E05',
             'subaspecto_evaluacion_id' => 'A05_S01',
             'evidencia' => e('Para el nivel I se deberá mostrar el documento que avale la conclusión satisfactoria de un programa de formación de directores reconocido por el CD-SNB')
+        ], [
+            'id' => 'A06_S01_E01',
+            'subaspecto_evaluacion_id' => 'A06_S01',
+            'evidencia' => e('Desde el nivel III se observará en el plantel la operación de modos, maneras, mecanismos, instrumentos, estrategias o sistema de registro en cuestión (no necesariamente computarizado), que permitan dar seguimiento al desarrollo de las competencias señaladas en la RIEMS, e ir conformando un directorio actualizado de egresados en el marco de la misma reforma;')
+        ], [
+            'id' => 'A06_S01_E02',
+            'subaspecto_evaluacion_id' => 'A06_S01',
+            'evidencia' => e('Desde el nivel II el sistema de servicios escolares ha de tener la información y la forma de operar que permita el registro confiable y seguro de la trayectoria académica de los estudiantes, así como del desarrollo de sus competencias genéricas, disciplinares y profesionales en su caso;')
+        ], [
+            'id' => 'A06_S01_E03',
+            'subaspecto_evaluacion_id' => 'A06_S01',
+            'evidencia' => e('Para el nivel I el sistema ha de generar información que permita construir indicadores de la eficacia y eficiencia del plantel.')
+        ], [
+            'id' => 'A06_S02_E01',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Registros en el sistema en cuestión del plantel de estudiantes matriculados, calificaciones obtenidas, competencias genéricas, disciplinares y profesionales en su caso, alcanzadas durante su trayectoria escolar;')
+        ], [
+            'id' => 'A06_S02_E02',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Los registros en el sistema de servicios escolares del plantel deberán abarcar los siguientes aspectos:')
+        ], [
+            'id' => 'A06_S02_E03',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Cobertura;')
+        ], [
+            'id' => 'A06_S02_E04',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Absorción')
+        ], [
+            'id' => 'A06_S02_E05',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Matrícula;')
+        ], [
+            'id' => 'A06_S02_E06',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Alumnos matriculados;')
+        ], [
+            'id' => 'A06_S02_E07',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Calificaciones obtenidas;')
+        ], [
+            'id' => 'A06_S02_E08',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Desde el nivel II registro de logro de competencias genéricas, disciplinares y profesionales por alumno alcanzadas a lo largo de su trayectoria escolar;')
+        ], [
+            'id' => 'A06_S02_E09',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Eficiencia terminal;')
+        ], [
+            'id' => 'A06_S02_E10',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Índices y registros de reprobación por asignatura o UAC;')
+        ], [
+            'id' => 'A06_S02_E11',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Índices y registros de deserción;')
+        ], [
+            'id' => 'A06_S02_E12',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Datos de trayectoria de los estudiantes;')
+        ], [
+            'id' => 'A06_S02_E13',
+            'subaspecto_evaluacion_id' => 'A06_S02',
+            'evidencia' => e('Únicamente para el nivel I, se solicitarán mecanismos para seguimiento de egresados, en su caso.')
         ]
         ));
     }
