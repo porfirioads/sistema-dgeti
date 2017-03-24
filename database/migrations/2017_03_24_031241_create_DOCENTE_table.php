@@ -24,11 +24,11 @@ class CreateDOCENTETable extends Migration {
 			$table->string('perfil_profesional', 41);
 			$table->integer('horas_frente_grupo');
 			$table->integer('horas_descarga_academica');
-			$table->integer('horas_administrativas');
+			$table->integer('horas_administrativas')->nullable();
 			$table->string('correo', 45);
 			$table->string('telefono_celular', 20);
 			$table->string('telefono_domicilio', 20)->nullable();
-			$table->string('domicilio', 50);
+			$table->string('domicilio', 50)->nullable();
 			$table->date('deleted_at')->nullable();
 			$table->date('created_at')->default('1970-01-01');
 			$table->date('updated_at')->default('1970-01-01');

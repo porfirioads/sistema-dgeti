@@ -14,8 +14,8 @@ class AddForeignKeysToDOCENTEEVALUADORTable extends Migration {
 	{
 		Schema::table('DOCENTE_EVALUADOR', function(Blueprint $table)
 		{
-			$table->foreign('docente_definitivo_id', 'fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1')->references('id')->on('DOCENTE_DEFINITIVO')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 			$table->foreign('status_id', 'fk_DOCENTE_EVALUADOR_STATUS1')->references('id')->on('STATUS')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('docente_definitivo_id', 'fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1')->references('id')->on('DOCENTE_DEFINITIVO')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToDOCENTEEVALUADORTable extends Migration {
 	{
 		Schema::table('DOCENTE_EVALUADOR', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1');
 			$table->dropForeign('fk_DOCENTE_EVALUADOR_STATUS1');
+			$table->dropForeign('fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1');
 		});
 	}
 

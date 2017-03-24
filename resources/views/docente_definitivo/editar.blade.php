@@ -68,8 +68,8 @@
                 'placeholder' => 'Segundo Apellido','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-md-4">
-                <label for="exampleInputPassword1">
+            <div class="form-group col-md-4 email">
+                <label for="correo">
                     Correo electrónico
                 </label>
                 {!! Form::text('correo', $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->correo:null,['class' =>
@@ -91,7 +91,7 @@
                 </label>
                 {!! Form::text('telefono_domicilio',
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->telefono_domicilio:null,['class' => 'form-control',
-                'placeholder' => 'Teléfono fijo','required',
+                'placeholder' => 'Teléfono fijo','',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-12">
@@ -100,7 +100,7 @@
                 </label>
                 {!! Form::text('domicilio', $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->domicilio:null,
                 ['class' => 'form-control', 'placeholder' => 'Domicilio',
-                'required',$data->accion=='visualizar' ? 'disabled':'',])!!}
+                '',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
         </div>
     </div>
@@ -117,7 +117,7 @@
                 </label>
                 {!! Form::text('perfil_profesional',
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->perfil_profesional:null,['class' => 'form-control',
-                'placeholder' => 'Perfil Profesional',
+                'placeholder' => 'Perfil Profesional','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-lg-2 col-md-6 col-sm-12">
@@ -126,7 +126,7 @@
                 </label>
                 {!! Form::text('horas_frente_grupo',
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
-                'placeholder' => 'Horas frente a grupo',
+                'placeholder' => 'Horas frente a grupo','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-lg-4 col-md-6 col-sm-12">
@@ -136,7 +136,7 @@
                 {!! Form::text('horas_descarga_academica',
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_descarga_academica:null,
                 ['class' => 'form-control',
-                'placeholder' => 'Horas descarga académica',
+                'placeholder' => 'Horas descarga académica','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-lg-2 col-md-6 col-sm-12">
