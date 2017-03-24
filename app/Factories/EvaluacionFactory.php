@@ -9,9 +9,7 @@ namespace App\Factories;
 
 use App\Models\Evaluacion;
 use Carbon\Carbon;
-
 use Illuminate\Http\Request;
-
 
 
 class EvaluacionFactory
@@ -25,22 +23,23 @@ class EvaluacionFactory
         $evaluacion_resultado = $request['evaluacion_resultado'];
         $evaluacion_tipo = $request['evaluacion_tipo'];
 
+        if ($evaluacion_inicio != null) {
+            $format = 'd-m-Y';
 
-        $format = 'd/m/Y';
-
-        $key = 0;
-        $valores =[];
-        foreach ($evaluacion_inicio as $evaluacion_) {
-            $evaluacion = new Evaluacion([
-                'fecha_evaluacion' => Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
-                'vigencia_evaluacion' => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
-                'tipo_evaluacion_id' => $evaluacion_tipo[$key],
-                'resultado_evaluacion_id' => $evaluacion_resultado[$key],
-            ]);
-            $valores[$key++]= $evaluacion;
+            $key = 0;
+            $valores = [];
+            foreach ($evaluacion_inicio as $evaluacion) {
+                $evaluacion_guardar = new Evaluacion([
+                    'fecha_evaluacion' => Carbon::createFromFormat($format, $evaluacion_inicio[$key])->format('Y-m-d'),
+                    'vigencia_evaluacion' => Carbon::createFromFormat($format, $evaluacion_vigencia[$key])->format('Y-m-d'),
+                    'tipo_evaluacion_id' => $evaluacion_tipo[$key],
+                    'resultado_evaluacion_id' => $evaluacion_resultado[$key],
+                ]);
+                $valores[$key++] = $evaluacion_guardar;
+            }
+            return $valores;
         }
-        return $valores;
-
+        return null;
     }
 
 }

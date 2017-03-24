@@ -96,9 +96,9 @@ class DocenteDefinitivoController extends Controller
 
         /////////////////////////// Historial Evaluación////////////////////////////
 
-        $evaluacion_factory =  new EvaluacionFactory();
+        $evaluacion_factory = new EvaluacionFactory();
 
-        foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion){
+        foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion) {
             $evaluacion->save();
             $historial_evaluacion = new HistorialEvaluacionDocente([
                 'evaluacion_id' => $evaluacion->id,
@@ -108,26 +108,18 @@ class DocenteDefinitivoController extends Controller
         }
 
         /////////////////////////// Plaza////////////////////////////
-        $plaza_codigo           = $request['plaza_codigo'];
-        $plaza_tipo             = $request['plaza_tipo'];
-        $plaza_horas            = $request['plaza_horas'];
-        $plaza_nombramiento     = $request['plaza_nombramiento'];
+
+        $plaza_factory = new  PlazaFactory();
+
+        $plazas = $plaza_factory->crearPlaza($request,$docente->id);
 
 
-        $key=0;
-        foreach ($plaza_codigo as $plaza){
-
-
-            $plaza = new TipoPlazaDocente([
-                'plaza'                 => $plaza,
-                'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
-                'docente_id'            => $docente->id,
-                'tipo_plaza_id'         => $plaza_horas[$key]
-            ]);
-
-            $plaza->save();
-            $key++;
+        if($plazas !=null){
+            foreach ($plazas as $plaza){
+                $plaza->save();
+            }
         }
+
 
 
         return redirect()->action('DocenteDefinitivoController@index');
@@ -170,35 +162,40 @@ class DocenteDefinitivoController extends Controller
 
         $academico_disciplina = $request['disciplina'];
 
-        foreach ($academico_disciplina as $disciplina) {
-            if ($disciplina != -1) {
-                $disciplina_docente = new DisciplinaDocente([
-                    'docente_id' => $docente->id,
-                    'disciplina_id' => $disciplina
-                ]);
-                $disciplina_docente->save();
+        if ($academico_disciplina!=null) {
+            foreach ($academico_disciplina as $disciplina) {
+                if ($disciplina != -1) {
+                    $disciplina_docente = new DisciplinaDocente([
+                        'docente_id' => $docente->id,
+                        'disciplina_id' => $disciplina
+                    ]);
+                    $disciplina_docente->save();
+                }
             }
         }
 
-
         /////////////////////////// Historial Evaluación////////////////////////////
-
         //////////////////////////  ELIMINAMOS  //////////////////////////
         HistorialEvaluacionDocente::where('docente_id', '=', $id)->delete();
         //////////////////////////  ELIMINAMOS  //////////////////////////
 
 
         $evaluacion_factory =  new EvaluacionFactory();
+        $evaluaciones   =  $evaluacion_factory->crearEvaluacion($request);
 
-
-        foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion){
-            $evaluacion->save();
-            $historial_evaluacion = new HistorialEvaluacionDocente([
-                'evaluacion_id' => $evaluacion->id,
-                'docente_id' => $docente->id
-            ]);
-            $historial_evaluacion->save();
+        if($evaluaciones!=null){
+            foreach ($evaluaciones as $evaluacion){
+                $evaluacion->save();
+                $historial_evaluacion = new HistorialEvaluacionDocente([
+                    'evaluacion_id' => $evaluacion->id,
+                    'docente_id' => $docente->id
+                ]);
+                $historial_evaluacion->save();
+            }
         }
+
+
+
 
 
         /////////////////////////// Plaza////////////////////////////
@@ -206,31 +203,17 @@ class DocenteDefinitivoController extends Controller
         TipoPlazaDocente::where('docente_id', '=', $id)->delete();
         //////////////////////////  ELIMINAMOS  //////////////////////////
 
-        /////////////////////////// Plaza////////////////////////////
-        $plaza_codigo           = $request['plaza_codigo'];
-        $plaza_tipo             = $request['plaza_tipo'];
-        $plaza_horas            = $request['plaza_horas'];
-        $plaza_nombramiento     = $request['plaza_nombramiento'];
-
-
-        $key=0;
-        foreach ($plaza_codigo as $plaza){
-            $tipo_plaza_guardar =  new TipoPlaza([
-                'numero_horas'          =>      $plaza_horas[$key],
-                'descripcion_tipo_plaza_id'  =>  $plaza_tipo[$key]
-            ]);
-            $tipo_plaza_guardar->save();
-
-            $plaza = new TipoPlazaDocente([
-                'plaza'                 => $plaza,
-                'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
-                'docente_id'            => $docente->id,
-                'tipo_plaza_id'         => $tipo_plaza_guardar->id
-            ]);
-
-            $plaza->save();
-            $key++;
+        $plaza_factory = new  PlazaFactory();
+        $plazas = $plaza_factory->crearPlaza($request,$docente->id);
+        if ($plazas !=null){
+            foreach ($plazas as $plaza){
+                $plaza->save();
+            }
         }
+
+
+
+
         //return $docente;
         return redirect()->action('DocenteDefinitivoController@index');
     }
