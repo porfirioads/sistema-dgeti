@@ -65,15 +65,6 @@
                             </tr>
                         @endforeach
                     @endforeach
-
-                    {{--<tr>--}}
-                    {{--@foreach($subaspecto['evidencias'] as $evidencia)--}}
-                    {{--<td>{{$evidencia->evidencia}}</td>--}}
-                    {{--<td>f</td>--}}
-                    {{--<td>g</td>--}}
-                    {{--<td>h</td>--}}
-                    {{--@endforeach--}}
-                    {{--</tr>--}}
                     </tbody>
                 </table>
             </div>
@@ -82,4 +73,19 @@
 @endsection
 
 @section('particular_scripts')
+    <script>
+        $('.drop_snb_item').click(function () {
+            var drop_button = $(this).parent().parent().parent().children()
+                .first();
+            var optionText = $(this)[0].innerHTML.trim();
+            if (optionText == "Selecciona") {
+                drop_button.removeClass('btn-success');
+                drop_button.addClass('btn-default');
+            } else {
+                drop_button.removeClass('btn-default');
+                drop_button.addClass('btn-success');
+            }
+            drop_button.children().first()[0].innerHTML = optionText;
+        });
+    </script>
 @endsection

@@ -120,6 +120,7 @@ class DocenteDefinitivoController extends Controller
             }
         }
 
+        $request->session()->flash('alert-success', '¡Docente agregado correctamente!');
 
 
         return redirect()->action('DocenteDefinitivoController@index');
@@ -313,7 +314,7 @@ class DocenteDefinitivoController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $docenteDelete = Docente::where('id', '=', $id)->exists();
         $docenteDefinitivoDelete = DocenteDefinitivo::where('docente_id', '=', $id)->exists();
@@ -352,6 +353,7 @@ class DocenteDefinitivoController extends Controller
             $dataDocenteDefinitivo = DocenteDefinitivo::where('docente_id', '=', $id)->delete();
         }
 
+        $request->session()->flash('alert-success', '¡Docente eliminado correctamente!');
 
         return response()->json(['eliminado' => $docenteDelete]);
     }

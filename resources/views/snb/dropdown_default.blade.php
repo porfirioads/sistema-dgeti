@@ -4,8 +4,17 @@
         <span>Selecciona </span>
         <span class="caret"></span></button>
     <ul class="dropdown-menu">
+        <li>
+            <a class="drop_snb_item">
+                Selecciona
+            </a>
+        </li>
         @foreach($criterios as $criterio)
-            <li><a>{{$criterio->criterio}}</a></li>
+            <li>
+                <a class="drop_snb_item">
+                    {{$criterio->criterio}}
+                </a>
+            </li>
         @endforeach
     </ul>
 </div>

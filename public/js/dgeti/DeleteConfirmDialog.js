@@ -42,10 +42,6 @@ function eliminar(id_doce, nomb, primer_ap, segundo_ap) {
                 if (!result.eliminado) {
                     showErrorNotification('Datos incorrectos');
                 } else {
-                    $(':button').prop('disabled', true); // Disable all the buttons
-                    $('#confirm').modal('hide');
-                    var notification = showSuccessNotification('Docente eliminado correctamente.');
-                    setTimeout(notification, 7000);
                     window.location = 'docente_definitivo';
 
                 }
