@@ -51,7 +51,7 @@ class AspectoEvaluacionController extends Controller
             case 'A04':
                 return $this->showAspectoPlantaDocente();
             case 'A05':
-                break;
+                return $this->showAspectoDirectorPlantel();
             case 'A06':
                 break;
             case 'A07':
@@ -61,11 +61,15 @@ class AspectoEvaluacionController extends Controller
         }
     }
 
+    private function getAspectoEager($id) {
+        return $aspecto = AspectoEvaluacion::with(
+            'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
+            'descripcion'])->where('id', '=', $id)->first();
+    }
+
     public function showAspectoInfoGeneral()
     {
-        $aspecto = AspectoEvaluacion::with(
-            'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
-            'descripcion'])->where('id', '=', 'A01')->first();
+        $aspecto = $this->getAspectoEager('A01');
         $criterios_existencia = CriterioExistencia::all();
         $criterios_suficiencia = CriterioSuficiencia::all();
         $criterios_pertinencia = CriterioPertinencia::all();
@@ -79,9 +83,7 @@ class AspectoEvaluacionController extends Controller
 
     public function showAspectoNormativa()
     {
-        $aspecto = AspectoEvaluacion::with(
-            'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
-            'descripcion'])->where('id', '=', 'A02')->first();
+        $aspecto = $this->getAspectoEager('A02');
         $criterios_existencia = CriterioExistencia::all();
         $criterios_suficiencia = CriterioSuficiencia::all();
         $criterios_pertinencia = CriterioPertinencia::all();
@@ -95,9 +97,7 @@ class AspectoEvaluacionController extends Controller
 
     public function showAspectoPlanesProgramas()
     {
-        $aspecto = AspectoEvaluacion::with(
-            'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
-            'descripcion'])->where('id', '=', 'A03')->first();
+        $aspecto = $this->getAspectoEager('A03');
         $criterios_existencia = CriterioExistencia::all();
         $criterios_suficiencia = CriterioSuficiencia::all();
         $criterios_pertinencia = CriterioPertinencia::all();
@@ -111,15 +111,27 @@ class AspectoEvaluacionController extends Controller
 
     public function showAspectoPlantaDocente()
     {
-        $aspecto = AspectoEvaluacion::with(
-            'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
-            'descripcion'])->where('id', '=', 'A04')->first();
+        $aspecto = $this->getAspectoEager('A04');
         $criterios_existencia = CriterioExistencia::all();
         $criterios_suficiencia = CriterioSuficiencia::all();
         $criterios_pertinencia = CriterioPertinencia::all();
         $page_title = 'SNB: Planta Docente';
         $box_title = 'Planta Docente';
         $aspecto_index = 4;
+        return view('snb.aspecto_evaluacion')->with(compact('page_title',
+            'box_title', 'aspecto', 'criterios_existencia',
+            'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
+    }
+
+    public function showAspectoDirectorPlantel()
+    {
+        $aspecto = $this->getAspectoEager('A05');
+        $criterios_existencia = CriterioExistencia::all();
+        $criterios_suficiencia = CriterioSuficiencia::all();
+        $criterios_pertinencia = CriterioPertinencia::all();
+        $page_title = 'SNB: Director del Plantel';
+        $box_title = 'Director del Plantel';
+        $aspecto_index = 5;
         return view('snb.aspecto_evaluacion')->with(compact('page_title',
             'box_title', 'aspecto', 'criterios_existencia',
             'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));

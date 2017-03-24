@@ -417,6 +417,26 @@ class EvidenciaTableSeeder extends Seeder
             'id' => 'A04_S04_E01',
             'subaspecto_evaluacion_id' => 'A04_S04',
             'evidencia' => e('Los horarios del plantel con los nombres de las asignaturas y los docentes que imparten clases a los estudiantes de la “matrícula RIEMS”, de acuerdo al formato III.4')
+        ], [
+            'id' => 'A05_S01_E01',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('La documentación consignada para ejercer como director de plantel (nombramiento, contrato, títulos, constancias, etc.);')
+        ], [
+            'id' => 'A05_S01_E02',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Constancia que acredite su experiencia docente o administrativa de al menos cinco años, preferentemente en educación media superior;')
+        ], [
+            'id' => 'A05_S01_E03',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Constancia que acredite su experiencia en el desarrollo de proyectos de gestión, innovación y mejora continua en la educación;')
+        ], [
+            'id' => 'A05_S01_E04',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Desde el nivel III habrá que presentar el título de licenciatura o de grado;')
+        ], [
+            'id' => 'A05_S01_E05',
+            'subaspecto_evaluacion_id' => 'A05_S01',
+            'evidencia' => e('Para el nivel I se deberá mostrar el documento que avale la conclusión satisfactoria de un programa de formación de directores reconocido por el CD-SNB')
         ]
         ));
     }
