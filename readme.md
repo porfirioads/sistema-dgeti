@@ -17,6 +17,11 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 composer install
 ```
 
+### Generar nueva clave para el archivo .env
+```
+php artisan key:generate
+```
+
 ### Correr el proyecto y que pueda ser accedido desde la red local
 ```
 php artisan serve --host 0.0.0.0
