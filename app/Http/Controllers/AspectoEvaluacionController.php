@@ -64,10 +64,7 @@ class AspectoEvaluacionController extends Controller
 
     public function showAspectoInfoGeneral()
     {
-        // El select de esta instrucción selecciona los campos de la tabla
-        // AspectoEvaluacion, para manejar los campos seleccionados de los
-        // subaspectos y evidencias se debe ir a los métodos de los eager
-        // loaders en sus respectivos modelos.
+        // El select
         $aspecto = AspectoEvaluacion::with(
             'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
             'descripcion'])->where('id', '=', 'A01')->first();
