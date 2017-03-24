@@ -333,6 +333,7 @@ class DocenteDefinitivoController extends Controller
     public function destroy($id)
     {
         $docenteDelete = Docente::where('id', '=', $id)->exists();
+        $docenteDefinitivoDelete = DocenteDefinitivo::where('docente_id', '=', $id)->exists();
         $historialEvaluacionDelete = HistorialEvaluacionDocente::where('docente_id', '=', $id)->exists();
         $plazaDocenteDelete = TipoPlazaDocente::where('docente_id', '=', $id)->exists();
         $disciplinaDocenteDelete = DisciplinaDocente::where('docente_id', '=', $id)->exists();
@@ -342,6 +343,10 @@ class DocenteDefinitivoController extends Controller
 
         if ($docenteDelete) {
             $dataDocente = Docente::find($id)->delete();
+        }
+
+        if($docenteDefinitivoDelete){
+            $docenteDefinitivoDelete = DocenteDefinitivo::where('docente_id', '=', $id)->delete();
         }
 
         if ($historialEvaluacionDelete) {

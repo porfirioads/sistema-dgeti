@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AspectoEvaluacion;
 use App\Models\CriterioExistencia;
+use App\Models\CriterioPertinencia;
+use App\Models\CriterioSuficiencia;
 use App\Models\SubaspectoEvaluacion;
 use Illuminate\Http\Request;
 
@@ -41,9 +43,12 @@ class AspectoEvaluacionController extends Controller
             'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
             'descripcion'])->where('id', '=', 'A01')->first();
         $criterios_existencia = CriterioExistencia::all();
+        $criterios_suficiencia = CriterioSuficiencia::all();
+        $criterios_pertinencia = CriterioPertinencia::all();
         $page_title = 'SNB: Información General';
         $box_title = 'Información General';
         return view('snb.aspecto_evaluacion')->with(compact('page_title',
-            'box_title', 'aspecto', 'criterios_existencia'));
+            'box_title', 'aspecto', 'criterios_existencia',
+            'criterios_suficiencia', 'criterios_pertinencia'));
     }
 }
