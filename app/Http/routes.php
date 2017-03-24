@@ -45,9 +45,7 @@ Route::group(['middleware' => 'login'], function () {
         return view('landings.directores');
     });
 
-    Route::get('snb', function () {
-       return view('snb.snb');
-    });
+    Route::resource('evaluacion_snb', 'AspectoEvaluacionController');
 });
 
 Route::get('dash', function () {
@@ -57,7 +55,5 @@ Route::get('dash', function () {
 Route::get('defi', function () {
     return view('docente_definitivo.list');
 });
-
-Route::get('evaluacion_snb', 'AspectoEvaluacionController@index');
 
 Route::get('info_gral_snb', 'AspectoEvaluacionController@showAspectoInfoGeneral');
