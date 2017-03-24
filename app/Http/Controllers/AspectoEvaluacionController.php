@@ -55,13 +55,14 @@ class AspectoEvaluacionController extends Controller
             case 'A06':
                 return $this->showAspectoServiciosEscolares();
             case 'A07':
-                break;
+                return $this->showAspectoInstalacionesEquipamiento();
             case 'A08':
                 break;
         }
     }
 
-    private function getAspectoEager($id) {
+    private function getAspectoEager($id)
+    {
         return $aspecto = AspectoEvaluacion::with(
             'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
             'descripcion'])->where('id', '=', $id)->first();
@@ -146,6 +147,20 @@ class AspectoEvaluacionController extends Controller
         $page_title = 'SNB: Servicios Escolares';
         $box_title = 'Servicios Escolares';
         $aspecto_index = 6;
+        return view('snb.aspecto_evaluacion')->with(compact('page_title',
+            'box_title', 'aspecto', 'criterios_existencia',
+            'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
+    }
+
+    public function showAspectoInstalacionesEquipamiento()
+    {
+        $aspecto = $this->getAspectoEager('A07');
+        $criterios_existencia = CriterioExistencia::all();
+        $criterios_suficiencia = CriterioSuficiencia::all();
+        $criterios_pertinencia = CriterioPertinencia::all();
+        $page_title = 'SNB: Instalaciones y Equipamiento';
+        $box_title = 'Instalaciones y Equipamiento';
+        $aspecto_index = 7;
         return view('snb.aspecto_evaluacion')->with(compact('page_title',
             'box_title', 'aspecto', 'criterios_existencia',
             'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
