@@ -597,6 +597,50 @@ class EvidenciaTableSeeder extends Seeder
             'id' => 'A07_S09_E01',
             'subaspecto_evaluacion_id' => 'A07_S09',
             'evidencia' => e('Verificación en funciones de los espacios propios o de uso por convenio, destinados a las actividades deportivas, culturales y recreativas;')
+        ], [
+            'id' => 'A08_S01_E01',
+            'subaspecto_evaluacion_id' => 'A08_S01',
+            'evidencia' => e('Plan y programas anuales de mejora continua;')
+        ], [
+            'id' => 'A08_S02_E01',
+            'subaspecto_evaluacion_id' => 'A08_S02',
+            'evidencia' => e('Existencia de la obra civil (edificio), instalaciones y equipo conforme a la norma vigente;')
+        ], [
+            'id' => 'A08_S02_E02',
+            'subaspecto_evaluacion_id' => 'A08_S02',
+            'evidencia' => e('Funcionamiento del programa de mantenimiento preventivo y correctivo del equipo, instalaciones y obra civil;')
+        ], [
+            'id' => 'A08_S02_E03',
+            'subaspecto_evaluacion_id' => 'A08_S02',
+            'evidencia' => e('Existencia del programa de mantenimiento de las instalaciones;')
+        ], [
+            'id' => 'A08_S03_E01',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Normativa vigente;')
+        ], [
+            'id' => 'A08_S03_E02',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Actas de la sesión de instalación del “Comité de protección civil y prevención de riesgos”;')
+        ], [
+            'id' => 'A08_S03_E03',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Validación del cumplimiento de las normas aplicables en la materia otorgada por la autoridad local competente;')
+        ], [
+            'id' => 'A08_S03_E04',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Existencia del programa de higiene y seguridad;')
+        ], [
+            'id' => 'A08_S03_E05',
+            'subaspecto_evaluacion_id' => 'A08_S03',
+            'evidencia' => e('Minutas o actas de la instalación, reuniones y actividades del Comité de higiene y seguridad;')
+        ], [
+            'id' => 'A08_S04_E01',
+            'subaspecto_evaluacion_id' => 'A08_S04',
+            'evidencia' => e('Verificar la ejecución de acciones de protección al medio ambiente;')
+        ], [
+            'id' => 'A08_S04_E02',
+            'subaspecto_evaluacion_id' => 'A08_S04',
+            'evidencia' => e('Minutas, actas o bitácoras que den cuenta de la existencia e instrumentación de las estrategias.')
         ]
         ));
     }

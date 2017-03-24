@@ -57,7 +57,9 @@ class AspectoEvaluacionController extends Controller
             case 'A07':
                 return $this->showAspectoInstalacionesEquipamiento();
             case 'A08':
-                break;
+                return $this->showAspectoProgramaMejoraDesarrollo();
+            default:
+                // TODO return página de elemento no encontrado
         }
     }
 
@@ -161,6 +163,20 @@ class AspectoEvaluacionController extends Controller
         $page_title = 'SNB: Instalaciones y Equipamiento';
         $box_title = 'Instalaciones y Equipamiento';
         $aspecto_index = 7;
+        return view('snb.aspecto_evaluacion')->with(compact('page_title',
+            'box_title', 'aspecto', 'criterios_existencia',
+            'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
+    }
+
+    public function showAspectoProgramaMejoraDesarrollo()
+    {
+        $aspecto = $this->getAspectoEager('A08');
+        $criterios_existencia = CriterioExistencia::all();
+        $criterios_suficiencia = CriterioSuficiencia::all();
+        $criterios_pertinencia = CriterioPertinencia::all();
+        $page_title = 'SNB: Programa de Mejora y Desarrollo';
+        $box_title = 'Programa de Mejora y Desarrollo';
+        $aspecto_index = 8;
         return view('snb.aspecto_evaluacion')->with(compact('page_title',
             'box_title', 'aspecto', 'criterios_existencia',
             'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
