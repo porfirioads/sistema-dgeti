@@ -9,6 +9,7 @@ namespace App\Factories;
 
 use App\Models\Evaluacion;
 use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 
@@ -18,10 +19,12 @@ class EvaluacionFactory
 
     public function crearEvaluacion(Request $request)
     {
+
         $evaluacion_inicio = $request['evaluacion_inicio'];
         $evaluacion_vigencia = $request['evaluacion_vigencia'];
         $evaluacion_resultado = $request['evaluacion_resultado'];
         $evaluacion_tipo = $request['evaluacion_tipo'];
+
 
         $format = 'd/m/Y';
 

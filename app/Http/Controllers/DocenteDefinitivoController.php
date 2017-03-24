@@ -116,17 +116,13 @@ class DocenteDefinitivoController extends Controller
 
         $key=0;
         foreach ($plaza_codigo as $plaza){
-            $tipo_plaza_guardar =  new TipoPlaza([
-                'numero_horas'          =>      $plaza_horas[$key],
-                'descripcion_tipo_plaza_id'  =>  $plaza_tipo[$key]
-            ]);
-            $tipo_plaza_guardar->save();
+
 
             $plaza = new TipoPlazaDocente([
                 'plaza'                 => $plaza,
                 'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
                 'docente_id'            => $docente->id,
-                'tipo_plaza_id'         => $tipo_plaza_guardar->id
+                'tipo_plaza_id'         => $plaza_horas[$key]
             ]);
 
             $plaza->save();
@@ -192,28 +188,17 @@ class DocenteDefinitivoController extends Controller
         HistorialEvaluacionDocente::where('docente_id', '=', $id)->delete();
         //////////////////////////  ELIMINAMOS  //////////////////////////
 
-        $evaluacion_inicio = $request['evaluacion_inicio'];
-        $evaluacion_vigencia = $request['evaluacion_vigencia'];
-        $evaluacion_resultado = $request['evaluacion_resultado'];
-        $evaluacion_tipo = $request['evaluacion_tipo'];
 
-        $format = 'd/m/Y';
-        $key = 0;
-        foreach ($evaluacion_inicio as $evaluacion_) {
-            $evaluacion = new Evaluacion([
-                'fecha_evaluacion' => Carbon::createFromFormat($format, $evaluacion_inicio[$key]),
-                'vigencia_evaluacion' => Carbon::createFromFormat($format, $evaluacion_vigencia[$key]),
-                'tipo_evaluacion_id' => $evaluacion_tipo[$key],
-                'resultado_evaluacion_id' => $evaluacion_resultado[$key],
-            ]);
+        $evaluacion_factory =  new EvaluacionFactory();
+
+
+        foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion){
             $evaluacion->save();
-
             $historial_evaluacion = new HistorialEvaluacionDocente([
                 'evaluacion_id' => $evaluacion->id,
                 'docente_id' => $docente->id
             ]);
             $historial_evaluacion->save();
-            $key++;
         }
 
 
@@ -222,32 +207,29 @@ class DocenteDefinitivoController extends Controller
         TipoPlazaDocente::where('docente_id', '=', $id)->delete();
         //////////////////////////  ELIMINAMOS  //////////////////////////
 
-        $plaza_codigo = $request['plaza_codigo'];
-        $plaza_tipo = $request['plaza_tipo'];
-        $plaza_horas = $request['plaza_horas'];
-        $plaza_nombramiento = $request['plaza_nombramiento'];
+        /////////////////////////// Plaza////////////////////////////
+        $plaza_codigo           = $request['plaza_codigo'];
+        $plaza_tipo             = $request['plaza_tipo'];
+        $plaza_horas            = $request['plaza_horas'];
+        $plaza_nombramiento     = $request['plaza_nombramiento'];
 
-        $key = 0;
 
-        $agregado = [];
-        foreach ($plaza_codigo as $plaza) {
-            $tipo_plaza_guardar = new TipoPlaza([
-                'numero_horas' => $plaza_horas[$key],
-                'descripcion_tipo_plaza_id' => $plaza_tipo[$key]
+        $key=0;
+        foreach ($plaza_codigo as $plaza){
+            $tipo_plaza_guardar =  new TipoPlaza([
+                'numero_horas'          =>      $plaza_horas[$key],
+                'descripcion_tipo_plaza_id'  =>  $plaza_tipo[$key]
             ]);
             $tipo_plaza_guardar->save();
-            $agregado[$key]['tipo'] = $tipo_plaza_guardar;
-
 
             $plaza = new TipoPlazaDocente([
-                'plaza' => $plaza,
-                'tipo_nombramiento_id' => $plaza_nombramiento[$key],
-                'docente_id' => $docente->id,
-                'tipo_plaza_id' => $tipo_plaza_guardar->id
+                'plaza'                 => $plaza,
+                'tipo_nombramiento_id'  => $plaza_nombramiento[$key],
+                'docente_id'            => $docente->id,
+                'tipo_plaza_id'         => $tipo_plaza_guardar->id
             ]);
 
             $plaza->save();
-            $agregado[$key]['plaza'] = $plaza;
             $key++;
         }
         //return $docente;

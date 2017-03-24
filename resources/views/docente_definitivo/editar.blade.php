@@ -186,10 +186,9 @@
                 </div>
             @else
                 <div id="agregarAcademico">
-                        @include('docente_definitivo.datos_academicos')
+                    @include('docente_definitivo.datos_academicos')
                 </div>
             @endif
-
 
 
             <div class="row">
@@ -286,6 +285,7 @@
                     @include('docente_definitivo.historial_evaluacion')
                 </div>
             @endif
+
             <div class="row">
                 <div class="col-md-11"></div>
                 <div class="form-group col-md-1 col-sm-1">
@@ -294,21 +294,23 @@
                     </a>
                 </div>
             </div>
+
         </div>
 
     </div>
 
 
-        {{--DE MOMENTO NO SE INCLUYE ESTE APARTADO--}}
-{{--    @include('docente_definitivo.actividades_administrativas')--}}
+    {{--DE MOMENTO NO SE INCLUYE ESTE APARTADO--}}
+    {{--    @include('docente_definitivo.actividades_administrativas')--}}
 
 
-    <div class="box-footer">
-        {!! Form::submit($data->accion=='visualizar'? "Guardar" : "Actualizar",
-              ['class' => 'btn btn-block btn-lg btn-primary',
-              $data->accion=='visualizar'?'disabled':''] ) !!}
-    </div>
-
+    @if($data->accion=='modificar' ||$data->accion=='crear')
+        <div class="box-footer">
+            {!! Form::submit($data->accion=='modificar'? "Actualizar":"Guardar" ,
+                  ['class' => 'btn btn-block btn-lg btn-primary',
+                  $data->accion=='visualizar'?'disabled':''] ) !!}
+        </div>
+    @endif
     {!! Form::close()  !!}
 
 @endsection
