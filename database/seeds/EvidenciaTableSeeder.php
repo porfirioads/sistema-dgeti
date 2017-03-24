@@ -385,6 +385,38 @@ class EvidenciaTableSeeder extends Seeder
             'id' => 'A03_S09_E04',
             'subaspecto_evaluacion_id' => 'A03_S09',
             'evidencia' => e('Becas.')
+        ], [
+            'id' => 'A04_S01_E01',
+            'subaspecto_evaluacion_id' => 'A04_S01',
+            'evidencia' => e('Currículum vitae de los docentes y documentos probatorios;')
+        ], [
+            'id' => 'A04_S01_E02',
+            'subaspecto_evaluacion_id' => 'A04_S01',
+            'evidencia' => e('Satisfacción de los porcentajes de docentes con diploma Profordems y certificado Certidems establecidos por el Acuerdo 12/CD del SNB.')
+        ], [
+            'id' => 'A04_S01_E03',
+            'subaspecto_evaluacion_id' => 'A04_S01',
+            'evidencia' => e('Satisfacción de los porcentajes de docentes con diploma Profordems y certificado Certidems para NIVEL I')
+        ], [
+            'id' => 'A04_S01_E04',
+            'subaspecto_evaluacion_id' => 'A04_S01',
+            'evidencia' => e('Satisfacción de los porcentajes de docentes con diploma Profordems y certificado Certidems para NIVEL II')
+        ], [
+            'id' => 'A04_S01_E05',
+            'subaspecto_evaluacion_id' => 'A04_S01',
+            'evidencia' => e('Satisfacción de los porcentajes de docentes con diploma Profordems para NIVEL III')
+        ], [
+            'id' => 'A04_S02_E01',
+            'subaspecto_evaluacion_id' => 'A04_S02',
+            'evidencia' => e('Listado de docentes que imparten asignaturas a la matrícula RIEMS de acuerdo al formato III.2 del manual ')
+        ], [
+            'id' => 'A04_S03_E01',
+            'subaspecto_evaluacion_id' => 'A04_S03',
+            'evidencia' => e('Currículum vitae y documentos probatorios del personal docente que imparte asignaturas o UAC a los estudiantes que componen la “matrícula RIEMS” de acuerdo al formato III.3')
+        ], [
+            'id' => 'A04_S04_E01',
+            'subaspecto_evaluacion_id' => 'A04_S04',
+            'evidencia' => e('Los horarios del plantel con los nombres de las asignaturas y los docentes que imparten clases a los estudiantes de la “matrícula RIEMS”, de acuerdo al formato III.4')
         ]
         ));
     }
