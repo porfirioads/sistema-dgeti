@@ -15,7 +15,7 @@ function changeFunc(value) {
 
         $(elem).append($('<option selected>', {
             value: -1,
-            text: 'Selecciona Número Horas ...'
+            text: 'Selecciona NÃºmero Horas ...'
         }));
 
         $.each(data, function (index, subCatObj) {
