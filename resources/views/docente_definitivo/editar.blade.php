@@ -271,6 +271,9 @@
         </div>
         <div class="panel-body">
 
+
+
+
             <div class="row hidden-xs hidden-sm hidden-md">
                 <div class="form-group col-lg-3"><label>Tipo Evaluación</label></div>
                 <div class="form-group col-lg-2"><label>Resultados</label></div>
@@ -282,9 +285,17 @@
 
             @if( $data->accion=='visualizar' || $data->accion=='modificar' )
                 <div id="agregarHistorial">
-                    @foreach($data->res_evaluacion as $evaluacion)
-                        @include('docente_definitivo.historial_evaluacion')
-                    @endforeach
+                    @if(count($data->res_evaluacion)> 0)
+                        @foreach($data->res_evaluacion as $evaluacion)
+                            @include('docente_definitivo.historial_evaluacion')
+                        @endforeach
+                    @else
+                        @if($data->accion=='visualizar')
+                            <p align="center">No contiene evaluaciones el docente</p>
+                        @else
+                            @include('docente_definitivo.historial_evaluacion')
+                        @endif
+                    @endif
                 </div>
             @else
                 <div id="agregarHistorial">
