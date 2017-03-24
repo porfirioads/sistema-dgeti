@@ -5,6 +5,8 @@
 @section('particular_styles')
     <link href="{!! asset('css/dataTables.bootstrap.css') !!}"
           rel="stylesheet">
+    <link href="{!! asset('css/agregar_flotante.css') !!}"
+          rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 @endsection
 
@@ -12,20 +14,23 @@
     @include('docente_definitivo.sidebar_items')
 @endsection
 
-@section('box_title', 'Docentes definitivos')
+@section('box_title', 'Docentes Definitivos')
 @section('box_body')
     <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if(Session::has('alert-' . $msg))
-
                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
             @endif
         @endforeach
     </div> <!-- end .flash-message -->
-    <button class="btn btn-block btn-warning"
-            onclick="location.href='{{ url('docente_definitivo/create') }}'">
-        <i class="fa fa-plus"></i>
-    </button>
+    <div class="col-lg-offset-11">
+        <button class="btn btn-block btn-warning button-float-righ"
+                onclick="location.href='{{ url('docente_definitivo/create') }}'">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+
+
     <br/>
     <table id="tablaProfesores" class="table table-bordered table-striped">
         <thead>

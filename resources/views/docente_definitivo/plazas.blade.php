@@ -25,7 +25,7 @@
     </div>
 
 
-    <div class="form-group col-md-3 col-sm-12">
+    <div class="form-group col-md-2 col-sm-12">
         <select id="numero_horas"
                 class="form-control select2"
                 name="plaza_horas[]"
@@ -40,7 +40,7 @@
         </select>
     </div>
 
-    <div class="form-group col-md-2 col-sm-10">
+    <div class="form-group col-md-3 col-sm-10">
         <select class="form-control select2"
                 name="plaza_nombramiento[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
