@@ -1,6 +1,6 @@
 @extends('dashboard_master')
 
-@section('title', $page_title)
+@section('title', 'SNB: ' . $aspecto->aspecto)
 
 @section('particular_styles')
     <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
@@ -10,7 +10,7 @@
     @include('snb.sidebar_items')
 @endsection
 
-@section('box_title', $box_title)
+@section('box_title', $aspecto->aspecto)
 
 @section('box_body')
     <div class="row no-horizontal-scroll">
