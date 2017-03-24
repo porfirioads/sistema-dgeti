@@ -81,13 +81,26 @@ $('.add-element-plaza').click(function () {
     });
 
     $('#' + newId + ' .remove').click(function () {
-        $(this).parent().parent().remove();
+        var $elementos = $(this).parent().parent().parent().parent().find(".elemento");
+
+        //si no tiene más elementos iguales eliminar
+        // si no simplemente dejar ir
+        if ($elementos.length>=2){
+            $(this).parent().parent().remove();
+        }
     });
 });
 
 //////////////////////////// DANGER ZONE /////////////////////////////////////////////////
 $('.remove').click(function () {
-    $(this).parent().parent().remove();
+
+    var $elementos = $(this).parent().parent().parent().parent().find(".elemento");
+
+    //si no tiene más elementos iguales eliminar
+    // si no simplemente dejar ir
+    if ($elementos.length>=2){
+        $(this).parent().parent().remove();
+    }
 })
 //////////////////////////// DANGER ZONE /////////////////////////////////////////////////
 

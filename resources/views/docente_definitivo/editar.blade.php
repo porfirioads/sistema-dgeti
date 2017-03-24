@@ -180,9 +180,15 @@
 
             @if( $data->accion=='visualizar' || $data->accion=='modificar')
                 <div id="agregarAcademico">
-                    @foreach($data->res_disciplina as $componente)
+                    @if (empty($data->res_disciplina))
+                        asdfasdfa
                         @include('docente_definitivo.datos_academicos')
-                    @endforeach
+                    @else
+                        @foreach($data->res_disciplina as $componente)
+                            @include('docente_definitivo.datos_academicos')
+                        @endforeach
+                    @endif
+
                 </div>
             @else
                 <div id="agregarAcademico">
