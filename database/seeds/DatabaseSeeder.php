@@ -42,9 +42,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AspectoEvaluacionTableSeeder::class);
         $this->call(SubaspectoEvaluacionTableSeeder::class);
         $this->call(EvidenciaTableSeeder::class);
-/*        $this->call(CriterioExistenciaTableSeeder::class);
+        $this->call(CriterioExistenciaTableSeeder::class);
         $this->call(CriterioPertinenciaTableSeeder::class);
-        $this->call(CriterioSuficienciaTableSeeder::class);*/
+        $this->call(CriterioSuficienciaTableSeeder::class);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
