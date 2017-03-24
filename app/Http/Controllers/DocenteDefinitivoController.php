@@ -331,7 +331,7 @@ class DocenteDefinitivoController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $docenteDelete = Docente::where('id', '=', $id)->exists();
         $docenteDefinitivoDelete = DocenteDefinitivo::where('docente_id', '=', $id)->exists();
