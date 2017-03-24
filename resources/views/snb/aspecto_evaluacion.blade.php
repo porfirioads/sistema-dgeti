@@ -47,9 +47,13 @@
                                 {{$subaspecto->subaspecto}}
                             </td>
                         </tr>
+                        {{--*/ $contador_evidencia = 1 /*--}}
                         @foreach($subaspecto['evidencias'] as $evidencia)
                             <tr>
-                                <td colspan="2">{{$evidencia->evidencia}}</td>
+                                <td colspan="2">
+                                    {{$contador_evidencia++ . '. '
+                                    . $evidencia->evidencia}}
+                                </td>
                                 <td class="select-snb">
                                     @include('snb.dropdown_default',
                                     ['criterios'=>$criterios_existencia])
