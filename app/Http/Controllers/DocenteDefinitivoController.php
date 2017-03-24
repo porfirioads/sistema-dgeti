@@ -133,6 +133,7 @@ class DocenteDefinitivoController extends Controller
             $key++;
         }
 
+        $request->session()->flash('alert-success', '¡Docente agregado correctamente!');
 
         return redirect()->action('DocenteDefinitivoController@index');
     }
@@ -387,6 +388,7 @@ class DocenteDefinitivoController extends Controller
             $dataDocenteDefinitivo = DocenteDefinitivo::where('docente_id', '=', $id)->delete();
         }
 
+        $request->session()->flash('alert-success', '¡Docente eliminado correctamente!');
 
         return response()->json(['eliminado' => $docenteDelete]);
     }

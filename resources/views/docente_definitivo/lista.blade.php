@@ -13,16 +13,15 @@
 @endsection
 
 @section('box_title', 'Docentes definitivos')
-@if(Session::has('success'))
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-            <div id="charge-message" class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        </div>
-    </div>
-@endif
 @section('box_body')
+    <div class="flash-message">
+        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if(Session::has('alert-' . $msg))
+
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+            @endif
+        @endforeach
+    </div> <!-- end .flash-message -->
     <button class="btn btn-block btn-warning"
             onclick="location.href='{{ url('docente_definitivo/create') }}'">
         <i class="fa fa-plus"></i>
