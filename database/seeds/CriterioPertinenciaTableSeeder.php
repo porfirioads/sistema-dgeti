@@ -14,16 +14,16 @@ class CriterioPertinenciaTableSeeder extends Seeder
         DB::table('CRITERIO_PERTINENCIA')->truncate();
 
         DB::table('CRITERIO_PERTINENCIA')->insert(array([
-            'id' => null,
+            'id' => 1,
             'criterio' => e('Muy adecuado'),
         ], [
-            'id' => null,
+            'id' => 2,
             'criterio' => e('Medianamente adecuado'),
         ], [
-            'id' => null,
+            'id' => 3,
             'criterio' => e('Poco adecuado'),
         ], [
-            'id' => null,
+            'id' => 4,
             'criterio' => e('Inadecuado'),
         ]));
     }

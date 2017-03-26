@@ -14,16 +14,16 @@ class CriterioSuficienciaTableSeeder extends Seeder
         DB::table('CRITERIO_SUFICIENCIA')->truncate();
 
         DB::table('CRITERIO_SUFICIENCIA')->insert(array([
-            'id' => null,
+            'id' => 1,
             'criterio' => e('Suficiente'),
         ], [
-            'id' => null,
+            'id' => 2,
             'criterio' => e('Cubierto en un 70%'),
         ], [
-            'id' => null,
+            'id' => 3,
             'criterio' => e('Cubierto en un 50%'),
         ], [
-            'id' => null,
+            'id' => 4,
             'criterio' => e('Insuficiente'),
         ]));
     }

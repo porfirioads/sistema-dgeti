@@ -15,8 +15,8 @@ class EvidenciaExistenciaTableSeeder extends Seeder
 
         DB::table('EVIDENCIA_EXISTENCIA')->insert(array([
             'aplica' => '',
-            'criterio_existencia_id' => '',
-            'evidencia_id' => ''
+            'criterio_existencia_id' => 1,
+            'evidencia_id' => 'A01_S01_E01'
         ]
         ));
     }
