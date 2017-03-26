@@ -316,66 +316,15 @@ create table EVIDENCIA
   subaspecto_evaluacion_id char(7) not null,
   deleted_at date null,
   created_at date default '1970-01-01' not null,
-  updated_at date default '1970-01-01' not null
+  updated_at date default '1970-01-01' not null,
+  aplica_existencia char default '1' not null,
+  aplica_pertinencia char default '1' null,
+  aplica_suficiencia char default '1' null
 )
 ;
 
 create index fk_EVIDENCIA_SUBASPECTO_EVALUACION1_idx
   on EVIDENCIA (subaspecto_evaluacion_id)
-;
-
-create table EVIDENCIA_EXISTENCIA
-(
-  id int not null auto_increment
-    primary key,
-  aplica varchar(1) null,
-  evidencia_id char(11) not null,
-  deleted_at date null,
-  created_at date default '1970-01-01' not null,
-  updated_at date default '1970-01-01' not null,
-  constraint fk_EVIDENCIA_EXISTENCIA_EVIDENCIA1
-  foreign key (evidencia_id) references EVIDENCIA (id)
-)
-;
-
-create index fk_EVIDENCIA_EXISTENCIA_EVIDENCIA1_idx
-  on EVIDENCIA_EXISTENCIA (evidencia_id)
-;
-
-create table EVIDENCIA_PERTINENCIA
-(
-  id int not null auto_increment
-    primary key,
-  aplica varchar(1) null,
-  evidencia_id char(11) not null,
-  deleted_at date null,
-  created_at date default '1970-01-01' not null,
-  updated_at date default '1970-01-01' not null,
-  constraint fk_EVIDENCIA_PERTINENCIA_EVIDENCIA1
-  foreign key (evidencia_id) references EVIDENCIA (id)
-)
-;
-
-create index fk_EVIDENCIA_PERTINENCIA_EVIDENCIA1_idx
-  on EVIDENCIA_PERTINENCIA (evidencia_id)
-;
-
-create table EVIDENCIA_SUFICIENCIA
-(
-  id int not null auto_increment
-    primary key,
-  aplica varchar(1) null,
-  evidencia_id char(11) not null,
-  deleted_at date null,
-  created_at date default '1970-01-01' not null,
-  updated_at date default '1970-01-01' not null,
-  constraint fk_EVIDENCIA_SUFICIENCIA_EVIDENCIA1
-  foreign key (evidencia_id) references EVIDENCIA (id)
-)
-;
-
-create index fk_EVIDENCIA_SUFICIENCIA_EVIDENCIA1_idx
-  on EVIDENCIA_SUFICIENCIA (evidencia_id)
 ;
 
 create table FUNCION

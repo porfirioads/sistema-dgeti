@@ -57,9 +57,6 @@ class DatabaseSeeder extends Seeder
         Schema::drop('CRITERIO_EXISTENCIA');
         Schema::drop('CRITERIO_PERTINENCIA');
         Schema::drop('CRITERIO_SUFICIENCIA');
-        Schema::drop('EVIDENCIA_EXISTENCIA');
-        Schema::drop('EVIDENCIA_PERTINENCIA');
-        Schema::drop('EVIDENCIA_SUFICIENCIA');
         Schema::drop('INSTITUCION');
         Schema::drop('INSTITUCION_EVIDENCIA');
     }
