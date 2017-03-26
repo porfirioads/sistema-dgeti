@@ -28,3 +28,7 @@
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to left, #F2F3F5, #D2D6DE);
 }
+
+.about {
+    height: 100%;
+}
