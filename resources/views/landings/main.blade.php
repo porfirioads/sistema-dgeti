@@ -128,16 +128,6 @@ INDUSTRIAL')
 @section('particular_scripts')
     <script src="{!! asset('js/bootstrap.js') !!}"></script>
     <script>
-        // Closes the sidebar menu
-        $("#menu-close").click(function (e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-        // Opens the sidebar menu
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
         // Scrolls to the selected menu item on the page
         $(function () {
             $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function () {
@@ -147,7 +137,7 @@ INDUSTRIAL')
                     if (target.length) {
                         $('html,body').animate({
                             scrollTop: target.offset().top
-                        }, 1000);
+                        }, 500);
                         return false;
                     }
                 }
