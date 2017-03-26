@@ -14,13 +14,16 @@ class SubaspectoEvaluacion extends Model
     protected $fillable = array('subaspecto', 'aspecto_evaluacion_id');
     protected $dates = ['deleted_at'];
 
-    public function aspecto_evaluacion() {
+    public function aspecto_evaluacion()
+    {
         return $this->belongsTo('App\Models\AspectoEvaluacion');
     }
 
-    public function evidencias() {
+    public function evidencias()
+    {
         return $this->hasMany('App\Models\Evidencia',
-            'subaspecto_evaluacion_id', 'id')->select(['id', 'subaspecto_evaluacion_id',
-            'evidencia']);
+            'subaspecto_evaluacion_id', 'id')->select(['id',
+            'subaspecto_evaluacion_id', 'evidencia', 'aplica_existencia',
+            'aplica_pertinencia', 'aplica_suficiencia']);
     }
 }

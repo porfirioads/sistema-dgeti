@@ -11,7 +11,8 @@ class Evidencia extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'EVIDENCIA';
-    protected $fillable = array('evidencia', 'subaspecto_evaluacion_id');
+    protected $fillable = array('evidencia', 'subaspecto_evaluacion_id',
+        'aplica_existencia', 'aplica_pertinencia', 'aplica_suficiencia');
     protected $dates = ['deleted_at'];
 
     public function subaspecto_evaluacion() {

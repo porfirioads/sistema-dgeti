@@ -56,16 +56,28 @@
                                     . $evidencia->evidencia}}
                                 </td>
                                 <td class="select-snb">
-                                    @include('snb.dropdown_default',
-                                    ['criterios'=>$criterios_existencia])
+                                    @if($evidencia->aplica_existencia)
+                                        @include('snb.dropdown_default',
+                                            ['criterios'=>$criterios_existencia])
+                                    @else
+                                        <strong>No aplica</strong>
+                                    @endif
                                 </td>
                                 <td class="select-snb">
-                                    @include('snb.dropdown_default',
-                                    ['criterios'=>$criterios_pertinencia])
+                                    @if($evidencia->aplica_pertinencia)
+                                        @include('snb.dropdown_default',
+                                            ['criterios'=>$criterios_pertinencia])
+                                    @else
+                                        <strong>No aplica</strong>
+                                    @endif
                                 </td>
                                 <td class="select-snb">
-                                    @include('snb.dropdown_default',
-                                    ['criterios'=>$criterios_suficiencia])
+                                    @if($evidencia->aplica_suficiencia)
+                                        @include('snb.dropdown_default',
+                                            ['criterios'=>$criterios_suficiencia])
+                                    @else
+                                        <strong>No aplica</strong>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
