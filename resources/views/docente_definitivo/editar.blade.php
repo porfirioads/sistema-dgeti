@@ -19,6 +19,14 @@
         'method'=>$data->accion=='modificar'?'PUT':'POST', 'class' => '',
         'name'=>'form_docente_definitivo'])
         !!}
+    @if(count($errors) > 0)
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+            <p></p>
+        </div>
+    @endif
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>

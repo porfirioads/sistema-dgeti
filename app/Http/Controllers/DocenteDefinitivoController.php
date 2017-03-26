@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+use Input;
 use App\Factories\EvaluacionFactory;
 use App\Factories\PlazaFactory;
 use App\Models\DescripcionTipoPlaza;
@@ -64,71 +66,68 @@ class DocenteDefinitivoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request['correo'], [
-            $request['correo']->get() => 'email|required'
-        ]);
 
-        /////////////////////////// Docentes ////////////////////////////
-        $docente_factory = new DocenteFactory();
+            /////////////////////////// Docentes ////////////////////////////
+            $docente_factory = new DocenteFactory();
 
-        $docente = $docente_factory->crearDocente($request);
+            $docente = $docente_factory->crearDocente($request);
 
-        $docente->save();
+            $docente->save();
 
 
-        /////////////////////////// Datos Académicos////////////////////////////
-        $academico_disciplina = $request['disciplina'];
+            /////////////////////////// Datos Académicos////////////////////////////
+            $academico_disciplina = $request['disciplina'];
 
-        foreach ($academico_disciplina as $disciplina) {
-            if ($disciplina != -1) {
-                $disciplina_docente = new DisciplinaDocente([
-                    'docente_id' => $docente->id,
-                    'disciplina_id' => $disciplina
-                ]);
-                $disciplina_docente->save();
+            foreach ($academico_disciplina as $disciplina) {
+                if ($disciplina != -1) {
+                    $disciplina_docente = new DisciplinaDocente([
+                        'docente_id' => $docente->id,
+                        'disciplina_id' => $disciplina
+                    ]);
+                    $disciplina_docente->save();
+                }
             }
-        }
 
 
-        /////////////////////////// Docente Definitivo ////////////////////////////
-        $docente_definitivo = new DocenteDefinitivo([
-            'docente_id' => $docente->id
-        ]);
-        $docente_definitivo->save();
-
-
-        /////////////////////////// Historial Evaluación////////////////////////////
-
-        $evaluacion_factory = new EvaluacionFactory();
-
-        foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion) {
-            $evaluacion->save();
-            $historial_evaluacion = new HistorialEvaluacionDocente([
-                'evaluacion_id' => $evaluacion->id,
+            /////////////////////////// Docente Definitivo ////////////////////////////
+            $docente_definitivo = new DocenteDefinitivo([
                 'docente_id' => $docente->id
             ]);
-            $historial_evaluacion->save();
-        }
-
-        /////////////////////////// Plaza////////////////////////////
-
-        $plaza_factory = new  PlazaFactory();
-
-        $plazas = $plaza_factory->crearPlaza($request,$docente->id);
+            $docente_definitivo->save();
 
 
-        if($plazas !=null){
-            foreach ($plazas as $plaza){
-                $plaza->save();
+            /////////////////////////// Historial Evaluación////////////////////////////
+
+            $evaluacion_factory = new EvaluacionFactory();
+
+            foreach ($evaluacion_factory->crearEvaluacion($request) as $evaluacion) {
+                $evaluacion->save();
+                $historial_evaluacion = new HistorialEvaluacionDocente([
+                    'evaluacion_id' => $evaluacion->id,
+                    'docente_id' => $docente->id
+                ]);
+                $historial_evaluacion->save();
             }
-        }
 
-        $request->session()->flash('alert-success', '¡Docente agregado correctamente!');
+            /////////////////////////// Plaza////////////////////////////
+
+            $plaza_factory = new  PlazaFactory();
+
+            $plazas = $plaza_factory->crearPlaza($request, $docente->id);
 
 
-        return redirect()->action('DocenteDefinitivoController@index');
+            if ($plazas != null) {
+                foreach ($plazas as $plaza) {
+                    $plaza->save();
+                }
+            }
+
+            $request->session()->flash('alert-success', '¡Docente agregado correctamente!');
+
+
+            return redirect()->action('DocenteDefinitivoController@index');
+
     }
-
     /**
      * Update the specified resource in storage.
      *
