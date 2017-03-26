@@ -8,7 +8,8 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_definitivo.sidebar_items')
+    @include('docente_definitivo.sidebar_items', ['url' =>
+     '../docente_definitivo', 'texto' => 'Volver a lista de definitivos'])
 @endsection
 
 @section('box_title', 'Docente definitivo')

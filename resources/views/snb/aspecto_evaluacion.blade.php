@@ -7,7 +7,8 @@
 @endsection
 
 @section('sidebar_options')
-    @include('snb.sidebar_items')
+    @include('snb.sidebar_items', ['url'=>'../evaluacion_snb',
+    'texto' => 'Volver a aspectos del SNB'])
 @endsection
 
 @section('box_title', $aspecto->aspecto)
