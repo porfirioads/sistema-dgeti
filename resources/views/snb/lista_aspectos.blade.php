@@ -15,6 +15,7 @@
         <div class="col-xs-12">
             <div class="table-responsive no-padding">
                 <table class="table table-hover" id="tableAspectos">
+                    <thead>
                     <tr>
                         <th>No.</th>
                         <th>Aspectos Sujetos a Evaluación</th>
@@ -25,6 +26,7 @@
                         <th>Extensión</th>
                         <th>Fecha</th>
                     </tr>
+                    </thead>
                     <tbody>
                     {{-- La instrucción de abajo declara e inicializa una
                     variable, pero no la pinta en el html --}}
@@ -53,7 +55,7 @@
 
 @section('particular_scripts')
     <script>
-        $('#tableAspectos tbody tr').click(function () {
+        $('#tableAspectos > tbody > tr').click(function () {
             window.location = 'evaluacion_snb/' + this.id;
         });
     </script>
