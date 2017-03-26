@@ -1,11 +1,11 @@
-<li class="active">
+<li >
     <a href="../docente_definitivo">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Definitivos</span>
     </a>
 </li>
-<li>
-    <a href="../docente_idoneo">
+<li class="active">
+    <a href="../docente_idoneo" >
         <i class="fa fa-circle-o"></i>
         <span>Docentes Idóneos</span>
     </a>

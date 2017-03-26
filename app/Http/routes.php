@@ -40,6 +40,7 @@ Route::get('v_building', function () {
 
 Route::group(['middleware' => 'login'], function () {
     Route::resource('docente_definitivo', 'DocenteDefinitivoController');
+    Route::resource('docente_idoneo', 'DocenteIdoneoController');
 
     Route::get('landing_directores', function () {
         return view('landings.directores');

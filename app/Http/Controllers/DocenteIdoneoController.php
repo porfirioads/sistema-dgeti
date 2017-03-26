@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Docente;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,10 @@ class DocenteIdoneoController extends Controller
      */
     public function index()
     {
-        //
+        //////////// Falta solucionar este join//////////////
+        $docentes_ideoneos =Docente::all();
+
+        return view('docente_idoneo.lista')->with('docentes',$docentes_ideoneos);
     }
 
     /**
