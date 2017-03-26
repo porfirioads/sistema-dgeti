@@ -14,16 +14,16 @@ class CriterioExistenciaTableSeeder extends Seeder
         DB::table('CRITERIO_EXISTENCIA')->truncate();
 
         DB::table('CRITERIO_EXISTENCIA')->insert(array([
-            'id' => null,
+            'id' => 1,
             'criterio' => e('Existente'),
         ], [
-            'id' => null,
+            'id' => 2,
             'criterio' => e('Existente a mediano plazo'),
         ], [
-            'id' => null,
+            'id' => 3,
             'criterio' => e('Existente a largo plazo (más de un año)'),
         ], [
-            'id' => null,
+            'id' => 4,
             'criterio' => e('Inexistente'),
         ]));
     }

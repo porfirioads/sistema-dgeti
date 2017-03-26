@@ -1,16 +1,17 @@
 @extends('dashboard_master')
 
-@section('title', $page_title)
+@section('title', 'SNB: ' . $aspecto->aspecto)
 
 @section('particular_styles')
     <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
 @endsection
 
 @section('sidebar_options')
-    @include('snb.sidebar_items')
+    @include('snb.sidebar_items', ['url'=>'../evaluacion_snb',
+    'texto' => 'Volver a aspectos del SNB'])
 @endsection
 
-@section('box_title', $box_title)
+@section('box_title', $aspecto->aspecto)
 
 @section('box_body')
     <div class="row no-horizontal-scroll">
@@ -47,9 +48,13 @@
                                 {{$subaspecto->subaspecto}}
                             </td>
                         </tr>
+                        {{--*/ $contador_evidencia = 1 /*--}}
                         @foreach($subaspecto['evidencias'] as $evidencia)
                             <tr>
-                                <td colspan="2">{{$evidencia->evidencia}}</td>
+                                <td colspan="2">
+                                    {{$contador_evidencia++ . '. '
+                                    . $evidencia->evidencia}}
+                                </td>
                                 <td class="select-snb">
                                     @include('snb.dropdown_default',
                                     ['criterios'=>$criterios_existencia])

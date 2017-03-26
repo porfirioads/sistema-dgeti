@@ -8,8 +8,7 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_definitivo.sidebar_items', ['url' =>
-     '../docente_definitivo', 'texto' => 'Volver a lista de definitivos'])
+    @include('docente_definitivo.sidebar_items')
 @endsection
 
 @section('box_title', 'Docente definitivo')
@@ -20,14 +19,6 @@
         'method'=>$data->accion=='modificar'?'PUT':'POST', 'class' => '',
         'name'=>'form_docente_definitivo'])
         !!}
-    @if(count($errors) > 0)
-        <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-            <p></p>
-        </div>
-    @endif
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>

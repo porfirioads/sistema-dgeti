@@ -3,7 +3,7 @@
             data-toggle="dropdown">
         <span>Selecciona </span>
         <span class="caret"></span></button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu drop-down-up">
         <li>
             <a class="drop_snb_item">
                 Selecciona

@@ -1,0 +1,10 @@
+.button-float-righ {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%!important;
+}

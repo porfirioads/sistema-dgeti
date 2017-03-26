@@ -23,7 +23,7 @@ class AspectoEvaluacionController extends Controller
     public function index()
     {
         $aspectos = AspectoEvaluacion::all();
-        // Obtener los aspectos de la institución del director actual
+        // TODO Obtener los aspectos de la institución del director actual
         $estado = 'Zacatecas';
         $plantel = 'CETis 114';
         $saeti = 'Saeti';
@@ -41,41 +41,21 @@ class AspectoEvaluacionController extends Controller
      */
     public function show($id)
     {
-        switch ($id) {
-            case 'A01':
-                return $this->showAspectoInfoGeneral();
-                break;
-            case 'A02':
-                break;
-            case 'A03':
-                break;
-            case 'A04':
-                break;
-            case 'A05':
-                break;
-            case 'A06':
-                break;
-            case 'A07':
-                break;
-            case 'A08':
-                break;
-        }
-    }
-
-    public function showAspectoInfoGeneral()
-    {
-        // El select
         $aspecto = AspectoEvaluacion::with(
             'subaspectos_evaluacion.evidencias')->select(['id', 'aspecto',
-            'descripcion'])->where('id', '=', 'A01')->first();
-        $criterios_existencia = CriterioExistencia::all();
-        $criterios_suficiencia = CriterioSuficiencia::all();
-        $criterios_pertinencia = CriterioPertinencia::all();
-        $page_title = 'SNB: Información General';
-        $box_title = 'Información General';
-        $aspecto_index = 1;
-        return view('snb.aspecto_evaluacion')->with(compact('page_title',
-            'box_title', 'aspecto', 'criterios_existencia',
-            'criterios_suficiencia', 'criterios_pertinencia', 'aspecto_index'));
+            'descripcion'])->where('id', '=', $id)->first();
+        if ($aspecto) {
+            $criterios_existencia = CriterioExistencia::all();
+            $criterios_suficiencia = CriterioSuficiencia::all();
+            $criterios_pertinencia = CriterioPertinencia::all();
+            $aspecto_index = substr($id, 1, 1) == 0 ? substr($id, 2, 1) :
+                substr($id, 1, 2);
+            return view('snb.aspecto_evaluacion')->with(compact('page_title',
+                'box_title', 'aspecto', 'criterios_existencia',
+                'criterios_suficiencia', 'criterios_pertinencia',
+                'aspecto_index'));
+        } else {
+            // TODO Mostrar página de no encontrado
+        }
     }
 }

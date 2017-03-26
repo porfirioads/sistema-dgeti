@@ -36,13 +36,13 @@
     <div class="form-group col-lg-3">
         {!! Form::text('evaluacion_inicio[]', $value = $data->accion=='visualizar' || $data->accion=='modificar'  ? date('d-m-Y', strtotime(isset($evaluacion->fecha_evaluacion)?$evaluacion->fecha_evaluacion : null)) :null,
         ['class' => 'form-control datepicker', 'placeholder' => 'Fecha evaluación',
-        '',$data->accion=='visualizar' ? 'disabled':''])!!}
+        'required',$data->accion=='visualizar' ? 'disabled':''])!!}
     </div>
 
     <div class="form-group col-lg-3">
         {!! Form::text('evaluacion_vigencia[]', $value = $data->accion=='visualizar' || $data->accion=='modificar'  ?  date('d-m-Y', strtotime(isset($evaluacion->vigencia_evaluacion)?$evaluacion->vigencia_evaluacion : null)):null,
         ['class' => 'form-control datepicker', 'placeholder' => 'Fecha vigencia',
-        '',$data->accion=='visualizar' ? 'disabled':''])!!}
+        'required',$data->accion=='visualizar' ? 'disabled':''])!!}
     </div>
 
 

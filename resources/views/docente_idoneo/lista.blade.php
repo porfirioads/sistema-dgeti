@@ -11,11 +11,10 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_definitivo.sidebar_items', ['url' =>
-    '../landing_directores', 'texto' => 'Volver a menú de directores'])
+    @include('docente_idoneo.sidebar_items')
 @endsection
 
-@section('box_title', 'Docentes Definitivos')
+@section('box_title', 'Docentes Idóneos')
 @section('box_body')
     <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -26,7 +25,7 @@
     </div> <!-- end .flash-message -->
     <div class="col-lg-offset-11">
         <button class="btn btn-block btn-warning button-float-righ"
-                onclick="location.href='{{ url('docente_definitivo/create') }}'">
+                onclick="location.href='{{ url('docente_idoneo/create') }}'">
             <i class="fa fa-plus"></i>
         </button>
     </div>
@@ -53,13 +52,13 @@
                 <td class="row">
                     <div class="col-md-4">
                         <a class="btn btn-block btn-success"
-                           href="docente_definitivo/{{$docente->id}}">
+                           href="docente_idoneo/{{$docente->id}}">
                             <i class="fa fa-eye"></i>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a class="btn btn-block btn-primary"
-                           href="docente_definitivo/{{$docente->id}}/edit">
+                           href="docente_idoneo/{{$docente->id}}/edit">
                             <i class="fa fa-pencil"></i>
                         </a>
                     </div>

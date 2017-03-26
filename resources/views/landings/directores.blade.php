@@ -20,7 +20,7 @@
         </a>
     </div>
     <div class="col-md-2 col-xs-12 col-sm-12">
-        <a class=" btn btn-block btn-primary" href="snb">
+        <a class=" btn btn-block btn-primary" href="evaluacion_snb">
             <i class="fa fa-institution fa-5x"></i>
             <br/>
             <span>SNB</span>

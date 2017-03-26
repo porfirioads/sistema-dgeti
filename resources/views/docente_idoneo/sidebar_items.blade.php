@@ -1,11 +1,11 @@
-<li class="active">
+<li >
     <a href="../docente_definitivo">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Definitivos</span>
     </a>
 </li>
-<li>
-    <a href="../docente_idoneo">
+<li class="active">
+    <a href="../docente_idoneo" >
         <i class="fa fa-circle-o"></i>
         <span>Docentes Idóneos</span>
     </a>
@@ -26,11 +26,5 @@
     <a href="../v_building">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Evaluadores</span>
-    </a>
-</li>
-<li>
-    <a href="{{$url}}">
-        <i class="fa fa-mail-reply"></i>
-        <span>{{$texto}}</span>
     </a>
 </li>
