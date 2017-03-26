@@ -16,7 +16,9 @@
             @foreach($data->dic_descripcion_plaza as $tipo)
                 <option value="{{$tipo->id}}"
                 @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                    {{$tipo->id== $plaza->descripcion_tipo_plaza_id?'selected':''}}
+                    @if(isset($plaza->descripcion_tipo_plaza_id))
+                        {{$tipo->id== $plaza->descripcion_tipo_plaza_id?'selected':''}}
+                            @endif
                         @endif>
                     {{$tipo->descripcion }}
                 </option>
