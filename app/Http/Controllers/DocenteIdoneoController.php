@@ -70,7 +70,7 @@ class DocenteIdoneoController extends Controller
         $data = $this->getDiccionarios($data);
 
         #return $data;
-        return view('docente_definitivo.editar')->with('data', $data);
+        return view('docente_idoneo.editar')->with('data', $data);
     }
 
 

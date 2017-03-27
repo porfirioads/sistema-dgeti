@@ -8,7 +8,7 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_definitivo.sidebar_items')
+    @include('docente_idoneo.sidebar_items')
 @endsection
 
 @section('box_title', 'Docente definitivo')
@@ -152,6 +152,33 @@
         </div>
     </div>
 
+
+    {{--//////////////////////////////////////Datos relacionados a Docente Idóneo/////////--}}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <i class="icon-calendar"></i>
+            <h3 class="panel-title">Folio</h3>
+        </div>
+        <div class="panel-body">
+
+
+            <div class="row hidden-xs hidden-sm hidden-md">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Folio Federal</label>
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Concurso</label>
+                </div>
+
+            </div>
+
+            @include('docente_idoneo.datos_ideoneo')
+
+        </div>
+    </div>
+
+
     {{--//////////////////////////////////////Datos académicos/////////--}}
 
     <div class="panel panel-primary">
@@ -207,6 +234,10 @@
             </div>
         </div>
     </div>
+
+
+
+
 
 
 
