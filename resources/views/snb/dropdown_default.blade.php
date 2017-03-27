@@ -4,15 +4,25 @@
                 data-toggle="dropdown">
             <span>Selecciona </span>
             <span class="caret"></span></button>
-        <ul class="dropdown-menu drop-down-up">
+        <script>
+            if (evaluaciones['{!! $evidencia_id !!}'] == undefined)
+                evaluaciones['{!! $evidencia_id !!}'] = {};
+        </script>
+        <ul id="{{$tipo_criterio . '*' .$evidencia_id}}" class="dropdown-menu
+         drop-down-up">
             <li>
-                <a class="drop_snb_item">
+                <a id="-1" class="drop_snb_item">
                     Selecciona
                 </a>
             </li>
+            {{--*/ $contador_criterio = 1 /*--}}
             @foreach($criterios as $criterio)
+                <script>
+                    evaluaciones['{!! $evidencia_id !!}']
+                        ['{!! $tipo_criterio !!}'] = '-1';
+                </script>
                 <li>
-                    <a class="drop_snb_item">
+                    <a id="{{$contador_criterio++}}" class="drop_snb_item">
                         {{$criterio->criterio}}
                     </a>
                 </li>

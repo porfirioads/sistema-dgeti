@@ -37,6 +37,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <script>var evaluaciones = {};</script>
                     {{--*/ $contador_subaspecto = 1 /*--}}
                     @foreach($aspecto['subaspectos_evaluacion'] as $subaspecto)
                         {{--*/ $rowspan = count($subaspecto['evidencias']) /*--}}
@@ -56,44 +57,32 @@
                                     {{--. $evidencia->evidencia}}--}}
                                     {{$evidencia->evidencia}}
                                 </td>
-                                <td class="select-snb">
+                                <td class="select-snb sel-exis">
                                     @include('snb.dropdown_default',
                                             ['aplica' => $evidencia
                                             ->aplica_existencia,
                                             'criterios' =>
-                                            $criterios_existencia])
-                                    {{--@if($evidencia->aplica_existencia)--}}
-                                        {{--@include('snb.dropdown_default',--}}
-                                            {{--['criterios'=>$criterios_existencia])--}}
-                                    {{--@else--}}
-                                        {{--<strong>No aplica</strong>--}}
-                                    {{--@endif--}}
+                                            $criterios_existencia,
+                                            'evidencia_id' => $evidencia->id,
+                                            'tipo_criterio' => 'exis'])
                                 </td>
                                 <td class="select-snb">
                                     @include('snb.dropdown_default',
                                             ['aplica' => $evidencia
                                             ->aplica_pertinencia,
                                             'criterios' =>
-                                            $criterios_pertinencia])
-                                    {{--@if($evidencia->aplica_pertinencia)--}}
-                                        {{--@include('snb.dropdown_default',--}}
-                                            {{--['criterios'=>$criterios_pertinencia])--}}
-                                    {{--@else--}}
-                                        {{--<strong>No aplica</strong>--}}
-                                    {{--@endif--}}
+                                            $criterios_pertinencia,
+                                            'evidencia_id' => $evidencia->id,
+                                            'tipo_criterio' => 'pert'])
                                 </td>
                                 <td class="select-snb">
                                     @include('snb.dropdown_default',
                                             ['aplica' => $evidencia
                                             ->aplica_suficiencia,
                                             'criterios' =>
-                                            $criterios_suficiencia])
-                                    {{--@if($evidencia->aplica_suficiencia)--}}
-                                        {{--@include('snb.dropdown_default',--}}
-                                            {{--['criterios'=>$criterios_suficiencia])--}}
-                                    {{--@else--}}
-                                        {{--<strong>No aplica</strong>--}}
-                                    {{--@endif--}}
+                                            $criterios_suficiencia,
+                                            'evidencia_id' => $evidencia->id,
+                                            'tipo_criterio' => 'sufi'])
                                 </td>
                             </tr>
                         @endforeach
@@ -136,6 +125,33 @@
                 drop_button.addClass('btn-success');
             }
             drop_button.children().first()[0].innerHTML = optionText;
+        });
+    </script>
+    <script>
+        console.log(evaluaciones);
+        $('.drop_snb_item').click(function () {
+            var parent = $(this).parent().parent()[0];
+            var selected = $(this)[0];
+            var evidenciaId = parent.id.substring(5);
+            var tipoCriterio = parent.id.substring(0, 4);
+            evaluaciones[evidenciaId][tipoCriterio] = selected.id;
+            var evaluacionCompleta = true;
+
+            // Con estos foreach se evalúa que no se hayan dejado aspectos
+            // sin evaluar
+            $.each(evaluaciones, function (key, value) {
+                $.each(value, function (key2, value2) {
+                    if (value2 == '-1') {
+                        return evaluacionCompleta = false;
+                    }
+                })
+            });
+
+            if (!evaluacionCompleta) {
+                console.log("tranquilo papu, llena los campos")
+            }
+
+            // TODO ¿Aquí lo meteré en la base de datos?
         });
     </script>
 @endsection
