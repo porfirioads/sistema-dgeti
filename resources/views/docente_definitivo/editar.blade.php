@@ -253,7 +253,7 @@
 
             <div class="row">
                 <div class="col-md-11"></div>
-                <div class="form-group col-md-1 col-sm-1">
+                <div class="form-group col-md-1 col-sm-2">
                     <a class="btn btn-block btn-primary add-element-plaza" {{$data->accion=='visualizar' ? 'disabled':''}}>
                         <i class="fa fa-plus"></i>
                     </a>

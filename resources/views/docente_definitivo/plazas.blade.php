@@ -43,7 +43,7 @@
         </select>
     </div>
 
-    <div class="form-group col-lg-2 col-md-3 col-sm-10">
+    <div class="form-group col-lg-2 col-md-3 col-sm-12">
         <select class="form-control select2"
                 name="plaza_nombramiento[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
@@ -59,26 +59,26 @@
         </select>
     </div>
     <div class="form-group col-lg-1 col-md-6 col-sm-12">
-        {!! Form::text('horas_frente_grupo',
-        $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
+        {!! Form::text('horas_frente_grupo[]',
+        $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $plaza->horas_frente_grupo:null,['class' => 'form-control',
         'placeholder' => 'Horas frente a grupo','required',
         $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
     <div class="form-group col-lg-1 col-md-6 col-sm-12">
-        {!! Form::text('horas_descarga_academica',
-        $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_descarga_academica:null,
+        {!! Form::text('horas_descarga_academica[]',
+        $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $plaza->horas_descarga_academica:null,
         ['class' => 'form-control',
         'placeholder' => 'Horas descarga académica','required',
         $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
     <div class="form-group col-lg-1 col-md-6 col-sm-12">
-        {!! Form::text('horas_administrativas',
-         $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_administrativas:null,
+        {!! Form::text('horas_administrativas[]',
+         $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $plaza->horas_administrativas:null,
          ['class' => 'form-control',
          'placeholder' => 'Horas administrativas',
          $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
-    <div class="col-lg-1 col-md-1 col-sm-1">
+    <div class="col-lg-1 col-md-1 col-sm-2">
         <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
             <i class="fa fa-times"></i>
         </a>
