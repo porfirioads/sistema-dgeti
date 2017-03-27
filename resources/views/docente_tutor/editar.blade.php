@@ -1,6 +1,6 @@
 @extends('dashboard_master')
 
-@section('title', 'Docentes definitivo')
+@section('title', 'Docentes Tutor')
 
 @section('particular_styles')
     <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
@@ -11,7 +11,7 @@
     @include('docente_idoneo.sidebar_items')
 @endsection
 
-@section('box_title', 'Docente definitivo')
+@section('box_title', 'Docente Tutor')
 
 @section('box_body')
     {!! Form::open([
