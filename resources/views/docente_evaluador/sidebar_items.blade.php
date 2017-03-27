@@ -10,7 +10,7 @@
         <span>Docentes Idóneos</span>
     </a>
 </li>
-<li >
+<li>
     <a href="../docente_tutor">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Tutores</span>

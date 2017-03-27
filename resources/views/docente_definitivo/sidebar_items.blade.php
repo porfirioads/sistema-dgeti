@@ -11,19 +11,19 @@
     </a>
 </li>
 <li>
-    <a href="../v_building">
+    <a href="../docente_tutor">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Tutores</span>
     </a>
 </li>
 <li>
-    <a href="../v_building">
+    <a href="../docente_atp">
         <i class="fa fa-circle-o"></i>
         <span>Docentes ATP</span>
     </a>
 </li>
 <li>
-    <a href="../v_building">
+    <a href="../docente_evaluador">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Evaluadores</span>
     </a>

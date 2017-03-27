@@ -4,13 +4,13 @@
         <span>Docentes Definitivos</span>
     </a>
 </li>
-<li class="active">
+<li>
     <a href="../docente_idoneo">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Idóneos</span>
     </a>
 </li>
-<li >
+<li class="active">
     <a href="../docente_tutor">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Tutores</span>

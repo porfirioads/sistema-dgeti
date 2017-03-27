@@ -41,6 +41,10 @@ Route::get('v_building', function () {
 Route::group(['middleware' => 'login'], function () {
     Route::resource('docente_definitivo', 'DocenteDefinitivoController');
     Route::resource('docente_idoneo', 'DocenteIdoneoController');
+    Route::resource('docente_atp', 'DocenteATPController');
+    Route::resource('docente_evaluador', 'DocenteEvaluadorController');
+    Route::resource('docente_tutor', 'DocenteTutorController');
+
 
     Route::get('landing_directores', function () {
         return view('landings.directores');
