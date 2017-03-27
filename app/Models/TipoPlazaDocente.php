@@ -24,7 +24,10 @@ class TipoPlazaDocente extends Model
         'docente_id',
         'tipo_nombramiento_id',
         'tipo_plaza_id',
-        'plaza'
+        'plaza',
+        'horas_frente_grupo',
+        'horas_descarga_academica',
+        'horas_administrativas'
     );
 
     protected $dates = ['deleted_at'];

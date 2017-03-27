@@ -1,13 +1,13 @@
 {{--//////////////////////////////////////PLAZAS/////////--}}
 <div class="row elemento" id="plaza_row">
-    <div class="form-group col-md-3 col-sm-12">
+    <div class="form-group col-lg-2 col-md-3 col-sm-12">
         {!! Form::text('plaza_codigo[]', $value = $data->accion=='visualizar'  || $data->accion=='modificar'  ? $plaza->plaza:null, ['class' =>
         'form-control', 'placeholder' => 'Plaza','','pattern' => '[A-Z0-9]{20,}',
                 'oninvalid' => 'setCustomValidity("Ingresa una plaza válida.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',
         $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
 
-    <div class="form-group col-md-3 col-sm-12">
+    <div class="form-group col-lg-2 col-md-3 col-sm-12">
         <select id="plaza_tipo"
                 class="form-control select2"
                 name="plaza_tipo[]"
@@ -28,7 +28,7 @@
     </div>
 
 
-    <div class="form-group col-md-2 col-sm-12">
+    <div class="form-group col-lg-2 col-md-2 col-sm-12">
         <select id="numero_horas"
                 class="form-control select2"
                 name="plaza_horas[]"
@@ -43,7 +43,7 @@
         </select>
     </div>
 
-    <div class="form-group col-md-3 col-sm-10">
+    <div class="form-group col-lg-2 col-md-3 col-sm-10">
         <select class="form-control select2"
                 name="plaza_nombramiento[]"
                 {{$data->accion=='visualizar' ? 'disabled':''}}>
@@ -58,8 +58,27 @@
             @endforeach
         </select>
     </div>
-
-    <div class="col-md-1 col-sm-1">
+    <div class="form-group col-lg-1 col-md-6 col-sm-12">
+        {!! Form::text('horas_frente_grupo',
+        $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
+        'placeholder' => 'Horas frente a grupo','required',
+        $data->accion=='visualizar' ? 'disabled':'',])!!}
+    </div>
+    <div class="form-group col-lg-1 col-md-6 col-sm-12">
+        {!! Form::text('horas_descarga_academica',
+        $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_descarga_academica:null,
+        ['class' => 'form-control',
+        'placeholder' => 'Horas descarga académica','required',
+        $data->accion=='visualizar' ? 'disabled':'',])!!}
+    </div>
+    <div class="form-group col-lg-1 col-md-6 col-sm-12">
+        {!! Form::text('horas_administrativas',
+         $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_administrativas:null,
+         ['class' => 'form-control',
+         'placeholder' => 'Horas administrativas',
+         $data->accion=='visualizar' ? 'disabled':'',])!!}
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1">
         <a class="btn btn-block btn-primary btn-danger remove" {{$data->accion=='visualizar' ? 'disabled':''}}>
             <i class="fa fa-times"></i>
         </a>

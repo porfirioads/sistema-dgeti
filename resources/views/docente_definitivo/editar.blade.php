@@ -123,7 +123,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
                 <label for="exampleInputPassword1">
                     Perfil Profesional
                 </label>
@@ -131,35 +131,6 @@
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->perfil_profesional:null,['class' => 'form-control',
                 'placeholder' => 'Perfil Profesional','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
-            </div>
-            <div class="form-group col-lg-2 col-md-6 col-sm-12">
-                <label for="exampleInputPassword1">
-                    Horas frente a grupo
-                </label>
-                {!! Form::text('horas_frente_grupo',
-                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
-                'placeholder' => 'Horas frente a grupo','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="exampleInputPassword1">
-                    Horas descarga académica
-                </label>
-                {!! Form::text('horas_descarga_academica',
-                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_descarga_academica:null,
-                ['class' => 'form-control',
-                'placeholder' => 'Horas descarga académica','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
-            </div>
-            <div class="form-group col-lg-2 col-md-6 col-sm-12">
-                <label for="exampleInputPassword1">
-                    Horas administrativas
-                </label>
-                {!! Form::text('horas_administrativas',
-                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_administrativas:null,
-                 ['class' => 'form-control',
-                 'placeholder' => 'Horas administrativas',
-                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
         </div>
     </div>
@@ -235,19 +206,34 @@
         <div class="panel-body">
 
             <div class="row hidden-xs hidden-sm hidden-md">
-                <div class="form-group col-md-3 col-sm-12">
+                <div class="form-group col-lg-2 col-md-3 col-sm-12">
                     <label>Plaza</label>
                 </div>
-                <div class="form-group col-md-3 col-sm-12">
+                <div class="form-group col-lg-2 col-md-3 col-sm-12">
                     <label>Tipo plaza</label>
                 </div>
-                <div class="form-group col-md-3 col-sm-12">
+                <div class="form-group col-lg-2 col-md-2 col-sm-12">
                     <label>Horas</label>
                 </div>
-                <div class="form-group col-md-2 col-sm-10">
+                <div class="form-group col-lg-2 col-md-3 col-sm-10">
                     <label>Tipo de nombramiento</label>
                 </div>
-                <div class="col-md-1 col-sm-1">
+                <div class="form-group col-lg-1 col-md-6 col-sm-12">
+                    <label for="exampleInputPassword1">
+                        Horas frente a grupo
+                    </label>
+                </div>
+                <div class="form-group col-lg-1 col-md-6 col-sm-12">
+                    <label for="exampleInputPassword1">
+                        Horas descarga académica
+                    </label>
+                </div>
+                <div class="form-group col-lg-1 col-md-6 col-sm-12">
+                    <label for="exampleInputPassword1">
+                        Horas administrativas
+                    </label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1">
                     <label>Acciones</label>
                 </div>
             </div>
