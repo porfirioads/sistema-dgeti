@@ -20,7 +20,10 @@
     <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
+                                                                                         data-dismiss="alert"
+                                                                                         aria-label="close">&times;</a>
+                </p>
             @endif
         @endforeach
     </div> <!-- end .flash-message -->
@@ -64,9 +67,10 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                            <button class='btn btn-block btn-danger' id="btnEliminar" onclick="eliminar('{{$docente->id}}','{{$docente->nombre}}','{{$docente->primer_apellido}}','{{$docente->segundo_apellido}}')">
-                                <i class="fa fa-trash"></i>
-                            </button>
+                        <button class='btn btn-block btn-danger' id="btnEliminar"
+                                onclick="eliminar('{{$docente->id}}','{{$docente->nombre}}','{{$docente->primer_apellido}}','{{$docente->segundo_apellido}}')">
+                            <i class="fa fa-trash"></i>
+                        </button>
                     </div>
                 </td>
             </tr>

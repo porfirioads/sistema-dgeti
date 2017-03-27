@@ -18,6 +18,7 @@
 </head>
 
 <body class="minimal-background-gray">
+
 <header id="top" class="header">
     <div class="row">
         <div class="text-vertical-center">
@@ -48,5 +49,7 @@
 
 @section('particular_scripts')
 @show
+
+<a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
 </body>
 </html>

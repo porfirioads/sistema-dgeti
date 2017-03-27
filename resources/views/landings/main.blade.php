@@ -2,7 +2,7 @@
 
 @section('title', 'DGETI')
 
-@section('tituloSeccion', 'DIRECCIÓN GENERAL DE EDUCACIÓN TECNOLÓGICA E
+@section('tituloSeccion', 'DIRECCIÓN GENERAL DE EDUCACIÓN TECNOLÓGICA
 INDUSTRIAL')
 
 @section('particular_styles')
@@ -50,6 +50,7 @@ INDUSTRIAL')
 @section('other_content')
     <section id="about" class="about">
         <h2 class="bolder-title">NUESTROS ENLACES</h2>
+        <br>
         <div id="myCarousel" class="carousel slide"
              data-ride="carousel">
             <!-- Indicators -->
@@ -60,21 +61,48 @@ INDUSTRIAL')
                     data-slide-to="1"></li>
                 <li data-target="#myCarousel"
                     data-slide-to="2"></li>
+                <li data-target="#myCarousel"
+                    data-slide-to="3"></li>
+                <li data-target="#myCarousel"
+                    data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <a class="btn btn-block btn-primary">Slide1</a>
-                    <img src="{!! asset('img/slider/slide_1.png') !!}"/>
+                    <a class="btn btn-block btn-primary"
+                       href="http://www.dgeti.sep.gob.mx/">
+                        Portal Académico
+                    </a>
+                    <img src="{!! asset('img/slider/portal.png') !!}"/>
                 </div>
                 <div class="item">
-                    <a class="btn btn-block btn-primary">Slide2</a>
-                    <img src="{!! asset('img/slider/slide_2.png') !!}"/>
+                    <a class="btn btn-block btn-primary"
+                       href="https://es.duolingo.com/">
+                        Duolingo
+                    </a>
+                    <img src="{!! asset('img/slider/duolingo.png') !!}"/>
                 </div>
                 <div class="item">
-                    <a class="btn btn-block btn-primary">Slide3</a>
-                    <img src="{!! asset('img/slider/slide_3.png') !!}"/>
+                    <a class="btn btn-block btn-primary"
+                       href="https://es.khanacademy.org/">
+                        Khan Academy
+                    </a>
+                    <img src="{!! asset('img/slider/khanacademy.png') !!}"/>
+                </div>
+                <div class="item">
+                    <a class="btn btn-block btn-primary"
+                       href="https://www.coursera.org/">
+                        Coursera
+                    </a>
+                    <img src="{!! asset('img/slider/coursera.png') !!}"/>
+                </div>
+                <div class="item">
+                    <a class="btn btn-block btn-primary"
+                       href="http://www.construye-t.org.mx/">
+                        Construye T
+                    </a>
+                    <img src="{!! asset('img/slider/construyet.png') !!}"/>
                 </div>
             </div>
 
@@ -99,4 +127,46 @@ INDUSTRIAL')
 
 @section('particular_scripts')
     <script src="{!! asset('js/bootstrap.js') !!}"></script>
+    <script>
+        // Scrolls to the selected menu item on the page
+        $(function () {
+            $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 500);
+                        return false;
+                    }
+                }
+            });
+        });
+        //#to-top button appears after scrolling
+        var fixed = false;
+        $(document).scroll(function () {
+            if ($(this).scrollTop() > 250) {
+                if (!fixed) {
+                    fixed = true;
+                    // $('#to-top').css({position:'fixed', display:'block'});
+                    $('#to-top').show("slow", function () {
+                        $('#to-top').css({
+                            position: 'fixed',
+                            display: 'block'
+                        });
+                    });
+                }
+            } else {
+                if (fixed) {
+                    fixed = false;
+                    $('#to-top').hide("slow", function () {
+                        $('#to-top').css({
+                            display: 'none'
+                        });
+                    });
+                }
+            }
+        });
+    </script>
 @endsection

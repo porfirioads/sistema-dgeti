@@ -31,26 +31,28 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos personales</h3>
         </div>
         <div class="panel-body">
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CCT</label>
                 {!! Form::text('cct', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->cct:null, ['class' =>
-                'form-control', 'placeholder' => 'CCT','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
+                'form-control', 'placeholder' => 'CCT','required','pattern' => '[A-Z0-9]{10,}',
+                'oninvalid' => 'setCustomValidity("Ingresa una CCT válida.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',
+              $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CURP</label>
                 {!! Form::text('curp', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->curp:null, ['class' =>
-                'form-control', 'placeholder' => 'Curp','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
+                'form-control', 'placeholder' => 'Curp','required','pattern' => '[A-Z][A,E,I,O,U,X][A-Z]{2}[0-9]{2}[0-1][0-9][0-3][0-9][M,H][A-Z]{2}[B,C,D,F,G,H,J,K,L,M,N,Ñ,P,Q,R,S,T,V,W,X,Y,Z]{3}[0-9,A-Z][0-9]',
+                'oninvalid' => 'setCustomValidity("Ingresa una CURP válida.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">RFC</label>
                 {!! Form::text('rfc', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->rfc:null, ['class' =>
-                'form-control', 'placeholder' => 'RFC','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
+                'form-control', 'placeholder' => 'RFC','required', 'pattern' => '[A-Z,Ñ,&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?',
+                'oninvalid' => 'setCustomValidity("Ingresa un RFC válido.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">Nombre</label>
@@ -81,7 +83,7 @@
                 <label for="correo">
                     Correo electrónico
                 </label>
-                {!! Form::text('correo', $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->correo:null,['class' =>
+                {!! Form::email('correo', $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->correo:null,['class' =>
                 'form-control', 'placeholder' => 'Correo electrónico',
                 'required',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
@@ -91,8 +93,8 @@
                 </label>
                 {!! Form::text('telefono_celular',
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->telefono_celular:null,['class' => 'form-control',
-                'placeholder' => 'Teléfono celular','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
+                'placeholder' => 'Teléfono celular','required', 'pattern' => '^(\d{10}|\d{9})$',
+                'oninvalid' => 'setCustomValidity("Ingresa un número de celular con LADA.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputPassword1">
@@ -100,8 +102,8 @@
                 </label>
                 {!! Form::text('telefono_domicilio',
                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->telefono_domicilio:null,['class' => 'form-control',
-                'placeholder' => 'Teléfono fijo','',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
+                'placeholder' => 'Teléfono fijo','', 'pattern' => '^(\d{10}|\d{9})$',
+                'oninvalid' => 'setCustomValidity("Ingresa un número de teléfono con LADA.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',$data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-12">
                 <label for="exampleInputPassword1">
@@ -116,6 +118,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos laborales</h3>
         </div>
 
@@ -166,6 +169,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos académicos</h3>
         </div>
         <div class="panel-body">
@@ -190,7 +194,6 @@
             @if( $data->accion=='visualizar' || $data->accion=='modificar')
                 <div id="agregarAcademico">
                     @if (empty($data->res_disciplina))
-                        asdfasdfa
                         @include('docente_definitivo.datos_academicos')
                     @else
                         @foreach($data->res_disciplina as $componente)
@@ -226,6 +229,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos Plaza</h3>
         </div>
         <div class="panel-body">
@@ -276,11 +280,10 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Historial Evaluación</h3>
         </div>
         <div class="panel-body">
-
-
 
 
             <div class="row hidden-xs hidden-sm hidden-md">
