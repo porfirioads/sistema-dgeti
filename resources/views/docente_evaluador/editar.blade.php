@@ -1,6 +1,6 @@
 @extends('dashboard_master')
 
-@section('title', 'Docentes definitivo')
+@section('title', 'Docentes Evaluador')
 
 @section('particular_styles')
     <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
@@ -8,10 +8,10 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_idoneo.sidebar_items')
+    @include('docente_evaluador.sidebar_items')
 @endsection
 
-@section('box_title', 'Docente definitivo')
+@section('box_title', 'Docente Evaluador')
 
 @section('box_body')
     {!! Form::open([
@@ -158,25 +158,14 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
-            <h3 class="panel-title">Folio</h3>
+            <h3 class="panel-title">Datos ATP</h3>
         </div>
         <div class="panel-body">
-
-
-            <div class="row hidden-xs hidden-sm hidden-md">
-                <div class="form-group col-md-6 col-sm-12">
-                    <label>Folio Federal</label>
-                </div>
-                <div class="form-group col-md-6 col-sm-12">
-                    <label>Concurso</label>
-                </div>
-
-            </div>
-
-            @include('docente_idoneo.datos_ideoneo')
+            @include('docente_evaluador.datos_evaluador')
 
         </div>
     </div>
+
 
 
     {{--//////////////////////////////////////Datos académicos/////////--}}

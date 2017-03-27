@@ -1,6 +1,6 @@
 @extends('dashboard_master')
 
-@section('title', 'Docentes Tutores')
+@section('title', 'Docentes Evaluador')
 
 @section('particular_styles')
     <link href="{!! asset('css/dataTables.bootstrap.css') !!}"
@@ -11,10 +11,10 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_idoneo.sidebar_items')
+    @include('docente_evaluador.sidebar_items')
 @endsection
 
-@section('box_title', 'Docentes Tutores')
+@section('box_title', 'Docentes Evaluador')
 @section('box_body')
     <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -25,7 +25,7 @@
     </div> <!-- end .flash-message -->
     <div class="col-lg-offset-11">
         <button class="btn btn-block btn-warning button-float-righ"
-                onclick="location.href='{{ url('docente_idoneo/create') }}'">
+                onclick="location.href='{{ url('docente_evaluador/create') }}'">
             <i class="fa fa-plus"></i>
         </button>
     </div>
@@ -52,13 +52,13 @@
                 <td class="row">
                     <div class="col-md-4">
                         <a class="btn btn-block btn-success"
-                           href="docente_idoneo/{{$docente->id}}">
+                           href="docente_evaluador/{{$docente->id}}">
                             <i class="fa fa-eye"></i>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a class="btn btn-block btn-primary"
-                           href="docente_idoneo/{{$docente->id}}/edit">
+                           href="docente_evaluador/{{$docente->id}}/edit">
                             <i class="fa fa-pencil"></i>
                         </a>
                     </div>
