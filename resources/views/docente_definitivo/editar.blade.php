@@ -31,14 +31,16 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos personales</h3>
         </div>
         <div class="panel-body">
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CCT</label>
                 {!! Form::text('cct', $value = $data->accion=='visualizar' ||  $data->accion=='modificar'? $data->cct:null, ['class' =>
-                'form-control', 'placeholder' => 'CCT','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
+                'form-control', 'placeholder' => 'CCT','required','pattern' => '[A-Z0-9]{10,}',
+                'oninvalid' => 'setCustomValidity("Ingresa una CCT válida.")','onchange'=>'try{setCustomValidity("")}catch(e){S}',
+              $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">CURP</label>
@@ -116,6 +118,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos laborales</h3>
         </div>
 
@@ -166,6 +169,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos académicos</h3>
         </div>
         <div class="panel-body">
@@ -190,7 +194,6 @@
             @if( $data->accion=='visualizar' || $data->accion=='modificar')
                 <div id="agregarAcademico">
                     @if (empty($data->res_disciplina))
-                        asdfasdfa
                         @include('docente_definitivo.datos_academicos')
                     @else
                         @foreach($data->res_disciplina as $componente)
@@ -226,6 +229,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Datos Plaza</h3>
         </div>
         <div class="panel-body">
@@ -276,11 +280,10 @@
     <div class="panel panel-primary">
         <div class="panel-heading clearfix">
             <i class="icon-calendar"></i>
+
             <h3 class="panel-title">Historial Evaluación</h3>
         </div>
         <div class="panel-body">
-
-
 
 
             <div class="row hidden-xs hidden-sm hidden-md">
