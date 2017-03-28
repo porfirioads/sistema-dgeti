@@ -93,7 +93,7 @@
         </div>
         <div class="col-md-6">
             <a id="btnCancelarAspectoSNB" class="btn btn-lg btn-block
-            btn-danger">
+            btn-danger" data-toggle="modal" data-target="#confirmCancelSnb">
                 <i class="fa fa-times"></i>
                 <span>Cancelar</span>
             </a>
@@ -106,6 +106,9 @@
             </a>
         </div>
     </div>
+    @include('snb.confirmDialog', ['id' => 'confirmCancelSnb',
+    'titulo' => 'Cancelar Evaluación', 'textoOk' => 'Aceptar',
+    'textoCancel' => 'Cancelar'])
 @endsection
 
 @section('particular_scripts')
@@ -156,6 +159,21 @@
             } else {
                 console.log('Puedes guardar papu');
             }
+        });
+    </script>
+    <script>
+        var confirmCancelSnb = $('#confirmCancelSnb');
+
+        confirmCancelSnb.find('.modal-body').text('¿Deseas salir sin ' +
+            'guardar los cambios en la evaluación?');
+
+        $('#btnConfirmar').click(function () {
+            console.log('decidió salir sin guardar');
+            window.location = '../evaluacion_snb';
+        });
+
+        $('#btnCancelar').click(function () {
+            console.log('quiere volder a pensar');
         });
     </script>
 @endsection

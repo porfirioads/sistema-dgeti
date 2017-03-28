@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // Manda eliminar las tablas
         $this->dropTables();
         // Crea las tablas a partir del script sql
-        shell_exec('mysql -h 148.233.65.228 -u dgetiadmin --password="dgetiadmin" '
+        shell_exec('mysql -h localhost -u dgetiadmin --password="dgetiadmin" '
             . 'dgetiadmin < database/ddl_script/script.sql');
         // Llena las tablas con los seeders
         $this->seedTables();
@@ -59,9 +59,6 @@ class DatabaseSeeder extends Seeder
         Schema::drop('CRITERIO_SUFICIENCIA');
         Schema::drop('INSTITUCION');
         Schema::drop('INSTITUCION_EVIDENCIA');
-        Schema::drop('EVIDENCIA_EXISTENCIA');
-        Schema::drop('EVIDENCIA_PERTINENCIA');
-        Schema::drop('EVIDENCIA_SUFICIENCIA');
     }
 
     private function seedTables() {
@@ -76,7 +73,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CampoDisciplinarTableSeeder::class);
         $this->call(DisciplinaTableSeeder::class);
         $this->call(EvaluacionTableSeeder::class);
-        $this->call(DocenteTableSeeder::class);
+        //$this->call(DocenteTableSeeder::class);
         $this->call(HistorialEvaluacionDocenteTableSeeder::class);
         $this->call(DocenteDefinitivoTableSeeder::class);
         $this->call(DocenteEvaluadorTableSeeder::class);
@@ -84,7 +81,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DocenteAtpTableSeeder::class);
         $this->call(DocenteIdoneoTableSeeder::class);
         $this->call(DocenteTutorTableSeeder::class);
-        $this->call(TipoPlazaDocenteTableSeeder::class);
+//        $this->call(TipoPlazaDocenteTableSeeder::class);
         $this->call(DisciplinaDocenteTableSeeder::class);
         $this->call(FuncionDocenteTutorTableSeeder::class);
         $this->call(TutoriaTableSeeder::class);
