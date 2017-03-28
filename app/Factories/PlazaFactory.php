@@ -6,8 +6,6 @@
  * Time: 1:24 PM
  */
 namespace App\Factories;
-
-use App\Models\TipoPlaza;
 use App\Models\TipoPlazaDocente;
 use Illuminate\Http\Request;
 
@@ -30,9 +28,9 @@ class PlazaFactory
         $horas_administrativas      = $request['horas_administrativas'];
 
 
-        $key = 0;
+
         if ($plaza_codigo != null) {
-            foreach ($plaza_codigo as $plaza) {
+            foreach ($plaza_codigo as  $key => $plaza) {
                 $plaza = new TipoPlazaDocente([
                     'plaza' => $plaza,
                     'tipo_nombramiento_id' => $plaza_nombramiento[$key],
@@ -44,7 +42,7 @@ class PlazaFactory
                     'horas_descarga_academica' => $horas_descarga_academica[$key],
                     'horas_administrativas' => $horas_administrativas[$key],
                 ]);
-                $plazas[$key++] = $plaza;
+                $plazas[$key] = $plaza;
 
             }
             return $plazas;

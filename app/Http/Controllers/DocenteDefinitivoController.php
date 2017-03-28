@@ -137,6 +137,11 @@ class DocenteDefinitivoController extends Controller
      */
     public function update(Request $request, $id)
     {
+/*        $docente = Docente::where('id', $id)->get()->first();
+        $plaza_factory = new  PlazaFactory();
+        $plazas = $plaza_factory->crearPlaza($request,$docente->id);
+        return $plazas;
+        */
 
         $docente = Docente::where('id', $id)->get()->first();
 
@@ -147,9 +152,6 @@ class DocenteDefinitivoController extends Controller
         $docente->primer_apellido           =   $request['primer_apellido'];
         $docente->segundo_apellido          =   $request['segundo_apellido'];
         $docente->perfil_profesional        =   $request['perfil_profesional'];
-        $docente->horas_frente_grupo        =   $request['horas_frente_grupo'];
-        $docente->horas_descarga_academica  =   $request['horas_descarga_academica'];
-        $docente->horas_administrativas     =   $request['horas_administrativas'];
         $docente->correo                    =   $request['correo'];
         $docente->telefono_celular          =   $request['telefono_celular'];
         $docente->telefono_domicilio        =   $request['telefono_domicilio'];
