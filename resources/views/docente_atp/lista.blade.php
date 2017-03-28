@@ -11,7 +11,8 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_atp.sidebar_items')
+    @include('docente_atp.sidebar_items', ['url' =>
+    '../landing_directores', 'texto' => 'Volver a menú de directores'])
 @endsection
 
 @section('box_title', 'Docentes ATP')

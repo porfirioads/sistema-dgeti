@@ -8,7 +8,8 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_idoneo.sidebar_items')
+    @include('docente_atp.sidebar_items', ['url' =>
+  '../docente_atp', 'texto' => 'Volver a lista de atps'])
 @endsection
 
 @section('box_title', 'Docente ATP')

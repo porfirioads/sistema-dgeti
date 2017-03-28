@@ -8,7 +8,8 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_evaluador.sidebar_items')
+    @include('docente_evaluador.sidebar_items', ['url' =>
+    '../docente_evaluador', 'texto' => 'Volver a lista de evaluadores'])
 @endsection
 
 @section('box_title', 'Docente Evaluador')

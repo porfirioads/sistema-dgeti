@@ -11,7 +11,8 @@
 @endsection
 
 @section('sidebar_options')
-    @include('docente_evaluador.sidebar_items')
+    @include('docente_evaluador.sidebar_items', ['url' =>
+    '../landing_directores', 'texto' => 'Volver a menú de directores'])
 @endsection
 
 @section('box_title', 'Docentes Evaluador')
