@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <a id="btnGuardarAspectoSNB" class="btn btn-lg btn-block
+            <a id="btnCancelarAspectoSNB" class="btn btn-lg btn-block
             btn-danger">
                 <i class="fa fa-times"></i>
                 <span>Cancelar</span>
@@ -129,12 +129,16 @@
     </script>
     <script>
         console.log(evaluaciones);
+
         $('.drop_snb_item').click(function () {
             var parent = $(this).parent().parent()[0];
             var selected = $(this)[0];
             var evidenciaId = parent.id.substring(5);
             var tipoCriterio = parent.id.substring(0, 4);
             evaluaciones[evidenciaId][tipoCriterio] = selected.id;
+        });
+
+        $('#btnGuardarAspectoSNB').click(function () {
             var evaluacionCompleta = true;
 
             // Con estos foreach se evalúa que no se hayan dejado aspectos
@@ -148,10 +152,10 @@
             });
 
             if (!evaluacionCompleta) {
-                console.log("tranquilo papu, llena los campos")
+                console.log('tranquilo papu, llena los campos');
+            } else {
+                console.log('Puedes guardar papu');
             }
-
-            // TODO ¿Aquí lo meteré en la base de datos?
         });
     </script>
 @endsection
