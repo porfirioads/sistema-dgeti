@@ -4,7 +4,7 @@
         <span>Docentes Definitivos</span>
     </a>
 </li>
-<li class="active">
+<li >
     <a href="../docente_idoneo">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Idóneos</span>
@@ -22,7 +22,7 @@
         <span>Docentes ATP</span>
     </a>
 </li>
-<li>
+<li class="active">
     <a href="../docente_evaluador">
         <i class="fa fa-circle-o"></i>
         <span>Docentes Evaluadores</span>

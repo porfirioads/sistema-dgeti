@@ -1,6 +1,6 @@
 @extends('dashboard_master')
 
-@section('title', 'Docentes definitivo')
+@section('title', 'Docentes Definitivo')
 
 @section('particular_styles')
     <link href="{!! asset('css/select2.min.css') !!}" rel="stylesheet">
@@ -12,7 +12,7 @@
      '../docente_definitivo', 'texto' => 'Volver a lista de definitivos'])
 @endsection
 
-@section('box_title', 'Docente definitivo')
+@section('box_title', 'Docente Definitivo')
 
 @section('box_body')
     {!! Form::open([
