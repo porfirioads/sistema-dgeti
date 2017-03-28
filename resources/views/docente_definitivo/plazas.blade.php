@@ -59,23 +59,23 @@
         </select>
     </div>
     <div class="form-group col-lg-1 col-md-6 col-sm-12">
-        {!! Form::text('horas_frente_grupo[]',
+        {!! Form::number('horas_frente_grupo[]',
         $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $plaza->horas_frente_grupo:null,['class' => 'form-control',
-        'placeholder' => 'Horas frente a grupo','required',
+        'placeholder' => 'Horas frente a grupo','required','min'=>'0', 'max'=>'40',
         $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
     <div class="form-group col-lg-1 col-md-6 col-sm-12">
-        {!! Form::text('horas_descarga_academica[]',
+        {!! Form::number('horas_descarga_academica[]',
         $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $plaza->horas_descarga_academica:null,
         ['class' => 'form-control',
-        'placeholder' => 'Horas descarga académica','required',
+        'placeholder' => 'Horas descarga académica','required','min'=>'0', 'max'=>'40',
         $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
     <div class="form-group col-lg-1 col-md-6 col-sm-12">
-        {!! Form::text('horas_administrativas[]',
+        {!! Form::number('horas_administrativas[]',
          $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $plaza->horas_administrativas:null,
          ['class' => 'form-control',
-         'placeholder' => 'Horas administrativas',
+         'placeholder' => 'Horas administrativas','required','min'=>'0', 'max'=>'40',
          $data->accion=='visualizar' ? 'disabled':'',])!!}
     </div>
     <div class="col-lg-1 col-md-1 col-sm-2">
