@@ -39,7 +39,7 @@ create table COMPONENTE_FORMACION
 
 alter table CAMPO_DISCIPLINAR
 	add constraint fk_CAMPO_DISCIPLINAR_COMPONENTE_FORMACION1
-foreign key (componente_formacion_id) references COMPONENTE_FORMACION (id)
+		foreign key (componente_formacion_id) references COMPONENTE_FORMACION (id)
 ;
 
 create table CONCURSO
@@ -90,10 +90,10 @@ create table DESCRIPCION_TIPO_PLAZA
 (
 	id int not null auto_increment
 		primary key,
-	descripcion varchar(45) not null,
 	deleted_at date null,
 	created_at date not null,
-	updated_at date not null
+	updated_at date not null,
+	descripcion varchar(45) not null
 )
 ;
 
@@ -107,7 +107,7 @@ create table DISCIPLINA
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
 	constraint fk_DISCIPLINA_CAMPO_DISCIPLINAR1
-	foreign key (campo_disciplinar_id) references CAMPO_DISCIPLINAR (id)
+		foreign key (campo_disciplinar_id) references CAMPO_DISCIPLINAR (id)
 )
 ;
 
@@ -125,7 +125,7 @@ create table DISCIPLINA_DOCENTE
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
 	constraint fk_DOCENTE_has_DISCIPLINA_DISCIPLINA1
-	foreign key (disciplina_id) references DISCIPLINA (id)
+		foreign key (disciplina_id) references DISCIPLINA (id)
 )
 ;
 
@@ -148,9 +148,6 @@ create table DOCENTE
 	primer_apellido varchar(45) not null,
 	segundo_apellido varchar(45) not null,
 	perfil_profesional varchar(41) not null,
-	horas_frente_grupo int(2) not null,
-	horas_descarga_academica int(2) not null,
-	horas_administrativas int(2) null,
 	correo varchar(45) not null,
 	telefono_celular varchar(20) not null,
 	telefono_domicilio varchar(20) null,
@@ -159,15 +156,15 @@ create table DOCENTE
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
 	constraint curp_UNIQUE
-	unique (curp),
+		unique (curp),
 	constraint rfc_UNIQUE
-	unique (rfc)
+		unique (rfc)
 )
 ;
 
 alter table DISCIPLINA_DOCENTE
 	add constraint fk_DOCENTE_has_DISCIPLINA_DOCENTE1
-foreign key (docente_id) references DOCENTE (id)
+		foreign key (docente_id) references DOCENTE (id)
 ;
 
 create table DOCENTE_ATP
@@ -185,7 +182,7 @@ create table DOCENTE_ATP
 	created_at date not null,
 	updated_at date not null,
 	constraint fk_DOCENTES_ATP_CONCURSO1
-	foreign key (concurso_id) references CONCURSO (id)
+		foreign key (concurso_id) references CONCURSO (id)
 )
 ;
 
@@ -206,7 +203,7 @@ create table DOCENTE_DEFINITIVO
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
 	constraint fk_DOCENTES_DEFINITIVO_DOCENTE
-	foreign key (docente_id) references DOCENTE (id)
+		foreign key (docente_id) references DOCENTE (id)
 )
 ;
 
@@ -216,7 +213,7 @@ create index fk_DOCENTES_DEFINITIVO_DOCENTE_idx
 
 alter table DOCENTE_ATP
 	add constraint fk_DOCENTES_ATP_DOCENTES_DEFINITIVO1
-foreign key (docente_definitivo_id) references DOCENTE_DEFINITIVO (id)
+		foreign key (docente_definitivo_id) references DOCENTE_DEFINITIVO (id)
 ;
 
 create table DOCENTE_EVALUADOR
@@ -230,7 +227,7 @@ create table DOCENTE_EVALUADOR
 	created_at date not null,
 	updated_at date not null,
 	constraint fk_DOCENTES_EVALUADORES_DOCENTES_DEFINITIVO1
-	foreign key (docente_definitivo_id) references DOCENTE_DEFINITIVO (id)
+		foreign key (docente_definitivo_id) references DOCENTE_DEFINITIVO (id)
 )
 ;
 
@@ -253,11 +250,11 @@ create table DOCENTE_IDONEO
 	created_at date not null,
 	updated_at date not null,
 	constraint folio_general_UNIQUE
-	unique (folio_federal),
+		unique (folio_federal),
 	constraint fk_DOCENTES_IDONEOS_DOCENTE1
-	foreign key (docente_id) references DOCENTE (id),
+		foreign key (docente_id) references DOCENTE (id),
 	constraint fk_DOCENTES_IDONEOS_CONCURSO1
-	foreign key (concurso_id) references CONCURSO (id)
+		foreign key (concurso_id) references CONCURSO (id)
 )
 ;
 
@@ -278,7 +275,7 @@ create table DOCENTE_TUTOR
 	created_at date not null,
 	updated_at date not null,
 	constraint fk_DOCENTES_TUTORES_DOCENTES_DEFINITIVO1
-	foreign key (docente_definitivo_id) references DOCENTE_DEFINITIVO (id)
+		foreign key (docente_definitivo_id) references DOCENTE_DEFINITIVO (id)
 )
 ;
 
@@ -348,9 +345,9 @@ create table FUNCION_DOCENTE_TUTOR
 	created_at date not null,
 	updated_at date not null,
 	constraint fk_DOCENTE_TUTOR_has_FUNCION_DOCENTE_TUTOR1
-	foreign key (docente_tutor_id) references DOCENTE_TUTOR (id),
+		foreign key (docente_tutor_id) references DOCENTE_TUTOR (id),
 	constraint fk_DOCENTE_TUTOR_has_FUNCION_FUNCION1
-	foreign key (funcion_id) references FUNCION (id)
+		foreign key (funcion_id) references FUNCION (id)
 )
 ;
 
@@ -372,9 +369,9 @@ create table HISTORIAL_EVALUACION_DOCENTE
 	created_at date not null,
 	updated_at date not null,
 	constraint fk_HISTORIAL_EVALUACION_has_DOCENTE_HISTORIAL_EVALUACION1
-	foreign key (evaluacion_id) references EVALUACION (id),
+		foreign key (evaluacion_id) references EVALUACION (id),
 	constraint fk_HISTORIAL_EVALUACION_has_DOCENTE_DOCENTE1
-	foreign key (docente_id) references DOCENTE (id)
+		foreign key (docente_id) references DOCENTE (id)
 )
 ;
 
@@ -411,15 +408,15 @@ create table INSTITUCION_EVIDENCIA
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
 	constraint fk_INSTITUCION_EVIDENCIA_CRITERIO_EXISTENCIA1
-	foreign key (criterio_existencia_id) references CRITERIO_EXISTENCIA (id),
+		foreign key (criterio_existencia_id) references CRITERIO_EXISTENCIA (id),
 	constraint fk_INSTITUCION_EVIDENCIA_CRITERIO_PERTINENCIA1
-	foreign key (criterio_pertinencia_id) references CRITERIO_PERTINENCIA (id),
+		foreign key (criterio_pertinencia_id) references CRITERIO_PERTINENCIA (id),
 	constraint fk_INSTITUCION_EVIDENCIA_CRITERIO_SUFICIENCIA1
-	foreign key (criterio_suficiencia_id) references CRITERIO_SUFICIENCIA (id),
+		foreign key (criterio_suficiencia_id) references CRITERIO_SUFICIENCIA (id),
 	constraint fk_INSTITUCION_EVIDENCIA_INSTITUCION1
-	foreign key (institucion_id) references INSTITUCION (id),
+		foreign key (institucion_id) references INSTITUCION (id),
 	constraint fk_INSTITUCION_EVIDENCIA_EVIDENCIA1
-	foreign key (evidencia_id) references EVIDENCIA (id)
+		foreign key (evidencia_id) references EVIDENCIA (id)
 )
 ;
 
@@ -448,13 +445,17 @@ create table PLAZA_DOCENTE
 	plaza varchar(45) not null,
 	tipo_nombramiento_id int not null,
 	tipo_plaza_id int not null,
-	id int not null,
+	id int not null
+		primary key,
 	docente_id int not null,
 	deleted_at date null,
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
+	horas_frente_grupo int(2) not null,
+	horas_descarga_academica int(2) not null,
+	horas_administrativas int(2) not null,
 	constraint fk_PLAZA_DOCENTE_DOCENTE1
-	foreign key (docente_id) references DOCENTE (id)
+		foreign key (docente_id) references DOCENTE (id)
 )
 ;
 
@@ -483,7 +484,7 @@ create table RESULTADO_EVALUACION
 
 alter table EVALUACION
 	add constraint fk_EVALUACION_RESULTADO_EVALUACION1
-foreign key (resultado_evaluacion_id) references RESULTADO_EVALUACION (id)
+		foreign key (resultado_evaluacion_id) references RESULTADO_EVALUACION (id)
 ;
 
 create table STATUS
@@ -499,7 +500,7 @@ create table STATUS
 
 alter table DOCENTE_EVALUADOR
 	add constraint fk_DOCENTE_EVALUADOR_STATUS1
-foreign key (status_id) references STATUS (id)
+		foreign key (status_id) references STATUS (id)
 ;
 
 create table SUBASPECTO_EVALUACION
@@ -512,7 +513,7 @@ create table SUBASPECTO_EVALUACION
 	created_at date default '1970-01-01' not null,
 	updated_at date default '1970-01-01' not null,
 	constraint fk_SUBASPECTO_EVALUACION_ASPECTO_EVALUACION1
-	foreign key (aspecto_evaluacion_id) references ASPECTO_EVALUACION (id)
+		foreign key (aspecto_evaluacion_id) references ASPECTO_EVALUACION (id)
 )
 ;
 
@@ -522,7 +523,7 @@ create index fk_SUBASPECTO_EVALUACION_ASPECTO_EVALUACION1_idx
 
 alter table EVIDENCIA
 	add constraint fk_EVIDENCIA_SUBASPECTO_EVALUACION1
-foreign key (subaspecto_evaluacion_id) references SUBASPECTO_EVALUACION (id)
+		foreign key (subaspecto_evaluacion_id) references SUBASPECTO_EVALUACION (id)
 ;
 
 create table TIPO_EVALUACION
@@ -538,7 +539,7 @@ create table TIPO_EVALUACION
 
 alter table EVALUACION
 	add constraint fk_HISTORIAL_EVALUACION_TIPO_EVALUACION1
-foreign key (tipo_evaluacion_id) references TIPO_EVALUACION (id)
+		foreign key (tipo_evaluacion_id) references TIPO_EVALUACION (id)
 ;
 
 create table TIPO_NOMBRAMIENTO
@@ -554,20 +555,20 @@ create table TIPO_NOMBRAMIENTO
 
 alter table PLAZA_DOCENTE
 	add constraint fk_PLAZA_DOCENTE_has_TIPO_NOMBRAMIENTO_TIPO_NOMBRAMIENTO1
-foreign key (tipo_nombramiento_id) references TIPO_NOMBRAMIENTO (id)
+		foreign key (tipo_nombramiento_id) references TIPO_NOMBRAMIENTO (id)
 ;
 
 create table TIPO_PLAZA
 (
 	id int not null auto_increment
 		primary key,
-	numero_horas int not null,
 	deleted_at date null,
 	created_at date not null,
 	updated_at date not null,
 	descripcion_tipo_plaza_id int not null,
+	numero_horas int not null,
 	constraint fk_TIPO_PLAZA_DESCRIPCION_TIPO_PLAZA1
-	foreign key (descripcion_tipo_plaza_id) references DESCRIPCION_TIPO_PLAZA (id)
+		foreign key (descripcion_tipo_plaza_id) references DESCRIPCION_TIPO_PLAZA (id)
 )
 ;
 
@@ -577,7 +578,7 @@ create index fk_TIPO_PLAZA_DESCRIPCION_TIPO_PLAZA1_idx
 
 alter table PLAZA_DOCENTE
 	add constraint fk_PLAZA_DOCENTE_has_TIPO_NOMBRAMIENTO_TIPO_PLAZA1
-foreign key (tipo_plaza_id) references TIPO_PLAZA (id)
+		foreign key (tipo_plaza_id) references TIPO_PLAZA (id)
 ;
 
 create table TUTORIA
@@ -594,9 +595,9 @@ create table TUTORIA
 	created_at date not null,
 	updated_at date not null,
 	constraint fk_DOCENTE_IDONEO_has_DOCENTE_TUTOR_DOCENTE_IDONEO1
-	foreign key (docente_idoneo_id) references DOCENTE_IDONEO (id),
+		foreign key (docente_idoneo_id) references DOCENTE_IDONEO (id),
 	constraint fk_DOCENTE_IDONEO_has_DOCENTE_TUTOR_DOCENTE_TUTOR1
-	foreign key (docente_tutor_id) references DOCENTE_TUTOR (id)
+		foreign key (docente_tutor_id) references DOCENTE_TUTOR (id)
 )
 ;
 

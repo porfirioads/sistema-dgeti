@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         // Manda eliminar las tablas
         $this->dropTables();
         // Crea las tablas a partir del script sql
-        shell_exec('mysql -h localhost -u dgetiadmin --password="dgetiadmin" '
-            . 'dgetiadmin < database/ddl_script/script.sql');
+        shell_exec('mysql -h localhost -u homestead --password="secret" '
+            . 'dgeti < database/ddl_script/script.sql');
         // Llena las tablas con los seeders
         $this->seedTables();
         // Habilita las llaves foráneas
@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CampoDisciplinarTableSeeder::class);
         $this->call(DisciplinaTableSeeder::class);
         $this->call(EvaluacionTableSeeder::class);
-        //$this->call(DocenteTableSeeder::class);
+        $this->call(DocenteTableSeeder::class);
         $this->call(HistorialEvaluacionDocenteTableSeeder::class);
         $this->call(DocenteDefinitivoTableSeeder::class);
         $this->call(DocenteEvaluadorTableSeeder::class);
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DocenteAtpTableSeeder::class);
         $this->call(DocenteIdoneoTableSeeder::class);
         $this->call(DocenteTutorTableSeeder::class);
-//        $this->call(TipoPlazaDocenteTableSeeder::class);
+        $this->call(TipoPlazaDocenteTableSeeder::class);
         $this->call(DisciplinaDocenteTableSeeder::class);
         $this->call(FuncionDocenteTutorTableSeeder::class);
         $this->call(TutoriaTableSeeder::class);
