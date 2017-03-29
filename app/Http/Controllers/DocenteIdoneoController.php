@@ -40,7 +40,14 @@ class DocenteIdoneoController extends Controller
      */
     public function create()
     {
-        //
+        $data = new Docente([]);;
+
+        $data['accion'] = 'crear';
+
+        $data = $this->getDiccionarios($data);
+
+        #return $data;
+        return view('docente_idoneo.editar')->with('data', $data);
     }
 
     /**
@@ -51,7 +58,7 @@ class DocenteIdoneoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -129,7 +136,7 @@ class DocenteIdoneoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -141,7 +148,7 @@ class DocenteIdoneoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -152,6 +159,6 @@ class DocenteIdoneoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/v_building');
     }
 }

@@ -16,7 +16,7 @@ class EvidenciaController extends Controller
      */
     public function index()
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -26,7 +26,7 @@ class EvidenciaController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -37,7 +37,7 @@ class EvidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -48,7 +48,7 @@ class EvidenciaController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -59,7 +59,7 @@ class EvidenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -71,7 +71,7 @@ class EvidenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -82,6 +82,6 @@ class EvidenciaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/v_building');
     }
 }

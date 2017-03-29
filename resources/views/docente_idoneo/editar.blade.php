@@ -112,7 +112,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
                 <label for="exampleInputPassword1">
                     Perfil Profesional
                 </label>
@@ -121,35 +121,8 @@
                 'placeholder' => 'Perfil Profesional','required',
                 $data->accion=='visualizar' ? 'disabled':'',])!!}
             </div>
-            <div class="form-group col-lg-2 col-md-6 col-sm-12">
-                <label for="exampleInputPassword1">
-                    Horas frente a grupo
-                </label>
-                {!! Form::text('horas_frente_grupo',
-                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_frente_grupo:null,['class' => 'form-control',
-                'placeholder' => 'Horas frente a grupo','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
-            </div>
-            <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                <label for="exampleInputPassword1">
-                    Horas descarga académica
-                </label>
-                {!! Form::text('horas_descarga_academica',
-                $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_descarga_academica:null,
-                ['class' => 'form-control',
-                'placeholder' => 'Horas descarga académica','required',
-                $data->accion=='visualizar' ? 'disabled':'',])!!}
-            </div>
-            <div class="form-group col-lg-2 col-md-6 col-sm-12">
-                <label for="exampleInputPassword1">
-                    Horas administrativas
-                </label>
-                {!! Form::text('horas_administrativas',
-                 $value = $data->accion=='visualizar' ||  $data->accion=='modificar' ? $data->horas_administrativas:null,
-                 ['class' => 'form-control',
-                 'placeholder' => 'Horas administrativas',
-                 $data->accion=='visualizar' ? 'disabled':'',])!!}
-            </div>
+
+
         </div>
     </div>
 
@@ -177,175 +150,6 @@
             @include('docente_idoneo.datos_ideoneo')
 
         </div>
-    </div>
-
-
-    {{--//////////////////////////////////////Datos académicos/////////--}}
-
-    <div class="panel panel-primary">
-        <div class="panel-heading clearfix">
-            <i class="icon-calendar"></i>
-            <h3 class="panel-title">Datos académicos</h3>
-        </div>
-        <div class="panel-body">
-
-
-            <div class="row hidden-xs hidden-sm hidden-md">
-                <div class="form-group col-md-4 col-sm-12">
-                    <label>Componente Formación</label>
-                </div>
-                <div class="form-group col-md-4 col-sm-12">
-                    <label>Campo disciplinar</label>
-                </div>
-                <div class="form-group col-md-3 col-sm-12">
-                    <label>Disciplina</label>
-                </div>
-                <div class="col-md-1 col-sm-1">
-                    <label>Acciones</label>
-                </div>
-            </div>
-
-
-            @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                <div id="agregarAcademico">
-                    @if (empty($data->res_disciplina))
-                        asdfasdfa
-                        @include('docente_definitivo.datos_academicos')
-                    @else
-                        @foreach($data->res_disciplina as $componente)
-                            @include('docente_definitivo.datos_academicos')
-                        @endforeach
-                    @endif
-
-                </div>
-            @else
-                <div id="agregarAcademico">
-                    @include('docente_definitivo.datos_academicos')
-                </div>
-            @endif
-
-
-            <div class="row">
-                <div class="col-md-11"></div>
-                <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary add-element-academico" {{$data->accion=='visualizar' ? 'disabled':''}}>
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-    {{--//////////////////////////////////////PLAZAS/////////--}}
-    <div class="panel panel-primary">
-        <div class="panel-heading clearfix">
-            <i class="icon-calendar"></i>
-            <h3 class="panel-title">Datos Plaza</h3>
-        </div>
-        <div class="panel-body">
-
-            <div class="row hidden-xs hidden-sm hidden-md">
-                <div class="form-group col-md-3 col-sm-12">
-                    <label>Plaza</label>
-                </div>
-                <div class="form-group col-md-3 col-sm-12">
-                    <label>Tipo plaza</label>
-                </div>
-                <div class="form-group col-md-3 col-sm-12">
-                    <label>Horas</label>
-                </div>
-                <div class="form-group col-md-2 col-sm-10">
-                    <label>Tipo de nombramiento</label>
-                </div>
-                <div class="col-md-1 col-sm-1">
-                    <label>Acciones</label>
-                </div>
-            </div>
-
-            @if( $data->accion=='visualizar' || $data->accion=='modificar')
-                <div id="agregarPlaza">
-                    @foreach($data->res_plaza as $plaza)
-                        @include('docente_definitivo.plazas')
-                    @endforeach
-                </div>
-            @else
-                <div id="agregarPlaza">
-                    @include('docente_definitivo.plazas')
-                </div>
-            @endif
-
-
-            <div class="row">
-                <div class="col-md-11"></div>
-                <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary add-element-plaza" {{$data->accion=='visualizar' ? 'disabled':''}}>
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--//////////////////////////////////////HISTORIAL EVALUACION/////////--}}
-    <div class="panel panel-primary">
-        <div class="panel-heading clearfix">
-            <i class="icon-calendar"></i>
-            <h3 class="panel-title">Historial Evaluación</h3>
-        </div>
-        <div class="panel-body">
-
-
-
-
-            <div class="row hidden-xs hidden-sm hidden-md">
-                <div class="form-group col-lg-3"><label>Tipo Evaluación</label></div>
-                <div class="form-group col-lg-2"><label>Resultados</label></div>
-                <div class="form-group col-lg-3"><label>Fecha evaluación</label></div>
-                <div class="form-group col-lg-3"><label>Fecha vigencia</label></div>
-                <div class="form-group col-lg-1"><label>Acciones</label></div>
-            </div>
-
-
-            @if( $data->accion=='visualizar' || $data->accion=='modificar' )
-                <div id="agregarHistorial">
-                    @if(count($data->res_evaluacion)> 0)
-                        @foreach($data->res_evaluacion as $evaluacion)
-                            @include('docente_definitivo.historial_evaluacion')
-                        @endforeach
-                    @else
-                        @if($data->accion=='visualizar')
-                            <p align="center">No contiene evaluaciones el docente</p>
-                        @else
-                            @include('docente_definitivo.historial_evaluacion')
-                        @endif
-                    @endif
-                </div>
-            @else
-                <div id="agregarHistorial">
-                    @include('docente_definitivo.historial_evaluacion')
-                </div>
-            @endif
-
-            <div class="row">
-                <div class="col-md-11"></div>
-                <div class="form-group col-md-1 col-sm-1">
-                    <a class="btn btn-block btn-primary add-element-evaluacion" {{$data->accion=='visualizar' ? 'disabled':''}}>
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
     </div>
 
 

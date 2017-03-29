@@ -38,7 +38,7 @@ class DocenteTutorController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -49,7 +49,7 @@ class DocenteTutorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -129,7 +129,7 @@ class DocenteTutorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -140,6 +140,6 @@ class DocenteTutorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/v_building');
     }
 }

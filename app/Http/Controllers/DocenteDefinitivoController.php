@@ -47,6 +47,7 @@ class DocenteDefinitivoController extends Controller
      */
     public function create()
     {
+        return "marianita";
         $data = new Docente([]);;
 
         $data['accion'] = 'crear';

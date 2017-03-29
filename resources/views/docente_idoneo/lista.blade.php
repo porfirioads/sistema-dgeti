@@ -64,7 +64,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                            <button class='btn btn-block btn-danger' id="btnEliminar" onclick="eliminar('{{$docente->id}}','{{$docente->nombre}}','{{$docente->primer_apellido}}','{{$docente->segundo_apellido}}')">
+                            <button class='btn btn-block btn-danger' id="btnEliminar" >
                                 <i class="fa fa-trash"></i>
                             </button>
                     </div>
@@ -86,7 +86,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelar">Cancelar
                         </button>
-                        <button type="button" class="btn btn-primary" id="btnConfirmar">Eliminar</button>
+                        <button type="button" class="btn btn-primary"   href="docente_idoneo/{{$docente->id}}/edit">Eliminar</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

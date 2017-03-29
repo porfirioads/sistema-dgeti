@@ -40,7 +40,7 @@ class DocenteATPController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -51,7 +51,7 @@ class DocenteATPController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -132,7 +132,7 @@ class DocenteATPController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('/v_building');
     }
 
     /**
@@ -143,8 +143,7 @@ class DocenteATPController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {return redirect('/v_building');
     }
 
     /**
@@ -155,6 +154,6 @@ class DocenteATPController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/v_building');
     }
 }
